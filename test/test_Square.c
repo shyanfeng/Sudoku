@@ -43,6 +43,13 @@ void test_squareSetNumber_should_enter_column_3_row_8_and_set_4(void){
 	TEST_ASSERT_EQUAL(4, square[2][7]);
 }
 
+void test_squareSetNumber_should_enter_column_8_row_8_and_set_2(void){
+	int square[9][9];
+	squareSetNumber(getSquare(&square, 9, 9), 2);
+	
+	TEST_ASSERT_EQUAL(2, square[8][8]);
+}
+
 void test_squareDelNumber_should_enter_column_4_row_2_and_del(void){
 	int square[9][9];
 	squareDelNumber(getSquare(&square, 4, 2));
@@ -55,4 +62,11 @@ void test_squareDelNumber_should_enter_column_9_row_9_and_del(void){
 	squareDelNumber(getSquare(&square, 9, 9));
 	
 	TEST_ASSERT_EQUAL(0, square[8][8]);
+}
+
+void test_squareDelNumber_should_enter_column_1_row_1_and_del(void){
+	int square[9][9];
+	squareDelNumber(getSquare(&square, 1, 1));
+	
+	TEST_ASSERT_EQUAL(0, square[0][0]);
 }
