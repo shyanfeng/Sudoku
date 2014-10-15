@@ -6,5 +6,6 @@
 int *getSquare(int (*square)[][9], int column, int row);
 void squareSetNumber(int *getSquare, int number);
 void squareDelNumber(int *square);
+int eliminateNeighbouringSquaresOf(int *square, int number);
 
 #endif // Square_H

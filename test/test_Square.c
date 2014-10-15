@@ -1,5 +1,6 @@
 #include "unity.h"
 #include "Square.h"
+#include "ErrorCode.h"
 
 void setUp(void){}
 
@@ -70,3 +71,34 @@ void test_squareDelNumber_should_enter_column_1_row_1_and_del(void){
 	
 	TEST_ASSERT_EQUAL(0, square[0][0]);
 }
+
+void test_eliminateNeighbouringSquaresOf_should_throw_error_for_row(void){
+	int square[9][9] = {{C(1), C(3), C(3), C(3), C(3), C(3), C(3), C(3), C(3)}, // 1
+                        {C(3), C(3), C(3), C(3), C(3), C(3), C(3), C(3), C(3)}, // 2
+                        {C(3), C(3), C(3), C(3), C(3), C(3), C(3), C(3), C(3)}, // 3
+                        {C(3), C(3), C(3), C(3), C(3), C(3), C(3), C(3), C(3)}, // 4
+                        {C(3), C(3), C(3), C(3), C(3), C(3), C(3), C(3), C(3)}, // 5
+                        {C(3), C(3), C(3), C(3), C(3), C(3), C(3), C(3), C(3)}, // 6
+                        {C(3), C(3), C(3), C(3), C(3), C(3), C(3), C(3), C(3)}, // 7
+                        {C(3), C(3), C(3), C(3), C(3), C(3), C(3), C(3), C(3)}, // 8
+                        {C(3), C(3), C(3), C(3), C(3), C(3), C(3), C(3), C(3)}, // 9
+                        };
+	int e;
+    int value;
+    
+    Try{
+        value = squareDelNumber(getSquare(&square, 1, 1), 1);
+	}Catch(e){
+        TEST_ASSERT_EQUAL(1, square[0][0]);
+    }
+	
+}
+
+
+
+
+
+
+
+
+
