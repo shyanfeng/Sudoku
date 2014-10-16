@@ -53,46 +53,48 @@ void test_squareSetNumber_should_enter_column_8_row_8_and_set_2(void){
 
 void test_squareDelNumber_should_enter_column_4_row_2_and_del(void){
 	int square[9][9];
-	squareDelNumber(getSquare(&square, 4, 2));
+	squareDelNumber(getSquare(&square, 4, 2), 3);
 	
-	TEST_ASSERT_EQUAL(0, square[3][1]);
+	TEST_ASSERT_EQUAL(0, C(3));
 }
 
 void test_squareDelNumber_should_enter_column_9_row_9_and_del(void){
 	int square[9][9];
-	squareDelNumber(getSquare(&square, 9, 9));
-	
+	squareSetNumber(getSquare(&square, 9, 9), 5);
+	TEST_ASSERT_EQUAL(5, square[8][8]);
+	squareDelNumber(getSquare(&square, 9, 9), 5);
 	TEST_ASSERT_EQUAL(0, square[8][8]);
 }
 
 void test_squareDelNumber_should_enter_column_1_row_1_and_del(void){
 	int square[9][9];
-	squareDelNumber(getSquare(&square, 1, 1));
-	
+	squareSetNumber(getSquare(&square, 1, 1), 2);
+	TEST_ASSERT_EQUAL(2, square[0][0]);
+	squareDelNumber(getSquare(&square, 1, 1), 7);
 	TEST_ASSERT_EQUAL(0, square[0][0]);
 }
 
-void test_eliminateNeighbouringSquaresOf_should_throw_error_for_row(void){
-	int square[9][9] = {{C(1), C(3), C(3), C(3), C(3), C(3), C(3), C(3), C(3)}, // 1
-                        {C(3), C(3), C(3), C(3), C(3), C(3), C(3), C(3), C(3)}, // 2
-                        {C(3), C(3), C(3), C(3), C(3), C(3), C(3), C(3), C(3)}, // 3
-                        {C(3), C(3), C(3), C(3), C(3), C(3), C(3), C(3), C(3)}, // 4
-                        {C(3), C(3), C(3), C(3), C(3), C(3), C(3), C(3), C(3)}, // 5
-                        {C(3), C(3), C(3), C(3), C(3), C(3), C(3), C(3), C(3)}, // 6
-                        {C(3), C(3), C(3), C(3), C(3), C(3), C(3), C(3), C(3)}, // 7
-                        {C(3), C(3), C(3), C(3), C(3), C(3), C(3), C(3), C(3)}, // 8
-                        {C(3), C(3), C(3), C(3), C(3), C(3), C(3), C(3), C(3)}, // 9
+/*void test_eliminateNeighbouringSquaresOf_should_throw_error_for_row(void){
+	int square[9][9] = {{C(1), C(0), C(0), C(0), C(0), C(0), C(0), C(0),C(0)}, // 1
+                        {1, 3, 3, 3, 3, 3, 3, 3, 3}, // 2
+                        {1, 3, 3, 3, 3, 3, 3, 3, 3}, // 3
+                        {1, 3, 3, 3, 3, 3, 3, 3, 3}, // 4
+                        {1, 3, 3, 3, 3, 3, 3, 3, 3}, // 5
+                        {1, 3, 3, 3, 3, 3, 3, 3, 3}, // 6
+                        {1, 3, 3, 3, 3, 3, 3, 3, 3}, // 7
+                        {1, 3, 3, 3, 3, 3, 3, 3, 3}, // 8
+                        {1, 3, 3, 3, 3, 3, 3, 3, 3}, // 9
                         };
-	int e;
-    int value;
+		
+
+		
+		eliminateNeighbouringSquaresOf((*square)[1][], number)
     
-    Try{
+    
         value = squareDelNumber(getSquare(&square, 1, 1), 1);
-	}Catch(e){
-        TEST_ASSERT_EQUAL(1, square[0][0]);
-    }
+
 	
-}
+}*/
 
 
 
