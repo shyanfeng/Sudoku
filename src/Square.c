@@ -2,18 +2,16 @@
 #include "Square.h"
 #include "ErrorCode.h"
 
-
-int *getSquare(int (*square)[9][9], int column, int row){
-	return &((*square)[column-1][row-1]);
+int *getSquare(int (*square)[9][9], int row, int column){
+	return &((*square)[row-1][column-1]);
 } 
 
 void squareSetNumber(int *square, int number){
-	*square = number;
+    *square = *square | C(number);
 }
 
 void squareDelNumber(int *square, int number){
-	number = 0;
-	*square = number;
+    *square = (*square) & 0<<(number - 1);
 }
 
 void eliminateNeighbouringSquaresOf(int (*square)[9][9], int number){

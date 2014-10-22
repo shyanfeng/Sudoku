@@ -12,8 +12,8 @@ void test_getSquare_should_enter_column_2_row_1_and_return_2(void){
 	int square[9][9];
 	int *valuePtr;
 	
-	square[column-1][row-1] = 2;
-	valuePtr = getSquare(&square, column, row);
+	square[row-1][column-1] = 2;
+	valuePtr = getSquare(&square, row, column);
 	
 	TEST_ASSERT_EQUAL(2, *valuePtr);
 }
@@ -24,54 +24,58 @@ void test_getSquare_should_enter_column_6_row_4_and_return_7(void){
 	int square[9][9];
 	int *valuePtr;
 	
-	square[column-1][row-1] = 7;
-	valuePtr = getSquare(&square, column, row);
+	square[row-1][column-1] = 7;
+	valuePtr = getSquare(&square, row, column);
 	
 	TEST_ASSERT_EQUAL(7, *valuePtr);
 }
 
-void test_squareSetNumber_should_enter_column_2_row_1_and_set_3(void){
+void test_squareSetNumber_should_enter_column_2_row_1_and_set_bit_3(void){
 	int square[9][9];
 	squareSetNumber(getSquare(&square, 2, 1), 3);
-	
-	TEST_ASSERT_EQUAL(3, square[1][0]);
+    // 0 0000 0100
+	TEST_ASSERT_EQUAL(4, square[1][0]);
 }
 
-void test_squareSetNumber_should_enter_column_3_row_8_and_set_4(void){
+void test_squareSetNumber_should_enter_column_3_row_8_and_set_bit_4(void){
 	int square[9][9];
 	squareSetNumber(getSquare(&square, 3, 8), 4);
-	
-	TEST_ASSERT_EQUAL(4, square[2][7]);
+	// 0 0000 1000
+	TEST_ASSERT_EQUAL(8, square[2][7]);
 }
 
-void test_squareSetNumber_should_enter_column_8_row_8_and_set_2(void){
+void test_squareSetNumber_should_enter_column_8_row_8_and_set_bit_2(void){
 	int square[9][9];
 	squareSetNumber(getSquare(&square, 9, 9), 2);
-	
+	// 0 0000 0010
 	TEST_ASSERT_EQUAL(2, square[8][8]);
 }
 
 void test_squareDelNumber_should_enter_column_4_row_2_and_del(void){
-	int square[9][9];
-	squareDelNumber(getSquare(&square, 4, 2), 3);
-	
-	TEST_ASSERT_EQUAL(0, C(3));
+    int square[9][9];
+    squareSetNumber(getSquare(&square, 4, 2), 5);
+    // 0 0001 0000
+    TEST_ASSERT_EQUAL(16, square[3][1]);
+	squareDelNumber(getSquare(&square, 4, 2), 5);
+	TEST_ASSERT_EQUAL(0, square[3][1]);
 }
 
 void test_squareDelNumber_should_enter_column_9_row_9_and_del(void){
 	int square[9][9];
-	squareSetNumber(getSquare(&square, 9, 9), 5);
-	TEST_ASSERT_EQUAL(5, square[8][8]);
-	squareDelNumber(getSquare(&square, 9, 9), 5);
+	squareSetNumber(getSquare(&square, 9, 9), 6);
+    // 0 0010 0000
+	TEST_ASSERT_EQUAL(32, square[8][8]);
+	squareDelNumber(getSquare(&square, 9, 9), 6);
 	TEST_ASSERT_EQUAL(0, square[8][8]);
 }
 
-void test_squareDelNumber_should_enter_column_1_row_1_and_del(void){
+void test_squareDelNumber_should_enter_column_5_row_1_and_del(void){
 	int square[9][9];
-	squareSetNumber(getSquare(&square, 1, 1), 2);
-	TEST_ASSERT_EQUAL(2, square[0][0]);
-	squareDelNumber(getSquare(&square, 1, 1), 7);
-	TEST_ASSERT_EQUAL(0, square[0][0]);
+	squareSetNumber(getSquare(&square, 5, 1), 2);
+    // 0 0000 0010
+	TEST_ASSERT_EQUAL(2, square[4][0]);
+	squareDelNumber(getSquare(&square, 5, 1), 2);
+	TEST_ASSERT_EQUAL(0, square[4][0]);
 }
 
 /*void test_eliminateNeighbouringSquaresOf_should_throw_error_for_row(void){
