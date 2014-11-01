@@ -7,11 +7,11 @@ int *getSquare(int (*square)[9][9], int row, int column){
 } 
 
 void squareSetNumber(int *square, int number){
-    *square = *square | C(number);
+  (*square) = (*square) | (C(number));
 }
 
 void squareDelNumber(int *square, int number){
-    *square = (*square) & 0<<(number - 1);
+    *square = (*square) & (0<<(number - 1));
 }
 
 void eliminateNeighbouringSquaresOf(int (*square)[9][9], int number){
