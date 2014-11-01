@@ -11,7 +11,7 @@ void squareSetNumber(int *square, int number){
 }
 
 void squareDelNumber(int *square, int number){
-    *square = (*square) & (0<<(number - 1));
+  (*square) = (*square) & (~(1 <<(number - 1)));
 }
 
 void eliminateNeighbouringSquaresOf(int (*square)[9][9], int number){

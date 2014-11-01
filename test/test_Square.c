@@ -36,7 +36,7 @@ void test_squareSetNumber_should_enter_column_2_row_1_and_set_bit_3_2_1_4(void){
   squareSetNumber(getSquare(&square, 2, 1), 2);
   squareSetNumber(getSquare(&square, 2, 1), 1);
   squareSetNumber(getSquare(&square, 2, 1), 4);
-    // 0 0000 1111
+  // 0 0000 1111
 	TEST_ASSERT_EQUAL(15, square[1][0]);
 }
 
@@ -58,34 +58,47 @@ void test_squareSetNumber_should_enter_column_8_row_8_and_set_bit_2_7_8(void){
 	// 0 1100 0010
 	TEST_ASSERT_EQUAL(194, square[8][8]);
 }
-/*
-void test_squareDelNumber_should_enter_column_4_row_2_and_del(void){
-    int square[9][9] = {0};
-    squareSetNumber(getSquare(&square, 4, 2), 5);
-    // 0 0001 0000
-    TEST_ASSERT_EQUAL(16, square[3][1]);
+
+void test_squareDelNumber_should_enter_column_4_row_2_and_del_bit_5(void){
+  int square[9][9] = {0};
+  squareSetNumber(getSquare(&square, 4, 2), 5);
+  squareSetNumber(getSquare(&square, 4, 2), 8);
+  squareSetNumber(getSquare(&square, 4, 2), 1);
+  // 0 1001 0001
+  TEST_ASSERT_EQUAL(145, square[3][1]);
+  
 	squareDelNumber(getSquare(&square, 4, 2), 5);
-	TEST_ASSERT_EQUAL(0, square[3][1]);
+  // 0 1000 0001
+	TEST_ASSERT_EQUAL(129, square[3][1]);
 }
 
 void test_squareDelNumber_should_enter_column_9_row_9_and_del(void){
 	int square[9][9] = {0};
 	squareSetNumber(getSquare(&square, 9, 9), 6);
-    // 0 0010 0000
-	TEST_ASSERT_EQUAL(32, square[8][8]);
+	squareSetNumber(getSquare(&square, 9, 9), 2);
+	squareSetNumber(getSquare(&square, 9, 9), 7);
+  // 0 0110 0010
+	TEST_ASSERT_EQUAL(98, square[8][8]);
+  
 	squareDelNumber(getSquare(&square, 9, 9), 6);
-	TEST_ASSERT_EQUAL(0, square[8][8]);
+  // 0 0100 0010
+	TEST_ASSERT_EQUAL(66, square[8][8]);
 }
 
 void test_squareDelNumber_should_enter_column_5_row_1_and_del(void){
 	int square[9][9] = {0};
 	squareSetNumber(getSquare(&square, 5, 1), 2);
-    // 0 0000 0010
-	TEST_ASSERT_EQUAL(2, square[4][0]);
+	squareSetNumber(getSquare(&square, 5, 1), 4);
+	squareSetNumber(getSquare(&square, 5, 1), 7);
+  // 0 0100 1010
+	TEST_ASSERT_EQUAL(74, square[4][0]);
+  
 	squareDelNumber(getSquare(&square, 5, 1), 2);
-	TEST_ASSERT_EQUAL(0, square[4][0]);
+	squareDelNumber(getSquare(&square, 5, 1), 4);
+  // 0 0100 0000
+	TEST_ASSERT_EQUAL(64, square[4][0]);
 }
-*/
+
 /*void test_eliminateNeighbouringSquaresOf_should_throw_error_for_row(void){
 	int square[9][9] = {{C(1), C(0), C(0), C(0), C(0), C(0), C(0), C(0),C(0)}, // 1
                         {1, 3, 3, 3, 3, 3, 3, 3, 3}, // 2
