@@ -14,6 +14,10 @@ void squareDelNumber(int *square, int number){
   (*square) = (*square) & (~(1 <<(number - 1)));
 }
 
+void removeOthersExcept(int *square, int number){
+  (*square) = (*square) & (1 <<(number - 1));
+}
+
 void eliminateNeighbouringSquaresOf(int (*square)[9][9], int number){
     /*int i, j;
 

@@ -72,7 +72,7 @@ void test_squareDelNumber_should_enter_column_4_row_2_and_del_bit_5(void){
 	TEST_ASSERT_EQUAL(129, square[3][1]);
 }
 
-void test_squareDelNumber_should_enter_column_9_row_9_and_del(void){
+void test_squareDelNumber_should_enter_column_9_row_9_and_del_bit_6(void){
 	int square[9][9] = {0};
 	squareSetNumber(getSquare(&square, 9, 9), 6);
 	squareSetNumber(getSquare(&square, 9, 9), 2);
@@ -85,7 +85,7 @@ void test_squareDelNumber_should_enter_column_9_row_9_and_del(void){
 	TEST_ASSERT_EQUAL(66, square[8][8]);
 }
 
-void test_squareDelNumber_should_enter_column_5_row_1_and_del(void){
+void test_squareDelNumber_should_enter_column_5_row_1_and_del_bit_2_4(void){
 	int square[9][9] = {0};
 	squareSetNumber(getSquare(&square, 5, 1), 2);
 	squareSetNumber(getSquare(&square, 5, 1), 4);
@@ -97,6 +97,32 @@ void test_squareDelNumber_should_enter_column_5_row_1_and_del(void){
 	squareDelNumber(getSquare(&square, 5, 1), 4);
   // 0 0100 0000
 	TEST_ASSERT_EQUAL(64, square[4][0]);
+}
+
+void test_removeOthersExcept_should_enter_column_4_row_2_and_remove_all_except_4(void){
+	int square[9][9] = {0};
+	squareSetNumber(getSquare(&square, 4, 2), 2);
+	squareSetNumber(getSquare(&square, 4, 2), 4);
+	squareSetNumber(getSquare(&square, 4, 2), 7);
+  // 0 0100 1010
+	TEST_ASSERT_EQUAL(74, square[3][1]);
+  
+	removeOthersExcept(getSquare(&square, 4, 2), 2);
+  // 0 0000 0010
+	TEST_ASSERT_EQUAL(2, square[3][1]);
+}
+
+void test_removeOthersExcept_should_enter_column_7_row_3_and_remove_all_except_4(void){
+	int square[9][9] = {0};
+	squareSetNumber(getSquare(&square, 7, 2), 8);
+	squareSetNumber(getSquare(&square, 7, 2), 6);
+	squareSetNumber(getSquare(&square, 7, 2), 3);
+  // 0 1010 0100
+	TEST_ASSERT_EQUAL(164, square[6][1]);
+  
+	removeOthersExcept(getSquare(&square, 7, 2), 6);
+  // 0 0010 0000
+	TEST_ASSERT_EQUAL(32, square[6][1]);
 }
 
 /*void test_eliminateNeighbouringSquaresOf_should_throw_error_for_row(void){
