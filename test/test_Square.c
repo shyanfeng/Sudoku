@@ -125,27 +125,40 @@ void test_removeOthersExcept_should_enter_column_7_row_3_and_remove_all_except_4
 	TEST_ASSERT_EQUAL(32, square[6][1]);
 }
 
-/*void test_eliminateNeighbouringSquaresOf_should_throw_error_for_row(void){
-	int square[9][9] = {{C(1), C(0), C(0), C(0), C(0), C(0), C(0), C(0),C(0)}, // 1
-                        {1, 3, 3, 3, 3, 3, 3, 3, 3}, // 2
-                        {1, 3, 3, 3, 3, 3, 3, 3, 3}, // 3
-                        {1, 3, 3, 3, 3, 3, 3, 3, 3}, // 4
-                        {1, 3, 3, 3, 3, 3, 3, 3, 3}, // 5
-                        {1, 3, 3, 3, 3, 3, 3, 3, 3}, // 6
-                        {1, 3, 3, 3, 3, 3, 3, 3, 3}, // 7
-                        {1, 3, 3, 3, 3, 3, 3, 3, 3}, // 8
-                        {1, 3, 3, 3, 3, 3, 3, 3, 3}, // 9
-                        };
+void test_isSquareContain_should_return_1_for_number_match_square(void){
+  int square[9][9] = {0};
+  int value;
+  
+  squareSetNumber(getSquare(&square, 4, 6), 4);
+  // 0 0000 1000
+  TEST_ASSERT_EQUAL(8, square[3][5]);
+  
+  value = isSquareContain(getSquare(&square, 4, 6), 4);
+  TEST_ASSERT_EQUAL(1, value);
+}
+
+void test_eliminateNeighbouringSquaresOf_should_throw_error_for_row(void){
+	int value;
+  
+  int square[9][9] = {{C(5), C(0), C(0), C(0), C(0), C(0), C(0), C(0),C(0)}, // 1
+                      {C(4), C(0), C(0), C(0), C(0), C(0), C(0), C(0),C(0)}, // 2
+                      {C(7), C(0), C(0), C(0), C(0), C(0), C(0), C(0),C(0)}, // 3
+                      {C(8), C(0), C(0), C(0), C(0), C(0), C(0), C(0),C(7)}, // 4
+                      {C(2), C(0), C(0), C(0), C(0), C(0), C(0), C(0),C(1)}, // 5
+                      {C(1), C(0), C(0), C(0), C(0), C(0), C(0), C(0),C(0)}, // 6
+                      {C(3), C(0), C(0), C(0), C(0), C(0), C(0), C(0),C(0)}, // 7
+                      {C(6), C(0), C(0), C(0), C(0), C(0), C(0), C(0),C(0)}, // 8
+                      {C(9), C(0), C(0), C(0), C(0), C(0), C(0), C(0),C(0)}, // 9
+                     };
 		
 
 		
-		eliminateNeighbouringSquaresOf((*square)[1][], number)
+	eliminateNeighbouringSquaresOf((&square, 4, 1), 3);
     
     
-        value = squareDelNumber(getSquare(&square, 1, 1), 1);
+  //value = squareDelNumber(getSquare(&square, 1, 1), 1);
 
-	
-}*/
+}
 
 
 
