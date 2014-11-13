@@ -6,8 +6,13 @@ Square rowPeers[9][9][9];
 Square columnPeers[9][9][9];
 Square boxPeers[9][9][9];
 
+void delslot(int size, int array[][size], int r, int c){
+  array[r][c] = 99;
+}
+
 int *getSquare(int (*square)[9][9], int row, int column){
-	return &((*square)[row-1][column-1]);
+	printf("show%d\n", (*square)[row-1][column-1]);
+  return &((*square)[row-1][column-1]);
 } 
 
 void squareSetNumber(int *square, int number){

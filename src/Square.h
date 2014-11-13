@@ -11,7 +11,7 @@ struct Square {
   int row;
   int column;
 };
-
+void delslot(int size, int array[][size], int r, int c);
 int *getSquare(int (*square)[9][9], int row, int column);
 void squareSetNumber(int *square, int number);
 void squareDelNumber(int *square, int number);
