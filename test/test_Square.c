@@ -137,13 +137,23 @@ void test_isSquareContain_should_return_1_for_number_match_square(void){
   TEST_ASSERT_EQUAL(1, value);
 }
 
-void test_eliminateNeighbouringSquaresOf_should_throw_error_for_row(void){
+void test_initRowPeers(void){
+  int row, column, peer;
+  
+  initRowPeers(rowPeers);
+  
+  TEST_ASSERT_EQUAL(0, rowPeers[2][2][0].row);
+  TEST_ASSERT_EQUAL(2, rowPeers[2][2][0].column);
+
+}
+/*
+void test_eliminateNeighbouringSquaresOf_should(void){
 	int value;
   
-  int square[9][9] = {{C(5), C(0), C(0), C(0), C(7), C(0), C(0), C(0),C(0)}, // 1
+  int square[9][9] = {{C(3), C(0), C(0), C(0), C(7), C(0), C(0), C(0),C(0)}, // 1
                       {C(4), C(0), C(0), C(0), C(0), C(0), C(0), C(0),C(0)}, // 2
                       {C(7), C(0), C(0), C(0), C(0), C(0), C(0), C(0),C(2)}, // 3
-                      {C(8), C(0), C(0), C(0), C(0), C(0), C(0), C(0),C(7)}, // 4
+                      {C(5), C(2), C(0), C(0), C(0), C(3), C(0), C(6),C(7)}, // 4
                       {C(2), C(0), C(0), C(0), C(0), C(0), C(0), C(0),C(1)}, // 5
                       {C(1), C(0), C(0), C(0), C(0), C(0), C(0), C(0),C(0)}, // 6
                       {C(3), C(0), C(0), C(0), C(0), C(0), C(0), C(0),C(0)}, // 7
@@ -152,25 +162,15 @@ void test_eliminateNeighbouringSquaresOf_should_throw_error_for_row(void){
                      };
 		
 
-	int *temp = getSquare(&square, 4, 1);
+	int *temp = getSquare(&square, 4, 2);
   printf("%d\n", (*temp));
-	//eliminateNeighbouringSquaresOf(getSquare(&square, 4, 1), 3);
+  
+  Square rowPeers[9][9][9];
+  initRowPeers(rowPeers[3][1][2]);
+	//eliminateNeighbouringSquaresOf(getSquare(&square, 4, 2), 3);
     
     
   //value = squareDelNumber(getSquare(&square, 1, 1), 1);
 
-}
-
-void test_aaa(void){
-int i,j;
-int arrayLL[3][3] = {0};
-
-delslot(3, arrayLL, 1,1);
-for(i = 0; i < 3; i++){
-    for(j = 0; j < 3; j++){
-    printf("%d ", arrayLL[i][j]);
-    }
-    printf("\n");
-}
-}
+}*/
 
