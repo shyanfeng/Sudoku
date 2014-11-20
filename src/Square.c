@@ -90,47 +90,28 @@ int getBeginningIndex(int index){
     printf("out of range");
 }
 
-// void eliminateNeighbouringSquaresOf(int *square, int number){
-  // int r, c, i, rowStart, colStart;
-  
-  // row
-  // for(r = 0; r < 9; r++){
-    // for(c = 0; c < 9; c++){
-      // for(i = 0; i < 9; i++){
-        // rowPeers[r][c][i].row = *square;
-        // printf("%d", rowPeers[r][c][i].row);
-        // rowPeers[r][c][i].column = *square;
-      // }
-    // }
-  // }
-  
-  // rowPeers[r][c] = (*square);
 
-  // /*
-  // column
-   // for(c = 0; c < 9; c++){
-    // for(r = 0; r < 9; r++){
-      // for(i = 0; i < 9; i++){
-        // boxPeers[r][c][i].row;
-        // boxPeers[r][c][i].column;
-      // }
+// void eliminateNumberFromPeers(int square[9][9],Square *peers,int findNumberToEliminate){
+    // int i;
+    // int value;
+    // for(i=0;i<9;i++){
+      // if(getSquare() == value
+      // value = peers[i].row = findNumberToEliminate;
+      // if(value == getSquareValue)
     // }
-  // }*/
-  
-  // /*
-  // box
-   // for(r = 0; r < 9; r++){
-    // for(c = 0; c < 9; c++){
-      // for(i = 0; i < 9; i++){
-        // for(rowStart = r; r < rowStart+3; r++;){
-          // for(colStart = c; c < colStart + 3; c++){
-          
-          // }
-        // }
-      // }
-    // }
-  // }*/
-  
+// }
+
+int squareHas(int square[9][9],int row,int column,int value){
+  int x = square[9][9];
+  if(x = value){
+    return 1;
+  }else{
+    return 0;
+  }
+}
+
+// void eliminateNeighbouringSquaresOf(int *square, int number){
+ 
   // Square *peerSquares = rowPeers[r][c];
   // for(i = 0; i < 9; i++){
     // printf("%d, %d\n", peerSquares[i].row, peerSquares[i].column);

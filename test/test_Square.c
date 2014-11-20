@@ -233,33 +233,31 @@ void test_initBoxPeers(void){
 
 }
 
+void test_squareHas(void){
+  int squares[9][9] = 1;
+  int value =1;
+  int value1;
+  value1 =squareHas(squares,2,1,value);
+
+}
 
 
-/*
-void test_eliminateNeighbouringSquaresOf_should(void){
-	int value;
+
+
+// void test_eliminateNeighbouringSquaresOf_should(void){
+	// int value;
   
-  int square[9][9] = {{C(3), C(0), C(0), C(0), C(7), C(0), C(0), C(0),C(0)}, // 1
-                      {C(4), C(0), C(0), C(0), C(0), C(0), C(0), C(0),C(0)}, // 2
-                      {C(7), C(0), C(0), C(0), C(0), C(0), C(0), C(0),C(2)}, // 3
-                      {C(5), C(2), C(0), C(0), C(0), C(3), C(0), C(6),C(7)}, // 4
-                      {C(2), C(0), C(0), C(0), C(0), C(0), C(0), C(0),C(1)}, // 5
-                      {C(1), C(0), C(0), C(0), C(0), C(0), C(0), C(0),C(0)}, // 6
-                      {C(3), C(0), C(0), C(0), C(0), C(0), C(0), C(0),C(0)}, // 7
-                      {C(6), C(0), C(0), C(0), C(0), C(0), C(0), C(0),C(0)}, // 8
-                      {C(9), C(0), C(0), C(0), C(0), C(0), C(0), C(0),C(0)}, // 9
-                     };
-		
-
-	int *temp = getSquare(&square, 4, 2);
-  printf("%d\n", (*temp));
-  
-  Square rowPeers[9][9][9];
-  initRowPeers(rowPeers[3][1][2]);
-	//eliminateNeighbouringSquaresOf(getSquare(&square, 4, 2), 3);
-    
-    
-  //value = squareDelNumber(getSquare(&square, 1, 1), 1);
-
-}*/
+  // int square[9][9] = {{C(3), C(0), C(0), C(0), C(7), C(0), C(0), C(0),C(0)}, // 1
+                      // {C(4), C(0), C(0), C(0), C(0), C(0), C(0), C(0),C(0)}, // 2
+                      // {C(7), C(0), C(0), C(0), C(0), C(0), C(0), C(0),C(2)}, // 3
+                      // {C(5), C(2), C(0), C(0), C(0), C(3), C(0), C(6),C(7)}, // 4
+                      // {C(2), C(0), C(0), C(0), C(0), C(0), C(0), C(0),C(1)}, // 5
+                      // {C(1), C(0), C(0), C(0), C(0), C(0), C(0), C(0),C(0)}, // 6
+                      // {C(3), C(0), C(0), C(0), C(0), C(0), C(0), C(0),C(0)}, // 7
+                      // {C(6), C(0), C(0), C(0), C(0), C(0), C(0), C(0),C(0)}, // 8
+                      // {C(9), C(0), C(0), C(0), C(0), C(0), C(0), C(0),C(0)}, // 9
+                     // };
+		// Square *row = rowPeers[2][2];
+    // eliminateNumberFromPeers(square,row,1);
+// }
 
