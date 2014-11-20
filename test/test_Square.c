@@ -203,10 +203,10 @@ void test_initBoxPeers(void){
  
  initBoxPeers(boxPeers);
 
-  // TEST_ASSERT_EQUAL(1, boxPeers[2][2][0].row+1);
-  // TEST_ASSERT_EQUAL(1, boxPeers[2][2][0].column+1);
-  // TEST_ASSERT_EQUAL(1, boxPeers[2][2][1].row+1);
-  // TEST_ASSERT_EQUAL(2, boxPeers[2][2][1].column+1);
+  //TEST_ASSERT_EQUAL(0, boxPeers[2][2][0].row);
+  // TEST_ASSERT_EQUAL(0, boxPeers[2][2][0].column);
+  // TEST_ASSERT_EQUAL(1, boxPeers[2][2][1].row);
+  // TEST_ASSERT_EQUAL(2, boxPeers[2][2][1].column);
   // TEST_ASSERT_EQUAL(1, boxPeers[2][2][2].row);
   // TEST_ASSERT_EQUAL(3, boxPeers[2][2][2].column);
   // TEST_ASSERT_EQUAL(2, boxPeers[2][2][3].row);
@@ -218,9 +218,9 @@ void test_initBoxPeers(void){
   // TEST_ASSERT_EQUAL(3, boxPeers[2][2][6].row);
   // TEST_ASSERT_EQUAL(1, boxPeers[2][2][6].column);
   // TEST_ASSERT_EQUAL(3, boxPeers[2][2][7].row);
-  // TEST_ASSERT_EQUAL(3, boxPeers[2][2][7].column);
-  TEST_ASSERT_EQUAL(3, boxPeers[2][2][8].row);
-  // TEST_ASSERT_EQUAL(3, boxPeers[2][2][8].column);
+   //TEST_ASSERT_EQUAL(2, boxPeers[2][2][7].column);
+ // TEST_ASSERT_EQUAL(3, boxPeers[2][2][8].row);
+ // TEST_ASSERT_EQUAL(3, boxPeers[2][2][8].column);
 
 
 }

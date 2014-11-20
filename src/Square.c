@@ -57,7 +57,7 @@ void initColPeers(Square columnPeers[9][9][9]){
 }
 
 void initBoxPeers(Square boxPeers[9][9][9]){
-  int r, c, p, rowStart, colStart;
+  int r, c, p, rowStart, colStart,row,col;
   int i,j;
   for(r = 0; r < 9; r++){
     for(c = 0; c < 9; c++){
@@ -65,11 +65,10 @@ void initBoxPeers(Square boxPeers[9][9][9]){
         rowStart = getBeginningIndex(r);//2//0
         colStart = getBeginningIndex(c);//2//0
 
-        for(rowStart = rowStart; rowStart< (getBeginningIndex(r)+3);rowStart++){
-          for(colStart = colStart; colStart< (getBeginningIndex(c)+3);colStart++){
-          printf("%d",colStart);
-            boxPeers[rowStart][colStart][p].row = rowStart;
-            boxPeers[rowStart][colStart][p].column = colStart;
+        for(row = rowStart; row < rowStart+3 ;row++){
+          for(col = colStart; col< colStart+3 ;col++){
+            boxPeers[r][c][p].row = row;
+            boxPeers[r][c][p].column = col;
           }
         }
       }
