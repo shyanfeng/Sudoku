@@ -138,14 +138,80 @@ void test_isSquareContain_should_return_1_for_number_match_square(void){
 }
 
 void test_initRowPeers(void){
-  int row, column, peer;
   
   initRowPeers(rowPeers);
   
   TEST_ASSERT_EQUAL(0, rowPeers[2][2][0].row);
   TEST_ASSERT_EQUAL(2, rowPeers[2][2][0].column);
+  TEST_ASSERT_EQUAL(1, rowPeers[2][2][1].row);
+  TEST_ASSERT_EQUAL(2, rowPeers[2][2][1].column);
+  TEST_ASSERT_EQUAL(2, rowPeers[2][2][2].row);
+  TEST_ASSERT_EQUAL(2, rowPeers[2][2][2].column);
+  TEST_ASSERT_EQUAL(3, rowPeers[2][2][3].row);
+  TEST_ASSERT_EQUAL(2, rowPeers[2][2][3].column);
+  TEST_ASSERT_EQUAL(4, rowPeers[2][2][4].row);
+  TEST_ASSERT_EQUAL(2, rowPeers[2][2][4].column);
+  TEST_ASSERT_EQUAL(5, rowPeers[2][2][5].row);
+  TEST_ASSERT_EQUAL(2, rowPeers[2][2][5].column);
+  TEST_ASSERT_EQUAL(6, rowPeers[2][2][6].row);
+  TEST_ASSERT_EQUAL(2, rowPeers[2][2][6].column);
+  TEST_ASSERT_EQUAL(7, rowPeers[2][2][7].row);
+  TEST_ASSERT_EQUAL(2, rowPeers[2][2][7].column);
+  TEST_ASSERT_EQUAL(8, rowPeers[2][2][8].row);
+  TEST_ASSERT_EQUAL(2, rowPeers[2][2][8].column);
+}
+
+void test_initColPeers(void){
+
+  initColPeers(columnPeers);
+  
+  TEST_ASSERT_EQUAL(2, columnPeers[2][2][0].row);
+  TEST_ASSERT_EQUAL(0, columnPeers[2][2][0].column);
+  TEST_ASSERT_EQUAL(2, columnPeers[2][2][1].row);
+  TEST_ASSERT_EQUAL(1, columnPeers[2][2][1].column);
+  TEST_ASSERT_EQUAL(2, columnPeers[2][2][2].row);
+  TEST_ASSERT_EQUAL(2, columnPeers[2][2][2].column);
+  TEST_ASSERT_EQUAL(2, columnPeers[2][2][3].row);
+  TEST_ASSERT_EQUAL(3, columnPeers[2][2][3].column);
+  TEST_ASSERT_EQUAL(2, columnPeers[2][2][4].row);
+  TEST_ASSERT_EQUAL(4, columnPeers[2][2][4].column);
+  TEST_ASSERT_EQUAL(2, columnPeers[2][2][5].row);
+  TEST_ASSERT_EQUAL(5, columnPeers[2][2][5].column);
+  TEST_ASSERT_EQUAL(2, columnPeers[2][2][6].row);
+  TEST_ASSERT_EQUAL(6, columnPeers[2][2][6].column);
+  TEST_ASSERT_EQUAL(2, columnPeers[2][2][7].row);
+  TEST_ASSERT_EQUAL(7, columnPeers[2][2][7].column);
+  TEST_ASSERT_EQUAL(2, columnPeers[2][2][8].row);
+  TEST_ASSERT_EQUAL(8, columnPeers[2][2][8].column);
+}
+
+void test_initBoxPeers(void){
+ 
+ initBoxPeers(boxPeers);
+
+  TEST_ASSERT_EQUAL(2, boxPeers[2][3][1].row);
+ // TEST_ASSERT_EQUAL(2, boxPeers[2][2][0].column);
+  // TEST_ASSERT_EQUAL(2, columnPeers[2][2][1].row);
+  // TEST_ASSERT_EQUAL(1, columnPeers[2][2][1].column);
+  // TEST_ASSERT_EQUAL(2, columnPeers[2][2][2].row);
+  // TEST_ASSERT_EQUAL(2, columnPeers[2][2][2].column);
+  // TEST_ASSERT_EQUAL(2, columnPeers[2][2][3].row);
+  // TEST_ASSERT_EQUAL(3, columnPeers[2][2][3].column);
+  // TEST_ASSERT_EQUAL(2, columnPeers[2][2][4].row);
+  // TEST_ASSERT_EQUAL(4, columnPeers[2][2][4].column);
+  // TEST_ASSERT_EQUAL(2, columnPeers[2][2][5].row);
+  // TEST_ASSERT_EQUAL(5, columnPeers[2][2][5].column);
+  // TEST_ASSERT_EQUAL(2, columnPeers[2][2][6].row);
+  // TEST_ASSERT_EQUAL(6, columnPeers[2][2][6].column);
+  // TEST_ASSERT_EQUAL(2, columnPeers[2][2][7].row);
+  // TEST_ASSERT_EQUAL(7, columnPeers[2][2][7].column);
+  // TEST_ASSERT_EQUAL(2, columnPeers[2][2][8].row);
+  // TEST_ASSERT_EQUAL(8, columnPeers[2][2][8].column);
 
 }
+
+
+
 /*
 void test_eliminateNeighbouringSquaresOf_should(void){
 	int value;

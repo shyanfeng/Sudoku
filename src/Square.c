@@ -32,7 +32,7 @@ int isSquareContain(int *square, int number){
 
 void initRowPeers(Square rowPeers[9][9][9]){
   int r, c, p;
-  //row
+
   for(r = 0; r < 9; r++){
     for(c = 0; c < 9; c++){
       for(p = 0; p < 9; p++){
@@ -41,6 +41,37 @@ void initRowPeers(Square rowPeers[9][9][9]){
       }
     }
   }
+}
+
+void initColPeers(Square columnPeers[9][9][9]){
+  int r, c, p;
+
+  for(r = 0; r < 9; r++){
+    for(c = 0; c < 9; c++){
+      for(p = 0; p < 9; p++){
+        columnPeers[r][c][p].row = r;
+        columnPeers[r][c][p].column = p;
+      }
+    }
+  }
+}
+
+void initBoxPeers(Square boxPeers[9][9][9]){
+  int r, c, p, rowStart, colStart;
+  
+  for(r = 0; r < 9; r++){
+    for(c = 0; c < 9; c++){
+      for(p = 0; p < 9; p++){
+        for(rowStart = r; rowStart < r+3; rowStart++){
+          for(colStart = c; colStart < c+3; colStart++){
+            boxPeers[r][c][p].row = r;
+            boxPeers[r][c][p].column = c;
+          }
+        }
+      }
+    }
+  }
+
 }
 
 // void eliminateNeighbouringSquaresOf(int *square, int number){
