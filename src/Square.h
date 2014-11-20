@@ -29,6 +29,7 @@ int isSquareContain(int *square, int number);
 void initRowPeers(Square rowPeers[9][9][9]);
 void initColPeers(Square columnPeers[9][9][9]);
 void initBoxPeers(Square boxPeers[9][9][9]);
+int getBeginningIndex(int index);
 
 //void eliminateNeighbouringSquaresOf(int *square, int number);
 

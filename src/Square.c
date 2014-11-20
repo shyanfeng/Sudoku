@@ -58,20 +58,36 @@ void initColPeers(Square columnPeers[9][9][9]){
 
 void initBoxPeers(Square boxPeers[9][9][9]){
   int r, c, p, rowStart, colStart;
-  
+  int i,j;
   for(r = 0; r < 9; r++){
     for(c = 0; c < 9; c++){
       for(p = 0; p < 9; p++){
-        for(rowStart = r; rowStart < r+3; rowStart++){
-          for(colStart = c; colStart < c+3; colStart++){
-            boxPeers[r][c][p].row = r;
-            boxPeers[r][c][p].column = c;
+        rowStart = getBeginningIndex(r);//2//0
+        colStart = getBeginningIndex(c);//2//0
+
+        for(rowStart = rowStart; rowStart< (getBeginningIndex(r)+3);rowStart++){
+          for(colStart = colStart; colStart< (getBeginningIndex(c)+3);colStart++){
+          printf("%d",colStart);
+            boxPeers[rowStart][colStart][p].row = rowStart;
+            boxPeers[rowStart][colStart][p].column = colStart;
           }
         }
       }
     }
   }
 
+}
+
+
+int getBeginningIndex(int index){
+  if(index >= 0 && index <= 2){
+    return 0;
+  }else if(index >= 3 && index <= 5){
+    return 3;
+  }else if(index >= 6 && index <= 8){
+    return 6;
+  }else
+    printf("out of range");
 }
 
 // void eliminateNeighbouringSquaresOf(int *square, int number){

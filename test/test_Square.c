@@ -185,28 +185,43 @@ void test_initColPeers(void){
   TEST_ASSERT_EQUAL(8, columnPeers[2][2][8].column);
 }
 
+void test_getBeginningIndex(void){
+  
+  TEST_ASSERT_EQUAL(0, getBeginningIndex(1));
+  TEST_ASSERT_EQUAL(0, getBeginningIndex(0));
+  TEST_ASSERT_EQUAL(0, getBeginningIndex(2));
+  TEST_ASSERT_EQUAL(3, getBeginningIndex(5));
+  TEST_ASSERT_EQUAL(3, getBeginningIndex(4));
+  TEST_ASSERT_EQUAL(3, getBeginningIndex(3));
+  TEST_ASSERT_EQUAL(6, getBeginningIndex(8));
+  TEST_ASSERT_EQUAL(6, getBeginningIndex(7));
+  TEST_ASSERT_EQUAL(6, getBeginningIndex(6));
+  
+}
+
 void test_initBoxPeers(void){
  
  initBoxPeers(boxPeers);
 
-  TEST_ASSERT_EQUAL(2, boxPeers[2][3][1].row);
- // TEST_ASSERT_EQUAL(2, boxPeers[2][2][0].column);
-  // TEST_ASSERT_EQUAL(2, columnPeers[2][2][1].row);
-  // TEST_ASSERT_EQUAL(1, columnPeers[2][2][1].column);
-  // TEST_ASSERT_EQUAL(2, columnPeers[2][2][2].row);
-  // TEST_ASSERT_EQUAL(2, columnPeers[2][2][2].column);
-  // TEST_ASSERT_EQUAL(2, columnPeers[2][2][3].row);
-  // TEST_ASSERT_EQUAL(3, columnPeers[2][2][3].column);
-  // TEST_ASSERT_EQUAL(2, columnPeers[2][2][4].row);
-  // TEST_ASSERT_EQUAL(4, columnPeers[2][2][4].column);
-  // TEST_ASSERT_EQUAL(2, columnPeers[2][2][5].row);
-  // TEST_ASSERT_EQUAL(5, columnPeers[2][2][5].column);
-  // TEST_ASSERT_EQUAL(2, columnPeers[2][2][6].row);
-  // TEST_ASSERT_EQUAL(6, columnPeers[2][2][6].column);
-  // TEST_ASSERT_EQUAL(2, columnPeers[2][2][7].row);
-  // TEST_ASSERT_EQUAL(7, columnPeers[2][2][7].column);
-  // TEST_ASSERT_EQUAL(2, columnPeers[2][2][8].row);
-  // TEST_ASSERT_EQUAL(8, columnPeers[2][2][8].column);
+  // TEST_ASSERT_EQUAL(1, boxPeers[2][2][0].row+1);
+  // TEST_ASSERT_EQUAL(1, boxPeers[2][2][0].column+1);
+  // TEST_ASSERT_EQUAL(1, boxPeers[2][2][1].row+1);
+  // TEST_ASSERT_EQUAL(2, boxPeers[2][2][1].column+1);
+  // TEST_ASSERT_EQUAL(1, boxPeers[2][2][2].row);
+  // TEST_ASSERT_EQUAL(3, boxPeers[2][2][2].column);
+  // TEST_ASSERT_EQUAL(2, boxPeers[2][2][3].row);
+  // TEST_ASSERT_EQUAL(1, boxPeers[2][2][3].column);
+  // TEST_ASSERT_EQUAL(2, boxPeers[2][2][4].row);
+  // TEST_ASSERT_EQUAL(2, boxPeers[2][2][4].column);
+  // TEST_ASSERT_EQUAL(2, boxPeers[2][2][5].row);
+  // TEST_ASSERT_EQUAL(3, boxPeers[2][2][5].column);
+  // TEST_ASSERT_EQUAL(3, boxPeers[2][2][6].row);
+  // TEST_ASSERT_EQUAL(1, boxPeers[2][2][6].column);
+  // TEST_ASSERT_EQUAL(3, boxPeers[2][2][7].row);
+  // TEST_ASSERT_EQUAL(3, boxPeers[2][2][7].column);
+  TEST_ASSERT_EQUAL(3, boxPeers[2][2][8].row);
+  // TEST_ASSERT_EQUAL(3, boxPeers[2][2][8].column);
+
 
 }
 
