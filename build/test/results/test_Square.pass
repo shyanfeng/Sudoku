@@ -48,15 +48,19 @@
 - :test: test_initBoxPeers
   :line: 202
   :message: ''
-- :test: test_squareHas
+- :test: test_squareHas_has_same_number_return_1
   :line: 236
+  :message: ''
+- :test: test_squareHas_does_not_have_same_number_return_0
+  :line: 252
   :message: ''
 :failures: []
 :ignores: []
 :counts:
-  :total: 16
-  :passed: 16
+  :total: 17
+  :passed: 17
   :failed: 0
   :ignored: 0
 :stdout:
-- '0'
+- '2'
+- '1'

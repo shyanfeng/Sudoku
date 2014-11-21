@@ -49,7 +49,8 @@ extern void test_initRowPeers(void);
 extern void test_initColPeers(void);
 extern void test_getBeginningIndex(void);
 extern void test_initBoxPeers(void);
-extern void test_squareHas(void);
+extern void test_squareHas_has_same_number_return_1(void);
+extern void test_squareHas_does_not_have_same_number_return_0(void);
 
 
 //=======Test Reset Option=====
@@ -80,7 +81,8 @@ int main(void)
   RUN_TEST(test_initColPeers, 164);
   RUN_TEST(test_getBeginningIndex, 188);
   RUN_TEST(test_initBoxPeers, 202);
-  RUN_TEST(test_squareHas, 236);
+  RUN_TEST(test_squareHas_has_same_number_return_1, 236);
+  RUN_TEST(test_squareHas_does_not_have_same_number_return_0, 252);
 
   return (UnityEnd());
 }

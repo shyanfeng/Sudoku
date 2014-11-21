@@ -465,12 +465,64 @@ void test_initBoxPeers(void){
 
 
 
-void test_squareHas(void){
+void test_squareHas_has_same_number_return_1(void){
 
-  int square[9][9] = {0};
+  int square[9][9] = {{3, 0, 0, 0, 7, 0, 0, 0,0},
 
-  square[2][2] = 1;
+                      {3, 2, 1, 0, 7, 0, 0, 0,0},
 
-  squareHas(&square,1,1,1);
+                      {3, 1, 1, 0, 7, 0, 0, 0,0},
+
+                      {3, 0, 0, 0, 7, 0, 0, 0,0},
+
+                      {3, 0, 0, 0, 7, 0, 0, 0,0},
+
+                      {3, 0, 0, 0, 7, 0, 0, 0,0},
+
+                      {3, 0, 0, 0, 7, 0, 0, 0,0},
+
+                      {3, 0, 0, 0, 7, 0, 0, 0,0},
+
+                      {3, 0, 0, 0, 7, 0, 0, 0,0},
+
+                     };
+
+
+
+  int replyValue = squareHas(&square,2,2,2);
+
+  UnityAssertEqualNumber((_U_SINT)((1)), (_U_SINT)((replyValue)), (((void *)0)), (_U_UINT)249, UNITY_DISPLAY_STYLE_INT);
+
+}
+
+
+
+void test_squareHas_does_not_have_same_number_return_0(void){
+
+  int square[9][9] = {{3, 0, 0, 0, 7, 0, 0, 0,0},
+
+                      {3, 1, 1, 0, 7, 0, 0, 0,0},
+
+                      {3, 1, 1, 0, 7, 0, 0, 0,0},
+
+                      {3, 0, 0, 0, 7, 0, 0, 0,0},
+
+                      {3, 0, 0, 0, 7, 0, 0, 0,0},
+
+                      {3, 0, 0, 0, 7, 0, 0, 0,0},
+
+                      {3, 0, 0, 0, 7, 0, 0, 0,0},
+
+                      {3, 0, 0, 0, 7, 0, 0, 0,0},
+
+                      {3, 0, 0, 0, 7, 0, 0, 0,0},
+
+                     };
+
+
+
+  int replyValue = squareHas(&square,2,2,2);
+
+  UnityAssertEqualNumber((_U_SINT)((0)), (_U_SINT)((replyValue)), (((void *)0)), (_U_UINT)265, UNITY_DISPLAY_STYLE_INT);
 
 }
