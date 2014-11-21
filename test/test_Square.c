@@ -228,17 +228,15 @@ void test_initBoxPeers(void){
   TEST_ASSERT_EQUAL(2, boxPeers[2][2][7].column);
  
   TEST_ASSERT_EQUAL(3, boxPeers[2][2][8].row);
- TEST_ASSERT_EQUAL(3, boxPeers[2][2][8].column);
+  TEST_ASSERT_EQUAL(3, boxPeers[2][2][8].column);
 
 
 }
 
 void test_squareHas(void){
-  int squares[9][9] = 1;
-  int value =1;
-  int value1;
-  value1 =squareHas(squares,2,1,value);
-
+  int square[9][9] = {0};
+  square[2][2] = 1;
+  squareHas(&square,1,1,1); 
 }
 
 

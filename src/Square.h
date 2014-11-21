@@ -32,7 +32,7 @@ void initBoxPeers(Square boxPeers[9][9][9]);
 int getBeginningIndex(int index);
 
 void eliminateNumberFromPeers(int square[9][9],Square *peers,int findNumberToEliminate);
-int squareHas(int square[9][9],int row,int column,int value);
+int squareHas(int (*square)[9][9],int row,int column,int setValue);
 //void eliminateNeighbouringSquaresOf(int *square, int number);
 
 #endif // Square_H
