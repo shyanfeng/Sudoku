@@ -1,0 +1,62 @@
+---
+:source:
+  :path: test
+  :file: test_Square.c
+:successes:
+- :test: test_getSquare_should_enter_column_2_row_1_and_return_2
+  :line: 9
+  :message: ''
+- :test: test_getSquare_should_enter_column_6_row_4_and_return_7
+  :line: 21
+  :message: ''
+- :test: test_squareSetNumber_should_enter_column_2_row_1_and_set_bit_3_2_1_4
+  :line: 33
+  :message: ''
+- :test: test_squareSetNumber_should_enter_column_3_row_8_and_set_bit_4_2_6
+  :line: 44
+  :message: ''
+- :test: test_squareSetNumber_should_enter_column_8_row_8_and_set_bit_2_7_8
+  :line: 53
+  :message: ''
+- :test: test_squareDelNumber_should_enter_column_4_row_2_and_del_bit_5
+  :line: 62
+  :message: ''
+- :test: test_squareDelNumber_should_enter_column_9_row_9_and_del_bit_6
+  :line: 75
+  :message: ''
+- :test: test_squareDelNumber_should_enter_column_5_row_1_and_del_bit_2_4
+  :line: 88
+  :message: ''
+- :test: test_removeOthersExcept_should_enter_column_4_row_2_and_remove_all_except_4
+  :line: 102
+  :message: ''
+- :test: test_removeOthersExcept_should_enter_column_7_row_3_and_remove_all_except_4
+  :line: 115
+  :message: ''
+- :test: test_isSquareContain_should_return_1_for_number_match_square
+  :line: 128
+  :message: ''
+- :test: test_initRowPeers
+  :line: 140
+  :message: ''
+- :test: test_initColPeers
+  :line: 164
+  :message: ''
+- :test: test_getBeginningIndex
+  :line: 188
+  :message: ''
+- :test: test_initBoxPeers
+  :line: 202
+  :message: ''
+- :test: test_squareHas
+  :line: 236
+  :message: ''
+:failures: []
+:ignores: []
+:counts:
+  :total: 16
+  :passed: 16
+  :failed: 0
+  :ignored: 0
+:stdout:
+- '0'

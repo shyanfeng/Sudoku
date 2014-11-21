@@ -101,9 +101,12 @@ int getBeginningIndex(int index){
     // }
 // }
 
-int squareHas(int square[9][9],int row,int column,int value){
-  int x = square[9][9];
-  if(x = value){
+int squareHas(int (*square)[9][9],int row,int column,int setValue){
+  int getValueFromSquare;
+  getValueFromSquare = *getSquare(square, row, column);
+  // printf("%d",setValue);
+  printf("%d",getValueFromSquare);
+  if(getValueFromSquare == setValue){
     return 1;
   }else{
     return 0;
