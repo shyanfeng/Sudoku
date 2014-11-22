@@ -61,6 +61,4 @@
   :passed: 17
   :failed: 0
   :ignored: 0
-:stdout:
-- '2'
-- '1'
+:stdout: []

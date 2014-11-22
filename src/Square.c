@@ -91,40 +91,37 @@ int getBeginningIndex(int index){
 }
 
 
-// void eliminateNumberFromPeers(int square[9][9],Square *peers,int findNumberToEliminate){
-    // int i;
-    // int value;
-    // for(i=0;i<9;i++){
-      // if(getSquare() == value
-      // value = peers[i].row = findNumberToEliminate;
-      // if(value == getSquareValue)
-    // }
-// }
+void eliminateNumberFromPeers(int (*square)[9][9],Square *peers,int row,int column,int findNumberToEliminate){
+    int r,c;
+    for(r=0;r<9;r++){
+      if(squareHas(square,peers[r].row,column,findNumberToEliminate) == 1){
+          // del
+      }
+    }
+    
+    for(c=0;c<9;c++){
+      if(squareHas(square,row,peers[c].column,findNumberToEliminate) == 1){
+        // del
+      }
+    }
+    
+    for(r=row;r<(row+3);r++){
+      for(c=0;c<(column+3);c++){
+        if(squareHas(square,peers[r].row,peers[c].column,findNumberToEliminate) == 1){
+          // del
+        }
+      }
+    }
+}
+
+
 
 int squareHas(int (*square)[9][9],int row,int column,int setValue){
   int getValueFromSquare;
   getValueFromSquare = *getSquare(square, row, column);
-  // printf("%d",setValue);
-  printf("%d",getValueFromSquare);
   if(getValueFromSquare == setValue){
     return 1;
   }else{
     return 0;
   }
 }
-
-// void eliminateNeighbouringSquaresOf(int *square, int number){
- 
-  // Square *peerSquares = rowPeers[r][c];
-  // for(i = 0; i < 9; i++){
-    // printf("%d, %d\n", peerSquares[i].row, peerSquares[i].column);
-  // }
-  
-  // /*int i, j;
-  
-  // for(i = 0; i < 9; i++){
-    // if(isSquareContain(square[i][9], number) == 0){
-      // squareSetNumber(getSquare());
-    // }else
-  // }*/
-// }

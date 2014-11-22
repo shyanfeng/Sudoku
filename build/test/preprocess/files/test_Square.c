@@ -405,15 +405,15 @@ void test_initBoxPeers(void){
 
 
 
-   UnityAssertEqualNumber((_U_SINT)((1)), (_U_SINT)((boxPeers[2][2][0].row)), (((void *)0)), (_U_UINT)206, UNITY_DISPLAY_STYLE_INT);
+ UnityAssertEqualNumber((_U_SINT)((1)), (_U_SINT)((boxPeers[2][2][0].row)), (((void *)0)), (_U_UINT)206, UNITY_DISPLAY_STYLE_INT);
 
-   UnityAssertEqualNumber((_U_SINT)((1)), (_U_SINT)((boxPeers[2][2][0].column)), (((void *)0)), (_U_UINT)207, UNITY_DISPLAY_STYLE_INT);
+  UnityAssertEqualNumber((_U_SINT)((1)), (_U_SINT)((boxPeers[2][2][0].column)), (((void *)0)), (_U_UINT)207, UNITY_DISPLAY_STYLE_INT);
 
 
 
-    UnityAssertEqualNumber((_U_SINT)((1)), (_U_SINT)((boxPeers[2][2][1].row)), (((void *)0)), (_U_UINT)209, UNITY_DISPLAY_STYLE_INT);
+  UnityAssertEqualNumber((_U_SINT)((1)), (_U_SINT)((boxPeers[2][2][1].row)), (((void *)0)), (_U_UINT)209, UNITY_DISPLAY_STYLE_INT);
 
-    UnityAssertEqualNumber((_U_SINT)((2)), (_U_SINT)((boxPeers[2][2][1].column)), (((void *)0)), (_U_UINT)210, UNITY_DISPLAY_STYLE_INT);
+  UnityAssertEqualNumber((_U_SINT)((2)), (_U_SINT)((boxPeers[2][2][1].column)), (((void *)0)), (_U_UINT)210, UNITY_DISPLAY_STYLE_INT);
 
 
 

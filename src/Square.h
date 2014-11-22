@@ -31,9 +31,8 @@ void initColPeers(Square columnPeers[9][9][9]);
 void initBoxPeers(Square boxPeers[9][9][9]);
 int getBeginningIndex(int index);
 
-void eliminateNumberFromPeers(int square[9][9],Square *peers,int findNumberToEliminate);
+void eliminateNumberFromPeers(int (*square)[9][9],Square *peers,int row,int column,int findNumberToEliminate);
 int squareHas(int (*square)[9][9],int row,int column,int setValue);
-//void eliminateNeighbouringSquaresOf(int *square, int number);
-
+int value(int num, ...);
 #endif // Square_H
 

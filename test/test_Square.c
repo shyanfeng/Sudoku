@@ -203,11 +203,11 @@ void test_initBoxPeers(void){
  
  initBoxPeers(boxPeers);
 
-   TEST_ASSERT_EQUAL(1, boxPeers[2][2][0].row);
-   TEST_ASSERT_EQUAL(1, boxPeers[2][2][0].column);
+	TEST_ASSERT_EQUAL(1, boxPeers[2][2][0].row);
+  TEST_ASSERT_EQUAL(1, boxPeers[2][2][0].column);
   
-    TEST_ASSERT_EQUAL(1, boxPeers[2][2][1].row);
-    TEST_ASSERT_EQUAL(2, boxPeers[2][2][1].column);
+  TEST_ASSERT_EQUAL(1, boxPeers[2][2][1].row);
+  TEST_ASSERT_EQUAL(2, boxPeers[2][2][1].column);
   
   TEST_ASSERT_EQUAL(1, boxPeers[2][2][2].row);
   TEST_ASSERT_EQUAL(3, boxPeers[2][2][2].column);
@@ -234,7 +234,7 @@ void test_initBoxPeers(void){
 }
 
 void test_squareHas_has_same_number_return_1(void){
-  int square[9][9] = {{3, 0, 0, 0, 7, 0, 0, 0,0}, // 1
+  int square[9][9] = {{3, 0, 0, 0, 7, 0, 0, 0,0}, 
                       {3, 2, 1, 0, 7, 0, 0, 0,0},
                       {3, 1, 1, 0, 7, 0, 0, 0,0},
                       {3, 0, 0, 0, 7, 0, 0, 0,0},
@@ -250,7 +250,7 @@ void test_squareHas_has_same_number_return_1(void){
 }
 
 void test_squareHas_does_not_have_same_number_return_0(void){
-  int square[9][9] = {{3, 0, 0, 0, 7, 0, 0, 0,0}, // 1
+  int square[9][9] = {{3, 0, 0, 0, 7, 0, 0, 0,0}, 
                       {3, 1, 1, 0, 7, 0, 0, 0,0},
                       {3, 1, 1, 0, 7, 0, 0, 0,0},
                       {3, 0, 0, 0, 7, 0, 0, 0,0},
