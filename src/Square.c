@@ -6,8 +6,8 @@ Square rowPeers[9][9][9];
 Square columnPeers[9][9][9];
 Square boxPeers[9][9][9];
 
-int *getSquare(int (*square)[9][9], int row, int column){
-  return &((*square)[row-1][column-1]);
+int *getSquare(int (square)[9][9], int row, int column){
+  return &(square[row-1][column-1]);
 } 
 
 void squareSetNumber(int *square, int number){
@@ -91,7 +91,7 @@ int getBeginningIndex(int index){
 }
 
 
-void eliminateNumberFromPeers(int (*square)[9][9],Square *peers,int row,int column,int findNumberToEliminate){
+void eliminateNumberFromPeers(int square[9][9],Square *peers,int row,int column,int findNumberToEliminate){
     int r,c;
     for(r=0;r<9;r++){
       if(squareHas(square,peers[r].row,column,findNumberToEliminate) == 1){
@@ -116,9 +116,12 @@ void eliminateNumberFromPeers(int (*square)[9][9],Square *peers,int row,int colu
 
 
 
-int squareHas(int (*square)[9][9],int row,int column,int setValue){
+int squareHas(int squares[9][9],int row,int column,int setValue){
   int getValueFromSquare;
-  getValueFromSquare = *getSquare(square, row, column);
+  int *squarePtr;
+  squarePtr = getSquare(squares, row, column);
+  getValueFromSquare = *squarePtr;
+//  *squarePtr = 6;
   if(getValueFromSquare == setValue){
     return 1;
   }else{

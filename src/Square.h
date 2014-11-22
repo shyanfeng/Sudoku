@@ -20,7 +20,7 @@ extern Square columnPeers[9][9][9];
 extern Square boxPeers[9][9][9];
 
 
-int *getSquare(int (*square)[9][9], int row, int column);
+int *getSquare(int (square)[9][9], int row, int column);
 void squareSetNumber(int *square, int number);
 void squareDelNumber(int *square, int number);
 void removeOthersExcept(int *square, int number);
@@ -31,8 +31,8 @@ void initColPeers(Square columnPeers[9][9][9]);
 void initBoxPeers(Square boxPeers[9][9][9]);
 int getBeginningIndex(int index);
 
-void eliminateNumberFromPeers(int (*square)[9][9],Square *peers,int row,int column,int findNumberToEliminate);
-int squareHas(int (*square)[9][9],int row,int column,int setValue);
+void eliminateNumberFromPeers(int square[9][9],Square *peers,int row,int column,int findNumberToEliminate);
+int squareHas(int squares[9][9],int row,int column,int setValue);
 int value(int num, ...);
 #endif // Square_H
 

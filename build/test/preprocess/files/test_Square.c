@@ -499,7 +499,7 @@ void test_squareHas_has_same_number_return_1(void){
 
 void test_squareHas_does_not_have_same_number_return_0(void){
 
-  int square[9][9] = {{3, 0, 0, 0, 7, 0, 0, 0,0},
+  int square[9][9] = {{(3>0)? 1<<(3 -1) : 0x1ff|(4>0)? 1<<(4 -1) : 0x1ff, 0, 0, 0, 7, 0, 0, 0,0},
 
                       {3, 1, 1, 0, 7, 0, 0, 0,0},
 
