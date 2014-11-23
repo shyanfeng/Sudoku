@@ -3,7 +3,10 @@
 
 #include "ErrorCode.h"
 
-#define C(x)  (x>0)? 1<<(x-1) : 0x1ff
+//  543210  (actual)
+//  654321  (user)
+//  001010
+#define C(x)  ((x>0)? 1<<(x-1) : 0x1ff)
 
 
 
@@ -19,6 +22,7 @@ extern Square rowPeers[9][9][9];
 extern Square columnPeers[9][9][9];
 extern Square boxPeers[9][9][9];
 
+void clearSquares(int square[9][9]);
 
 int *getSquare(int (square)[9][9], int row, int column);
 void squareSetNumber(int *square, int number);
@@ -31,7 +35,7 @@ void initColPeers(Square columnPeers[9][9][9]);
 void initBoxPeers(Square boxPeers[9][9][9]);
 int getBeginningIndex(int index);
 
-void eliminateNumberFromPeers(int square[9][9],Square *peers,int row,int column,int findNumberToEliminate);
+void eliminateNumberFromPeers(int squares[9][9],Square *peers,int row,int column,int findNumberToEliminate);
 int squareHas(int squares[9][9],int row,int column,int setValue);
 int value(int num, ...);
 #endif // Square_H
