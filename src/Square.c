@@ -102,28 +102,28 @@ int getBeginningIndex(int index){
 
 
 void eliminateNumberFromPeers(int squares[9][9], Square *peers, int row, int column, int findNumberToEliminate){
-    int r ,c ,value;
+    int r ,c;
 
     for(r = 0; r < 9; r++){
       if(squareHas(squares, peers[r].row, column, findNumberToEliminate) == 1){
-          value = C(findNumberToEliminate);
-          squareDelNumber((getSquare(squares, peers[r].row, column)),value);
+          int *value = getSquare(squares, peers[r].row, column);
+          squareDelNumber(value,findNumberToEliminate);
       }
     }
     
-    for(c=0;c<9;c++){
-      if(squareHas(squares,row,peers[c].column,findNumberToEliminate) == 1){
+    // for(c=0;c<9;c++){
+      // if(squareHas(squares,row,peers[c].column,findNumberToEliminate) == 1){
         // del
-      }
-    }
+      // }
+    // }
     
-    for(r=row;r<(row+3);r++){
-      for(c=0;c<(column+3);c++){
-        if(squareHas(squares,peers[r].row,peers[c].column,findNumberToEliminate) == 1){
+    // for(r=row;r<(row+3);r++){
+      // for(c=0;c<(column+3);c++){
+        // if(squareHas(squares,peers[r].row,peers[c].column,findNumberToEliminate) == 1){
           // del
-        }
-      }
-    }
+        // }
+      // }
+    // }
 }
 
 

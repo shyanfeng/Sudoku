@@ -284,22 +284,22 @@ void test_squareHas_does_not_have_same_number_return_0(void){
 }
 
 void test_eliminateNeighbouringSquaresOf_should(void){
-  int square[9][9] = {{C(3), C(0), C(0), C(0), C(7), C(0), C(0), C(0),C(0)}, 
-                      {C(0), C(1), C(0), C(1), C(0), C(0), C(0), C(0),C(0)},
-                      {C(3), C(0), C(0), C(0), C(7), C(0), C(0), C(0),C(0)},
-                      {C(3), C(1), C(0), C(0), C(7), C(0), C(0), C(0),C(0)},
-                      {C(3), C(0), C(0), C(0), C(7), C(0), C(0), C(0),C(0)},
-                      {C(3), C(0), C(0), C(0), C(7), C(0), C(0), C(0),C(0)},
-                      {C(3), C(0), C(0), C(0), C(7), C(0), C(0), C(0),C(0)},
-                      {C(3), C(0), C(0), C(0), C(7), C(0), C(0), C(0),C(0)},
-                      {C(3), C(0), C(0), C(0), C(7), C(0), C(0), C(0),C(0)},
+  int square[9][9] = {{C(3), C(1), C(3), C(1), C(1), C(1), C(1), C(1),C(1)}, 
+                      {C(3), C(1), C(0), C(1), C(0), C(0), C(0), C(0),C(0)},
+                      {C(1), C(0), C(0), C(0), C(2), C(0), C(0), C(0),C(0)},
+                      {C(1), C(1), C(0), C(0), C(2), C(0), C(0), C(0),C(0)},
+                      {C(1), C(0), C(0), C(0), C(2), C(0), C(0), C(0),C(0)},
+                      {C(1), C(0), C(0), C(0), C(2), C(0), C(0), C(0),C(0)},
+                      {C(1), C(0), C(0), C(0), C(2), C(0), C(0), C(0),C(0)},
+                      {C(1), C(0), C(0), C(0), C(2), C(0), C(0), C(0),C(0)},
+                      {C(1), C(0), C(0), C(0), C(2), C(0), C(0), C(0),C(0)},
                      };  
     
   int value;
   
-  Square *row = rowPeers[2][2];
-  eliminateNumberFromPeers(square,row,2,2,1);
-  TEST_ASSERT_EQUAL(0,square[2][4]);
+  Square *row = rowPeers[1][1];
+  eliminateNumberFromPeers(square,row,1,1,3);
+  TEST_ASSERT_EQUAL(1,square[1][1]);
   // TEST_ASSERT_EQUAL(0,square[4][2]);
 }
 
