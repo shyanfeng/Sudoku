@@ -122,7 +122,7 @@ void eliminateNumberFromPeers(int squares[9][9], Square *peers, int row, int col
               }
           }
       }
-      // eliminateNumberFromPeers(squares, *peers,row, column, findNumberToEliminate);
+      eliminateNumberFromPeers(squares, *peers,row, column, findNumberToEliminate);
     }else{
       printf("Throw");
     }
