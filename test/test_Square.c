@@ -269,7 +269,7 @@ void test_squareHas_has_same_number_return_1(void){
 
 void test_squareHas_does_not_have_same_number_return_0(void){
   int square[9][9] = {{C(3), C(0), C(0), C(0), C(7), C(0), C(0), C(0),C(0)}, 
-                      {C(3), C(0), C(0), C(0), C(7), C(0), C(0), C(0),C(0)},
+                      {C(3), C(2), C(0), C(0), C(7), C(0), C(0), C(0),C(0)},
                       {C(3), C(0), C(0), C(0), C(7), C(0), C(0), C(0),C(0)},
                       {C(3), C(0), C(0), C(0), C(7), C(0), C(0), C(0),C(0)},
                       {C(3), C(0), C(0), C(0), C(7), C(0), C(0), C(0),C(0)},
@@ -283,7 +283,7 @@ void test_squareHas_does_not_have_same_number_return_0(void){
   TEST_ASSERT_EQUAL(0, replyValue);
 }
 
-void test_eliminateNumberFromPeers_should_eliminate_peers_for_row_column_box(void){
+void test_eliminateNumberFromPeers_should_eliminate_peers_for_row_column_box_A(void){
   int square[9][9] = {{C(3), C(1), C(6), C(1), C(1), C(8), C(9), C(2),C(1)}, 
                       {C(3), C(3), C(1), C(1), C(0), C(0), C(0), C(0),C(0)},
                       {C(6), C(5), C(1), C(3), C(2), C(0), C(0), C(0),C(0)},
@@ -334,7 +334,7 @@ void test_eliminateNumberFromPeers_should_eliminate_peers_for_row_column_box(voi
   TEST_ASSERT_EQUAL(0, square[2][2]);
 }
 
-void test_eliminateNumberFromPeers_given_row_peers_should(void){
+void test_eliminateNumberFromPeers_should_eliminate_peers_for_row_column_box_B(void){
   int square[9][9] = {{C(4), C(2), C(6), C(1), C(1), C(8), C(9), C(2),C(1)}, 
                       {C(5), C(3), C(7), C(1), C(4), C(2), C(7), C(9),C(8)},
                       {C(1), C(1), C(9), C(3), C(2), C(4), C(5), C(6),C(7)},

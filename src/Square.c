@@ -106,7 +106,7 @@ void eliminateNumberFromPeers(int squares[9][9], Square *peers, int row, int col
   int *storeFixValue = getSquare(squares,row,column);
    
   for(r = 0; r < 9; r++){  
-    printf("r:%d c:%d \n",peers[r].row, peers[r].column);
+    //printf("r:%d c:%d \n",peers[r].row, peers[r].column);
     int getSquareHasReturnValue = squareHas(squares, ((peers[r].row)+1), ((peers[r].column)+1), findNumberToEliminate);
       if(getSquareHasReturnValue == 1){
         int *value = getSquare(squares,((peers[r].row)+1),((peers[r].column)+1));
@@ -123,10 +123,10 @@ int squareHas(int squares[9][9],int row,int column,int setValue){
   getValueFromSquare = *squarePtr;
 
   int value1 = C(setValue);
-
+/*
   if(getValueFromSquare == 0x1ff){
     getValueFromSquare = 0x000;
-  }
+  }*/
   
   int value2 = getValueFromSquare & value1;
 
