@@ -101,16 +101,36 @@ int getBeginningIndex(int index){
 }
 
 
-void eliminateNumberFromPeers(int squares[9][9], Square *peers, int row, int column, int findNumberToEliminate){
-    int r ,c;
+// void eliminateNumberFromPeers(int squares[9][9], Square *peers, int row, int column, int findNumberToEliminate){
+    // int r ,c;   int *value;   int *storeFixValue;
+   
+    // storeFixValue = getSquare(squares,row,column);
+    // int value1 = *storeFixValue;
+  
+   
+     // for(r = 0; r < 9; r++){  
+       // int squareHasValue = squareHas(squares, peers[r].row, peers[r].column, findNumberToEliminate);
+        // printf("r:%d,c:%d,Value:%d\n",peers[r].row,peers[r].column,squareHasValue);
+    // }
+// }
 
-    for(r = 0; r < 9; r++){
-      if(squareHas(squares, peers[r].row, column, findNumberToEliminate) == 1){
-          int *value = getSquare(squares, peers[r].row, column);
-          squareDelNumber(value,findNumberToEliminate);
-      }
-    }
-    
+
+
+int squareHas(int squares[9][9],int row,int column,int setValue){
+  int getValueFromSquare;
+  int *squarePtr;
+  squarePtr = getSquare(squares, row, column);
+  getValueFromSquare = *squarePtr;
+  int value1 = C(setValue);
+  int value2 = getValueFromSquare & value1;
+
+  if(value2 == value1){
+    return 1;
+  }else{
+    return 0;
+  }
+}
+
     // for(c=0;c<9;c++){
       // if(squareHas(squares,row,peers[c].column,findNumberToEliminate) == 1){
         // del
@@ -124,21 +144,3 @@ void eliminateNumberFromPeers(int squares[9][9], Square *peers, int row, int col
         // }
       // }
     // }
-}
-
-
-
-int squareHas(int squares[9][9],int row,int column,int setValue){
-  int getValueFromSquare;
-  int *squarePtr;
-  squarePtr = getSquare(squares, row, column);
-  getValueFromSquare = *squarePtr;
-  int value1 = C(setValue);
-  int value2 = getValueFromSquare & value1;
-  
-  if(value2 == value1){
-    return 1;
-  }else{
-    return 0;
-  }
-}
