@@ -78,8 +78,8 @@ void initBoxPeers(Square boxPeers[9][9][9]){
         for(row = rowStart; row < (rowStart+3) ;row++){
           for(col = colStart; col< (colStart+3) ;col++){
            
-            boxPeers[r][c][p].row = row + 1;
-            boxPeers[r][c][p++].column = col + 1;
+            boxPeers[r][c][p].row = row;
+            boxPeers[r][c][p++].column = col;
           
         }
       }
@@ -104,8 +104,6 @@ int getBeginningIndex(int index){
 void eliminateNumberFromPeers(int squares[9][9], Square *peers, int row, int column, int findNumberToEliminate){
   int r ,c;  
   int *storeFixValue = getSquare(squares,row,column);
-
-  
    
   for(r = 0; r < 9; r++){  
     printf("r:%d c:%d \n",peers[r].row, peers[r].column);
@@ -115,11 +113,8 @@ void eliminateNumberFromPeers(int squares[9][9], Square *peers, int row, int col
         squareDelNumber(value,findNumberToEliminate);
       }
   }
-    
   squareSetNumber(storeFixValue,findNumberToEliminate);
 }
-
-
 
 int squareHas(int squares[9][9],int row,int column,int setValue){
   int getValueFromSquare;
@@ -141,17 +136,3 @@ int squareHas(int squares[9][9],int row,int column,int setValue){
     return 0;
   }
 }
-
-    // for(c=0;c<9;c++){
-      // if(squareHas(squares,row,peers[c].column,findNumberToEliminate) == 1){
-        // del
-      // }
-    // }
-    
-    // for(r=row;r<(row+3);r++){
-      // for(c=0;c<(column+3);c++){
-        // if(squareHas(squares,peers[r].row,peers[c].column,findNumberToEliminate) == 1){
-          // del
-        // }
-      // }
-    // }
