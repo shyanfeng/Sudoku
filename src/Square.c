@@ -102,32 +102,112 @@ int getBeginningIndex(int index){
 
 
 void eliminateNumberFromPeers(int squares[9][9], Square *peers, int row, int column, int findNumberToEliminate){
-  int i ,c;  
-  int *storeFixValue = getSquare(squares,row,column);
-  squareDelNumber(storeFixValue,findNumberToEliminate);
-  int value1st = *storeFixValue;
-    if(value1st != 0){
-      for(i = 0; i < 9; i++){ 
-        int getSquareHasReturnValue = squareHas(squares, ((peers[i].row)+1), ((peers[i].column)+1), findNumberToEliminate);
-          if(getSquareHasReturnValue == 1){
-              if((row - 1) == peers[i].row && (column - 1) == peers[i].column){
-                squareSetNumber(storeFixValue,findNumberToEliminate);
-              }else{
-                int *value = getSquare(squares,((peers[i].row)+1),((peers[i].column)+1));
-                 squareDelNumber(value,findNumberToEliminate);
-                 int storingValue = *value;
-                 if(storingValue == 0){
-                    printf("throw value \n");
-                 }
-              }
+  int i,c;  int storeSquareValue;
+      int *storeFixValue = getSquare(squares,row,column);
+      squareDelNumber(storeFixValue,findNumberToEliminate);
+      
+      int value = *storeFixValue;
+      int value1 = checkBinaryValue(value);
+      
+      if((value != 0) && (squareContainNumbers(squares,row,column) == 1)){
+        for(i = 0; i < 9; i++){ 
+           int getSquareHasReturnValue = squareHas(squares, ((peers[i].row)+1), ((peers[i].column)+1), value1);    
+              if(getSquareHasReturnValue == 1){
+                if((row - 1) == peers[i].row && (column - 1) == peers[i].column){
+                  squareSetNumber(storeFixValue,value1);
+                }else{
+                  int *value2 = getSquare(squares,((peers[i].row)+1),((peers[i].column)+1));
+                  squareDelNumber(value2,value1);
+                  storeSquareValue = *value2;
+                  if(storeSquareValue == 0){
+                    printf("Throw");
+                  }else{
+                    if(squareContainNumbers(squares,((peers[i].row)+1),((peers[i].column)+1)) == 1){
+                      eliminateNumberFromPeers(squares,peers, peers[i].row, peers[i].column,findNumberToEliminate);
+                    }
+                  }
+                }
+            }
+            
           }
       }
-      eliminateNumberFromPeers(squares, *peers,row, column, findNumberToEliminate);
-    }else{
-      printf("Throw");
-    }
+        
+  
+   
+
+
+ // int i ,c;  
+  // int *storeFixValue = getSquare(squares,row,column);
+  // squareDelNumber(storeFixValue,findNumberToEliminate);
+  // int value1st = *storeFixValue;
+    // if(value1st != 0){
+      // for(i = 0; i < 9; i++){ 
+        // int getSquareHasReturnValue = squareHas(squares, ((peers[i].row)+1), ((peers[i].column)+1), findNumberToEliminate);
+          // if(getSquareHasReturnValue == 1){
+              // if((row - 1) == peers[i].row && (column - 1) == peers[i].column){
+                // squareSetNumber(storeFixValue,findNumberToEliminate);
+              // }else{
+                // int *value = getSquare(squares,((peers[i].row)+1),((peers[i].column)+1));
+                 // squareDelNumber(value,findNumberToEliminate);
+                 // int storingValue = *value;
+                 // if(storingValue == 0){
+                    // printf("throw value \n");
+                 // }
+              // }
+          // }
+      // }
+      //eliminateNumberFromPeers(squares, *peers,row, column, findNumberToEliminate);
+
 }
 
+int checkBinaryValue(int value){
+  if(value == 1){
+    return 1;
+  }else if(value == 2){
+    return 2;
+  }else if(value == 4){
+    return 3;
+  }else if(value == 8){
+    return 4;
+  }else if(value == 16){
+    return 5;
+  }else if(value == 32){
+    return 6;
+  }else if(value == 64){
+    return 7;
+  }else if(value == 128){
+    return 8;
+  }else if(value == 256){
+    return 9;
+  } 
+
+}
+
+
+int squareContainNumbers(int square[9][9],int row,int column){
+    int i;   int *value; 
+    
+    value = getSquare(square,row,column);
+    int value1 = *value;
+    
+    int temp1 = 0;
+    
+    for(i=0;i<9;i++){
+      int temp = value1 & 1;
+      if(temp == 1){
+        temp1 = temp1 + temp;
+      }
+      value1 = value1>>1;
+    } 
+    
+    int getValueFromTemp1 = temp1;  
+
+    if(getValueFromTemp1 == 1){
+      return 1;
+    }else{
+      return 0;
+    }  
+}
 
 
 int squareHas(int squares[9][9],int row,int column,int setValue){
@@ -143,6 +223,7 @@ int squareHas(int squares[9][9],int row,int column,int setValue){
   }
   
   int value2 = getValueFromSquare & value1;
+
 
   if(value2 == value1){
     return 1;

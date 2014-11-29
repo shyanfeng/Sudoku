@@ -42,7 +42,6 @@ void test_squareSetNumber_should_enter_column_2_row_1_and_set_bit_3_2_1_4(void){
 	TEST_ASSERT_EQUAL(15, square[1][0]);
 }
 
-
 void test_squareSetNumber_should_enter_column_3_row_8_and_set_bit_4_2_6(void){
 	int square[9][9];
   clearSquares(square);
@@ -222,33 +221,23 @@ void test_initBoxPeers(void){
  initBoxPeers(boxPeers);
 
 	TEST_ASSERT_EQUAL(0, boxPeers[2][2][0].row);
-  TEST_ASSERT_EQUAL(0, boxPeers[2][2][0].column);
-  
+  TEST_ASSERT_EQUAL(0, boxPeers[2][2][0].column); 
   TEST_ASSERT_EQUAL(0, boxPeers[2][2][1].row);
-  TEST_ASSERT_EQUAL(1, boxPeers[2][2][1].column);
-  
+  TEST_ASSERT_EQUAL(1, boxPeers[2][2][1].column); 
   TEST_ASSERT_EQUAL(0, boxPeers[2][2][2].row);
   TEST_ASSERT_EQUAL(2, boxPeers[2][2][2].column);
-  
   TEST_ASSERT_EQUAL(1, boxPeers[2][2][3].row);
   TEST_ASSERT_EQUAL(0, boxPeers[2][2][3].column);
-  
   TEST_ASSERT_EQUAL(1, boxPeers[2][2][4].row);
   TEST_ASSERT_EQUAL(1, boxPeers[2][2][4].column);
-  
   TEST_ASSERT_EQUAL(1, boxPeers[2][2][5].row);
   TEST_ASSERT_EQUAL(2, boxPeers[2][2][5].column);
-  
   TEST_ASSERT_EQUAL(2, boxPeers[2][2][6].row);
   TEST_ASSERT_EQUAL(0, boxPeers[2][2][6].column);
-  
   TEST_ASSERT_EQUAL(2, boxPeers[2][2][7].row);
   TEST_ASSERT_EQUAL(1, boxPeers[2][2][7].column);
- 
   TEST_ASSERT_EQUAL(2, boxPeers[2][2][8].row);
   TEST_ASSERT_EQUAL(2, boxPeers[2][2][8].column);
-
-
 }
 
 void test_squareHas_has_same_number_return_1(void){
@@ -283,56 +272,174 @@ void test_squareHas_does_not_have_same_number_return_0(void){
   TEST_ASSERT_EQUAL(0,replyValue);
 }
 
+void test_squareContainNumbers_has_more_than_1_number_return_0(void){
+  int square[9][9] = {{C(3), C(0), C(0), C(0), C(7), C(0), C(0), C(0),C(0)}, 
+                      {C(3), C(8)|C(2), C(1), C(0), C(7), C(0), C(0), C(0),C(0)},
+                      {C(3), C(0), C(0), C(0), C(7), C(0), C(0), C(0),C(0)}, 
+                      {C(3), C(0), C(0), C(0), C(7), C(0), C(0), C(0),C(0)}, 
+                      {C(3), C(0), C(0), C(0), C(7), C(0), C(0), C(0),C(0)}, 
+                      {C(3), C(0), C(0), C(0), C(7), C(0), C(0), C(0),C(0)}, 
+                      {C(3), C(0), C(0), C(0), C(7), C(0), C(0), C(0),C(0)}, 
+                      {C(3), C(0), C(0), C(0), C(7), C(0), C(0), C(0),C(0)}, 
+                      {C(3), C(0), C(0), C(0), C(7), C(0), C(0), C(0),C(0)}, 
+                     };
+
+  int replyValue = squareContainNumbers(square,2,2);
+  TEST_ASSERT_EQUAL(0,replyValue);
+}
+
+void test_squareContainNumbers_has_one_value_return_1(void){
+  int square[9][9] = {{C(3), C(0), C(0), C(0), C(7), C(0), C(0), C(0),C(0)}, 
+                      {C(3), C(8), C(1), C(0), C(7), C(0), C(0), C(0),C(0)},
+                      {C(3), C(0), C(0), C(0), C(7), C(0), C(0), C(0),C(0)}, 
+                      {C(3), C(0), C(0), C(0), C(7), C(0), C(0), C(0),C(0)}, 
+                      {C(3), C(0), C(0), C(0), C(7), C(0), C(0), C(0),C(0)}, 
+                      {C(3), C(0), C(0), C(0), C(7), C(0), C(0), C(0),C(0)}, 
+                      {C(3), C(0), C(0), C(0), C(7), C(0), C(0), C(0),C(0)}, 
+                      {C(3), C(0), C(0), C(0), C(7), C(0), C(0), C(0),C(0)}, 
+                      {C(3), C(0), C(0), C(0), C(7), C(0), C(0), C(0),C(0)}, 
+                     };
+                     
+    int Value = squareContainNumbers(square,2,2);
+    TEST_ASSERT_EQUAL(1,Value);
+}
+
+void test_checkBinaryValue_return_number(void){
+  int returnValue;
+  returnValue = checkBinaryValue(1);
+  TEST_ASSERT_EQUAL(1,returnValue);
+  
+  returnValue = checkBinaryValue(2);
+  TEST_ASSERT_EQUAL(2,returnValue);
+  
+  returnValue = checkBinaryValue(4);
+  TEST_ASSERT_EQUAL(3,returnValue);
+  
+  returnValue = checkBinaryValue(8);
+  TEST_ASSERT_EQUAL(4,returnValue);
+  
+  returnValue = checkBinaryValue(16);
+  TEST_ASSERT_EQUAL(5,returnValue);
+  
+  returnValue = checkBinaryValue(32);
+  TEST_ASSERT_EQUAL(6,returnValue);
+  
+  returnValue = checkBinaryValue(64);
+  TEST_ASSERT_EQUAL(7,returnValue);
+  
+  returnValue = checkBinaryValue(128);
+  TEST_ASSERT_EQUAL(8,returnValue);
+  
+  returnValue = checkBinaryValue(256);
+  TEST_ASSERT_EQUAL(9,returnValue);
+  
+}
+
 void test_eliminateNumberFromPeers_given_row_peers_should(void){
 
-                       //0    1      2    3     4     5     6      7    8
+                       // 0    1      2    3     4     5     6      7    8
   int square[9][9] = {{C(3), C(1), C(6), C(1), C(1), C(8), C(9), C(2),C(1)}, //0 
-                      {C(9), C(3), C(2), C(1), C(4), C(5), C(6), C(7),C(3)}, //1
-                      {C(1), C(5), C(3), C(3), C(2), C(0), C(0), C(0),C(0)}, //2
-                      {C(1), C(1), C(0), C(0), C(2), C(0), C(0), C(0),C(0)}, //3
+                      {C(9), C(6)|C(5), C(4), C(1), C(4), C(5)|C(9)|C(7), C(6), C(7),C(3)}, //1
+                      {C(1), C(5)|C(8)|C(4), C(3), C(3), C(2), C(0), C(0), C(0),C(0)}, //2
+                      {C(1), C(3)|C(5)|C(2), C(0), C(0), C(2), C(0), C(0), C(0),C(0)}, //3
                       {C(1), C(6), C(0), C(0), C(2), C(0), C(0), C(0),C(0)}, //4
                       {C(1), C(9), C(0), C(0), C(2), C(0), C(0), C(0),C(0)}, //5
                       {C(1), C(1), C(0), C(0), C(2), C(0), C(0), C(0),C(0)}, //6
-                      {C(1), C(3)|C(2), C(0), C(0), C(2), C(0), C(0), C(0),C(0)}, //7
-                      {C(1), C(2), C(0), C(0), C(2), C(0), C(0), C(0),C(0)}, //8
+                      {C(1), C(3), C(0), C(0), C(2), C(0), C(0), C(0),C(0)}, //7
+                      {C(1), C(4), C(0), C(0), C(2), C(0), C(0), C(0),C(0)}, //8
                      };  
     
   int value;
-  
+  //0000 0110
   Square *row = rowPeers[1][1];
-  eliminateNumberFromPeers(square,row,2,2,3);
+  eliminateNumberFromPeers(square,row,2,2,6);
   TEST_ASSERT_EQUAL(1,square[0][1]);
-  TEST_ASSERT_EQUAL(4,square[1][1]);
-  TEST_ASSERT_EQUAL(16,square[2][1]);
-  TEST_ASSERT_EQUAL(1,square[3][1]);
+  TEST_ASSERT_EQUAL(16,square[1][1]);
+  TEST_ASSERT_EQUAL(136,square[2][1]);
+  TEST_ASSERT_EQUAL(6,square[3][1]);
   TEST_ASSERT_EQUAL(32,square[4][1]);
   TEST_ASSERT_EQUAL(256,square[5][1]);
   TEST_ASSERT_EQUAL(1,square[6][1]);
-  TEST_ASSERT_EQUAL(2,square[7][1]);
-  TEST_ASSERT_EQUAL(2,square[8][1]);
+  TEST_ASSERT_EQUAL(4,square[7][1]);
+  TEST_ASSERT_EQUAL(8,square[8][1]);
   
   Square *column = columnPeers[1][1];
-  eliminateNumberFromPeers(square,column,2,2,3);
+  eliminateNumberFromPeers(square,column,2,2,6);
   TEST_ASSERT_EQUAL(256,square[1][0]);
-  TEST_ASSERT_EQUAL(4,square[1][1]);
-  TEST_ASSERT_EQUAL(2,square[1][2]);
+  TEST_ASSERT_EQUAL(16,square[1][1]);
+  TEST_ASSERT_EQUAL(8,square[1][2]);
   TEST_ASSERT_EQUAL(1,square[1][3]);
   TEST_ASSERT_EQUAL(8,square[1][4]);
-  TEST_ASSERT_EQUAL(16,square[1][5]);
+  TEST_ASSERT_EQUAL(320,square[1][5]);
   TEST_ASSERT_EQUAL(32,square[1][6]);
   TEST_ASSERT_EQUAL(64,square[1][7]);
-  TEST_ASSERT_EQUAL(0,square[1][8]);
+  TEST_ASSERT_EQUAL(4,square[1][8]);
   
   Square *box = boxPeers[1][1];
-  eliminateNumberFromPeers(square,box,2,2,3);
-  TEST_ASSERT_EQUAL(0,square[0][0]);
+  eliminateNumberFromPeers(square,box,2,2,6);
+  TEST_ASSERT_EQUAL(4,square[0][0]);
   TEST_ASSERT_EQUAL(1,square[0][1]);
   TEST_ASSERT_EQUAL(32,square[0][2]);
   TEST_ASSERT_EQUAL(256,square[1][0]);
-  TEST_ASSERT_EQUAL(4,square[1][1]);
-  TEST_ASSERT_EQUAL(2,square[1][2]);
+  TEST_ASSERT_EQUAL(16,square[1][1]);
+  TEST_ASSERT_EQUAL(8,square[1][2]);
   TEST_ASSERT_EQUAL(1,square[2][0]);
-  TEST_ASSERT_EQUAL(16,square[2][1]);
-  TEST_ASSERT_EQUAL(0,square[2][2]);
+  TEST_ASSERT_EQUAL(136,square[2][1]);
+  TEST_ASSERT_EQUAL(4,square[2][2]);
 }
+
+void test_eliminateNumberFromPeers_given_should(void){
+
+                       // 0    1      2    3     4     5     6      7    8
+  int square[9][9] = {{C(3), C(4), C(6), C(1), C(1), C(8), C(9), C(2),C(1)}, //0 
+                      {C(9), C(6)|C(5), C(4), C(1), C(4), C(5)|C(9)|C(7), C(6), C(7),C(3)}, //1
+                      {C(1), C(5)|C(4), C(3), C(3), C(2), C(0), C(0), C(0),C(0)}, //2
+                      {C(1), C(3)|C(5)|C(2), C(0), C(0), C(2), C(0), C(0), C(0),C(0)}, //3
+                      {C(1), C(6), C(0), C(0), C(2), C(0), C(0), C(0),C(0)}, //4
+                      {C(1), C(9), C(0), C(0), C(2), C(0), C(0), C(0),C(0)}, //5
+                      {C(1), C(1), C(0), C(0), C(2), C(0), C(0), C(0),C(0)}, //6
+                      {C(1), C(3), C(0), C(0), C(2), C(0), C(0), C(0),C(0)}, //7
+                      {C(1), C(4), C(0), C(0), C(2), C(0), C(0), C(0),C(0)}, //8
+                     };  
+    
+  int value;
+  //0000 0110
+  Square *row = rowPeers[1][1];
+  eliminateNumberFromPeers(square,row,2,2,6);
+  // TEST_ASSERT_EQUAL(1,square[0][1]);
+  // TEST_ASSERT_EQUAL(16,square[1][1]);
+  // TEST_ASSERT_EQUAL(136,square[2][1]);
+  // TEST_ASSERT_EQUAL(6,square[3][1]);
+  // TEST_ASSERT_EQUAL(32,square[4][1]);
+  // TEST_ASSERT_EQUAL(256,square[5][1]);
+  // TEST_ASSERT_EQUAL(1,square[6][1]);
+  // TEST_ASSERT_EQUAL(4,square[7][1]);
+  // TEST_ASSERT_EQUAL(8,square[8][1]);
+  
+  // Square *column = columnPeers[1][1];
+  // eliminateNumberFromPeers(square,column,2,2,6);
+  // TEST_ASSERT_EQUAL(256,square[1][0]);
+  // TEST_ASSERT_EQUAL(16,square[1][1]);
+  // TEST_ASSERT_EQUAL(8,square[1][2]);
+  // TEST_ASSERT_EQUAL(1,square[1][3]);
+  // TEST_ASSERT_EQUAL(8,square[1][4]);
+  // TEST_ASSERT_EQUAL(320,square[1][5]);
+  // TEST_ASSERT_EQUAL(32,square[1][6]);
+  // TEST_ASSERT_EQUAL(64,square[1][7]);
+  // TEST_ASSERT_EQUAL(4,square[1][8]);
+  
+  // Square *box = boxPeers[1][1];
+  // eliminateNumberFromPeers(square,box,2,2,6);
+  // TEST_ASSERT_EQUAL(4,square[0][0]);
+  // TEST_ASSERT_EQUAL(1,square[0][1]);
+  // TEST_ASSERT_EQUAL(32,square[0][2]);
+  // TEST_ASSERT_EQUAL(256,square[1][0]);
+  // TEST_ASSERT_EQUAL(16,square[1][1]);
+  // TEST_ASSERT_EQUAL(8,square[1][2]);
+  // TEST_ASSERT_EQUAL(1,square[2][0]);
+  // TEST_ASSERT_EQUAL(136,square[2][1]);
+  // TEST_ASSERT_EQUAL(4,square[2][2]);
+}
+
+
 
