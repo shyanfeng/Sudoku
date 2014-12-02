@@ -1,0 +1,77 @@
+---
+:source:
+  :path: test
+  :file: test_Square.c
+:successes:
+- :test: test_getSquare_should_enter_column_2_row_1_and_return_2
+  :line: 9
+  :message: ''
+- :test: test_getSquare_should_enter_column_6_row_4_and_return_7
+  :line: 21
+  :message: ''
+- :test: test_squareSetNumber_should_enter_column_2_row_1_and_set_bit_3_2_1_4
+  :line: 33
+  :message: ''
+- :test: test_squareSetNumber_should_enter_column_3_row_8_and_set_bit_4_2_6
+  :line: 45
+  :message: ''
+- :test: test_squareSetNumber_should_enter_column_8_row_8_and_set_bit_2_7_8
+  :line: 56
+  :message: ''
+- :test: test_squareDelNumber_should_enter_column_4_row_2_and_del_bit_5
+  :line: 67
+  :message: ''
+- :test: test_squareDelNumber_should_enter_column_9_row_9_and_del_bit_6
+  :line: 82
+  :message: ''
+- :test: test_squareDelNumber_should_enter_column_5_row_1_and_del_bit_2_4
+  :line: 97
+  :message: ''
+- :test: test_removeOthersExcept_should_enter_column_4_row_2_and_remove_all_except_4
+  :line: 113
+  :message: ''
+- :test: test_removeOthersExcept_should_enter_column_7_row_3_and_remove_all_except_4
+  :line: 128
+  :message: ''
+- :test: test_isSquareContain_should_return_1_for_number_match_square
+  :line: 143
+  :message: ''
+- :test: test_initRowPeers
+  :line: 157
+  :message: ''
+- :test: test_initColPeers
+  :line: 181
+  :message: ''
+- :test: test_getBeginningIndex
+  :line: 205
+  :message: ''
+- :test: test_initBoxPeers
+  :line: 219
+  :message: ''
+- :test: test_squareHas_has_same_number_return_1
+  :line: 243
+  :message: ''
+- :test: test_squareHas_does_not_have_same_number_return_0
+  :line: 259
+  :message: ''
+- :test: test_squareContainOneNumbers_has_more_than_1_number_return_0
+  :line: 275
+  :message: ''
+- :test: test_squareContainOneNumbers_has_one_value_return_1
+  :line: 291
+  :message: ''
+- :test: test_checkBinaryValue_return_number
+  :line: 307
+  :message: ''
+- :test: test_eliminateNumberFromPeers_given_row_peers_should
+  :line: 338
+  :message: ''
+:failures: []
+:ignores: []
+:counts:
+  :total: 21
+  :passed: 21
+  :failed: 0
+  :ignored: 0
+:stdout:
+- r:8 c:1 v:5
