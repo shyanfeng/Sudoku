@@ -51,11 +51,10 @@ extern void test_getBeginningIndex(void);
 extern void test_initBoxPeers(void);
 extern void test_squareHas_has_same_number_return_1(void);
 extern void test_squareHas_does_not_have_same_number_return_0(void);
-extern void test_squareContainNumbers_has_more_than_1_number_return_0(void);
-extern void test_squareContainNumbers_has_one_value_return_1(void);
+extern void test_squareContainOneNumbers_has_more_than_1_number_return_0(void);
+extern void test_squareContainOneNumbers_has_one_value_return_1(void);
 extern void test_checkBinaryValue_return_number(void);
 extern void test_eliminateNumberFromPeers_given_row_peers_should(void);
-extern void test_eliminateNumberFromPeers_given_should(void);
 
 
 //=======Test Reset Option=====
@@ -88,11 +87,10 @@ int main(void)
   RUN_TEST(test_initBoxPeers, 219);
   RUN_TEST(test_squareHas_has_same_number_return_1, 243);
   RUN_TEST(test_squareHas_does_not_have_same_number_return_0, 259);
-  RUN_TEST(test_squareContainNumbers_has_more_than_1_number_return_0, 275);
-  RUN_TEST(test_squareContainNumbers_has_one_value_return_1, 291);
+  RUN_TEST(test_squareContainOneNumbers_has_more_than_1_number_return_0, 275);
+  RUN_TEST(test_squareContainOneNumbers_has_one_value_return_1, 291);
   RUN_TEST(test_checkBinaryValue_return_number, 307);
   RUN_TEST(test_eliminateNumberFromPeers_given_row_peers_should, 338);
-  RUN_TEST(test_eliminateNumberFromPeers_given_should, 391);
 
   return (UnityEnd());
 }
