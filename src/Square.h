@@ -40,6 +40,7 @@ int squareHas(int squares[9][9],int row,int column,int setValue);
 int squareContainOneNumbers(int square[9][9],int row,int column);
 int squareContainTwoNumbers(int square[9][9],int row,int column);
 int checkBinaryValue(int value);
+void findEliminateNumber(int squares[9][9], Square *peers, int row, int column, int findNumberToEliminate);
 
 #endif // Square_H
 
