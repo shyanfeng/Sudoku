@@ -131,7 +131,6 @@ void eliminateNumberFromPeers(int squares[9][9], Square *peers, int row, int col
                     decimalValue = checkBinaryValue(decimalValue);
                     row = peers[i].row;
                     column = peers[i].column;
-                    printf("r:%d c:%d v:%d",row,column,decimalValue);
                     eliminateNumberFromPeers(squares,peers, row, column, decimalValue);
                   }else{
                     goto here;
@@ -139,33 +138,6 @@ void eliminateNumberFromPeers(int squares[9][9], Square *peers, int row, int col
                 }
               }
           }
-        
-        
-      
-        
-        // here:
-        // for(i = 0; i < 9; i++){ 
-           // int getSquareHasReturnValue = squareHas(squares, ((peers[i].row)+1), ((peers[i].column)+1), findNumberToEliminate);    
-              // if(getSquareHasReturnValue == 1){
-                // if((row - 1) == peers[i].row && (column - 1) == peers[i].column){
-                  // squareSetNumber(storeFixValue,findNumberToEliminate);
-                // }else{
-                  // int *value2 = getSquare(squares,((peers[i].row)+1),((peers[i].column)+1));
-                  // squareDelNumber(value2,findNumberToEliminate);
-                  // storeSquareValue = *value2;
-                  // if(storeSquareValue == 0){
-                    // printf("Throw");
-                  // }else{
-                    // if(squareContainOneNumbers(squares,((peers[i].row)+1),((peers[i].column)+1))){
-                      // eliminateNumberFromPeers(squares, peers, row, column, storeSquareValue);
-                    // }else{
-                      // goto here;
-                    // }
-                  // }
-                // }
-              // }
-            
-        // }
 }
         
 
