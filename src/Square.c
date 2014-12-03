@@ -135,13 +135,11 @@ void eliminateNumberFromPeers(int squares[9][9], Square *peers, int row, int col
                   int *value2 = getSquare(squares,((peers[i].row)+1),((peers[i].column)+1));
                   squareDelNumber(value2,decimalValue);
                   int value1 = *value2;
-                  // printf("%d \n",value1);
                   if(value1 == 0){
-                     // printf("Throw \n");
                   }else if(squareContainOneNumbers(squares,((peers[i].row)+1),((peers[i].column)+1)) == 1){
-                    eliminateNumberFromAllPeers(squares,peers[i].row,peers[i].column,value1);
+                    int value2 = checkBinaryValue(value1);
+                    eliminateNumberFromAllPeers(squares,peers[i].row,peers[i].column,value2);
                   }
-                   printf("%d \n",value1);
                 }
               }
           }
