@@ -35,13 +35,12 @@ void initColPeers(Square columnPeers[9][9][9]);
 void initBoxPeers(Square boxPeers[9][9][9]);
 int getBeginningIndex(int index);
 
-void eliminateNumberFromAllPeers(int squares[9][9],int row,int column,int value);
-void eliminateNumberFromPeers(int squares[9][9],Square *peers,int row,int column,int findNumberToEliminate);
-int squareHas(int squares[9][9],int row,int column,int setValue);
-int squareContainOneNumbers(int square[9][9],int row,int column);
-int squareContainTwoNumbers(int square[9][9],int row,int column);
+void eliminateNumberFromAllPeers(int squares[9][9], int row, int column, int value);
+void eliminateNumberFromPeers(int squares[9][9], Square *peers, int row, int column, int findNumberToEliminate);
+int squareHas(int squares[9][9], int row, int column, int setValue);
+int squareContainOneNumbers(int square[9][9], int row, int column);
+int squareContainTwoNumbers(int square[9][9], int row, int column);
 int checkBinaryValue(int value);
-void findEliminateNumber(int squares[9][9], Square *peers, int row, int column, int findNumberToEliminate);
 
 #endif // Square_H
 
