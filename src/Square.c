@@ -100,22 +100,31 @@ int getBeginningIndex(int index){
     printf("out of range");
 }
 
+void eliminateNumberFromAllPeers(int squares[9][9],int row,int column,int value){
+    Square *peersRow = rowPeers[row][column];
+    eliminateNumberFromPeers(squares, peersRow, row, column, value);
+    
+ 
+ }
+
 
 void eliminateNumberFromPeers(int squares[9][9], Square *peers, int row, int column, int findNumberToEliminate){
   int i,c;  int storeSquareValue;
   int value;
   int decimalValue;
        
-       int value1 = squareHas(squares, row, column, findNumberToEliminate);
-       if((squareContainTwoNumbers(squares,row,column) == 1) && (value1 == 1)){
+        int value1 = squareHas(squares, row, column, findNumberToEliminate);
+        if((squareContainTwoNumbers(squares,row,column) == 1) && (value1 == 1)){
           int *storeFixValue = getSquare(squares,row,column);
           squareDelNumber(storeFixValue,findNumberToEliminate);
           value = *storeFixValue;
           decimalValue  = checkBinaryValue(value);
+        }else{
+          decimalValue = findNumberToEliminate;
         }
         
         
-          here:
+          
           for(i=0; i<9 ; i++){
               int getSquareHasReturnValue = squareHas(squares, ((peers[i].row)+1), ((peers[i].column)+1), decimalValue);
               if(getSquareHasReturnValue == 1){
@@ -125,20 +134,21 @@ void eliminateNumberFromPeers(int squares[9][9], Square *peers, int row, int col
                 }else{
                   int *value2 = getSquare(squares,((peers[i].row)+1),((peers[i].column)+1));
                   squareDelNumber(value2,decimalValue);
-                  decimalValue = *value2;
-                  // printf("%d \n",decimalValue);
-                  if(squareContainOneNumbers(squares,((peers[i].row)+1),((peers[i].column)+1)) == 1){
-                    decimalValue = checkBinaryValue(decimalValue);
-                    row = peers[i].row;
-                    column = peers[i].column;
-                    eliminateNumberFromPeers(squares,peers, row, column, decimalValue);
-                  }else{
-                    goto here;
+                  int value1 = *value2;
+                  // printf("%d \n",value1);
+                  if(value1 == 0){
+                     // printf("Throw \n");
+                  }else if(squareContainOneNumbers(squares,((peers[i].row)+1),((peers[i].column)+1)) == 1){
+                    eliminateNumberFromAllPeers(squares,peers[i].row,peers[i].column,value1);
                   }
+                   printf("%d \n",value1);
                 }
               }
           }
+              
 }
+                            
+
         
 
    
