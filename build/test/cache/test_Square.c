@@ -707,12 +707,18 @@ void test_eliminateNumberFromPeers_given_row_peers_should(void){
 
   UnityAssertEqualNumber((_U_SINT)((8)), (_U_SINT)((square[1][1])), (((void *)0)), (_U_UINT)356, UNITY_DISPLAY_STYLE_INT);
 
-
+  UnityAssertEqualNumber((_U_SINT)((256)), (_U_SINT)((square[2][1])), (((void *)0)), (_U_UINT)357, UNITY_DISPLAY_STYLE_INT);
 
   UnityAssertEqualNumber((_U_SINT)((4)), (_U_SINT)((square[3][1])), (((void *)0)), (_U_UINT)358, UNITY_DISPLAY_STYLE_INT);
 
   UnityAssertEqualNumber((_U_SINT)((32)), (_U_SINT)((square[4][1])), (((void *)0)), (_U_UINT)359, UNITY_DISPLAY_STYLE_INT);
 
-  UnityAssertEqualNumber((_U_SINT)((256)), (_U_SINT)((square[5][1])), (((void *)0)), (_U_UINT)360, UNITY_DISPLAY_STYLE_INT);
+  UnityAssertEqualNumber((_U_SINT)((18)), (_U_SINT)((square[5][1])), (((void *)0)), (_U_UINT)360, UNITY_DISPLAY_STYLE_INT);
+
+  UnityAssertEqualNumber((_U_SINT)((4)), (_U_SINT)((square[6][1])), (((void *)0)), (_U_UINT)361, UNITY_DISPLAY_STYLE_INT);
+
+  UnityAssertEqualNumber((_U_SINT)((1)), (_U_SINT)((square[7][1])), (((void *)0)), (_U_UINT)362, UNITY_DISPLAY_STYLE_INT);
+
+  UnityAssertEqualNumber((_U_SINT)((2)), (_U_SINT)((square[8][1])), (((void *)0)), (_U_UINT)363, UNITY_DISPLAY_STYLE_INT);
 
 }

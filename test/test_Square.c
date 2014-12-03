@@ -352,15 +352,15 @@ void test_eliminateNumberFromPeers_given_row_peers_should(void){
   int value;
   Square *row = rowPeers[1][1];
   eliminateNumberFromPeers(square,row,2,2,6);
-  // TEST_ASSERT_EQUAL(6,square[0][1]);
-  // TEST_ASSERT_EQUAL(8,square[1][1]);
-  // TEST_ASSERT_EQUAL(256,square[2][1]);
-  // TEST_ASSERT_EQUAL(4,square[3][1]);
-  // TEST_ASSERT_EQUAL(32,square[4][1]);
-  // TEST_ASSERT_EQUAL(256,square[5][1]);
-  // TEST_ASSERT_EQUAL(1,square[6][1]);
-  // TEST_ASSERT_EQUAL(4,square[7][1]);
-  // TEST_ASSERT_EQUAL(8,square[8][1]);
+  TEST_ASSERT_EQUAL(6,square[0][1]);
+  TEST_ASSERT_EQUAL(8,square[1][1]);
+  TEST_ASSERT_EQUAL(256,square[2][1]);
+  TEST_ASSERT_EQUAL(4,square[3][1]);
+  TEST_ASSERT_EQUAL(32,square[4][1]);
+  TEST_ASSERT_EQUAL(18,square[5][1]);
+  TEST_ASSERT_EQUAL(4,square[6][1]);
+  TEST_ASSERT_EQUAL(1,square[7][1]);
+  TEST_ASSERT_EQUAL(2,square[8][1]);
   
   // Square *column = columnPeers[1][1];
   // eliminateNumberFromPeers(square,column,2,2,6);

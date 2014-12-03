@@ -102,7 +102,7 @@ int getBeginningIndex(int index){
 
 void eliminateNumberFromAllPeers(int squares[9][9],int row,int column,int value){
     Square *peersRow = rowPeers[row][column];
-    eliminateNumberFromPeers(squares, peersRow, row, column, value);
+    eliminateNumberFromPeers(squares, peersRow, (row+1), (column+1), value);
     
  
  }
