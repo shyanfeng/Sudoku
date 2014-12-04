@@ -41,6 +41,7 @@ void eliminateNumberFromPeers(int squares[9][9], Square *peers, int row, int col
 int squareHas(int squares[9][9], int row, int column, int setValue);
 int squareContainOneNumbers(int square[9][9], int row, int column);
 int squareContainTwoNumbers(int square[9][9], int row, int column);
+int squareContainNumbers(int square[9][9], int row, int column);
 int checkBinaryValue(int value);
 void duplicateSquares(int squares[9][9], int dupSquares[9][9]);
 int isSudokuSolved(int squares[9][9]);

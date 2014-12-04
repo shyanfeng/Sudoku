@@ -60,7 +60,6 @@ extern void test_eliminateNumberFromAllPeers_with_3_recursive(void);
 extern void test_duplicateSquares(void);
 extern void test_isSudokuSolve_return_1_all_square_contain_one_number(void);
 extern void test_isSudokuSolve_return_0_one_square_contain_two_number(void);
-extern void test_bruteForce(void);
 
 
 //=======Test Reset Option=====
@@ -102,7 +101,6 @@ int main(void)
   RUN_TEST(test_duplicateSquares, 474);
   RUN_TEST(test_isSudokuSolve_return_1_all_square_contain_one_number, 522);
   RUN_TEST(test_isSudokuSolve_return_0_one_square_contain_two_number, 538);
-  RUN_TEST(test_bruteForce, 554);
 
   return (UnityEnd());
 }

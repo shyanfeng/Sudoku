@@ -1097,11 +1097,3 @@ void test_isSudokuSolve_return_0_one_square_contain_two_number(void){
   UnityAssertEqualNumber((_U_SINT)((0)), (_U_SINT)((value)), (((void *)0)), (_U_UINT)551, UNITY_DISPLAY_STYLE_INT);
 
 }
-
-
-
-void test_bruteForce(void){
-
-
-
-}

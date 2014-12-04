@@ -173,21 +173,8 @@ int checkBinaryValue(int value){
 }
 
 int squareContainTwoNumbers(int square[9][9], int row, int column){
-  int i;   
-  int *value; 
-  value = getSquare(square, row, column);
-  int value1 = *value;
-  int temp1 = 0;
-    
-  for(i = 0; i < 9; i++){
-    int temp = value1 & 1;
-    if(temp == 1){
-      temp1 = temp1 + temp;
-    }
-    value1 = value1>>1;
-  } 
-    
-  int getValueFromTemp1 = temp1;  
+  int getValueFromTemp1;
+  getValueFromTemp1 = squareContainNumbers(square, row, column);  
 
   if(getValueFromTemp1 == 2){
     return 1;
@@ -197,6 +184,17 @@ int squareContainTwoNumbers(int square[9][9], int row, int column){
 }
 
 int squareContainOneNumbers(int square[9][9], int row, int column){
+  int getValueFromTemp1;
+  getValueFromTemp1 = squareContainNumbers(square, row, column);
+
+  if(getValueFromTemp1 == 1){
+    return 1;
+  }else{
+    return 0;
+  }  
+}
+
+int squareContainNumbers(int square[9][9], int row, int column){
   int i;   
   int *value; 
   value = getSquare(square, row, column);
@@ -212,12 +210,8 @@ int squareContainOneNumbers(int square[9][9], int row, int column){
   } 
     
   int getValueFromTemp1 = temp1;  
-
-  if(getValueFromTemp1 == 1){
-    return 1;
-  }else{
-    return 0;
-  }  
+  
+  return getValueFromTemp1;
 }
 
 int squareHas(int squares[9][9], int row, int column, int setValue){
@@ -271,6 +265,17 @@ int isSudokuSolved(int squares[9][9]){
 }
 
 void bruteForce(int squares[9][9]){
-
+  int r, c;
+  
+  for(r = 0; r < 9; r++){
+    for(c = 0; c < 9; c++){
+      
+    }
+  }
+  
+  
+  
+  
+  
 }
 
