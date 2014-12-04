@@ -550,11 +550,11 @@ void test_isSudokuSolve_return_0_one_square_contain_two_number(void){
   int value = isSudokuSolved(square);                 
   TEST_ASSERT_EQUAL(0,value);
 }
-/*
+
 void test_bruteForce(void){
-  int square[9][9] = {{C(1)|C(9),     C(9),           C(8)|C(7),      C(1), C(1), C(1), C(1), C(1), C(1)}, 
+  int square[9][9] = {{C(3)|C(7),     C(9),           C(8)|C(7),      C(1), C(1), C(1), C(1), C(1), C(1)}, 
                       {C(5)|C(7),     C(8)|C(4)|C(3), C(2)|C(3)|C(4), C(1), C(1), C(1), C(1), C(1), C(1)},
-                      {C(1)|C(8)|C(6),C(8)|C(3)|C(2), C(5)|C(9|C(7)), C(1), C(1), C(1), C(1), C(1), C(1)}, 
+                      {C(1)|C(8)|C(6),C(8)|C(3)|C(2), C(5)|C(9)|C(7), C(1), C(1), C(1), C(1), C(1), C(1)}, 
                       {C(1),          C(1),           C(1),           C(1), C(1), C(1), C(1), C(1), C(1)},  
                       {C(1),          C(1),           C(1),           C(1), C(1), C(1), C(1), C(1), C(1)},  
                       {C(1),          C(1),           C(1),           C(1), C(1), C(1), C(1), C(1), C(1)},  
@@ -562,4 +562,6 @@ void test_bruteForce(void){
                       {C(1),          C(1),           C(1),           C(1), C(1), C(1), C(1), C(1), C(1)},  
                       {C(1),          C(1),           C(1),           C(1), C(1), C(1), C(1), C(1), C(1)}, 
                      };
-}*/
+                     
+  bruteForce(square);
+}

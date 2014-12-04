@@ -266,10 +266,39 @@ int isSudokuSolved(int squares[9][9]){
 
 void bruteForce(int squares[9][9]){
   int r, c;
-  
+  int num = 0b00000001;
+  int checkForContainTwoNumber;
+  int *randomChooseOneNumber;
+  int i;
+  int f;
+   int b;
   for(r = 0; r < 9; r++){
     for(c = 0; c < 9; c++){
+      duplicateSquares(squares, dupSquares);
+      checkForContainTwoNumber = squareContainNumbers(squares, (r + 1), (c + 1));
+      if(checkForContainTwoNumber == 2){
+        //printf("r=%d, c=%d, containTwoNumber=%d\n", r, c, checkForContainTwoNumber);
+        randomChooseOneNumber = getSquare(squares, r + 1, c + 1);
+        int a = *randomChooseOneNumber;
       
+        for(i=0;i<9;i++){
+          f = a & num; 
+          if(f == 1){
+            b = checkBinaryValue(f);
+          }else if(f == 2){
+            b = checkBinaryValue(f);
+          }else if(f == 4){
+            b = checkBinaryValue(f);
+          }else if(f == 64){
+            b = checkBinaryValue(f);
+            int c =  f & a;
+          }else{
+             num = num<<i;
+          } 
+        }
+        
+        //eliminateNumberFromAllPeers(squares, r, c, );
+      }
     }
   }
   
