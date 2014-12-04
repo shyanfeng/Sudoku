@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include "Square.h"
 #include "ErrorCode.h"
+#include "CException.h"
 
 Square rowPeers[9][9][9];
 Square columnPeers[9][9][9];
@@ -127,7 +128,6 @@ void eliminateNumberFromPeers(int squares[9][9], Square *peers, int row, int col
     decimalValue = checkBinaryValue(*getSquare(squares, row, column));
   }
   
-  printf("%d \n",decimalValue);
   for(i = 0; i < 9; i++){
     int getSquareHasReturnValue = squareHas(squares, ((peers[i].row) + 1), ((peers[i].column) + 1), decimalValue);
     if(getSquareHasReturnValue == 1){
@@ -138,8 +138,10 @@ void eliminateNumberFromPeers(int squares[9][9], Square *peers, int row, int col
         int *value2 = getSquare(squares, ((peers[i].row) + 1), ((peers[i].column) + 1));
         squareDelNumber(value2, decimalValue);
         int value1 = *value2;
+        printf("%d\n", value1);
         if(value1 == 0){
-        
+          Throw(ERR_EMPTY_SQU);
+          printf("halo\n");
         }else if(squareContainOneNumbers(squares, ((peers[i].row) + 1), ((peers[i].column) + 1)) == 1){
           int value2 = checkBinaryValue(value1);
           eliminateNumberFromAllPeers(squares, ((peers[i].row) + 1), ((peers[i].column) + 1), value2);

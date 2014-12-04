@@ -55,6 +55,7 @@ extern void test_squareHas_does_not_have_same_number_return_0(void);
 extern void test_squareContainOneNumbers_has_more_than_1_number_return_0(void);
 extern void test_squareContainOneNumbers_has_one_value_return_1(void);
 extern void test_checkBinaryValue_return_number(void);
+extern void test_eliminateNumberFromAllPeers_with_2_recursive(void);
 extern void test_eliminateNumberFromAllPeers_with_3_recursive(void);
 
 
@@ -71,28 +72,29 @@ int main(void)
 {
   Unity.TestFile = "test_Square.c";
   UnityBegin();
-  RUN_TEST(test_getSquare_should_enter_column_2_row_1_and_return_2, 9);
-  RUN_TEST(test_getSquare_should_enter_column_6_row_4_and_return_7, 21);
-  RUN_TEST(test_squareSetNumber_should_enter_column_2_row_1_and_set_bit_3_2_1_4, 33);
-  RUN_TEST(test_squareSetNumber_should_enter_column_3_row_8_and_set_bit_4_2_6, 45);
-  RUN_TEST(test_squareSetNumber_should_enter_column_8_row_8_and_set_bit_2_7_8, 56);
-  RUN_TEST(test_squareDelNumber_should_enter_column_4_row_2_and_del_bit_5, 67);
-  RUN_TEST(test_squareDelNumber_should_enter_column_9_row_9_and_del_bit_6, 82);
-  RUN_TEST(test_squareDelNumber_should_enter_column_5_row_1_and_del_bit_2_4, 97);
-  RUN_TEST(test_removeOthersExcept_should_enter_column_4_row_2_and_remove_all_except_4, 113);
-  RUN_TEST(test_removeOthersExcept_should_enter_column_7_row_3_and_remove_all_except_4, 128);
-  RUN_TEST(test_isSquareContain_should_return_1_for_number_match_square, 143);
-  RUN_TEST(test_initRowPeers, 157);
-  RUN_TEST(test_initColPeers, 181);
-  RUN_TEST(test_getBeginningIndex, 205);
-  RUN_TEST(test_initBoxPeers, 219);
-  RUN_TEST(test_initBoxPeers_1, 243);
-  RUN_TEST(test_squareHas_has_same_number_return_1, 267);
-  RUN_TEST(test_squareHas_does_not_have_same_number_return_0, 283);
-  RUN_TEST(test_squareContainOneNumbers_has_more_than_1_number_return_0, 299);
-  RUN_TEST(test_squareContainOneNumbers_has_one_value_return_1, 315);
-  RUN_TEST(test_checkBinaryValue_return_number, 331);
-  RUN_TEST(test_eliminateNumberFromAllPeers_with_3_recursive, 413);
+  RUN_TEST(test_getSquare_should_enter_column_2_row_1_and_return_2, 10);
+  RUN_TEST(test_getSquare_should_enter_column_6_row_4_and_return_7, 22);
+  RUN_TEST(test_squareSetNumber_should_enter_column_2_row_1_and_set_bit_3_2_1_4, 34);
+  RUN_TEST(test_squareSetNumber_should_enter_column_3_row_8_and_set_bit_4_2_6, 46);
+  RUN_TEST(test_squareSetNumber_should_enter_column_8_row_8_and_set_bit_2_7_8, 57);
+  RUN_TEST(test_squareDelNumber_should_enter_column_4_row_2_and_del_bit_5, 68);
+  RUN_TEST(test_squareDelNumber_should_enter_column_9_row_9_and_del_bit_6, 83);
+  RUN_TEST(test_squareDelNumber_should_enter_column_5_row_1_and_del_bit_2_4, 98);
+  RUN_TEST(test_removeOthersExcept_should_enter_column_4_row_2_and_remove_all_except_4, 114);
+  RUN_TEST(test_removeOthersExcept_should_enter_column_7_row_3_and_remove_all_except_4, 129);
+  RUN_TEST(test_isSquareContain_should_return_1_for_number_match_square, 144);
+  RUN_TEST(test_initRowPeers, 158);
+  RUN_TEST(test_initColPeers, 182);
+  RUN_TEST(test_getBeginningIndex, 206);
+  RUN_TEST(test_initBoxPeers, 220);
+  RUN_TEST(test_initBoxPeers_1, 244);
+  RUN_TEST(test_squareHas_has_same_number_return_1, 268);
+  RUN_TEST(test_squareHas_does_not_have_same_number_return_0, 284);
+  RUN_TEST(test_squareContainOneNumbers_has_more_than_1_number_return_0, 300);
+  RUN_TEST(test_squareContainOneNumbers_has_one_value_return_1, 316);
+  RUN_TEST(test_checkBinaryValue_return_number, 332);
+  RUN_TEST(test_eliminateNumberFromAllPeers_with_2_recursive, 363);
+  RUN_TEST(test_eliminateNumberFromAllPeers_with_3_recursive, 423);
 
   return (UnityEnd());
 }
