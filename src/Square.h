@@ -43,6 +43,6 @@ int squareContainOneNumbers(int square[9][9], int row, int column);
 int squareContainTwoNumbers(int square[9][9], int row, int column);
 int checkBinaryValue(int value);
 int duplicateSquares(int squares, int dupSquare);
-
+int isSudokuSolve(int squares[9][9]);
 #endif // Square_H
 

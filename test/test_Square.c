@@ -470,7 +470,38 @@ void test_eliminateNumberFromAllPeers_with_3_recursive(void){
   TEST_ASSERT_EQUAL(1, square[5][0]);
   TEST_ASSERT_EQUAL(256, square[5][1]);
   TEST_ASSERT_EQUAL(4, square[5][2]);
-  
+}
+
+void test_isSudokuSolve_return_1_all_square_contain_one_number(void){
+    int square[9][9] = {{C(3), C(2), C(4), C(3), C(2), C(1), C(5), C(3),C(1)}, 
+                        {C(3), C(8), C(1), C(3), C(7), C(6), C(4), C(6),C(5)},
+                        {C(3), C(2), C(5), C(3), C(7), C(6), C(4), C(3),C(1)}, 
+                        {C(3), C(3), C(1), C(3), C(7), C(6), C(4), C(1),C(6)}, 
+                        {C(3), C(1), C(7), C(3), C(7), C(6), C(4), C(2),C(8)}, 
+                        {C(3), C(9), C(8), C(3), C(7), C(6), C(2), C(3),C(9)}, 
+                        {C(3), C(8), C(4), C(3), C(7), C(6), C(1), C(5),C(7)}, 
+                        {C(3), C(8), C(5), C(3), C(7), C(5), C(3), C(8),C(3)}, 
+                        {C(3), C(7), C(6), C(3), C(7), C(5), C(5), C(5),C(5)}, 
+                     };
+                     
+    int value = isSudokuSolve(square);                 
+    TEST_ASSERT_EQUAL(1,value);
+}
+
+void test_isSudokuSolve_return_0_one_square_contain_two_number(void){
+    int square[9][9] = {{C(3), C(2), C(4), C(3), C(2), C(1), C(5), C(3),C(1)}, 
+                        {C(3), C(8), C(1), C(3), C(7), C(6), C(4), C(6),C(5)},
+                        {C(3), C(2), C(5), C(3)|C(2), C(7), C(6), C(4), C(3),C(1)}, 
+                        {C(3), C(3), C(1), C(3), C(7), C(6), C(4), C(1),C(6)}, 
+                        {C(3), C(1), C(7), C(3), C(7), C(6), C(4), C(2),C(8)}, 
+                        {C(3), C(9), C(8), C(3), C(7), C(6), C(2), C(3),C(9)}, 
+                        {C(3), C(8), C(4), C(3), C(7), C(6), C(1), C(5),C(7)}, 
+                        {C(3), C(8), C(5), C(3), C(7), C(5), C(3), C(8),C(3)}, 
+                        {C(3), C(7), C(6), C(3), C(7), C(5), C(5), C(5),C(5)}, 
+                     };
+                     
+    int value = isSudokuSolve(square);                 
+    TEST_ASSERT_EQUAL(0,value);
 }
 
 
