@@ -252,3 +252,21 @@ void duplicateSquares(int squares[9][9], int dupSquares[9][9]){
 
 }
 
+int isSudokuSolved(int squares[9][9]){
+  int r,c;
+  int value = 0;
+  int temp = 0x01;
+  for(r = 0; r < 9 ; r++){
+    for(c = 0; c < 9 ; c++){
+      value = squareContainOneNumbers(squares,(r)+1,(c)+1);   
+      temp  = value & temp;
+    }
+  }
+      if(temp == 1){
+        return 1;
+      }else{
+        return 0;
+      }
+
+}
+
