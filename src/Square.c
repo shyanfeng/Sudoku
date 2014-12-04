@@ -5,6 +5,7 @@
 Square rowPeers[9][9][9];
 Square columnPeers[9][9][9];
 Square boxPeers[9][9][9];
+Square dupSquares[9][9];
 
 void clearSquares(int square[9][9]){
   int i,j;
@@ -100,10 +101,13 @@ int getBeginningIndex(int index){
 }
 
 void eliminateNumberFromAllPeers(int squares[9][9], int row, int column, int value){
-  Square *peersRow = rowPeers[row][column];
-  Square *peersColumn = columnPeers[row][column];
-  eliminateNumberFromPeers(squares, peersRow, (row + 1), (column + 1), value);
-  eliminateNumberFromPeers(squares, peersColumn, (row + 1), (column + 1), value);
+  Square *peersRow = rowPeers[row - 1][column - 1];
+  Square *peersColumn = columnPeers[row - 1][column - 1];
+  Square *peersBox = boxPeers[row - 1][column - 1];
+
+  eliminateNumberFromPeers(squares, peersRow, row, column, value);
+  eliminateNumberFromPeers(squares, peersColumn, row, column, value);
+  eliminateNumberFromPeers(squares, peersBox, row, column, value);
 
  }
 
@@ -120,23 +124,24 @@ void eliminateNumberFromPeers(int squares[9][9], Square *peers, int row, int col
     value = *storeFixValue;
     decimalValue  = checkBinaryValue(value);
   }else{
-    decimalValue = findNumberToEliminate;
+    decimalValue = checkBinaryValue(*getSquare(squares, row, column));
   }
 
-  for(i=0; i<9 ; i++){
-    int getSquareHasReturnValue = squareHas(squares, ((peers[i].row)+1), ((peers[i].column)+1), decimalValue);
+  for(i = 0; i < 9; i++){
+    int getSquareHasReturnValue = squareHas(squares, ((peers[i].row) + 1), ((peers[i].column) + 1), decimalValue);
     if(getSquareHasReturnValue == 1){
       if((row - 1) == peers[i].row && (column - 1) == peers[i].column){
-        int *value2 = getSquare(squares, ((peers[i].row)+1), ((peers[i].column) + 1));
+        int *value2 = getSquare(squares, ((peers[i].row) + 1), ((peers[i].column) + 1));
         squareSetNumber(value2, decimalValue);
       }else{
-        int *value2 = getSquare(squares, ((peers[i].row)+1), ((peers[i].column) + 1));
+        int *value2 = getSquare(squares, ((peers[i].row) + 1), ((peers[i].column) + 1));
         squareDelNumber(value2, decimalValue);
         int value1 = *value2;
         if(value1 == 0){
-        }else if(squareContainOneNumbers(squares, ((peers[i].row)+1), ((peers[i].column)+1)) == 1){
+        
+        }else if(squareContainOneNumbers(squares, ((peers[i].row) + 1), ((peers[i].column) + 1)) == 1){
           int value2 = checkBinaryValue(value1);
-          eliminateNumberFromAllPeers(squares, peers[i].row, peers[i].column, value2);
+          eliminateNumberFromAllPeers(squares, ((peers[i].row) + 1), ((peers[i].column) + 1), value2);
         }
       }
     }
@@ -235,6 +240,9 @@ int squareHas(int squares[9][9], int row, int column, int setValue){
   }
 }
 
+int duplicateSquares(int squares, int dupSquare){
+
+}
 
     
   
