@@ -71,13 +71,13 @@ void initBoxPeers(Square boxPeers[9][9][9]){
   int r, c, rowStart, colStart, row, col;
   int i, j;
   
-  for(r = 0; r < 3; r++){
-    for(c = 0; c < 3; c++){
+  for(r = 0; r < 9; r++){
+    for(c = 0; c < 9; c++){
       int p = 0;
         rowStart = getBeginningIndex(r);
         colStart = getBeginningIndex(c);   
-        for(row = rowStart; row < (rowStart+3) ;row++){
-          for(col = colStart; col< (colStart+3) ;col++){
+        for(row = rowStart; row < (rowStart + 3) ;row++){
+          for(col = colStart; col< (colStart + 3) ;col++){
            
             boxPeers[r][c][p].row = row;
             boxPeers[r][c][p++].column = col;
@@ -126,7 +126,8 @@ void eliminateNumberFromPeers(int squares[9][9], Square *peers, int row, int col
   }else{
     decimalValue = checkBinaryValue(*getSquare(squares, row, column));
   }
-
+  
+  printf("%d \n",decimalValue);
   for(i = 0; i < 9; i++){
     int getSquareHasReturnValue = squareHas(squares, ((peers[i].row) + 1), ((peers[i].column) + 1), decimalValue);
     if(getSquareHasReturnValue == 1){
