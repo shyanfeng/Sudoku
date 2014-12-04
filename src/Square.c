@@ -138,10 +138,8 @@ void eliminateNumberFromPeers(int squares[9][9], Square *peers, int row, int col
         int *value2 = getSquare(squares, ((peers[i].row) + 1), ((peers[i].column) + 1));
         squareDelNumber(value2, decimalValue);
         int value1 = *value2;
-        printf("%d\n", value1);
         if(value1 == 0){
           Throw(ERR_EMPTY_SQU);
-          printf("halo\n");
         }else if(squareContainOneNumbers(squares, ((peers[i].row) + 1), ((peers[i].column) + 1)) == 1){
           int value2 = checkBinaryValue(value1);
           eliminateNumberFromAllPeers(squares, ((peers[i].row) + 1), ((peers[i].column) + 1), value2);
@@ -241,6 +239,24 @@ int squareHas(int squares[9][9], int row, int column, int setValue){
   }else{
     return 0;
   }
+}
+
+int isSudokuSolve(int squares[9][9]){
+  int r,c;
+  int value = 0;
+  int temp = 0x01;
+  for(r = 0; r < 9 ; r++){
+    for(c = 0; c < 9 ; c++){
+      value = squareContainOneNumbers(squares,(r)+1,(c)+1);   
+      temp  = value & temp;
+    }
+  }
+      if(temp == 1){
+        return 1;
+      }else{
+        return 0;
+      }
+
 }
 
 int duplicateSquares(int squares, int dupSquare){
