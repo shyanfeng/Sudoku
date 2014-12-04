@@ -57,6 +57,7 @@ extern void test_squareContainOneNumbers_has_one_value_return_1(void);
 extern void test_checkBinaryValue_return_number(void);
 extern void test_eliminateNumberFromAllPeers_with_2_recursive(void);
 extern void test_eliminateNumberFromAllPeers_with_3_recursive(void);
+extern void test_duplicateSquares(void);
 
 
 //=======Test Reset Option=====
@@ -94,7 +95,8 @@ int main(void)
   RUN_TEST(test_squareContainOneNumbers_has_one_value_return_1, 316);
   RUN_TEST(test_checkBinaryValue_return_number, 332);
   RUN_TEST(test_eliminateNumberFromAllPeers_with_2_recursive, 363);
-  RUN_TEST(test_eliminateNumberFromAllPeers_with_3_recursive, 423);
+  RUN_TEST(test_eliminateNumberFromAllPeers_with_3_recursive, 421);
+  RUN_TEST(test_duplicateSquares, 474);
 
   return (UnityEnd());
 }

@@ -21,7 +21,7 @@ struct Square {
 extern Square rowPeers[9][9][9];
 extern Square columnPeers[9][9][9];
 extern Square boxPeers[9][9][9];
-extern Square dupSquares[9][9];
+extern int dupSquares[9][9];
 
 void clearSquares(int square[9][9]);
 
@@ -42,7 +42,7 @@ int squareHas(int squares[9][9], int row, int column, int setValue);
 int squareContainOneNumbers(int square[9][9], int row, int column);
 int squareContainTwoNumbers(int square[9][9], int row, int column);
 int checkBinaryValue(int value);
-int duplicateSquares(int squares, int dupSquare);
+void duplicateSquares(int squares[9][9], int dupSquares[9][9]);
 
 #endif // Square_H
 

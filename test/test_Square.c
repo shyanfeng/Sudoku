@@ -377,9 +377,7 @@ void test_eliminateNumberFromAllPeers_with_2_recursive(void){
                      };  
     
   int e;
-  // eliminateNumberFromAllPeers(square, 2, 2, 6);
 
-  
   Try{
     eliminateNumberFromAllPeers(square, 2, 2, 6);
   }Catch(e){
@@ -422,14 +420,14 @@ void test_eliminateNumberFromAllPeers_with_2_recursive(void){
 
 void test_eliminateNumberFromAllPeers_with_3_recursive(void){
 
-                       // 0    1                2                    3     4           5           6      7    8
+                       // 0         1                2               3     4           5           6      7    8
   int square[9][9] = {{C(2),      C(2)|C(4)|C(3),  C(7),           C(1), C(1),       C(1),       C(1), C(1), C(1)}, //0 
                       {C(9),      C(8)|C(4)|C(2),  C(2)|C(5)|C(6), C(1), C(1),       C(1),       C(1), C(1), C(1)}, //1
                       {C(1),      C(9)|C(4),       C(3)|C(5)|C(8), C(3), C(1),       C(1),       C(1), C(1), C(1)}, //2
                       
                       {C(1),      C(6),            C(6)|C(4),      C(1), C(1),       C(1),       C(1), C(1), C(1)}, //3
                       {C(5)|C(3), C(6),            C(8)|C(2),      C(1), C(1),       C(1),       C(1), C(1), C(1)}, //4
-                      {C(1),      C(9)|C(3),       C(2)|C(3),      C(1), C(1),       C(1),       C(1), C(1), C(1)}, //5 eli
+                      {C(1),      C(9)|C(3),       C(2)|C(3),      C(1), C(1),       C(1),       C(1), C(1), C(1)}, //5 
                       
                       {C(1),      C(1),            C(1)|C(2)|C(7), C(1), C(1),       C(1),       C(1), C(1), C(1)}, //6
                       {C(1),      C(1),            C(1)|C(4),      C(1), C(1),       C(1),       C(1), C(1), C(1)}, //7
@@ -473,5 +471,52 @@ void test_eliminateNumberFromAllPeers_with_3_recursive(void){
   
 }
 
+void test_duplicateSquares(void){
+                       // 0    1                2           3         4           5               6      7    8
+  int square[9][9] = {{C(3), C(2)|C(4)|C(3),  C(6),       C(1),      C(1),       C(8),           C(9), C(2),C(1)}, //0 
+                      {C(2), C(6)|C(4),       C(2)|C(3),  C(1),      C(8)|C(4),  C(5)|C(3)|C(1), C(6), C(7),C(3)}, //1
+                      {C(1), C(9)|C(4),       C(3),       C(3),      C(2),       C(1),           C(1), C(1),C(1)}, //2
+                      
+                      {C(1), C(3),            C(1),       C(1),      C(4),       C(1),           C(1), C(1),C(1)}, //3
+                      {C(7), C(6),            C(1),       C(1),      C(5),       C(1),           C(1), C(1),C(1)}, //4
+                      {C(8), C(9)|C(5)|C(2),  C(1),       C(5)|C(3), C(6),       C(1),           C(1), C(1),C(1)}, //5
+                      
+                      {C(1), C(3),            C(1),       C(1),      C(2)|C(5),  C(1),           C(1), C(1),C(1)}, //6
+                      {C(9), C(1),            C(1),       C(1),      C(2)|C(7),  C(1),           C(1), C(1),C(1)}, //7
+                      {C(1), C(2),            C(1),       C(1),      C(3),       C(1),           C(1), C(1),C(1)}, //8
+                     };  
+                     
+  duplicateSquares(square, dupSquares);
+  
+  TEST_ASSERT_EQUAL(4, dupSquares[0][0]);
+  TEST_ASSERT_EQUAL(14, dupSquares[0][1]);
+  TEST_ASSERT_EQUAL(32, dupSquares[0][2]);
+  TEST_ASSERT_EQUAL(1, dupSquares[0][3]);
+  TEST_ASSERT_EQUAL(1, dupSquares[0][4]);
+  TEST_ASSERT_EQUAL(128, dupSquares[0][5]);
+  TEST_ASSERT_EQUAL(256, dupSquares[0][6]);
+  TEST_ASSERT_EQUAL(2, dupSquares[0][7]);
+  TEST_ASSERT_EQUAL(1, dupSquares[0][8]);
+  
+  TEST_ASSERT_EQUAL(4, dupSquares[0][0]);
+  TEST_ASSERT_EQUAL(2, dupSquares[1][0]);
+  TEST_ASSERT_EQUAL(1, dupSquares[2][0]);
+  TEST_ASSERT_EQUAL(1, dupSquares[3][0]);
+  TEST_ASSERT_EQUAL(64, dupSquares[4][0]);
+  TEST_ASSERT_EQUAL(128, dupSquares[5][0]);
+  TEST_ASSERT_EQUAL(1, dupSquares[6][0]);
+  TEST_ASSERT_EQUAL(256, dupSquares[7][0]);
+  TEST_ASSERT_EQUAL(1, dupSquares[8][0]);
+  
+  TEST_ASSERT_EQUAL(1, dupSquares[0][4]);
+  TEST_ASSERT_EQUAL(136, dupSquares[1][4]);
+  TEST_ASSERT_EQUAL(2, dupSquares[2][4]);
+  TEST_ASSERT_EQUAL(8, dupSquares[3][4]);
+  TEST_ASSERT_EQUAL(16, dupSquares[4][4]);
+  TEST_ASSERT_EQUAL(32, dupSquares[5][4]);
+  TEST_ASSERT_EQUAL(18, dupSquares[6][4]);
+  TEST_ASSERT_EQUAL(66, dupSquares[7][4]);
+  TEST_ASSERT_EQUAL(4, dupSquares[8][4]);
+}
 
 

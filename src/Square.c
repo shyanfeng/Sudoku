@@ -6,7 +6,7 @@
 Square rowPeers[9][9][9];
 Square columnPeers[9][9][9];
 Square boxPeers[9][9][9];
-Square dupSquares[9][9];
+int dupSquares[9][9];
 
 void clearSquares(int square[9][9]){
   int i,j;
@@ -181,7 +181,7 @@ int squareContainTwoNumbers(int square[9][9], int row, int column){
   int value1 = *value;
   int temp1 = 0;
     
-  for(i=0; i<9; i++){
+  for(i = 0; i < 9; i++){
     int temp = value1 & 1;
     if(temp == 1){
       temp1 = temp1 + temp;
@@ -205,7 +205,7 @@ int squareContainOneNumbers(int square[9][9], int row, int column){
   int value1 = *value;
   int temp1 = 0;
     
-  for(i=0; i<9; i++){
+  for(i = 0; i < 9; i++){
     int temp = value1 & 1;
     if(temp == 1){
       temp1 = temp1 + temp;
@@ -243,10 +243,14 @@ int squareHas(int squares[9][9], int row, int column, int setValue){
   }
 }
 
-int duplicateSquares(int squares, int dupSquare){
+void duplicateSquares(int squares[9][9], int dupSquares[9][9]){
+  int r, c;
+  
+  for(r = 0; r < 9; r++){
+    for(c = 0; c < 9; c++){
+      dupSquares[r][c] = squares[r][c];
+    }
+  }
 
 }
 
-    
-  
-    
