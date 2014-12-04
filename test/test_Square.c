@@ -550,3 +550,7 @@ void test_isSudokuSolve_return_0_one_square_contain_two_number(void){
   int value = isSudokuSolved(square);                 
   TEST_ASSERT_EQUAL(0,value);
 }
+
+void test_bruteForce(void){
+
+}

@@ -270,3 +270,7 @@ int isSudokuSolved(int squares[9][9]){
 
 }
 
+void bruteForce(int squares[9][9]){
+
+}
+
