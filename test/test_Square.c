@@ -362,7 +362,7 @@ void test_checkBinaryValue_return_number(void){
 
 void test_eliminateNumberFromAllPeers_with_2_recursive(void){
 
-                       // 0    1                2           3     4           5     6      7    8
+                       // 0    1                2           3     4           5               6     7    8
   int square[9][9] = {{C(3), C(2)|C(4)|C(3),  C(6),       C(1), C(1),       C(8),           C(9), C(2),C(1)}, //0 
                       {C(2), C(6)|C(4),       C(2)|C(3),  C(1), C(8)|C(4),  C(5)|C(3)|C(1), C(6), C(7),C(3)}, //1
                       {C(1), C(9)|C(4),       C(3),       C(3), C(2),       C(1),           C(1), C(1),C(1)}, //2
@@ -376,13 +376,13 @@ void test_eliminateNumberFromAllPeers_with_2_recursive(void){
                       {C(1), C(2),            C(1),       C(1), C(2),       C(1),           C(1), C(1),C(1)}, //8
                      };  
     
-  int e;
+  ErrorCode e;
 
   Try{
     eliminateNumberFromAllPeers(square, 2, 2, 6);
   }Catch(e){
-    TEST_ASSERT_EQUAL(1, ERR_EMPTY_SQU);
-      //row
+  TEST_ASSERT_EQUAL(ERR_EMPTY_SQU, e);
+  //row
   TEST_ASSERT_EQUAL(6, square[0][1]);
   TEST_ASSERT_EQUAL(8, square[1][1]);
   TEST_ASSERT_EQUAL(256, square[2][1]);
@@ -399,7 +399,7 @@ void test_eliminateNumberFromAllPeers_with_2_recursive(void){
   TEST_ASSERT_EQUAL(6, square[1][2]);
   TEST_ASSERT_EQUAL(1, square[1][3]);
   TEST_ASSERT_EQUAL(128, square[1][4]);
-  // TEST_ASSERT_EQUAL(16, square[1][5]);
+  TEST_ASSERT_EQUAL(21, square[1][5]);
   TEST_ASSERT_EQUAL(32, square[1][6]);
   TEST_ASSERT_EQUAL(64, square[1][7]);
   TEST_ASSERT_EQUAL(4, square[1][8]);
@@ -551,9 +551,9 @@ void test_isSudokuSolve_return_0_one_square_contain_two_number(void){
   TEST_ASSERT_EQUAL(0,value);
 }
 
-void test_bruteForce(void){
-  int square[9][9] = {{C(3)|C(7),     C(9),           C(8)|C(7),      C(1), C(1), C(1), C(1), C(1), C(1)}, 
-                      {C(5)|C(7),     C(8)|C(4)|C(3), C(2)|C(3)|C(4), C(1), C(1), C(1), C(1), C(1), C(1)},
+void xtest_bruteForce(void){
+  int square[9][9] = {{C(3)|C(7),     C(7),           C(8)/*|C(7)*/,      C(1), C(1), C(1), C(1), C(1), C(1)}, 
+                      {C(5)/*|C(7)*/,     C(8)|C(4)|C(3), C(2)|C(3)|C(4), C(1), C(1), C(1), C(1), C(1), C(1)},
                       {C(1)|C(8)|C(6),C(8)|C(3)|C(2), C(5)|C(9)|C(7), C(1), C(1), C(1), C(1), C(1), C(1)}, 
                       {C(1),          C(1),           C(1),           C(1), C(1), C(1), C(1), C(1), C(1)},  
                       {C(1),          C(1),           C(1),           C(1), C(1), C(1), C(1), C(1), C(1)},  
@@ -564,4 +564,23 @@ void test_bruteForce(void){
                      };
                      
   bruteForce(square);
+}
+
+void test_try_for_bruteForce(void){
+  int square[9][9] = {{C(3), C(2)|C(4)|C(3),  C(6),       C(1), C(1),       C(8),           C(9), C(2),C(1)}, //0 
+                      {C(2), C(6)|C(4),       C(2)|C(3),  C(1), C(8)|C(4),  C(5)|C(3)|C(1), C(6), C(7),C(3)}, //1
+                      {C(1), C(9)|C(4),       C(3),       C(3), C(2),       C(1),           C(1), C(1),C(1)}, //2
+                      
+                      {C(1), C(3),            C(1),       C(1), C(2),       C(1),           C(1), C(1),C(1)}, //3
+                      {C(1), C(6),            C(1),       C(1), C(2),       C(1),           C(1), C(1),C(1)}, //4
+                      {C(1), C(9)|C(5)|C(2),  C(1),       C(1), C(2),       C(1),           C(1), C(1),C(1)}, //5
+                      
+                      {C(1), C(3),            C(1),       C(1), C(2),       C(1),           C(1), C(1),C(1)}, //6
+                      {C(1), C(1),            C(1),       C(1), C(2),       C(1),           C(1), C(1),C(1)}, //7
+                      {C(1), C(2),            C(1),       C(1), C(2),       C(1),           C(1), C(1),C(1)}, //8
+                     }; 
+                     
+  bruteForce(square);
+  
+  // TEST_ASSERT_EQUAL(6, square[1][2]);
 }

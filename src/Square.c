@@ -3,6 +3,9 @@
 #include "ErrorCode.h"
 #include "CException.h"
 
+#define getActualRowForPeers ((peers[i].row) + 1)
+#define getActualColumnForPeers ((peers[i].column) + 1)
+
 Square rowPeers[9][9][9];
 Square columnPeers[9][9][9];
 Square boxPeers[9][9][9];
@@ -129,20 +132,21 @@ void eliminateNumberFromPeers(int squares[9][9], Square *peers, int row, int col
   }
   
   for(i = 0; i < 9; i++){
-    int getSquareHasReturnValue = squareHas(squares, ((peers[i].row) + 1), ((peers[i].column) + 1), decimalValue);
+    int getSquareHasReturnValue = squareHas(squares, getActualRowForPeers, getActualColumnForPeers, decimalValue);
     if(getSquareHasReturnValue == 1){
       if((row - 1) == peers[i].row && (column - 1) == peers[i].column){
-        int *value2 = getSquare(squares, ((peers[i].row) + 1), ((peers[i].column) + 1));
+        int *value2 = getSquare(squares, getActualRowForPeers, getActualColumnForPeers);
         squareSetNumber(value2, decimalValue);
       }else{
-        int *value2 = getSquare(squares, ((peers[i].row) + 1), ((peers[i].column) + 1));
+        int *value2 = getSquare(squares, getActualRowForPeers, getActualColumnForPeers);
         squareDelNumber(value2, decimalValue);
         int value1 = *value2;
         if(value1 == 0){
+          // printf("halo");
           Throw(ERR_EMPTY_SQU);
-        }else if(squareContainOneNumbers(squares, ((peers[i].row) + 1), ((peers[i].column) + 1)) == 1){
+        }else if(squareContainOneNumbers(squares, getActualRowForPeers, getActualColumnForPeers) == 1){
           int value2 = checkBinaryValue(value1);
-          eliminateNumberFromAllPeers(squares, ((peers[i].row) + 1), ((peers[i].column) + 1), value2);
+          eliminateNumberFromAllPeers(squares, getActualRowForPeers, getActualColumnForPeers, value2);
         }
       }
     }
@@ -266,45 +270,42 @@ int isSudokuSolved(int squares[9][9]){
 
 void bruteForce(int squares[9][9]){
   int r, c;
-  int num = 0b00000001;
+  int num = 0x01;;
   int checkForContainTwoNumber;
   int *randomChooseOneNumber;
+  int *backToDupSquares;
   int i;
   int f;
-   int b;
+  int b;
+  ErrorCode e;
   for(r = 0; r < 9; r++){
     for(c = 0; c < 9; c++){
-      duplicateSquares(squares, dupSquares);
       checkForContainTwoNumber = squareContainNumbers(squares, (r + 1), (c + 1));
+      // printf("r=%d, c=%d\n", r, c);
       if(checkForContainTwoNumber == 2){
-        //printf("r=%d, c=%d, containTwoNumber=%d\n", r, c, checkForContainTwoNumber);
         randomChooseOneNumber = getSquare(squares, r + 1, c + 1);
         int a = *randomChooseOneNumber;
-      
-        for(i=0;i<9;i++){
-          f = a & num; 
-          if(f == 1){
-            b = checkBinaryValue(f);
-          }else if(f == 2){
-            b = checkBinaryValue(f);
-          }else if(f == 4){
-            b = checkBinaryValue(f);
-          }else if(f == 64){
-            b = checkBinaryValue(f);
-            int c =  f & a;
-          }else{
-             num = num<<i;
-          } 
-        }
         
-        //eliminateNumberFromAllPeers(squares, r, c, );
+        for(i = 0; i < 9; i++){
+          f = a & num << i; 
+          duplicateSquares(squares, dupSquares);
+          if(f != 0){
+            b = checkBinaryValue(f);
+            Try{
+              eliminateNumberFromAllPeers(squares, r, c, b);
+              printf("%d\n",a);
+            }Catch(e){
+              // f = a & ~f;
+              backToDupSquares = getSquare(dupSquares, r + 1, c + 1);
+              a = *backToDupSquares;
+              // printf("%d\n", a);
+              
+            }
+          }
+          // printf("%d\n", f);
+        }
       }
     }
   }
-  
-  
-  
-  
-  
 }
 
