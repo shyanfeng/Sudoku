@@ -274,10 +274,14 @@ void bruteForce(int squares[9][9]){
   int checkForContainTwoNumber;
   int *randomChooseOneNumber;
   int *backToDupSquares;
+  int newA;
   int i;
   int f;
   int b;
   ErrorCode e;
+  
+  duplicateSquares(squares, dupSquares);
+  
   for(r = 0; r < 9; r++){
     for(c = 0; c < 9; c++){
       checkForContainTwoNumber = squareContainNumbers(squares, (r + 1), (c + 1));
@@ -288,18 +292,21 @@ void bruteForce(int squares[9][9]){
         
         for(i = 0; i < 9; i++){
           f = a & num << i; 
-          duplicateSquares(squares, dupSquares);
           if(f != 0){
             b = checkBinaryValue(f);
             Try{
               eliminateNumberFromAllPeers(squares, r, c, b);
-              printf("%d\n",a);
             }Catch(e){
-              // f = a & ~f;
               backToDupSquares = getSquare(dupSquares, r + 1, c + 1);
-              a = *backToDupSquares;
-              // printf("%d\n", a);
+              newA = *backToDupSquares;
+              f = newA & ~f;
+              printf("%r = %d, c = %d, a = %d\n", r, c, a);
               
+            }
+            if(f == (a & (num << i))){
+              a = 0;
+            }else if(f == (newA & ~f)){
+              a = f;
             }
           }
           // printf("%d\n", f);
