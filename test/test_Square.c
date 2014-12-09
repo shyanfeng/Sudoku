@@ -553,9 +553,9 @@ void test_isSudokuSolve_return_0_one_square_contain_two_number(void){
 }
 
 void test_bruteForce(void){
-  int square[9][9] = {{C(3)|C(7),     C(7),           C(2)|C(7) ,  C(1), C(1), C(1), C(1), C(1), C(1)}, 
-                      {C(1)/*|C(7)*/, C(1),           C(1), C(1), C(1), C(1), C(1), C(1), C(1)},
-                      {C(1),          C(1),           C(1), C(1), C(1), C(1), C(1), C(1), C(1)}, 
+  int square[9][9] = {{C(3)|C(7),     C(5)|C(7),      C(2)|C(7),      C(7), C(1), C(1), C(1), C(1), C(1)}, 
+                      {C(1)/*|C(7)*/, C(1),           C(1),           C(1), C(1), C(1), C(1), C(1), C(1)},
+                      {C(1),          C(1),           C(1),           C(1), C(1), C(1), C(1), C(1), C(1)}, 
                       {C(1),          C(1),           C(1),           C(1), C(1), C(1), C(1), C(1), C(1)},  
                       {C(1),          C(1),           C(1),           C(1), C(1), C(1), C(1), C(1), C(1)},  
                       {C(1),          C(1),           C(1),           C(1), C(1), C(1), C(1), C(1), C(1)},  
@@ -567,7 +567,10 @@ void test_bruteForce(void){
   bruteForce(square);
   
   TEST_ASSERT_EQUAL(64, square[0][0]);
-  // TEST_ASSERT_EQUAL(64, square[0][1]);
+  TEST_ASSERT_EQUAL(16, square[0][1]);
+  TEST_ASSERT_EQUAL(2, square[0][2]);
+  TEST_ASSERT_EQUAL(0, square[0][3]);
+
 }
 /*
 void test_try_for_bruteForce(void){
