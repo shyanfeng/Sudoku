@@ -293,24 +293,21 @@ void bruteForce(int squares[9][9]){
           f = a & (num << i); 
           if(f != 0){
             b = checkBinaryValue(f);
-            // printf("f = %d\n", f);
             Try{
               eliminateNumberFromAllPeers(squares, (r + 1), (c + 1), b);
             }Catch(e){
-              // printf("f = %d\n", f);
               backToDupSquares = getSquare(dupSquares, r + 1, c + 1);
               newA = *backToDupSquares;
               f = newA & ~f;
-              // printf("a = %d", a);
               // printf("f = %d", f);
               
             }
-          // printf("%d\n", f);
             if(f == (a & (num << i))){
               a = 0;
+              printf("aaa");
             }else if(f == (newA & ~f)){
               a = f;
-              // printf("a = %d", a);
+              printf("bbb");
             }
           }
         }
