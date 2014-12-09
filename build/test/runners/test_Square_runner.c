@@ -60,7 +60,7 @@ extern void test_eliminateNumberFromAllPeers_with_3_recursive(void);
 extern void test_duplicateSquares(void);
 extern void test_isSudokuSolve_return_1_all_square_contain_one_number(void);
 extern void test_isSudokuSolve_return_0_one_square_contain_two_number(void);
-extern void test_try_for_bruteForce(void);
+extern void test_bruteForce(void);
 
 
 //=======Test Reset Option=====
@@ -98,11 +98,11 @@ int main(void)
   RUN_TEST(test_squareContainOneNumbers_has_one_value_return_1, 316);
   RUN_TEST(test_checkBinaryValue_return_number, 332);
   RUN_TEST(test_eliminateNumberFromAllPeers_with_2_recursive, 363);
-  RUN_TEST(test_eliminateNumberFromAllPeers_with_3_recursive, 421);
-  RUN_TEST(test_duplicateSquares, 474);
-  RUN_TEST(test_isSudokuSolve_return_1_all_square_contain_one_number, 522);
-  RUN_TEST(test_isSudokuSolve_return_0_one_square_contain_two_number, 538);
-  RUN_TEST(test_try_for_bruteForce, 569);
+  RUN_TEST(test_eliminateNumberFromAllPeers_with_3_recursive, 422);
+  RUN_TEST(test_duplicateSquares, 475);
+  RUN_TEST(test_isSudokuSolve_return_1_all_square_contain_one_number, 523);
+  RUN_TEST(test_isSudokuSolve_return_0_one_square_contain_two_number, 539);
+  RUN_TEST(test_bruteForce, 555);
 
   return (UnityEnd());
 }

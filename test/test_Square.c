@@ -418,6 +418,7 @@ void test_eliminateNumberFromAllPeers_with_2_recursive(void){
   
 }
 
+
 void test_eliminateNumberFromAllPeers_with_3_recursive(void){
 
                        // 0         1                2               3     4           5           6      7    8
@@ -551,8 +552,8 @@ void test_isSudokuSolve_return_0_one_square_contain_two_number(void){
   TEST_ASSERT_EQUAL(0,value);
 }
 
-void xtest_bruteForce(void){
-  int square[9][9] = {{C(3)|C(7),     C(7),           C(1)/*|C(7)*/,  C(1), C(1), C(1), C(1), C(1), C(1)}, 
+void test_bruteForce(void){
+  int square[9][9] = {{C(3)|C(7),     C(7),           C(2)|C(7) ,  C(1), C(1), C(1), C(1), C(1), C(1)}, 
                       {C(1)/*|C(7)*/, C(1),           C(1), C(1), C(1), C(1), C(1), C(1), C(1)},
                       {C(1),          C(1),           C(1), C(1), C(1), C(1), C(1), C(1), C(1)}, 
                       {C(1),          C(1),           C(1),           C(1), C(1), C(1), C(1), C(1), C(1)},  
@@ -564,8 +565,11 @@ void xtest_bruteForce(void){
                      };
                      
   bruteForce(square);
+  
+  TEST_ASSERT_EQUAL(64, square[0][0]);
+  // TEST_ASSERT_EQUAL(64, square[0][1]);
 }
-
+/*
 void test_try_for_bruteForce(void){
   int square[9][9] = {{C(3), C(2)|C(4)|C(3),  C(6),       C(1), C(1),       C(8),           C(9), C(2),C(1)}, //0 
                       {C(2), C(1)|C(4),       C(2)|C(3),  C(1), C(8)|C(4),  C(5)|C(3)|C(1), C(6), C(7),C(3)}, //1
@@ -582,4 +586,4 @@ void test_try_for_bruteForce(void){
                      
   bruteForce(square);
   
-}
+}*/

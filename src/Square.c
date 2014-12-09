@@ -285,32 +285,39 @@ void bruteForce(int squares[9][9]){
   for(r = 0; r < 9; r++){
     for(c = 0; c < 9; c++){
       checkForContainTwoNumber = squareContainNumbers(squares, (r + 1), (c + 1));
-      // printf("r=%d, c=%d\n", r, c);
       if(checkForContainTwoNumber == 2){
         randomChooseOneNumber = getSquare(squares, r + 1, c + 1);
         int a = *randomChooseOneNumber;
         
         for(i = 0; i < 9; i++){
-          f = a & num << i; 
+          f = a & (num << i); 
           if(f != 0){
             b = checkBinaryValue(f);
+            // printf("f = %d\n", f);
             Try{
-              eliminateNumberFromAllPeers(squares, r, c, b);
+              eliminateNumberFromAllPeers(squares, (r + 1), (c + 1), b);
             }Catch(e){
+              // printf("f = %d\n", f);
               backToDupSquares = getSquare(dupSquares, r + 1, c + 1);
               newA = *backToDupSquares;
               f = newA & ~f;
-              printf("%r = %d, c = %d, a = %d\n", r, c, a);
+              // printf("a = %d", a);
+              // printf("f = %d", f);
               
             }
+          // printf("%d\n", f);
             if(f == (a & (num << i))){
               a = 0;
             }else if(f == (newA & ~f)){
               a = f;
+              // printf("a = %d", a);
             }
           }
-          // printf("%d\n", f);
         }
+        
+        // if(){
+        
+        // }
       }
     }
   }
