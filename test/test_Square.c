@@ -551,13 +551,46 @@ void test_isSudokuSolve_return_0_one_square_contain_two_number(void){
   int value = isSudokuSolved(square);                 
   TEST_ASSERT_EQUAL(0,value);
 }
-
+/*
 void test_bruteForce(void){
-  int square[9][9] = {{C(3)|C(7),     C(5)|C(7),      C(2)|C(7),      C(7), C(1), C(1), C(1), C(1), C(1)}, 
+                    //  0                     1                               2                       3                    4                       5                    6                         7                         8
+  int square[9][9] = {{C(3),                C(1)|C(6)|C(7)|C(8),           C(6)|C(7)|C(8),        C(9),                C(2)|C(4)|C(6)|C(7),      C(2)|C(5)|C(6)|C(7), C(2)|C(5)|C(6)|C(7)|C(8), C(1)|C(2)|C(5)|C(7)|C(8), C(1)|C(6)|C(8)}, 
+                      {C(5),                C(1)|C(6)|C(7)|C(8),           C(2),                  C(1)|C(3)|C(7),      C(3)|C(6)|C(7),           C(3)|C(6)|C(7),      C(3)|C(6)|C(7)|C(8),      C(1)|C(3)|C(7)|C(8),      C(4)          },
+                      {C(1)|C(7),           C(9),                          C(4),                  C(1)|C(2)|C(3)|C(7), C(2)|C(3)|C(6)|C(7),      C(8),                C(2)|C(3)|C(5)|C(6)|C(7), C(1)|C(2)|C(3)|C(5)|C(7), C(1)|C(6)     }, 
+                      {C(8),                C(3)|C(6)|C(7),                C(3)|C(6)|C(7)|C(9),   C(2)|C(3)|C(7),      C(1),                     C(4),                C(2)|C(3)|C(6),           C(2)|C(3)|C(6)|C(9),      C(5)          },  
+                      {C(7)|C(9),           C(3)|C(6)|C(7),                C(1),                  C(2)|C(3)|C(7)|C(8), C(5),                     C(2)|C(3)|C(7),      C(4),                     C(2)|C(3)|C(8)|C(9),      C(6)|C(8)|C(9)},  
+                      {C(2),                C(3)|C(4)|C(5),                C(3)|C(5),             C(6),                C(9),                     C(3),                C(3)|C(8),                C(1)|C(3)|C(8),           C(7)          },  
+                      {C(4)|C(7)|C(9),      C(2)|C(3)|C(4)|C(7)|C(8),      C(3)|C(7)|C(9),        C(5),                C(2)|C(3)|C(4)|C(7)|C(8), C(2)|C(3)|C(7)|C(9), C(1),                     C(6),                     C(8)          },  
+                      {C(6),                C(1)|C(3)|C(4)|C(5)|C(7)|C(8), C(3)|C(5)|C(7)|C(8),   C(3)|C(4)|C(7)|C(8), C(3)|C(4)|C(7)|C(8),      C(7),                C(9),                     C(4)|C(5)|C(7)|C(8),      C(2)          },  
+                      {C(1)|C(4)|C(7)|C(9), C(2)|C(3)|C(4)|C(5)|C(7)|C(8), C(5)|C(7)|C(8),        C(2)|C(4)|C(7)|C(8), C(2)|C(4)|C(6)|C(7)|C(8), C(1),                C(5)|C(7)|C(8),           C(4)|C(5)|C(7)|C(8),      C(3)          }, 
+                     };
+                     
+  bruteForce(square);
+  //col 1
+  TEST_ASSERT_EQUAL(4, square[0][0]);
+  TEST_ASSERT_EQUAL(16, square[1][0]);
+  TEST_ASSERT_EQUAL(64, square[2][0]); // here should change 7 to 1 because error catch
+  TEST_ASSERT_EQUAL(128, square[3][0]);
+  TEST_ASSERT_EQUAL(256, square[4][0]);
+  TEST_ASSERT_EQUAL(2, square[5][0]);
+  TEST_ASSERT_EQUAL(8, square[6][0]);
+  TEST_ASSERT_EQUAL(32, square[7][0]);
+  TEST_ASSERT_EQUAL(1, square[8][0]); // here cant put 1
+  
+  //col 2
+  TEST_ASSERT_EQUAL(128, square[8][5]); // here gt error, should go back to test another number.
+  // TEST_ASSERT_EQUAL(256, square[1][1]);
+  // TEST_ASSERT_EQUAL(8, square[6][0]);
+  // TEST_ASSERT_EQUAL(1, square[8][0]);
+
+}*/
+
+void test_bruteForce_1111(void){
+  int square[9][9] = {{C(3)|C(7),     C(5)|C(7),      C(2)|C(7),      C(1), C(1), C(1), C(1), C(1), C(1)}, 
                       {C(1)/*|C(7)*/, C(1),           C(1),           C(1), C(1), C(1), C(1), C(1), C(1)},
                       {C(1),          C(1),           C(1),           C(1), C(1), C(1), C(1), C(1), C(1)}, 
                       {C(1),          C(1),           C(1),           C(1), C(1), C(1), C(1), C(1), C(1)},  
-                      {C(1),          C(1),           C(1),           C(1), C(1), C(1), C(1), C(1), C(1)},  
+                      {C(1),          C(1),           C(2),           C(1), C(1), C(1), C(1), C(1), C(1)},  
                       {C(1),          C(1),           C(1),           C(1), C(1), C(1), C(1), C(1), C(1)},  
                       {C(1),          C(1),           C(1),           C(1), C(1), C(1), C(1), C(1), C(1)},  
                       {C(1),          C(1),           C(1),           C(1), C(1), C(1), C(1), C(1), C(1)},  
@@ -569,7 +602,7 @@ void test_bruteForce(void){
   TEST_ASSERT_EQUAL(64, square[0][0]);
   TEST_ASSERT_EQUAL(16, square[0][1]);
   TEST_ASSERT_EQUAL(2, square[0][2]);
-  TEST_ASSERT_EQUAL(0, square[0][3]);
+  TEST_ASSERT_EQUAL(1, square[0][3]);
 
 }
 /*

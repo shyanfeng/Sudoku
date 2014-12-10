@@ -5,6 +5,8 @@
 
 #define getActualRowForPeers ((peers[i].row) + 1)
 #define getActualColumnForPeers ((peers[i].column) + 1)
+#define actualRow (r + 1)
+#define actualColumn (c + 1)
 
 Square rowPeers[9][9][9];
 Square columnPeers[9][9][9];
@@ -272,45 +274,42 @@ void bruteForce(int squares[9][9]){
   int r, c;
   int num = 0x01;;
   int checkForContainTwoNumber;
-  int *randomChooseOneNumber;
+  int *numberInAddress;
   int *backToDupSquares;
-  int newA;
+  int numberFromDupSquare;
   int i;
-  int f;
-  int b;
+  int getNumberFromSwitchBit;
+  int numberToChoose;
+  int numberToDelete;
   ErrorCode e;
   
   duplicateSquares(squares, dupSquares);
   
   for(r = 0; r < 9; r++){
     for(c = 0; c < 9; c++){
-      checkForContainTwoNumber = squareContainNumbers(squares, (r + 1), (c + 1));
+      checkForContainTwoNumber = squareContainNumbers(squares, actualRow, actualColumn);
+      // printf("r= %d, c=%d\n", r, c);
       if(checkForContainTwoNumber == 2){
-        randomChooseOneNumber = getSquare(squares, r + 1, c + 1);
-        int a = *randomChooseOneNumber;
-        
+        numberInAddress = getSquare(squares, actualRow, actualColumn);
+        numberToChoose = *numberInAddress;
         for(i = 0; i < 9; i++){
-          f = a & (num << i); 
-          if(f != 0){
-            b = checkBinaryValue(f);
+          getNumberFromSwitchBit = numberToChoose & (num << i);
+          if(getNumberFromSwitchBit != 0){
+            numberToDelete = checkBinaryValue(getNumberFromSwitchBit);
             Try{
-              // printf("a = %d\n", a & (num << i));
-              eliminateNumberFromAllPeers(squares, (r + 1), (c + 1), b);
+              printf("r= %d, c=%d, getNumberFromSwitchBit=%d\n", r, c, getNumberFromSwitchBit);
+              backToDupSquares = getSquare(dupSquares, actualRow, actualColumn);
+              numberFromDupSquare = *backToDupSquares;
+              eliminateNumberFromAllPeers(squares, actualRow, actualColumn, numberToDelete);
             }Catch(e){
-              printf("r= %d, c=%d, f = %d\n", r, c,f);
-              backToDupSquares = getSquare(dupSquares, r + 1, c + 1);
-              newA = *backToDupSquares;
-              f = newA & ~f;
-              // printf("f = %d\n", f);
-              
+              getNumberFromSwitchBit = numberFromDupSquare & ~getNumberFromSwitchBit;
             }
-            
-            // printf("f = %d\n", f);
-            if(f == (a & (num << i))){
-              a = 0;
+          
+            if(getNumberFromSwitchBit == (numberToChoose & (num << i))){
+              numberToChoose = 0;
               printf("aaa\n");
-            }else if(f == (newA & ~f)){
-              // a = f;
+            }else if(getNumberFromSwitchBit == (numberFromDupSquare & ~getNumberFromSwitchBit)){
+              numberToChoose = getNumberFromSwitchBit;
               // printf("bbb");
             }
           }
