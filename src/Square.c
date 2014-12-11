@@ -226,14 +226,11 @@ void eliminateNumberFromAllPeers(int squares[9][9], int row, int column, int val
   Square *peersRow = rowPeers[row - 1][column - 1];
   Square *peersColumn = columnPeers[row - 1][column - 1];
   Square *peersBox = boxPeers[row - 1][column - 1];
-  // Try {
+
     eliminateNumberFromPeers(squares, peersRow, row, column, value);
     eliminateNumberFromPeers(squares, peersColumn, row, column, value);
     eliminateNumberFromPeers(squares, peersBox, row, column, value);
-  
-  // }Catch(e) {
-    // Throw(ERR_EMPTY_SQU);
-  // }
+
  }
 
 void eliminateNumberFromPeers(int squares[9][9], Square *peers, int row, int column, int findNumberToEliminate){
@@ -242,7 +239,6 @@ void eliminateNumberFromPeers(int squares[9][9], Square *peers, int row, int col
   int value;
   int decimalValue;
   int value1 = squareHas(squares, row, column, findNumberToEliminate);
-    // int a = squareContainNumbers(squares, row, column);
 
   if((squareContainNumbers(squares, row, column) == 2) && (value1 == 1)){
     int *storeFixValue = getSquare(squares, row, column);
@@ -265,7 +261,7 @@ void eliminateNumberFromPeers(int squares[9][9], Square *peers, int row, int col
         squareDelNumber(value2, decimalValue);
         int value1 = *value2;
         if(value1 == 0){
-          // Throw(ERR_EMPTY_SQU);
+          Throw(ERR_EMPTY_SQU);
         }else if(squareContainOneNumbers(squares, getActualRowForPeers, getActualColumnForPeers) == 1){
           int value2 = checkBinaryValue(value1);
           eliminateNumberFromAllPeers(squares, getActualRowForPeers, getActualColumnForPeers, value2);
@@ -288,27 +284,39 @@ void bruteForce(int squares[9][9]){
   int numberToChoose;
   int numberToDelete;
 
-  
-  
   for(r = 0; r < 9; r++){
     for(c = 0; c < 9; c++){
     duplicateSquares(squares, dupSquares);
     checkForContainTwoNumber = squareContainNumbers(squares, actualRow, actualColumn);
+
       if(checkForContainTwoNumber == 2){
         numberInAddress = getSquare(squares, actualRow, actualColumn);
         numberToChoose = *numberInAddress;
+        // printf("r = %d c = %d\n", r, c);
+        
         for(i = 0; i < 9; i++){
           getNumberFromSwitchBit = numberToChoose & (num << i);
+          // printf("getNumberFromSwitchBit = %d\n", getNumberFromSwitchBit);
           if(getNumberFromSwitchBit != 0){
-            numberToDelete = checkBinaryValue(getNumberFromSwitchBit);
             Try{
+              printf("oriNum = %d\n", numberToChoose);
+              printf("getNumberFromSwitchBit = %d\n", getNumberFromSwitchBit);
+              numberToDelete = checkBinaryValue(getNumberFromSwitchBit);
+              printf("r = %d c = %d\n", r, c);
               eliminateNumberFromAllPeers(squares, actualRow, actualColumn, numberToDelete);
+              printf("come here\n");
               numberToChoose = 0;
+              squares = squares;
             }Catch(e){
+              printf("ERROR THROW \n");
+              // printf("numberToDelete = %d\n", numberToDelete);
               backToDupSquares = getSquare(dupSquares, actualRow, actualColumn);
               numberFromDupSquare = *backToDupSquares;
+              printf("numberFromDupSquare = %d\n", numberFromDupSquare);
               getNumberFromSwitchBit = numberFromDupSquare & (~getNumberFromSwitchBit);
               numberToChoose = getNumberFromSwitchBit;
+              printf("numberToChoose = %d\n", numberToChoose);
+              squares = dupSquares;
             }
           }
         }
