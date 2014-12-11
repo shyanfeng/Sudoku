@@ -13,6 +13,7 @@
 typedef struct Square Square;
 
 
+
 struct Square {
   int row;
   int column;
@@ -46,7 +47,7 @@ int checkBinaryValue(int value);
 void duplicateSquares(int squares[9][9], int dupSquares[9][9]);
 int isSudokuSolved(int squares[9][9]);
 
-void bruteForce(int squares[9][9]);
+// void bruteForce(int squares[9][9]);
 
 #endif // Square_H
 
