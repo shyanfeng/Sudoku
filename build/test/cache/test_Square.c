@@ -716,270 +716,6 @@ void test_checkBinaryValue_return_number(void){
 
 }
 
-
-
-void test_eliminateNumberFromAllPeers_with_2_recursive(void){
-
-
-
-
-
-  int square[9][9] = {{((3>0)? 1<<(3 -1) : 0x1ff), ((2>0)? 1<<(2 -1) : 0x1ff)|((4>0)? 1<<(4 -1) : 0x1ff)|((3>0)? 1<<(3 -1) : 0x1ff), ((6>0)? 1<<(6 -1) : 0x1ff), ((1>0)? 1<<(1 -1) : 0x1ff), ((1>0)? 1<<(1 -1) : 0x1ff), ((8>0)? 1<<(8 -1) : 0x1ff), ((9>0)? 1<<(9 -1) : 0x1ff), ((2>0)? 1<<(2 -1) : 0x1ff),((1>0)? 1<<(1 -1) : 0x1ff)},
-
-                      {((2>0)? 1<<(2 -1) : 0x1ff), ((6>0)? 1<<(6 -1) : 0x1ff)|((4>0)? 1<<(4 -1) : 0x1ff), ((2>0)? 1<<(2 -1) : 0x1ff)|((3>0)? 1<<(3 -1) : 0x1ff), ((1>0)? 1<<(1 -1) : 0x1ff), ((8>0)? 1<<(8 -1) : 0x1ff)|((4>0)? 1<<(4 -1) : 0x1ff), ((5>0)? 1<<(5 -1) : 0x1ff)|((3>0)? 1<<(3 -1) : 0x1ff)|((1>0)? 1<<(1 -1) : 0x1ff), ((6>0)? 1<<(6 -1) : 0x1ff), ((7>0)? 1<<(7 -1) : 0x1ff),((3>0)? 1<<(3 -1) : 0x1ff)},
-
-                      {((1>0)? 1<<(1 -1) : 0x1ff), ((9>0)? 1<<(9 -1) : 0x1ff)|((4>0)? 1<<(4 -1) : 0x1ff), ((3>0)? 1<<(3 -1) : 0x1ff), ((3>0)? 1<<(3 -1) : 0x1ff), ((2>0)? 1<<(2 -1) : 0x1ff), ((1>0)? 1<<(1 -1) : 0x1ff), ((1>0)? 1<<(1 -1) : 0x1ff), ((1>0)? 1<<(1 -1) : 0x1ff),((1>0)? 1<<(1 -1) : 0x1ff)},
-
-
-
-                      {((1>0)? 1<<(1 -1) : 0x1ff), ((3>0)? 1<<(3 -1) : 0x1ff), ((1>0)? 1<<(1 -1) : 0x1ff), ((1>0)? 1<<(1 -1) : 0x1ff), ((2>0)? 1<<(2 -1) : 0x1ff), ((1>0)? 1<<(1 -1) : 0x1ff), ((1>0)? 1<<(1 -1) : 0x1ff), ((1>0)? 1<<(1 -1) : 0x1ff),((1>0)? 1<<(1 -1) : 0x1ff)},
-
-                      {((1>0)? 1<<(1 -1) : 0x1ff), ((6>0)? 1<<(6 -1) : 0x1ff), ((1>0)? 1<<(1 -1) : 0x1ff), ((1>0)? 1<<(1 -1) : 0x1ff), ((2>0)? 1<<(2 -1) : 0x1ff), ((1>0)? 1<<(1 -1) : 0x1ff), ((1>0)? 1<<(1 -1) : 0x1ff), ((1>0)? 1<<(1 -1) : 0x1ff),((1>0)? 1<<(1 -1) : 0x1ff)},
-
-                      {((1>0)? 1<<(1 -1) : 0x1ff), ((9>0)? 1<<(9 -1) : 0x1ff)|((5>0)? 1<<(5 -1) : 0x1ff)|((2>0)? 1<<(2 -1) : 0x1ff), ((1>0)? 1<<(1 -1) : 0x1ff), ((1>0)? 1<<(1 -1) : 0x1ff), ((2>0)? 1<<(2 -1) : 0x1ff), ((1>0)? 1<<(1 -1) : 0x1ff), ((1>0)? 1<<(1 -1) : 0x1ff), ((1>0)? 1<<(1 -1) : 0x1ff),((1>0)? 1<<(1 -1) : 0x1ff)},
-
-
-
-                      {((1>0)? 1<<(1 -1) : 0x1ff), ((3>0)? 1<<(3 -1) : 0x1ff), ((1>0)? 1<<(1 -1) : 0x1ff), ((1>0)? 1<<(1 -1) : 0x1ff), ((2>0)? 1<<(2 -1) : 0x1ff), ((1>0)? 1<<(1 -1) : 0x1ff), ((1>0)? 1<<(1 -1) : 0x1ff), ((1>0)? 1<<(1 -1) : 0x1ff),((1>0)? 1<<(1 -1) : 0x1ff)},
-
-                      {((1>0)? 1<<(1 -1) : 0x1ff), ((1>0)? 1<<(1 -1) : 0x1ff), ((1>0)? 1<<(1 -1) : 0x1ff), ((1>0)? 1<<(1 -1) : 0x1ff), ((2>0)? 1<<(2 -1) : 0x1ff), ((1>0)? 1<<(1 -1) : 0x1ff), ((1>0)? 1<<(1 -1) : 0x1ff), ((1>0)? 1<<(1 -1) : 0x1ff),((1>0)? 1<<(1 -1) : 0x1ff)},
-
-                      {((1>0)? 1<<(1 -1) : 0x1ff), ((2>0)? 1<<(2 -1) : 0x1ff), ((1>0)? 1<<(1 -1) : 0x1ff), ((1>0)? 1<<(1 -1) : 0x1ff), ((2>0)? 1<<(2 -1) : 0x1ff), ((1>0)? 1<<(1 -1) : 0x1ff), ((1>0)? 1<<(1 -1) : 0x1ff), ((1>0)? 1<<(1 -1) : 0x1ff),((1>0)? 1<<(1 -1) : 0x1ff)},
-
-                     };
-
-
-
-  ErrorCode e;
-
-
-
-  { jmp_buf *PrevFrame, NewFrame; unsigned int MY_ID = (0); PrevFrame = CExceptionFrames[(0)].pFrame; CExceptionFrames[MY_ID].pFrame = (jmp_buf*)(&NewFrame); CExceptionFrames[MY_ID].Exception = (0x5A5A5A5A); if (_setjmp(NewFrame) == 0) { if (&PrevFrame){
-
-    eliminateNumberFromAllPeers(square, 2, 2, 6);
-
-  }else { } CExceptionFrames[MY_ID].Exception = (0x5A5A5A5A); } else { e = CExceptionFrames[MY_ID].Exception; e=e; } CExceptionFrames[MY_ID].pFrame = PrevFrame; } if (CExceptionFrames[(0)].Exception != (0x5A5A5A5A)){
-
-  UnityAssertEqualNumber((_U_SINT)((ERR_EMPTY_SQU)), (_U_SINT)((e)), (((void *)0)), (_U_UINT)384, UNITY_DISPLAY_STYLE_INT);
-
-
-
-  UnityAssertEqualNumber((_U_SINT)((6)), (_U_SINT)((square[0][1])), (((void *)0)), (_U_UINT)386, UNITY_DISPLAY_STYLE_INT);
-
-  UnityAssertEqualNumber((_U_SINT)((8)), (_U_SINT)((square[1][1])), (((void *)0)), (_U_UINT)387, UNITY_DISPLAY_STYLE_INT);
-
-  UnityAssertEqualNumber((_U_SINT)((256)), (_U_SINT)((square[2][1])), (((void *)0)), (_U_UINT)388, UNITY_DISPLAY_STYLE_INT);
-
-  UnityAssertEqualNumber((_U_SINT)((4)), (_U_SINT)((square[3][1])), (((void *)0)), (_U_UINT)389, UNITY_DISPLAY_STYLE_INT);
-
-  UnityAssertEqualNumber((_U_SINT)((32)), (_U_SINT)((square[4][1])), (((void *)0)), (_U_UINT)390, UNITY_DISPLAY_STYLE_INT);
-
-  UnityAssertEqualNumber((_U_SINT)((18)), (_U_SINT)((square[5][1])), (((void *)0)), (_U_UINT)391, UNITY_DISPLAY_STYLE_INT);
-
-  UnityAssertEqualNumber((_U_SINT)((4)), (_U_SINT)((square[6][1])), (((void *)0)), (_U_UINT)392, UNITY_DISPLAY_STYLE_INT);
-
-  UnityAssertEqualNumber((_U_SINT)((1)), (_U_SINT)((square[7][1])), (((void *)0)), (_U_UINT)393, UNITY_DISPLAY_STYLE_INT);
-
-  UnityAssertEqualNumber((_U_SINT)((2)), (_U_SINT)((square[8][1])), (((void *)0)), (_U_UINT)394, UNITY_DISPLAY_STYLE_INT);
-
-
-
-
-
-  UnityAssertEqualNumber((_U_SINT)((2)), (_U_SINT)((square[1][0])), (((void *)0)), (_U_UINT)397, UNITY_DISPLAY_STYLE_INT);
-
-  UnityAssertEqualNumber((_U_SINT)((8)), (_U_SINT)((square[1][1])), (((void *)0)), (_U_UINT)398, UNITY_DISPLAY_STYLE_INT);
-
-  UnityAssertEqualNumber((_U_SINT)((6)), (_U_SINT)((square[1][2])), (((void *)0)), (_U_UINT)399, UNITY_DISPLAY_STYLE_INT);
-
-  UnityAssertEqualNumber((_U_SINT)((1)), (_U_SINT)((square[1][3])), (((void *)0)), (_U_UINT)400, UNITY_DISPLAY_STYLE_INT);
-
-  UnityAssertEqualNumber((_U_SINT)((128)), (_U_SINT)((square[1][4])), (((void *)0)), (_U_UINT)401, UNITY_DISPLAY_STYLE_INT);
-
-  UnityAssertEqualNumber((_U_SINT)((21)), (_U_SINT)((square[1][5])), (((void *)0)), (_U_UINT)402, UNITY_DISPLAY_STYLE_INT);
-
-  UnityAssertEqualNumber((_U_SINT)((32)), (_U_SINT)((square[1][6])), (((void *)0)), (_U_UINT)403, UNITY_DISPLAY_STYLE_INT);
-
-  UnityAssertEqualNumber((_U_SINT)((64)), (_U_SINT)((square[1][7])), (((void *)0)), (_U_UINT)404, UNITY_DISPLAY_STYLE_INT);
-
-  UnityAssertEqualNumber((_U_SINT)((4)), (_U_SINT)((square[1][8])), (((void *)0)), (_U_UINT)405, UNITY_DISPLAY_STYLE_INT);
-
-
-
-
-
-  UnityAssertEqualNumber((_U_SINT)((4)), (_U_SINT)((square[0][0])), (((void *)0)), (_U_UINT)408, UNITY_DISPLAY_STYLE_INT);
-
-  UnityAssertEqualNumber((_U_SINT)((6)), (_U_SINT)((square[0][1])), (((void *)0)), (_U_UINT)409, UNITY_DISPLAY_STYLE_INT);
-
-  UnityAssertEqualNumber((_U_SINT)((32)), (_U_SINT)((square[0][2])), (((void *)0)), (_U_UINT)410, UNITY_DISPLAY_STYLE_INT);
-
-  UnityAssertEqualNumber((_U_SINT)((2)), (_U_SINT)((square[1][0])), (((void *)0)), (_U_UINT)411, UNITY_DISPLAY_STYLE_INT);
-
-  UnityAssertEqualNumber((_U_SINT)((8)), (_U_SINT)((square[1][1])), (((void *)0)), (_U_UINT)412, UNITY_DISPLAY_STYLE_INT);
-
-  UnityAssertEqualNumber((_U_SINT)((6)), (_U_SINT)((square[1][2])), (((void *)0)), (_U_UINT)413, UNITY_DISPLAY_STYLE_INT);
-
-  UnityAssertEqualNumber((_U_SINT)((1)), (_U_SINT)((square[2][0])), (((void *)0)), (_U_UINT)414, UNITY_DISPLAY_STYLE_INT);
-
-  UnityAssertEqualNumber((_U_SINT)((256)), (_U_SINT)((square[2][1])), (((void *)0)), (_U_UINT)415, UNITY_DISPLAY_STYLE_INT);
-
-  UnityAssertEqualNumber((_U_SINT)((4)), (_U_SINT)((square[2][2])), (((void *)0)), (_U_UINT)416, UNITY_DISPLAY_STYLE_INT);
-
-  }
-
-
-
-}
-
-
-
-void test_eliminateNumberFromAllPeers_with_3_recursive(void){
-
-
-
-
-
-  int square[9][9] = {{((2>0)? 1<<(2 -1) : 0x1ff), ((2>0)? 1<<(2 -1) : 0x1ff)|((4>0)? 1<<(4 -1) : 0x1ff)|((3>0)? 1<<(3 -1) : 0x1ff), ((7>0)? 1<<(7 -1) : 0x1ff), ((1>0)? 1<<(1 -1) : 0x1ff), ((1>0)? 1<<(1 -1) : 0x1ff), ((1>0)? 1<<(1 -1) : 0x1ff), ((1>0)? 1<<(1 -1) : 0x1ff), ((1>0)? 1<<(1 -1) : 0x1ff), ((1>0)? 1<<(1 -1) : 0x1ff)},
-
-                      {((9>0)? 1<<(9 -1) : 0x1ff), ((8>0)? 1<<(8 -1) : 0x1ff)|((4>0)? 1<<(4 -1) : 0x1ff)|((2>0)? 1<<(2 -1) : 0x1ff), ((2>0)? 1<<(2 -1) : 0x1ff)|((5>0)? 1<<(5 -1) : 0x1ff)|((6>0)? 1<<(6 -1) : 0x1ff), ((1>0)? 1<<(1 -1) : 0x1ff), ((1>0)? 1<<(1 -1) : 0x1ff), ((1>0)? 1<<(1 -1) : 0x1ff), ((1>0)? 1<<(1 -1) : 0x1ff), ((1>0)? 1<<(1 -1) : 0x1ff), ((1>0)? 1<<(1 -1) : 0x1ff)},
-
-                      {((1>0)? 1<<(1 -1) : 0x1ff), ((9>0)? 1<<(9 -1) : 0x1ff)|((4>0)? 1<<(4 -1) : 0x1ff), ((3>0)? 1<<(3 -1) : 0x1ff)|((5>0)? 1<<(5 -1) : 0x1ff)|((8>0)? 1<<(8 -1) : 0x1ff), ((3>0)? 1<<(3 -1) : 0x1ff), ((1>0)? 1<<(1 -1) : 0x1ff), ((1>0)? 1<<(1 -1) : 0x1ff), ((1>0)? 1<<(1 -1) : 0x1ff), ((1>0)? 1<<(1 -1) : 0x1ff), ((1>0)? 1<<(1 -1) : 0x1ff)},
-
-
-
-                      {((1>0)? 1<<(1 -1) : 0x1ff), ((6>0)? 1<<(6 -1) : 0x1ff), ((6>0)? 1<<(6 -1) : 0x1ff)|((4>0)? 1<<(4 -1) : 0x1ff), ((1>0)? 1<<(1 -1) : 0x1ff), ((1>0)? 1<<(1 -1) : 0x1ff), ((1>0)? 1<<(1 -1) : 0x1ff), ((1>0)? 1<<(1 -1) : 0x1ff), ((1>0)? 1<<(1 -1) : 0x1ff), ((1>0)? 1<<(1 -1) : 0x1ff)},
-
-                      {((5>0)? 1<<(5 -1) : 0x1ff)|((3>0)? 1<<(3 -1) : 0x1ff), ((6>0)? 1<<(6 -1) : 0x1ff), ((8>0)? 1<<(8 -1) : 0x1ff)|((2>0)? 1<<(2 -1) : 0x1ff), ((1>0)? 1<<(1 -1) : 0x1ff), ((1>0)? 1<<(1 -1) : 0x1ff), ((1>0)? 1<<(1 -1) : 0x1ff), ((1>0)? 1<<(1 -1) : 0x1ff), ((1>0)? 1<<(1 -1) : 0x1ff), ((1>0)? 1<<(1 -1) : 0x1ff)},
-
-                      {((1>0)? 1<<(1 -1) : 0x1ff), ((9>0)? 1<<(9 -1) : 0x1ff)|((3>0)? 1<<(3 -1) : 0x1ff), ((2>0)? 1<<(2 -1) : 0x1ff)|((3>0)? 1<<(3 -1) : 0x1ff), ((1>0)? 1<<(1 -1) : 0x1ff), ((1>0)? 1<<(1 -1) : 0x1ff), ((1>0)? 1<<(1 -1) : 0x1ff), ((1>0)? 1<<(1 -1) : 0x1ff), ((1>0)? 1<<(1 -1) : 0x1ff), ((1>0)? 1<<(1 -1) : 0x1ff)},
-
-
-
-                      {((1>0)? 1<<(1 -1) : 0x1ff), ((1>0)? 1<<(1 -1) : 0x1ff), ((1>0)? 1<<(1 -1) : 0x1ff)|((2>0)? 1<<(2 -1) : 0x1ff)|((7>0)? 1<<(7 -1) : 0x1ff), ((1>0)? 1<<(1 -1) : 0x1ff), ((1>0)? 1<<(1 -1) : 0x1ff), ((1>0)? 1<<(1 -1) : 0x1ff), ((1>0)? 1<<(1 -1) : 0x1ff), ((1>0)? 1<<(1 -1) : 0x1ff), ((1>0)? 1<<(1 -1) : 0x1ff)},
-
-                      {((1>0)? 1<<(1 -1) : 0x1ff), ((1>0)? 1<<(1 -1) : 0x1ff), ((1>0)? 1<<(1 -1) : 0x1ff)|((4>0)? 1<<(4 -1) : 0x1ff), ((1>0)? 1<<(1 -1) : 0x1ff), ((1>0)? 1<<(1 -1) : 0x1ff), ((1>0)? 1<<(1 -1) : 0x1ff), ((1>0)? 1<<(1 -1) : 0x1ff), ((1>0)? 1<<(1 -1) : 0x1ff), ((1>0)? 1<<(1 -1) : 0x1ff)},
-
-                      {((1>0)? 1<<(1 -1) : 0x1ff), ((2>0)? 1<<(2 -1) : 0x1ff), ((1>0)? 1<<(1 -1) : 0x1ff), ((1>0)? 1<<(1 -1) : 0x1ff), ((1>0)? 1<<(1 -1) : 0x1ff), ((1>0)? 1<<(1 -1) : 0x1ff), ((1>0)? 1<<(1 -1) : 0x1ff), ((1>0)? 1<<(1 -1) : 0x1ff), ((1>0)? 1<<(1 -1) : 0x1ff)},
-
-                     };
-
-
-
-  int value;
-
-  eliminateNumberFromAllPeers(square, 6, 3, 2);
-
-
-
-  UnityAssertEqualNumber((_U_SINT)((64)), (_U_SINT)((square[0][2])), (((void *)0)), (_U_UINT)440, UNITY_DISPLAY_STYLE_INT);
-
-  UnityAssertEqualNumber((_U_SINT)((50)), (_U_SINT)((square[1][2])), (((void *)0)), (_U_UINT)441, UNITY_DISPLAY_STYLE_INT);
-
-  UnityAssertEqualNumber((_U_SINT)((144)), (_U_SINT)((square[2][2])), (((void *)0)), (_U_UINT)442, UNITY_DISPLAY_STYLE_INT);
-
-  UnityAssertEqualNumber((_U_SINT)((40)), (_U_SINT)((square[3][2])), (((void *)0)), (_U_UINT)443, UNITY_DISPLAY_STYLE_INT);
-
-  UnityAssertEqualNumber((_U_SINT)((130)), (_U_SINT)((square[4][2])), (((void *)0)), (_U_UINT)444, UNITY_DISPLAY_STYLE_INT);
-
-  UnityAssertEqualNumber((_U_SINT)((4)), (_U_SINT)((square[5][2])), (((void *)0)), (_U_UINT)445, UNITY_DISPLAY_STYLE_INT);
-
-  UnityAssertEqualNumber((_U_SINT)((67)), (_U_SINT)((square[6][2])), (((void *)0)), (_U_UINT)446, UNITY_DISPLAY_STYLE_INT);
-
-  UnityAssertEqualNumber((_U_SINT)((9)), (_U_SINT)((square[7][2])), (((void *)0)), (_U_UINT)447, UNITY_DISPLAY_STYLE_INT);
-
-  UnityAssertEqualNumber((_U_SINT)((1)), (_U_SINT)((square[8][2])), (((void *)0)), (_U_UINT)448, UNITY_DISPLAY_STYLE_INT);
-
-
-
-
-
-  UnityAssertEqualNumber((_U_SINT)((1)), (_U_SINT)((square[5][0])), (((void *)0)), (_U_UINT)451, UNITY_DISPLAY_STYLE_INT);
-
-  UnityAssertEqualNumber((_U_SINT)((256)), (_U_SINT)((square[5][1])), (((void *)0)), (_U_UINT)452, UNITY_DISPLAY_STYLE_INT);
-
-  UnityAssertEqualNumber((_U_SINT)((4)), (_U_SINT)((square[5][2])), (((void *)0)), (_U_UINT)453, UNITY_DISPLAY_STYLE_INT);
-
-  UnityAssertEqualNumber((_U_SINT)((1)), (_U_SINT)((square[5][3])), (((void *)0)), (_U_UINT)454, UNITY_DISPLAY_STYLE_INT);
-
-  UnityAssertEqualNumber((_U_SINT)((1)), (_U_SINT)((square[5][4])), (((void *)0)), (_U_UINT)455, UNITY_DISPLAY_STYLE_INT);
-
-  UnityAssertEqualNumber((_U_SINT)((1)), (_U_SINT)((square[5][5])), (((void *)0)), (_U_UINT)456, UNITY_DISPLAY_STYLE_INT);
-
-  UnityAssertEqualNumber((_U_SINT)((1)), (_U_SINT)((square[5][6])), (((void *)0)), (_U_UINT)457, UNITY_DISPLAY_STYLE_INT);
-
-  UnityAssertEqualNumber((_U_SINT)((1)), (_U_SINT)((square[5][7])), (((void *)0)), (_U_UINT)458, UNITY_DISPLAY_STYLE_INT);
-
-  UnityAssertEqualNumber((_U_SINT)((1)), (_U_SINT)((square[5][8])), (((void *)0)), (_U_UINT)459, UNITY_DISPLAY_STYLE_INT);
-
-
-
-
-
-  UnityAssertEqualNumber((_U_SINT)((1)), (_U_SINT)((square[3][0])), (((void *)0)), (_U_UINT)462, UNITY_DISPLAY_STYLE_INT);
-
-  UnityAssertEqualNumber((_U_SINT)((32)), (_U_SINT)((square[3][1])), (((void *)0)), (_U_UINT)463, UNITY_DISPLAY_STYLE_INT);
-
-  UnityAssertEqualNumber((_U_SINT)((40)), (_U_SINT)((square[3][2])), (((void *)0)), (_U_UINT)464, UNITY_DISPLAY_STYLE_INT);
-
-  UnityAssertEqualNumber((_U_SINT)((16)), (_U_SINT)((square[4][0])), (((void *)0)), (_U_UINT)465, UNITY_DISPLAY_STYLE_INT);
-
-  UnityAssertEqualNumber((_U_SINT)((32)), (_U_SINT)((square[4][1])), (((void *)0)), (_U_UINT)466, UNITY_DISPLAY_STYLE_INT);
-
-  UnityAssertEqualNumber((_U_SINT)((130)), (_U_SINT)((square[4][2])), (((void *)0)), (_U_UINT)467, UNITY_DISPLAY_STYLE_INT);
-
-  UnityAssertEqualNumber((_U_SINT)((1)), (_U_SINT)((square[5][0])), (((void *)0)), (_U_UINT)468, UNITY_DISPLAY_STYLE_INT);
-
-  UnityAssertEqualNumber((_U_SINT)((256)), (_U_SINT)((square[5][1])), (((void *)0)), (_U_UINT)469, UNITY_DISPLAY_STYLE_INT);
-
-  UnityAssertEqualNumber((_U_SINT)((4)), (_U_SINT)((square[5][2])), (((void *)0)), (_U_UINT)470, UNITY_DISPLAY_STYLE_INT);
-
-
-
-}
-
-
-
-void test_eliminateNumberFromAllPeers_for_checking_row_0_column_1(void){
-
-  int square[9][9] = {{((3>0)? 1<<(3 -1) : 0x1ff), ((7>0)? 1<<(7 -1) : 0x1ff)|((8>0)? 1<<(8 -1) : 0x1ff), ((9>0)? 1<<(9 -1) : 0x1ff), ((8>0)? 1<<(8 -1) : 0x1ff), ((2>0)? 1<<(2 -1) : 0x1ff), ((1>0)? 1<<(1 -1) : 0x1ff), ((4>0)? 1<<(4 -1) : 0x1ff), ((5>0)? 1<<(5 -1) : 0x1ff), ((6>0)? 1<<(6 -1) : 0x1ff)},
-
-                      {((5>0)? 1<<(5 -1) : 0x1ff), ((4>0)? 1<<(4 -1) : 0x1ff), ((8>0)? 1<<(8 -1) : 0x1ff), ((9>0)? 1<<(9 -1) : 0x1ff), ((3>0)? 1<<(3 -1) : 0x1ff), ((6>0)? 1<<(6 -1) : 0x1ff), ((7>0)? 1<<(7 -1) : 0x1ff), ((2>0)? 1<<(2 -1) : 0x1ff), ((1>0)? 1<<(1 -1) : 0x1ff)},
-
-                      {((2>0)? 1<<(2 -1) : 0x1ff), ((6>0)? 1<<(6 -1) : 0x1ff), ((1>0)? 1<<(1 -1) : 0x1ff), ((4>0)? 1<<(4 -1) : 0x1ff), ((5>0)? 1<<(5 -1) : 0x1ff), ((7>0)? 1<<(7 -1) : 0x1ff), ((3>0)? 1<<(3 -1) : 0x1ff), ((9>0)? 1<<(9 -1) : 0x1ff), ((8>0)? 1<<(8 -1) : 0x1ff)},
-
-                      {((1>0)? 1<<(1 -1) : 0x1ff), ((8>0)? 1<<(8 -1) : 0x1ff)|((7>0)? 1<<(7 -1) : 0x1ff), ((5>0)? 1<<(5 -1) : 0x1ff), ((3>0)? 1<<(3 -1) : 0x1ff), ((6>0)? 1<<(6 -1) : 0x1ff), ((9>0)? 1<<(9 -1) : 0x1ff), ((2>0)? 1<<(2 -1) : 0x1ff), ((4>0)? 1<<(4 -1) : 0x1ff), ((7>0)? 1<<(7 -1) : 0x1ff)},
-
-                      {((9>0)? 1<<(9 -1) : 0x1ff), ((2>0)? 1<<(2 -1) : 0x1ff), ((4>0)? 1<<(4 -1) : 0x1ff), ((1>0)? 1<<(1 -1) : 0x1ff), ((7>0)? 1<<(7 -1) : 0x1ff), ((5>0)? 1<<(5 -1) : 0x1ff), ((8>0)? 1<<(8 -1) : 0x1ff), ((6>0)? 1<<(6 -1) : 0x1ff), ((3>0)? 1<<(3 -1) : 0x1ff)},
-
-                      {((6>0)? 1<<(6 -1) : 0x1ff), ((3>0)? 1<<(3 -1) : 0x1ff), ((7>0)? 1<<(7 -1) : 0x1ff), ((2>0)? 1<<(2 -1) : 0x1ff), ((8>0)? 1<<(8 -1) : 0x1ff), ((4>0)? 1<<(4 -1) : 0x1ff), ((9>0)? 1<<(9 -1) : 0x1ff), ((1>0)? 1<<(1 -1) : 0x1ff), ((5>0)? 1<<(5 -1) : 0x1ff)},
-
-                      {((4>0)? 1<<(4 -1) : 0x1ff), ((9>0)? 1<<(9 -1) : 0x1ff), ((3>0)? 1<<(3 -1) : 0x1ff), ((5>0)? 1<<(5 -1) : 0x1ff), ((1>0)? 1<<(1 -1) : 0x1ff), ((8>0)? 1<<(8 -1) : 0x1ff), ((6>0)? 1<<(6 -1) : 0x1ff), ((7>0)? 1<<(7 -1) : 0x1ff), ((2>0)? 1<<(2 -1) : 0x1ff)},
-
-                      {((8>0)? 1<<(8 -1) : 0x1ff), ((5>0)? 1<<(5 -1) : 0x1ff), ((6>0)? 1<<(6 -1) : 0x1ff), ((7>0)? 1<<(7 -1) : 0x1ff), ((9>0)? 1<<(9 -1) : 0x1ff), ((2>0)? 1<<(2 -1) : 0x1ff), ((1>0)? 1<<(1 -1) : 0x1ff), ((3>0)? 1<<(3 -1) : 0x1ff), ((4>0)? 1<<(4 -1) : 0x1ff)},
-
-                      {((7>0)? 1<<(7 -1) : 0x1ff), ((1>0)? 1<<(1 -1) : 0x1ff), ((2>0)? 1<<(2 -1) : 0x1ff), ((6>0)? 1<<(6 -1) : 0x1ff), ((4>0)? 1<<(4 -1) : 0x1ff), ((3>0)? 1<<(3 -1) : 0x1ff), ((5>0)? 1<<(5 -1) : 0x1ff), ((8>0)? 1<<(8 -1) : 0x1ff), ((9>0)? 1<<(9 -1) : 0x1ff)},
-
-                     };
-
-  ErrorCode e;
-
-
-
-  { jmp_buf *PrevFrame, NewFrame; unsigned int MY_ID = (0); PrevFrame = CExceptionFrames[(0)].pFrame; CExceptionFrames[MY_ID].pFrame = (jmp_buf*)(&NewFrame); CExceptionFrames[MY_ID].Exception = (0x5A5A5A5A); if (_setjmp(NewFrame) == 0) { if (&PrevFrame){
-
-    eliminateNumberFromAllPeers(square,1,2,7);
-
-  }else { } CExceptionFrames[MY_ID].Exception = (0x5A5A5A5A); } else { e = CExceptionFrames[MY_ID].Exception; e=e; } CExceptionFrames[MY_ID].pFrame = PrevFrame; } if (CExceptionFrames[(0)].Exception != (0x5A5A5A5A))
-
-    UnityAssertEqualNumber((_U_SINT)((ERR_EMPTY_SQU)), (_U_SINT)((e)), (((void *)0)), (_U_UINT)490, UNITY_DISPLAY_STYLE_INT);
-
-
-
-}
-
-
-
 void test_duplicateSquares(void){
 
 
@@ -1010,69 +746,67 @@ void test_duplicateSquares(void){
 
 
 
-  int dupSquares[9][9];
-
   duplicateSquares(square, dupSquares);
 
 
 
-  UnityAssertEqualNumber((_U_SINT)((4)), (_U_SINT)((dupSquares[0][0])), (((void *)0)), (_U_UINT)512, UNITY_DISPLAY_STYLE_INT);
+  UnityAssertEqualNumber((_U_SINT)((4)), (_U_SINT)((dupSquares[0][0])), (((void *)0)), (_U_UINT)513, UNITY_DISPLAY_STYLE_INT);
 
-  UnityAssertEqualNumber((_U_SINT)((14)), (_U_SINT)((dupSquares[0][1])), (((void *)0)), (_U_UINT)513, UNITY_DISPLAY_STYLE_INT);
+  UnityAssertEqualNumber((_U_SINT)((14)), (_U_SINT)((dupSquares[0][1])), (((void *)0)), (_U_UINT)514, UNITY_DISPLAY_STYLE_INT);
 
-  UnityAssertEqualNumber((_U_SINT)((32)), (_U_SINT)((dupSquares[0][2])), (((void *)0)), (_U_UINT)514, UNITY_DISPLAY_STYLE_INT);
+  UnityAssertEqualNumber((_U_SINT)((32)), (_U_SINT)((dupSquares[0][2])), (((void *)0)), (_U_UINT)515, UNITY_DISPLAY_STYLE_INT);
 
-  UnityAssertEqualNumber((_U_SINT)((1)), (_U_SINT)((dupSquares[0][3])), (((void *)0)), (_U_UINT)515, UNITY_DISPLAY_STYLE_INT);
+  UnityAssertEqualNumber((_U_SINT)((1)), (_U_SINT)((dupSquares[0][3])), (((void *)0)), (_U_UINT)516, UNITY_DISPLAY_STYLE_INT);
 
-  UnityAssertEqualNumber((_U_SINT)((1)), (_U_SINT)((dupSquares[0][4])), (((void *)0)), (_U_UINT)516, UNITY_DISPLAY_STYLE_INT);
+  UnityAssertEqualNumber((_U_SINT)((1)), (_U_SINT)((dupSquares[0][4])), (((void *)0)), (_U_UINT)517, UNITY_DISPLAY_STYLE_INT);
 
-  UnityAssertEqualNumber((_U_SINT)((128)), (_U_SINT)((dupSquares[0][5])), (((void *)0)), (_U_UINT)517, UNITY_DISPLAY_STYLE_INT);
+  UnityAssertEqualNumber((_U_SINT)((128)), (_U_SINT)((dupSquares[0][5])), (((void *)0)), (_U_UINT)518, UNITY_DISPLAY_STYLE_INT);
 
-  UnityAssertEqualNumber((_U_SINT)((256)), (_U_SINT)((dupSquares[0][6])), (((void *)0)), (_U_UINT)518, UNITY_DISPLAY_STYLE_INT);
+  UnityAssertEqualNumber((_U_SINT)((256)), (_U_SINT)((dupSquares[0][6])), (((void *)0)), (_U_UINT)519, UNITY_DISPLAY_STYLE_INT);
 
-  UnityAssertEqualNumber((_U_SINT)((2)), (_U_SINT)((dupSquares[0][7])), (((void *)0)), (_U_UINT)519, UNITY_DISPLAY_STYLE_INT);
+  UnityAssertEqualNumber((_U_SINT)((2)), (_U_SINT)((dupSquares[0][7])), (((void *)0)), (_U_UINT)520, UNITY_DISPLAY_STYLE_INT);
 
-  UnityAssertEqualNumber((_U_SINT)((1)), (_U_SINT)((dupSquares[0][8])), (((void *)0)), (_U_UINT)520, UNITY_DISPLAY_STYLE_INT);
-
-
-
-  UnityAssertEqualNumber((_U_SINT)((4)), (_U_SINT)((dupSquares[0][0])), (((void *)0)), (_U_UINT)522, UNITY_DISPLAY_STYLE_INT);
-
-  UnityAssertEqualNumber((_U_SINT)((2)), (_U_SINT)((dupSquares[1][0])), (((void *)0)), (_U_UINT)523, UNITY_DISPLAY_STYLE_INT);
-
-  UnityAssertEqualNumber((_U_SINT)((1)), (_U_SINT)((dupSquares[2][0])), (((void *)0)), (_U_UINT)524, UNITY_DISPLAY_STYLE_INT);
-
-  UnityAssertEqualNumber((_U_SINT)((1)), (_U_SINT)((dupSquares[3][0])), (((void *)0)), (_U_UINT)525, UNITY_DISPLAY_STYLE_INT);
-
-  UnityAssertEqualNumber((_U_SINT)((64)), (_U_SINT)((dupSquares[4][0])), (((void *)0)), (_U_UINT)526, UNITY_DISPLAY_STYLE_INT);
-
-  UnityAssertEqualNumber((_U_SINT)((128)), (_U_SINT)((dupSquares[5][0])), (((void *)0)), (_U_UINT)527, UNITY_DISPLAY_STYLE_INT);
-
-  UnityAssertEqualNumber((_U_SINT)((1)), (_U_SINT)((dupSquares[6][0])), (((void *)0)), (_U_UINT)528, UNITY_DISPLAY_STYLE_INT);
-
-  UnityAssertEqualNumber((_U_SINT)((256)), (_U_SINT)((dupSquares[7][0])), (((void *)0)), (_U_UINT)529, UNITY_DISPLAY_STYLE_INT);
-
-  UnityAssertEqualNumber((_U_SINT)((1)), (_U_SINT)((dupSquares[8][0])), (((void *)0)), (_U_UINT)530, UNITY_DISPLAY_STYLE_INT);
+  UnityAssertEqualNumber((_U_SINT)((1)), (_U_SINT)((dupSquares[0][8])), (((void *)0)), (_U_UINT)521, UNITY_DISPLAY_STYLE_INT);
 
 
 
-  UnityAssertEqualNumber((_U_SINT)((1)), (_U_SINT)((dupSquares[0][4])), (((void *)0)), (_U_UINT)532, UNITY_DISPLAY_STYLE_INT);
+  UnityAssertEqualNumber((_U_SINT)((4)), (_U_SINT)((dupSquares[0][0])), (((void *)0)), (_U_UINT)523, UNITY_DISPLAY_STYLE_INT);
 
-  UnityAssertEqualNumber((_U_SINT)((136)), (_U_SINT)((dupSquares[1][4])), (((void *)0)), (_U_UINT)533, UNITY_DISPLAY_STYLE_INT);
+  UnityAssertEqualNumber((_U_SINT)((2)), (_U_SINT)((dupSquares[1][0])), (((void *)0)), (_U_UINT)524, UNITY_DISPLAY_STYLE_INT);
 
-  UnityAssertEqualNumber((_U_SINT)((2)), (_U_SINT)((dupSquares[2][4])), (((void *)0)), (_U_UINT)534, UNITY_DISPLAY_STYLE_INT);
+  UnityAssertEqualNumber((_U_SINT)((1)), (_U_SINT)((dupSquares[2][0])), (((void *)0)), (_U_UINT)525, UNITY_DISPLAY_STYLE_INT);
 
-  UnityAssertEqualNumber((_U_SINT)((8)), (_U_SINT)((dupSquares[3][4])), (((void *)0)), (_U_UINT)535, UNITY_DISPLAY_STYLE_INT);
+  UnityAssertEqualNumber((_U_SINT)((1)), (_U_SINT)((dupSquares[3][0])), (((void *)0)), (_U_UINT)526, UNITY_DISPLAY_STYLE_INT);
 
-  UnityAssertEqualNumber((_U_SINT)((16)), (_U_SINT)((dupSquares[4][4])), (((void *)0)), (_U_UINT)536, UNITY_DISPLAY_STYLE_INT);
+  UnityAssertEqualNumber((_U_SINT)((64)), (_U_SINT)((dupSquares[4][0])), (((void *)0)), (_U_UINT)527, UNITY_DISPLAY_STYLE_INT);
 
-  UnityAssertEqualNumber((_U_SINT)((32)), (_U_SINT)((dupSquares[5][4])), (((void *)0)), (_U_UINT)537, UNITY_DISPLAY_STYLE_INT);
+  UnityAssertEqualNumber((_U_SINT)((128)), (_U_SINT)((dupSquares[5][0])), (((void *)0)), (_U_UINT)528, UNITY_DISPLAY_STYLE_INT);
 
-  UnityAssertEqualNumber((_U_SINT)((18)), (_U_SINT)((dupSquares[6][4])), (((void *)0)), (_U_UINT)538, UNITY_DISPLAY_STYLE_INT);
+  UnityAssertEqualNumber((_U_SINT)((1)), (_U_SINT)((dupSquares[6][0])), (((void *)0)), (_U_UINT)529, UNITY_DISPLAY_STYLE_INT);
 
-  UnityAssertEqualNumber((_U_SINT)((66)), (_U_SINT)((dupSquares[7][4])), (((void *)0)), (_U_UINT)539, UNITY_DISPLAY_STYLE_INT);
+  UnityAssertEqualNumber((_U_SINT)((256)), (_U_SINT)((dupSquares[7][0])), (((void *)0)), (_U_UINT)530, UNITY_DISPLAY_STYLE_INT);
 
-  UnityAssertEqualNumber((_U_SINT)((4)), (_U_SINT)((dupSquares[8][4])), (((void *)0)), (_U_UINT)540, UNITY_DISPLAY_STYLE_INT);
+  UnityAssertEqualNumber((_U_SINT)((1)), (_U_SINT)((dupSquares[8][0])), (((void *)0)), (_U_UINT)531, UNITY_DISPLAY_STYLE_INT);
+
+
+
+  UnityAssertEqualNumber((_U_SINT)((1)), (_U_SINT)((dupSquares[0][4])), (((void *)0)), (_U_UINT)533, UNITY_DISPLAY_STYLE_INT);
+
+  UnityAssertEqualNumber((_U_SINT)((136)), (_U_SINT)((dupSquares[1][4])), (((void *)0)), (_U_UINT)534, UNITY_DISPLAY_STYLE_INT);
+
+  UnityAssertEqualNumber((_U_SINT)((2)), (_U_SINT)((dupSquares[2][4])), (((void *)0)), (_U_UINT)535, UNITY_DISPLAY_STYLE_INT);
+
+  UnityAssertEqualNumber((_U_SINT)((8)), (_U_SINT)((dupSquares[3][4])), (((void *)0)), (_U_UINT)536, UNITY_DISPLAY_STYLE_INT);
+
+  UnityAssertEqualNumber((_U_SINT)((16)), (_U_SINT)((dupSquares[4][4])), (((void *)0)), (_U_UINT)537, UNITY_DISPLAY_STYLE_INT);
+
+  UnityAssertEqualNumber((_U_SINT)((32)), (_U_SINT)((dupSquares[5][4])), (((void *)0)), (_U_UINT)538, UNITY_DISPLAY_STYLE_INT);
+
+  UnityAssertEqualNumber((_U_SINT)((18)), (_U_SINT)((dupSquares[6][4])), (((void *)0)), (_U_UINT)539, UNITY_DISPLAY_STYLE_INT);
+
+  UnityAssertEqualNumber((_U_SINT)((66)), (_U_SINT)((dupSquares[7][4])), (((void *)0)), (_U_UINT)540, UNITY_DISPLAY_STYLE_INT);
+
+  UnityAssertEqualNumber((_U_SINT)((4)), (_U_SINT)((dupSquares[8][4])), (((void *)0)), (_U_UINT)541, UNITY_DISPLAY_STYLE_INT);
 
 }
 
@@ -1104,7 +838,7 @@ void test_isSudokuSolve_return_1_all_square_contain_one_number(void){
 
   int value = isSudokuSolved(square);
 
-  UnityAssertEqualNumber((_U_SINT)((1)), (_U_SINT)((value)), (((void *)0)), (_U_UINT)556, UNITY_DISPLAY_STYLE_INT);
+  UnityAssertEqualNumber((_U_SINT)((1)), (_U_SINT)((value)), (((void *)0)), (_U_UINT)557, UNITY_DISPLAY_STYLE_INT);
 
 }
 
@@ -1136,7 +870,7 @@ void test_isSudokuSolve_return_0_one_square_contain_two_number(void){
 
   int value = isSudokuSolved(square);
 
-  UnityAssertEqualNumber((_U_SINT)((0)), (_U_SINT)((value)), (((void *)0)), (_U_UINT)572, UNITY_DISPLAY_STYLE_INT);
+  UnityAssertEqualNumber((_U_SINT)((0)), (_U_SINT)((value)), (((void *)0)), (_U_UINT)573, UNITY_DISPLAY_STYLE_INT);
 
 }
 
@@ -1166,51 +900,563 @@ void test_selectSquareWithLeastValues_should_return_row_0(void){
 
 
 
-  Square value = selectSquareWithLeastValues(square);
+  int value = selectSquareWithLeastValues(square);
 
 
 
-  UnityAssertEqualNumber((_U_SINT)((0)), (_U_SINT)((value.row)), (((void *)0)), (_U_UINT)589, UNITY_DISPLAY_STYLE_INT);
-
-  UnityAssertEqualNumber((_U_SINT)((1)), (_U_SINT)((value.column)), (((void *)0)), (_U_UINT)590, UNITY_DISPLAY_STYLE_INT);
+  UnityAssertEqualNumber((_U_SINT)((0)), (_U_SINT)((value)), (((void *)0)), (_U_UINT)590, UNITY_DISPLAY_STYLE_INT);
 
 }
 
-void test_bruteForce_112212312311(void){
 
-  int square[9][9] = {{((3>0)? 1<<(3 -1) : 0x1ff), ((7>0)? 1<<(7 -1) : 0x1ff)|((8>0)? 1<<(8 -1) : 0x1ff), ((9>0)? 1<<(9 -1) : 0x1ff), ((8>0)? 1<<(8 -1) : 0x1ff), ((2>0)? 1<<(2 -1) : 0x1ff), ((1>0)? 1<<(1 -1) : 0x1ff), ((4>0)? 1<<(4 -1) : 0x1ff), ((5>0)? 1<<(5 -1) : 0x1ff), ((6>0)? 1<<(6 -1) : 0x1ff)},
 
-                      {((5>0)? 1<<(5 -1) : 0x1ff), ((4>0)? 1<<(4 -1) : 0x1ff), ((8>0)? 1<<(8 -1) : 0x1ff), ((9>0)? 1<<(9 -1) : 0x1ff), ((3>0)? 1<<(3 -1) : 0x1ff), ((6>0)? 1<<(6 -1) : 0x1ff), ((7>0)? 1<<(7 -1) : 0x1ff), ((2>0)? 1<<(2 -1) : 0x1ff), ((1>0)? 1<<(1 -1) : 0x1ff)},
+void test_nakedPair_eliminate_row(void){
 
-                      {((2>0)? 1<<(2 -1) : 0x1ff), ((6>0)? 1<<(6 -1) : 0x1ff), ((1>0)? 1<<(1 -1) : 0x1ff), ((4>0)? 1<<(4 -1) : 0x1ff), ((5>0)? 1<<(5 -1) : 0x1ff), ((7>0)? 1<<(7 -1) : 0x1ff), ((3>0)? 1<<(3 -1) : 0x1ff), ((9>0)? 1<<(9 -1) : 0x1ff), ((8>0)? 1<<(8 -1) : 0x1ff)},
+    int square[9][9]={{((1>0)? 1<<(1 -1) : 0x1ff), ((2>0)? 1<<(2 -1) : 0x1ff)|((3>0)? 1<<(3 -1) : 0x1ff), ((1>0)? 1<<(1 -1) : 0x1ff), ((1>0)? 1<<(1 -1) : 0x1ff) , ((1>0)? 1<<(1 -1) : 0x1ff), ((1>0)? 1<<(1 -1) : 0x1ff), ((1>0)? 1<<(1 -1) : 0x1ff), ((1>0)? 1<<(1 -1) : 0x1ff),((1>0)? 1<<(1 -1) : 0x1ff)},
 
-                      {((1>0)? 1<<(1 -1) : 0x1ff), ((8>0)? 1<<(8 -1) : 0x1ff)|((7>0)? 1<<(7 -1) : 0x1ff), ((5>0)? 1<<(5 -1) : 0x1ff), ((3>0)? 1<<(3 -1) : 0x1ff), ((6>0)? 1<<(6 -1) : 0x1ff), ((9>0)? 1<<(9 -1) : 0x1ff), ((2>0)? 1<<(2 -1) : 0x1ff), ((4>0)? 1<<(4 -1) : 0x1ff), ((7>0)? 1<<(7 -1) : 0x1ff)},
+                      {((1>0)? 1<<(1 -1) : 0x1ff), ((2>0)? 1<<(2 -1) : 0x1ff)|((4>0)? 1<<(4 -1) : 0x1ff), ((1>0)? 1<<(1 -1) : 0x1ff), ((1>0)? 1<<(1 -1) : 0x1ff) , ((1>0)? 1<<(1 -1) : 0x1ff), ((1>0)? 1<<(1 -1) : 0x1ff), ((1>0)? 1<<(1 -1) : 0x1ff), ((1>0)? 1<<(1 -1) : 0x1ff),((1>0)? 1<<(1 -1) : 0x1ff)},
 
-                      {((9>0)? 1<<(9 -1) : 0x1ff), ((2>0)? 1<<(2 -1) : 0x1ff), ((4>0)? 1<<(4 -1) : 0x1ff), ((1>0)? 1<<(1 -1) : 0x1ff), ((7>0)? 1<<(7 -1) : 0x1ff), ((5>0)? 1<<(5 -1) : 0x1ff), ((8>0)? 1<<(8 -1) : 0x1ff), ((6>0)? 1<<(6 -1) : 0x1ff), ((3>0)? 1<<(3 -1) : 0x1ff)},
+                      {((1>0)? 1<<(1 -1) : 0x1ff), ((2>0)? 1<<(2 -1) : 0x1ff)|((4>0)? 1<<(4 -1) : 0x1ff), ((1>0)? 1<<(1 -1) : 0x1ff), ((1>0)? 1<<(1 -1) : 0x1ff) , ((1>0)? 1<<(1 -1) : 0x1ff), ((1>0)? 1<<(1 -1) : 0x1ff), ((1>0)? 1<<(1 -1) : 0x1ff), ((1>0)? 1<<(1 -1) : 0x1ff),((1>0)? 1<<(1 -1) : 0x1ff)},
 
-                      {((6>0)? 1<<(6 -1) : 0x1ff), ((3>0)? 1<<(3 -1) : 0x1ff), ((7>0)? 1<<(7 -1) : 0x1ff), ((2>0)? 1<<(2 -1) : 0x1ff), ((8>0)? 1<<(8 -1) : 0x1ff), ((4>0)? 1<<(4 -1) : 0x1ff), ((9>0)? 1<<(9 -1) : 0x1ff), ((1>0)? 1<<(1 -1) : 0x1ff), ((5>0)? 1<<(5 -1) : 0x1ff)},
 
-                      {((4>0)? 1<<(4 -1) : 0x1ff), ((9>0)? 1<<(9 -1) : 0x1ff), ((3>0)? 1<<(3 -1) : 0x1ff), ((5>0)? 1<<(5 -1) : 0x1ff), ((1>0)? 1<<(1 -1) : 0x1ff), ((8>0)? 1<<(8 -1) : 0x1ff), ((6>0)? 1<<(6 -1) : 0x1ff), ((7>0)? 1<<(7 -1) : 0x1ff), ((2>0)? 1<<(2 -1) : 0x1ff)},
 
-                      {((8>0)? 1<<(8 -1) : 0x1ff), ((5>0)? 1<<(5 -1) : 0x1ff), ((6>0)? 1<<(6 -1) : 0x1ff), ((7>0)? 1<<(7 -1) : 0x1ff), ((9>0)? 1<<(9 -1) : 0x1ff), ((2>0)? 1<<(2 -1) : 0x1ff), ((1>0)? 1<<(1 -1) : 0x1ff), ((3>0)? 1<<(3 -1) : 0x1ff), ((4>0)? 1<<(4 -1) : 0x1ff)},
+                      {((1>0)? 1<<(1 -1) : 0x1ff), ((2>0)? 1<<(2 -1) : 0x1ff)|((8>0)? 1<<(8 -1) : 0x1ff)|((5>0)? 1<<(5 -1) : 0x1ff), ((1>0)? 1<<(1 -1) : 0x1ff), ((1>0)? 1<<(1 -1) : 0x1ff) , ((1>0)? 1<<(1 -1) : 0x1ff), ((1>0)? 1<<(1 -1) : 0x1ff), ((1>0)? 1<<(1 -1) : 0x1ff), ((1>0)? 1<<(1 -1) : 0x1ff),((1>0)? 1<<(1 -1) : 0x1ff)},
 
-                      {((7>0)? 1<<(7 -1) : 0x1ff), ((1>0)? 1<<(1 -1) : 0x1ff), ((2>0)? 1<<(2 -1) : 0x1ff), ((6>0)? 1<<(6 -1) : 0x1ff), ((4>0)? 1<<(4 -1) : 0x1ff), ((3>0)? 1<<(3 -1) : 0x1ff), ((5>0)? 1<<(5 -1) : 0x1ff), ((8>0)? 1<<(8 -1) : 0x1ff), ((9>0)? 1<<(9 -1) : 0x1ff)},
+                      {((1>0)? 1<<(1 -1) : 0x1ff), ((1>0)? 1<<(1 -1) : 0x1ff), ((1>0)? 1<<(1 -1) : 0x1ff), ((1>0)? 1<<(1 -1) : 0x1ff) , ((1>0)? 1<<(1 -1) : 0x1ff), ((1>0)? 1<<(1 -1) : 0x1ff), ((1>0)? 1<<(1 -1) : 0x1ff), ((1>0)? 1<<(1 -1) : 0x1ff),((1>0)? 1<<(1 -1) : 0x1ff)},
+
+                      {((1>0)? 1<<(1 -1) : 0x1ff), ((6>0)? 1<<(6 -1) : 0x1ff), ((1>0)? 1<<(1 -1) : 0x1ff), ((1>0)? 1<<(1 -1) : 0x1ff) , ((1>0)? 1<<(1 -1) : 0x1ff), ((1>0)? 1<<(1 -1) : 0x1ff), ((1>0)? 1<<(1 -1) : 0x1ff), ((1>0)? 1<<(1 -1) : 0x1ff),((1>0)? 1<<(1 -1) : 0x1ff)},
+
+
+
+                      {((1>0)? 1<<(1 -1) : 0x1ff), ((5>0)? 1<<(5 -1) : 0x1ff)|((6>0)? 1<<(6 -1) : 0x1ff), ((1>0)? 1<<(1 -1) : 0x1ff), ((1>0)? 1<<(1 -1) : 0x1ff) , ((1>0)? 1<<(1 -1) : 0x1ff), ((1>0)? 1<<(1 -1) : 0x1ff), ((1>0)? 1<<(1 -1) : 0x1ff), ((1>0)? 1<<(1 -1) : 0x1ff),((1>0)? 1<<(1 -1) : 0x1ff)},
+
+                      {((1>0)? 1<<(1 -1) : 0x1ff), ((1>0)? 1<<(1 -1) : 0x1ff), ((1>0)? 1<<(1 -1) : 0x1ff), ((1>0)? 1<<(1 -1) : 0x1ff) , ((1>0)? 1<<(1 -1) : 0x1ff), ((1>0)? 1<<(1 -1) : 0x1ff), ((1>0)? 1<<(1 -1) : 0x1ff), ((1>0)? 1<<(1 -1) : 0x1ff),((1>0)? 1<<(1 -1) : 0x1ff)},
+
+                      {((1>0)? 1<<(1 -1) : 0x1ff), ((1>0)? 1<<(1 -1) : 0x1ff), ((1>0)? 1<<(1 -1) : 0x1ff), ((1>0)? 1<<(1 -1) : 0x1ff) , ((1>0)? 1<<(1 -1) : 0x1ff), ((1>0)? 1<<(1 -1) : 0x1ff), ((1>0)? 1<<(1 -1) : 0x1ff), ((1>0)? 1<<(1 -1) : 0x1ff),((1>0)? 1<<(1 -1) : 0x1ff)},
 
                      };
 
-  eliminateBruteForce(square);
+  Square *row = rowPeers[0][1];
+
+  eliminateNakedPairInPeers(square,row);
+
+
+
+  UnityAssertEqualNumber((_U_SINT)((4)), (_U_SINT)((square[0][1])), (((void *)0)), (_U_UINT)609, UNITY_DISPLAY_STYLE_INT);
+
+  UnityAssertEqualNumber((_U_SINT)((10)), (_U_SINT)((square[1][1])), (((void *)0)), (_U_UINT)610, UNITY_DISPLAY_STYLE_INT);
+
+  UnityAssertEqualNumber((_U_SINT)((10)), (_U_SINT)((square[2][1])), (((void *)0)), (_U_UINT)611, UNITY_DISPLAY_STYLE_INT);
+
+  UnityAssertEqualNumber((_U_SINT)((144)), (_U_SINT)((square[3][1])), (((void *)0)), (_U_UINT)612, UNITY_DISPLAY_STYLE_INT);
+
+  UnityAssertEqualNumber((_U_SINT)((1)), (_U_SINT)((square[4][1])), (((void *)0)), (_U_UINT)613, UNITY_DISPLAY_STYLE_INT);
+
+  UnityAssertEqualNumber((_U_SINT)((32)), (_U_SINT)((square[5][1])), (((void *)0)), (_U_UINT)614, UNITY_DISPLAY_STYLE_INT);
+
+  UnityAssertEqualNumber((_U_SINT)((48)), (_U_SINT)((square[6][1])), (((void *)0)), (_U_UINT)615, UNITY_DISPLAY_STYLE_INT);
+
+  UnityAssertEqualNumber((_U_SINT)((1)), (_U_SINT)((square[7][1])), (((void *)0)), (_U_UINT)616, UNITY_DISPLAY_STYLE_INT);
+
+  UnityAssertEqualNumber((_U_SINT)((1)), (_U_SINT)((square[8][1])), (((void *)0)), (_U_UINT)617, UNITY_DISPLAY_STYLE_INT);
+
+}
+
+
+
+void test_nakedPair_eliminate_column(void){
+
+    int square[9][9]={{((1>0)? 1<<(1 -1) : 0x1ff), ((2>0)? 1<<(2 -1) : 0x1ff)|((3>0)? 1<<(3 -1) : 0x1ff), ((2>0)? 1<<(2 -1) : 0x1ff)|((4>0)? 1<<(4 -1) : 0x1ff), ((2>0)? 1<<(2 -1) : 0x1ff) , ((2>0)? 1<<(2 -1) : 0x1ff)|((3>0)? 1<<(3 -1) : 0x1ff), ((1>0)? 1<<(1 -1) : 0x1ff)|((8>0)? 1<<(8 -1) : 0x1ff)|((6>0)? 1<<(6 -1) : 0x1ff), ((1>0)? 1<<(1 -1) : 0x1ff), ((1>0)? 1<<(1 -1) : 0x1ff),((1>0)? 1<<(1 -1) : 0x1ff)},
+
+                      {((1>0)? 1<<(1 -1) : 0x1ff), ((1>0)? 1<<(1 -1) : 0x1ff), ((1>0)? 1<<(1 -1) : 0x1ff) , ((1>0)? 1<<(1 -1) : 0x1ff) , ((1>0)? 1<<(1 -1) : 0x1ff) , ((1>0)? 1<<(1 -1) : 0x1ff) , ((1>0)? 1<<(1 -1) : 0x1ff), ((1>0)? 1<<(1 -1) : 0x1ff),((1>0)? 1<<(1 -1) : 0x1ff)},
+
+                      {((1>0)? 1<<(1 -1) : 0x1ff), ((1>0)? 1<<(1 -1) : 0x1ff), ((1>0)? 1<<(1 -1) : 0x1ff) , ((1>0)? 1<<(1 -1) : 0x1ff) , ((1>0)? 1<<(1 -1) : 0x1ff) , ((1>0)? 1<<(1 -1) : 0x1ff) , ((1>0)? 1<<(1 -1) : 0x1ff), ((1>0)? 1<<(1 -1) : 0x1ff),((1>0)? 1<<(1 -1) : 0x1ff)},
+
+
+
+                      {((1>0)? 1<<(1 -1) : 0x1ff), ((1>0)? 1<<(1 -1) : 0x1ff), ((1>0)? 1<<(1 -1) : 0x1ff) , ((1>0)? 1<<(1 -1) : 0x1ff) , ((1>0)? 1<<(1 -1) : 0x1ff) , ((1>0)? 1<<(1 -1) : 0x1ff) , ((1>0)? 1<<(1 -1) : 0x1ff), ((1>0)? 1<<(1 -1) : 0x1ff),((1>0)? 1<<(1 -1) : 0x1ff)},
+
+                      {((1>0)? 1<<(1 -1) : 0x1ff), ((1>0)? 1<<(1 -1) : 0x1ff), ((1>0)? 1<<(1 -1) : 0x1ff) , ((1>0)? 1<<(1 -1) : 0x1ff) , ((1>0)? 1<<(1 -1) : 0x1ff) , ((1>0)? 1<<(1 -1) : 0x1ff) , ((1>0)? 1<<(1 -1) : 0x1ff), ((1>0)? 1<<(1 -1) : 0x1ff),((1>0)? 1<<(1 -1) : 0x1ff)},
+
+                      {((1>0)? 1<<(1 -1) : 0x1ff), ((1>0)? 1<<(1 -1) : 0x1ff), ((1>0)? 1<<(1 -1) : 0x1ff) , ((1>0)? 1<<(1 -1) : 0x1ff) , ((1>0)? 1<<(1 -1) : 0x1ff) , ((1>0)? 1<<(1 -1) : 0x1ff) , ((1>0)? 1<<(1 -1) : 0x1ff), ((1>0)? 1<<(1 -1) : 0x1ff),((1>0)? 1<<(1 -1) : 0x1ff)},
+
+
+
+                      {((1>0)? 1<<(1 -1) : 0x1ff), ((1>0)? 1<<(1 -1) : 0x1ff), ((1>0)? 1<<(1 -1) : 0x1ff) , ((1>0)? 1<<(1 -1) : 0x1ff) , ((1>0)? 1<<(1 -1) : 0x1ff) , ((1>0)? 1<<(1 -1) : 0x1ff) , ((1>0)? 1<<(1 -1) : 0x1ff), ((1>0)? 1<<(1 -1) : 0x1ff),((1>0)? 1<<(1 -1) : 0x1ff)},
+
+                      {((1>0)? 1<<(1 -1) : 0x1ff), ((1>0)? 1<<(1 -1) : 0x1ff), ((1>0)? 1<<(1 -1) : 0x1ff) , ((1>0)? 1<<(1 -1) : 0x1ff) , ((1>0)? 1<<(1 -1) : 0x1ff) , ((1>0)? 1<<(1 -1) : 0x1ff) , ((1>0)? 1<<(1 -1) : 0x1ff), ((1>0)? 1<<(1 -1) : 0x1ff),((1>0)? 1<<(1 -1) : 0x1ff)},
+
+                      {((1>0)? 1<<(1 -1) : 0x1ff), ((1>0)? 1<<(1 -1) : 0x1ff), ((1>0)? 1<<(1 -1) : 0x1ff) , ((1>0)? 1<<(1 -1) : 0x1ff) , ((1>0)? 1<<(1 -1) : 0x1ff) , ((1>0)? 1<<(1 -1) : 0x1ff) , ((1>0)? 1<<(1 -1) : 0x1ff), ((1>0)? 1<<(1 -1) : 0x1ff),((1>0)? 1<<(1 -1) : 0x1ff)},
+
+                     };
+
+  Square *column = columnPeers[0][1];
+
+  eliminateNakedPairInPeers(square,column);
+
+
+
+  UnityAssertEqualNumber((_U_SINT)((1)), (_U_SINT)((square[0][0])), (((void *)0)), (_U_UINT)636, UNITY_DISPLAY_STYLE_INT);
+
+  UnityAssertEqualNumber((_U_SINT)((6)), (_U_SINT)((square[0][1])), (((void *)0)), (_U_UINT)637, UNITY_DISPLAY_STYLE_INT);
+
+  UnityAssertEqualNumber((_U_SINT)((8)), (_U_SINT)((square[0][2])), (((void *)0)), (_U_UINT)638, UNITY_DISPLAY_STYLE_INT);
+
+  UnityAssertEqualNumber((_U_SINT)((2)), (_U_SINT)((square[0][3])), (((void *)0)), (_U_UINT)639, UNITY_DISPLAY_STYLE_INT);
+
+  UnityAssertEqualNumber((_U_SINT)((6)), (_U_SINT)((square[0][4])), (((void *)0)), (_U_UINT)640, UNITY_DISPLAY_STYLE_INT);
+
+  UnityAssertEqualNumber((_U_SINT)((161)), (_U_SINT)((square[0][5])), (((void *)0)), (_U_UINT)641, UNITY_DISPLAY_STYLE_INT);
+
+  UnityAssertEqualNumber((_U_SINT)((1)), (_U_SINT)((square[0][6])), (((void *)0)), (_U_UINT)642, UNITY_DISPLAY_STYLE_INT);
+
+  UnityAssertEqualNumber((_U_SINT)((1)), (_U_SINT)((square[0][7])), (((void *)0)), (_U_UINT)643, UNITY_DISPLAY_STYLE_INT);
+
+  UnityAssertEqualNumber((_U_SINT)((1)), (_U_SINT)((square[0][8])), (((void *)0)), (_U_UINT)644, UNITY_DISPLAY_STYLE_INT);
+
+}
+
+
+
+void test_nakedPair_eliminate_box(void){
+
+    int square[9][9]={{((1>0)? 1<<(1 -1) : 0x1ff) , ((1>0)? 1<<(1 -1) : 0x1ff) , ((1>0)? 1<<(1 -1) : 0x1ff) , ((1>0)? 1<<(1 -1) : 0x1ff) , ((1>0)? 1<<(1 -1) : 0x1ff) , ((1>0)? 1<<(1 -1) : 0x1ff) , ((1>0)? 1<<(1 -1) : 0x1ff), ((1>0)? 1<<(1 -1) : 0x1ff),((1>0)? 1<<(1 -1) : 0x1ff)},
+
+                      {((1>0)? 1<<(1 -1) : 0x1ff) , ((1>0)? 1<<(1 -1) : 0x1ff) , ((1>0)? 1<<(1 -1) : 0x1ff) , ((1>0)? 1<<(1 -1) : 0x1ff) , ((1>0)? 1<<(1 -1) : 0x1ff) , ((1>0)? 1<<(1 -1) : 0x1ff) , ((1>0)? 1<<(1 -1) : 0x1ff), ((1>0)? 1<<(1 -1) : 0x1ff),((1>0)? 1<<(1 -1) : 0x1ff)},
+
+                      {((1>0)? 1<<(1 -1) : 0x1ff) , ((1>0)? 1<<(1 -1) : 0x1ff) , ((1>0)? 1<<(1 -1) : 0x1ff) , ((1>0)? 1<<(1 -1) : 0x1ff) , ((1>0)? 1<<(1 -1) : 0x1ff) , ((1>0)? 1<<(1 -1) : 0x1ff) , ((1>0)? 1<<(1 -1) : 0x1ff), ((1>0)? 1<<(1 -1) : 0x1ff),((1>0)? 1<<(1 -1) : 0x1ff)},
+
+
+
+                      {((3>0)? 1<<(3 -1) : 0x1ff) , ((7>0)? 1<<(7 -1) : 0x1ff)|((9>0)? 1<<(9 -1) : 0x1ff) , ((2>0)? 1<<(2 -1) : 0x1ff)|((9>0)? 1<<(9 -1) : 0x1ff), ((1>0)? 1<<(1 -1) : 0x1ff) , ((1>0)? 1<<(1 -1) : 0x1ff) , ((1>0)? 1<<(1 -1) : 0x1ff) , ((1>0)? 1<<(1 -1) : 0x1ff), ((1>0)? 1<<(1 -1) : 0x1ff),((1>0)? 1<<(1 -1) : 0x1ff)},
+
+                      {((5>0)? 1<<(5 -1) : 0x1ff) , ((2>0)? 1<<(2 -1) : 0x1ff)|((8>0)? 1<<(8 -1) : 0x1ff)|((3>0)? 1<<(3 -1) : 0x1ff), ((8>0)? 1<<(8 -1) : 0x1ff) , ((1>0)? 1<<(1 -1) : 0x1ff) , ((1>0)? 1<<(1 -1) : 0x1ff) , ((1>0)? 1<<(1 -1) : 0x1ff) , ((1>0)? 1<<(1 -1) : 0x1ff), ((1>0)? 1<<(1 -1) : 0x1ff),((1>0)? 1<<(1 -1) : 0x1ff)},
+
+                      {((2>0)? 1<<(2 -1) : 0x1ff)|((9>0)? 1<<(9 -1) : 0x1ff), ((6>0)? 1<<(6 -1) : 0x1ff) , ((2>0)? 1<<(2 -1) : 0x1ff) , ((1>0)? 1<<(1 -1) : 0x1ff) , ((1>0)? 1<<(1 -1) : 0x1ff) , ((1>0)? 1<<(1 -1) : 0x1ff) , ((1>0)? 1<<(1 -1) : 0x1ff), ((1>0)? 1<<(1 -1) : 0x1ff),((1>0)? 1<<(1 -1) : 0x1ff)},
+
+
+
+                      {((1>0)? 1<<(1 -1) : 0x1ff) , ((1>0)? 1<<(1 -1) : 0x1ff) , ((1>0)? 1<<(1 -1) : 0x1ff) , ((1>0)? 1<<(1 -1) : 0x1ff) , ((1>0)? 1<<(1 -1) : 0x1ff) , ((1>0)? 1<<(1 -1) : 0x1ff) , ((1>0)? 1<<(1 -1) : 0x1ff), ((1>0)? 1<<(1 -1) : 0x1ff),((1>0)? 1<<(1 -1) : 0x1ff)},
+
+                      {((1>0)? 1<<(1 -1) : 0x1ff) , ((1>0)? 1<<(1 -1) : 0x1ff) , ((1>0)? 1<<(1 -1) : 0x1ff) , ((1>0)? 1<<(1 -1) : 0x1ff) , ((1>0)? 1<<(1 -1) : 0x1ff) , ((1>0)? 1<<(1 -1) : 0x1ff) , ((1>0)? 1<<(1 -1) : 0x1ff), ((1>0)? 1<<(1 -1) : 0x1ff),((1>0)? 1<<(1 -1) : 0x1ff)},
+
+                      {((1>0)? 1<<(1 -1) : 0x1ff) , ((1>0)? 1<<(1 -1) : 0x1ff) , ((1>0)? 1<<(1 -1) : 0x1ff) , ((1>0)? 1<<(1 -1) : 0x1ff) , ((1>0)? 1<<(1 -1) : 0x1ff) , ((1>0)? 1<<(1 -1) : 0x1ff) , ((1>0)? 1<<(1 -1) : 0x1ff), ((1>0)? 1<<(1 -1) : 0x1ff),((1>0)? 1<<(1 -1) : 0x1ff)},
+
+                     };
+
+  Square *box = boxPeers[3][1];
+
+  eliminateNakedPairInPeers(square,box);
+
+
+
+  UnityAssertEqualNumber((_U_SINT)((4)), (_U_SINT)((square[3][0])), (((void *)0)), (_U_UINT)663, UNITY_DISPLAY_STYLE_INT);
+
+  UnityAssertEqualNumber((_U_SINT)((64)), (_U_SINT)((square[3][1])), (((void *)0)), (_U_UINT)664, UNITY_DISPLAY_STYLE_INT);
+
+  UnityAssertEqualNumber((_U_SINT)((258)), (_U_SINT)((square[3][2])), (((void *)0)), (_U_UINT)665, UNITY_DISPLAY_STYLE_INT);
+
+  UnityAssertEqualNumber((_U_SINT)((16)), (_U_SINT)((square[4][0])), (((void *)0)), (_U_UINT)666, UNITY_DISPLAY_STYLE_INT);
+
+  UnityAssertEqualNumber((_U_SINT)((132)), (_U_SINT)((square[4][1])), (((void *)0)), (_U_UINT)667, UNITY_DISPLAY_STYLE_INT);
+
+  UnityAssertEqualNumber((_U_SINT)((128)), (_U_SINT)((square[4][2])), (((void *)0)), (_U_UINT)668, UNITY_DISPLAY_STYLE_INT);
+
+  UnityAssertEqualNumber((_U_SINT)((258)), (_U_SINT)((square[5][0])), (((void *)0)), (_U_UINT)669, UNITY_DISPLAY_STYLE_INT);
+
+  UnityAssertEqualNumber((_U_SINT)((32)), (_U_SINT)((square[5][1])), (((void *)0)), (_U_UINT)670, UNITY_DISPLAY_STYLE_INT);
+
+  UnityAssertEqualNumber((_U_SINT)((2)), (_U_SINT)((square[5][2])), (((void *)0)), (_U_UINT)671, UNITY_DISPLAY_STYLE_INT);
+
+}
+
+
+
+void test_nakedPair_eliminate_row_column_and_box(void){
+
+    int square[9][9]={{((6>0)? 1<<(6 -1) : 0x1ff), ((2>0)? 1<<(2 -1) : 0x1ff)|((3>0)? 1<<(3 -1) : 0x1ff), ((2>0)? 1<<(2 -1) : 0x1ff)|((3>0)? 1<<(3 -1) : 0x1ff), ((1>0)? 1<<(1 -1) : 0x1ff), ((1>0)? 1<<(1 -1) : 0x1ff), ((1>0)? 1<<(1 -1) : 0x1ff), ((1>0)? 1<<(1 -1) : 0x1ff), ((1>0)? 1<<(1 -1) : 0x1ff),((1>0)? 1<<(1 -1) : 0x1ff)},
+
+                      {((6>0)? 1<<(6 -1) : 0x1ff), ((2>0)? 1<<(2 -1) : 0x1ff)|((4>0)? 1<<(4 -1) : 0x1ff), ((3>0)? 1<<(3 -1) : 0x1ff), ((1>0)? 1<<(1 -1) : 0x1ff) , ((1>0)? 1<<(1 -1) : 0x1ff), ((1>0)? 1<<(1 -1) : 0x1ff), ((1>0)? 1<<(1 -1) : 0x1ff), ((1>0)? 1<<(1 -1) : 0x1ff),((1>0)? 1<<(1 -1) : 0x1ff)},
+
+                      {((1>0)? 1<<(1 -1) : 0x1ff), ((2>0)? 1<<(2 -1) : 0x1ff)|((4>0)? 1<<(4 -1) : 0x1ff), ((1>0)? 1<<(1 -1) : 0x1ff), ((1>0)? 1<<(1 -1) : 0x1ff) , ((1>0)? 1<<(1 -1) : 0x1ff), ((1>0)? 1<<(1 -1) : 0x1ff), ((1>0)? 1<<(1 -1) : 0x1ff), ((1>0)? 1<<(1 -1) : 0x1ff),((1>0)? 1<<(1 -1) : 0x1ff)},
+
+
+
+                      {((1>0)? 1<<(1 -1) : 0x1ff), ((2>0)? 1<<(2 -1) : 0x1ff)|((3>0)? 1<<(3 -1) : 0x1ff), ((1>0)? 1<<(1 -1) : 0x1ff), ((2>0)? 1<<(2 -1) : 0x1ff)|((9>0)? 1<<(9 -1) : 0x1ff), ((1>0)? 1<<(1 -1) : 0x1ff), ((1>0)? 1<<(1 -1) : 0x1ff), ((1>0)? 1<<(1 -1) : 0x1ff), ((1>0)? 1<<(1 -1) : 0x1ff),((1>0)? 1<<(1 -1) : 0x1ff)},
+
+                      {((1>0)? 1<<(1 -1) : 0x1ff), ((1>0)? 1<<(1 -1) : 0x1ff), ((1>0)? 1<<(1 -1) : 0x1ff), ((1>0)? 1<<(1 -1) : 0x1ff), ((1>0)? 1<<(1 -1) : 0x1ff), ((1>0)? 1<<(1 -1) : 0x1ff), ((1>0)? 1<<(1 -1) : 0x1ff), ((1>0)? 1<<(1 -1) : 0x1ff),((1>0)? 1<<(1 -1) : 0x1ff)},
+
+                      {((1>0)? 1<<(1 -1) : 0x1ff), ((1>0)? 1<<(1 -1) : 0x1ff), ((1>0)? 1<<(1 -1) : 0x1ff), ((1>0)? 1<<(1 -1) : 0x1ff), ((1>0)? 1<<(1 -1) : 0x1ff), ((1>0)? 1<<(1 -1) : 0x1ff), ((1>0)? 1<<(1 -1) : 0x1ff), ((1>0)? 1<<(1 -1) : 0x1ff),((1>0)? 1<<(1 -1) : 0x1ff)},
+
+
+
+                      {((1>0)? 1<<(1 -1) : 0x1ff), ((5>0)? 1<<(5 -1) : 0x1ff)|((6>0)? 1<<(6 -1) : 0x1ff), ((1>0)? 1<<(1 -1) : 0x1ff), ((1>0)? 1<<(1 -1) : 0x1ff), ((1>0)? 1<<(1 -1) : 0x1ff), ((1>0)? 1<<(1 -1) : 0x1ff), ((1>0)? 1<<(1 -1) : 0x1ff), ((1>0)? 1<<(1 -1) : 0x1ff),((1>0)? 1<<(1 -1) : 0x1ff)},
+
+                      {((1>0)? 1<<(1 -1) : 0x1ff), ((1>0)? 1<<(1 -1) : 0x1ff), ((1>0)? 1<<(1 -1) : 0x1ff), ((1>0)? 1<<(1 -1) : 0x1ff), ((1>0)? 1<<(1 -1) : 0x1ff), ((1>0)? 1<<(1 -1) : 0x1ff), ((1>0)? 1<<(1 -1) : 0x1ff), ((1>0)? 1<<(1 -1) : 0x1ff),((1>0)? 1<<(1 -1) : 0x1ff)},
+
+                      {((1>0)? 1<<(1 -1) : 0x1ff), ((1>0)? 1<<(1 -1) : 0x1ff), ((1>0)? 1<<(1 -1) : 0x1ff), ((1>0)? 1<<(1 -1) : 0x1ff), ((1>0)? 1<<(1 -1) : 0x1ff), ((1>0)? 1<<(1 -1) : 0x1ff), ((1>0)? 1<<(1 -1) : 0x1ff), ((1>0)? 1<<(1 -1) : 0x1ff),((1>0)? 1<<(1 -1) : 0x1ff)},
+
+                     };
 
 
 
 
 
-  UnityAssertEqualNumber((_U_SINT)((64)), (_U_SINT)((square[0][1])), (((void *)0)), (_U_UINT)641, UNITY_DISPLAY_STYLE_INT);
+  eliminateNakedPair(square);
 
-  UnityAssertEqualNumber((_U_SINT)((64)), (_U_SINT)((square[3][8])), (((void *)0)), (_U_UINT)642, UNITY_DISPLAY_STYLE_INT);
 
-  UnityAssertEqualNumber((_U_SINT)((128)), (_U_SINT)((square[3][1])), (((void *)0)), (_U_UINT)643, UNITY_DISPLAY_STYLE_INT);
 
-  UnityAssertEqualNumber((_U_SINT)((64)), (_U_SINT)((square[7][3])), (((void *)0)), (_U_UINT)644, UNITY_DISPLAY_STYLE_INT);
+  UnityAssertEqualNumber((_U_SINT)((4)), (_U_SINT)((square[0][2])), (((void *)0)), (_U_UINT)691, UNITY_DISPLAY_STYLE_INT);
+
+  UnityAssertEqualNumber((_U_SINT)((4)), (_U_SINT)((square[1][2])), (((void *)0)), (_U_UINT)692, UNITY_DISPLAY_STYLE_INT);
+
+  UnityAssertEqualNumber((_U_SINT)((4)), (_U_SINT)((square[0][1])), (((void *)0)), (_U_UINT)693, UNITY_DISPLAY_STYLE_INT);
+
+  UnityAssertEqualNumber((_U_SINT)((32)), (_U_SINT)((square[0][0])), (((void *)0)), (_U_UINT)694, UNITY_DISPLAY_STYLE_INT);
+
+  UnityAssertEqualNumber((_U_SINT)((32)), (_U_SINT)((square[1][0])), (((void *)0)), (_U_UINT)695, UNITY_DISPLAY_STYLE_INT);
+
+  UnityAssertEqualNumber((_U_SINT)((4)), (_U_SINT)((square[3][1])), (((void *)0)), (_U_UINT)696, UNITY_DISPLAY_STYLE_INT);
+
+  UnityAssertEqualNumber((_U_SINT)((48)), (_U_SINT)((square[6][1])), (((void *)0)), (_U_UINT)697, UNITY_DISPLAY_STYLE_INT);
+
+  UnityAssertEqualNumber((_U_SINT)((256)), (_U_SINT)((square[3][3])), (((void *)0)), (_U_UINT)698, UNITY_DISPLAY_STYLE_INT);
+
+}
+
+
+
+void test_nakedTriples_eliminate_row_with_throw(void){
+
+    int square[9][9]={{((1>0)? 1<<(1 -1) : 0x1ff), ((2>0)? 1<<(2 -1) : 0x1ff)|((3>0)? 1<<(3 -1) : 0x1ff)|((4>0)? 1<<(4 -1) : 0x1ff), ((1>0)? 1<<(1 -1) : 0x1ff), ((1>0)? 1<<(1 -1) : 0x1ff) , ((1>0)? 1<<(1 -1) : 0x1ff), ((1>0)? 1<<(1 -1) : 0x1ff), ((1>0)? 1<<(1 -1) : 0x1ff), ((1>0)? 1<<(1 -1) : 0x1ff),((1>0)? 1<<(1 -1) : 0x1ff)},
+
+                      {((1>0)? 1<<(1 -1) : 0x1ff), ((2>0)? 1<<(2 -1) : 0x1ff)|((3>0)? 1<<(3 -1) : 0x1ff)|((4>0)? 1<<(4 -1) : 0x1ff), ((1>0)? 1<<(1 -1) : 0x1ff), ((1>0)? 1<<(1 -1) : 0x1ff) , ((1>0)? 1<<(1 -1) : 0x1ff), ((1>0)? 1<<(1 -1) : 0x1ff), ((1>0)? 1<<(1 -1) : 0x1ff), ((1>0)? 1<<(1 -1) : 0x1ff),((1>0)? 1<<(1 -1) : 0x1ff)},
+
+                      {((1>0)? 1<<(1 -1) : 0x1ff), ((2>0)? 1<<(2 -1) : 0x1ff)|((4>0)? 1<<(4 -1) : 0x1ff) , ((1>0)? 1<<(1 -1) : 0x1ff), ((1>0)? 1<<(1 -1) : 0x1ff) , ((1>0)? 1<<(1 -1) : 0x1ff), ((1>0)? 1<<(1 -1) : 0x1ff), ((1>0)? 1<<(1 -1) : 0x1ff), ((1>0)? 1<<(1 -1) : 0x1ff),((1>0)? 1<<(1 -1) : 0x1ff)},
+
+
+
+                      {((1>0)? 1<<(1 -1) : 0x1ff), ((2>0)? 1<<(2 -1) : 0x1ff)|((8>0)? 1<<(8 -1) : 0x1ff)|((5>0)? 1<<(5 -1) : 0x1ff), ((1>0)? 1<<(1 -1) : 0x1ff), ((1>0)? 1<<(1 -1) : 0x1ff) , ((1>0)? 1<<(1 -1) : 0x1ff), ((1>0)? 1<<(1 -1) : 0x1ff), ((1>0)? 1<<(1 -1) : 0x1ff), ((1>0)? 1<<(1 -1) : 0x1ff),((1>0)? 1<<(1 -1) : 0x1ff)},
+
+                      {((1>0)? 1<<(1 -1) : 0x1ff), ((1>0)? 1<<(1 -1) : 0x1ff) , ((1>0)? 1<<(1 -1) : 0x1ff), ((1>0)? 1<<(1 -1) : 0x1ff) , ((1>0)? 1<<(1 -1) : 0x1ff), ((1>0)? 1<<(1 -1) : 0x1ff), ((1>0)? 1<<(1 -1) : 0x1ff), ((1>0)? 1<<(1 -1) : 0x1ff),((1>0)? 1<<(1 -1) : 0x1ff)},
+
+                      {((1>0)? 1<<(1 -1) : 0x1ff), ((6>0)? 1<<(6 -1) : 0x1ff) , ((1>0)? 1<<(1 -1) : 0x1ff), ((1>0)? 1<<(1 -1) : 0x1ff) , ((1>0)? 1<<(1 -1) : 0x1ff), ((1>0)? 1<<(1 -1) : 0x1ff), ((1>0)? 1<<(1 -1) : 0x1ff), ((1>0)? 1<<(1 -1) : 0x1ff),((1>0)? 1<<(1 -1) : 0x1ff)},
+
+
+
+                      {((1>0)? 1<<(1 -1) : 0x1ff), ((5>0)? 1<<(5 -1) : 0x1ff)|((6>0)? 1<<(6 -1) : 0x1ff) , ((1>0)? 1<<(1 -1) : 0x1ff), ((1>0)? 1<<(1 -1) : 0x1ff) , ((1>0)? 1<<(1 -1) : 0x1ff), ((1>0)? 1<<(1 -1) : 0x1ff), ((1>0)? 1<<(1 -1) : 0x1ff), ((1>0)? 1<<(1 -1) : 0x1ff),((1>0)? 1<<(1 -1) : 0x1ff)},
+
+                      {((1>0)? 1<<(1 -1) : 0x1ff), ((2>0)? 1<<(2 -1) : 0x1ff)|((5>0)? 1<<(5 -1) : 0x1ff) , ((1>0)? 1<<(1 -1) : 0x1ff), ((1>0)? 1<<(1 -1) : 0x1ff) , ((1>0)? 1<<(1 -1) : 0x1ff), ((1>0)? 1<<(1 -1) : 0x1ff), ((1>0)? 1<<(1 -1) : 0x1ff), ((1>0)? 1<<(1 -1) : 0x1ff),((1>0)? 1<<(1 -1) : 0x1ff)},
+
+                      {((1>0)? 1<<(1 -1) : 0x1ff), ((1>0)? 1<<(1 -1) : 0x1ff) , ((1>0)? 1<<(1 -1) : 0x1ff), ((1>0)? 1<<(1 -1) : 0x1ff) , ((1>0)? 1<<(1 -1) : 0x1ff), ((1>0)? 1<<(1 -1) : 0x1ff), ((1>0)? 1<<(1 -1) : 0x1ff), ((1>0)? 1<<(1 -1) : 0x1ff),((1>0)? 1<<(1 -1) : 0x1ff)},
+
+                     };
+
+  ErrorCode e;
+
+  { jmp_buf *PrevFrame, NewFrame; unsigned int MY_ID = (0); PrevFrame = CExceptionFrames[(0)].pFrame; CExceptionFrames[MY_ID].pFrame = (jmp_buf*)(&NewFrame); CExceptionFrames[MY_ID].Exception = (0x5A5A5A5A); if (_setjmp(NewFrame) == 0) { if (&PrevFrame){
+
+    Square *row = rowPeers[0][1];
+
+    eliminateNakedTriplesInPeers(square,row);
+
+  }else { } CExceptionFrames[MY_ID].Exception = (0x5A5A5A5A); } else { e = CExceptionFrames[MY_ID].Exception; e=e; } CExceptionFrames[MY_ID].pFrame = PrevFrame; } if (CExceptionFrames[(0)].Exception != (0x5A5A5A5A)){
+
+    UnityAssertEqualNumber((_U_SINT)((14)), (_U_SINT)((square[0][1])), (((void *)0)), (_U_UINT)719, UNITY_DISPLAY_STYLE_INT);
+
+    UnityAssertEqualNumber((_U_SINT)((14)), (_U_SINT)((square[1][1])), (((void *)0)), (_U_UINT)720, UNITY_DISPLAY_STYLE_INT);
+
+    UnityAssertEqualNumber((_U_SINT)((0)), (_U_SINT)((square[2][1])), (((void *)0)), (_U_UINT)721, UNITY_DISPLAY_STYLE_INT);
+
+    UnityAssertEqualNumber((_U_SINT)((146)), (_U_SINT)((square[3][1])), (((void *)0)), (_U_UINT)722, UNITY_DISPLAY_STYLE_INT);
+
+    UnityAssertEqualNumber((_U_SINT)((1)), (_U_SINT)((square[4][1])), (((void *)0)), (_U_UINT)723, UNITY_DISPLAY_STYLE_INT);
+
+    UnityAssertEqualNumber((_U_SINT)((32)), (_U_SINT)((square[5][1])), (((void *)0)), (_U_UINT)724, UNITY_DISPLAY_STYLE_INT);
+
+    UnityAssertEqualNumber((_U_SINT)((48)), (_U_SINT)((square[6][1])), (((void *)0)), (_U_UINT)725, UNITY_DISPLAY_STYLE_INT);
+
+    UnityAssertEqualNumber((_U_SINT)((18)), (_U_SINT)((square[7][1])), (((void *)0)), (_U_UINT)726, UNITY_DISPLAY_STYLE_INT);
+
+    UnityAssertEqualNumber((_U_SINT)((1)), (_U_SINT)((square[8][1])), (((void *)0)), (_U_UINT)727, UNITY_DISPLAY_STYLE_INT);
+
+  }
+
+}
+
+
+
+void test_nakedTriples_eliminate_row_4_time_same_value_and_throw(void){
+
+    int square[9][9]={{((1>0)? 1<<(1 -1) : 0x1ff), ((2>0)? 1<<(2 -1) : 0x1ff)|((3>0)? 1<<(3 -1) : 0x1ff)|((4>0)? 1<<(4 -1) : 0x1ff), ((1>0)? 1<<(1 -1) : 0x1ff), ((1>0)? 1<<(1 -1) : 0x1ff) , ((1>0)? 1<<(1 -1) : 0x1ff), ((1>0)? 1<<(1 -1) : 0x1ff), ((1>0)? 1<<(1 -1) : 0x1ff), ((1>0)? 1<<(1 -1) : 0x1ff),((1>0)? 1<<(1 -1) : 0x1ff)},
+
+                      {((1>0)? 1<<(1 -1) : 0x1ff), ((2>0)? 1<<(2 -1) : 0x1ff)|((3>0)? 1<<(3 -1) : 0x1ff)|((4>0)? 1<<(4 -1) : 0x1ff), ((1>0)? 1<<(1 -1) : 0x1ff), ((1>0)? 1<<(1 -1) : 0x1ff) , ((1>0)? 1<<(1 -1) : 0x1ff), ((1>0)? 1<<(1 -1) : 0x1ff), ((1>0)? 1<<(1 -1) : 0x1ff), ((1>0)? 1<<(1 -1) : 0x1ff),((1>0)? 1<<(1 -1) : 0x1ff)},
+
+                      {((1>0)? 1<<(1 -1) : 0x1ff), ((2>0)? 1<<(2 -1) : 0x1ff)|((6>0)? 1<<(6 -1) : 0x1ff) , ((1>0)? 1<<(1 -1) : 0x1ff), ((1>0)? 1<<(1 -1) : 0x1ff) , ((1>0)? 1<<(1 -1) : 0x1ff), ((1>0)? 1<<(1 -1) : 0x1ff), ((1>0)? 1<<(1 -1) : 0x1ff), ((1>0)? 1<<(1 -1) : 0x1ff),((1>0)? 1<<(1 -1) : 0x1ff)},
+
+
+
+                      {((1>0)? 1<<(1 -1) : 0x1ff), ((2>0)? 1<<(2 -1) : 0x1ff)|((8>0)? 1<<(8 -1) : 0x1ff)|((5>0)? 1<<(5 -1) : 0x1ff), ((1>0)? 1<<(1 -1) : 0x1ff), ((1>0)? 1<<(1 -1) : 0x1ff) , ((1>0)? 1<<(1 -1) : 0x1ff), ((1>0)? 1<<(1 -1) : 0x1ff), ((1>0)? 1<<(1 -1) : 0x1ff), ((1>0)? 1<<(1 -1) : 0x1ff),((1>0)? 1<<(1 -1) : 0x1ff)},
+
+                      {((1>0)? 1<<(1 -1) : 0x1ff), ((2>0)? 1<<(2 -1) : 0x1ff)|((3>0)? 1<<(3 -1) : 0x1ff)|((4>0)? 1<<(4 -1) : 0x1ff), ((1>0)? 1<<(1 -1) : 0x1ff), ((1>0)? 1<<(1 -1) : 0x1ff) , ((1>0)? 1<<(1 -1) : 0x1ff), ((1>0)? 1<<(1 -1) : 0x1ff), ((1>0)? 1<<(1 -1) : 0x1ff), ((1>0)? 1<<(1 -1) : 0x1ff),((1>0)? 1<<(1 -1) : 0x1ff)},
+
+                      {((1>0)? 1<<(1 -1) : 0x1ff), ((2>0)? 1<<(2 -1) : 0x1ff)|((3>0)? 1<<(3 -1) : 0x1ff)|((4>0)? 1<<(4 -1) : 0x1ff) , ((1>0)? 1<<(1 -1) : 0x1ff), ((1>0)? 1<<(1 -1) : 0x1ff) , ((1>0)? 1<<(1 -1) : 0x1ff), ((1>0)? 1<<(1 -1) : 0x1ff), ((1>0)? 1<<(1 -1) : 0x1ff), ((1>0)? 1<<(1 -1) : 0x1ff),((1>0)? 1<<(1 -1) : 0x1ff)},
+
+
+
+                      {((1>0)? 1<<(1 -1) : 0x1ff), ((5>0)? 1<<(5 -1) : 0x1ff)|((6>0)? 1<<(6 -1) : 0x1ff) , ((1>0)? 1<<(1 -1) : 0x1ff), ((1>0)? 1<<(1 -1) : 0x1ff) , ((1>0)? 1<<(1 -1) : 0x1ff), ((1>0)? 1<<(1 -1) : 0x1ff), ((1>0)? 1<<(1 -1) : 0x1ff), ((1>0)? 1<<(1 -1) : 0x1ff),((1>0)? 1<<(1 -1) : 0x1ff)},
+
+                      {((1>0)? 1<<(1 -1) : 0x1ff), ((2>0)? 1<<(2 -1) : 0x1ff)|((5>0)? 1<<(5 -1) : 0x1ff) , ((1>0)? 1<<(1 -1) : 0x1ff), ((1>0)? 1<<(1 -1) : 0x1ff) , ((1>0)? 1<<(1 -1) : 0x1ff), ((1>0)? 1<<(1 -1) : 0x1ff), ((1>0)? 1<<(1 -1) : 0x1ff), ((1>0)? 1<<(1 -1) : 0x1ff),((1>0)? 1<<(1 -1) : 0x1ff)},
+
+                      {((1>0)? 1<<(1 -1) : 0x1ff), ((1>0)? 1<<(1 -1) : 0x1ff) , ((1>0)? 1<<(1 -1) : 0x1ff), ((1>0)? 1<<(1 -1) : 0x1ff) , ((1>0)? 1<<(1 -1) : 0x1ff), ((1>0)? 1<<(1 -1) : 0x1ff), ((1>0)? 1<<(1 -1) : 0x1ff), ((1>0)? 1<<(1 -1) : 0x1ff),((1>0)? 1<<(1 -1) : 0x1ff)},
+
+                     };
+
+
+
+  ErrorCode e;
+
+  { jmp_buf *PrevFrame, NewFrame; unsigned int MY_ID = (0); PrevFrame = CExceptionFrames[(0)].pFrame; CExceptionFrames[MY_ID].pFrame = (jmp_buf*)(&NewFrame); CExceptionFrames[MY_ID].Exception = (0x5A5A5A5A); if (_setjmp(NewFrame) == 0) { if (&PrevFrame){
+
+    Square *row = rowPeers[0][1];
+
+    eliminateNakedTriplesInPeers(square,row);
+
+  }else { } CExceptionFrames[MY_ID].Exception = (0x5A5A5A5A); } else { e = CExceptionFrames[MY_ID].Exception; e=e; } CExceptionFrames[MY_ID].pFrame = PrevFrame; } if (CExceptionFrames[(0)].Exception != (0x5A5A5A5A)){
+
+    UnityAssertEqualNumber((_U_SINT)((14)), (_U_SINT)((square[0][1])), (((void *)0)), (_U_UINT)750, UNITY_DISPLAY_STYLE_INT);
+
+    UnityAssertEqualNumber((_U_SINT)((14)), (_U_SINT)((square[1][1])), (((void *)0)), (_U_UINT)751, UNITY_DISPLAY_STYLE_INT);
+
+    UnityAssertEqualNumber((_U_SINT)((34)), (_U_SINT)((square[2][1])), (((void *)0)), (_U_UINT)752, UNITY_DISPLAY_STYLE_INT);
+
+    UnityAssertEqualNumber((_U_SINT)((146)), (_U_SINT)((square[3][1])), (((void *)0)), (_U_UINT)753, UNITY_DISPLAY_STYLE_INT);
+
+    UnityAssertEqualNumber((_U_SINT)((14)), (_U_SINT)((square[4][1])), (((void *)0)), (_U_UINT)754, UNITY_DISPLAY_STYLE_INT);
+
+    UnityAssertEqualNumber((_U_SINT)((14)), (_U_SINT)((square[5][1])), (((void *)0)), (_U_UINT)755, UNITY_DISPLAY_STYLE_INT);
+
+    UnityAssertEqualNumber((_U_SINT)((48)), (_U_SINT)((square[6][1])), (((void *)0)), (_U_UINT)756, UNITY_DISPLAY_STYLE_INT);
+
+    UnityAssertEqualNumber((_U_SINT)((18)), (_U_SINT)((square[7][1])), (((void *)0)), (_U_UINT)757, UNITY_DISPLAY_STYLE_INT);
+
+    UnityAssertEqualNumber((_U_SINT)((1)), (_U_SINT)((square[8][1])), (((void *)0)), (_U_UINT)758, UNITY_DISPLAY_STYLE_INT);
+
+  }
+
+}
+
+
+
+void test_nakedTriples_eliminate_column(void){
+
+    int square[9][9]={{((1>0)? 1<<(1 -1) : 0x1ff), ((1>0)? 1<<(1 -1) : 0x1ff) , ((1>0)? 1<<(1 -1) : 0x1ff) , ((1>0)? 1<<(1 -1) : 0x1ff) , ((1>0)? 1<<(1 -1) : 0x1ff), ((1>0)? 1<<(1 -1) : 0x1ff), ((1>0)? 1<<(1 -1) : 0x1ff), ((1>0)? 1<<(1 -1) : 0x1ff),((1>0)? 1<<(1 -1) : 0x1ff)},
+
+                      {((1>0)? 1<<(1 -1) : 0x1ff), ((1>0)? 1<<(1 -1) : 0x1ff) , ((1>0)? 1<<(1 -1) : 0x1ff) , ((1>0)? 1<<(1 -1) : 0x1ff) , ((1>0)? 1<<(1 -1) : 0x1ff), ((1>0)? 1<<(1 -1) : 0x1ff), ((1>0)? 1<<(1 -1) : 0x1ff), ((1>0)? 1<<(1 -1) : 0x1ff),((1>0)? 1<<(1 -1) : 0x1ff)},
+
+                      {((1>0)? 1<<(1 -1) : 0x1ff), ((1>0)? 1<<(1 -1) : 0x1ff) , ((1>0)? 1<<(1 -1) : 0x1ff) , ((1>0)? 1<<(1 -1) : 0x1ff) , ((1>0)? 1<<(1 -1) : 0x1ff), ((1>0)? 1<<(1 -1) : 0x1ff), ((1>0)? 1<<(1 -1) : 0x1ff), ((1>0)? 1<<(1 -1) : 0x1ff),((1>0)? 1<<(1 -1) : 0x1ff)},
+
+
+
+                      {((2>0)? 1<<(2 -1) : 0x1ff)|((9>0)? 1<<(9 -1) : 0x1ff)|((8>0)? 1<<(8 -1) : 0x1ff), ((2>0)? 1<<(2 -1) : 0x1ff)|((9>0)? 1<<(9 -1) : 0x1ff)|((8>0)? 1<<(8 -1) : 0x1ff), ((3>0)? 1<<(3 -1) : 0x1ff)|((8>0)? 1<<(8 -1) : 0x1ff), ((2>0)? 1<<(2 -1) : 0x1ff)|((9>0)? 1<<(9 -1) : 0x1ff)|((8>0)? 1<<(8 -1) : 0x1ff) , ((1>0)? 1<<(1 -1) : 0x1ff), ((1>0)? 1<<(1 -1) : 0x1ff), ((1>0)? 1<<(1 -1) : 0x1ff), ((1>0)? 1<<(1 -1) : 0x1ff),((1>0)? 1<<(1 -1) : 0x1ff)},
+
+                      {((1>0)? 1<<(1 -1) : 0x1ff), ((1>0)? 1<<(1 -1) : 0x1ff) , ((1>0)? 1<<(1 -1) : 0x1ff) , ((1>0)? 1<<(1 -1) : 0x1ff) , ((1>0)? 1<<(1 -1) : 0x1ff), ((1>0)? 1<<(1 -1) : 0x1ff), ((1>0)? 1<<(1 -1) : 0x1ff), ((1>0)? 1<<(1 -1) : 0x1ff),((1>0)? 1<<(1 -1) : 0x1ff)},
+
+                      {((1>0)? 1<<(1 -1) : 0x1ff), ((1>0)? 1<<(1 -1) : 0x1ff) , ((1>0)? 1<<(1 -1) : 0x1ff) , ((1>0)? 1<<(1 -1) : 0x1ff) , ((1>0)? 1<<(1 -1) : 0x1ff), ((1>0)? 1<<(1 -1) : 0x1ff), ((1>0)? 1<<(1 -1) : 0x1ff), ((1>0)? 1<<(1 -1) : 0x1ff),((1>0)? 1<<(1 -1) : 0x1ff)},
+
+
+
+                      {((1>0)? 1<<(1 -1) : 0x1ff), ((1>0)? 1<<(1 -1) : 0x1ff) , ((1>0)? 1<<(1 -1) : 0x1ff) , ((1>0)? 1<<(1 -1) : 0x1ff) , ((1>0)? 1<<(1 -1) : 0x1ff), ((1>0)? 1<<(1 -1) : 0x1ff), ((1>0)? 1<<(1 -1) : 0x1ff), ((1>0)? 1<<(1 -1) : 0x1ff),((1>0)? 1<<(1 -1) : 0x1ff)},
+
+                      {((1>0)? 1<<(1 -1) : 0x1ff), ((1>0)? 1<<(1 -1) : 0x1ff) , ((1>0)? 1<<(1 -1) : 0x1ff) , ((1>0)? 1<<(1 -1) : 0x1ff) , ((1>0)? 1<<(1 -1) : 0x1ff), ((1>0)? 1<<(1 -1) : 0x1ff), ((1>0)? 1<<(1 -1) : 0x1ff), ((1>0)? 1<<(1 -1) : 0x1ff),((1>0)? 1<<(1 -1) : 0x1ff)},
+
+                      {((1>0)? 1<<(1 -1) : 0x1ff), ((1>0)? 1<<(1 -1) : 0x1ff) , ((1>0)? 1<<(1 -1) : 0x1ff) , ((1>0)? 1<<(1 -1) : 0x1ff) , ((1>0)? 1<<(1 -1) : 0x1ff), ((1>0)? 1<<(1 -1) : 0x1ff), ((1>0)? 1<<(1 -1) : 0x1ff), ((1>0)? 1<<(1 -1) : 0x1ff),((1>0)? 1<<(1 -1) : 0x1ff)},
+
+                     };
+
+
+
+    Square *col = columnPeers[3][0];
+
+    eliminateNakedTriplesInPeers(square,col);
+
+
+
+    UnityAssertEqualNumber((_U_SINT)((386)), (_U_SINT)((square[3][0])), (((void *)0)), (_U_UINT)779, UNITY_DISPLAY_STYLE_INT);
+
+    UnityAssertEqualNumber((_U_SINT)((386)), (_U_SINT)((square[3][1])), (((void *)0)), (_U_UINT)780, UNITY_DISPLAY_STYLE_INT);
+
+    UnityAssertEqualNumber((_U_SINT)((4)), (_U_SINT)((square[3][2])), (((void *)0)), (_U_UINT)781, UNITY_DISPLAY_STYLE_INT);
+
+    UnityAssertEqualNumber((_U_SINT)((386)), (_U_SINT)((square[3][3])), (((void *)0)), (_U_UINT)782, UNITY_DISPLAY_STYLE_INT);
+
+    UnityAssertEqualNumber((_U_SINT)((1)), (_U_SINT)((square[3][4])), (((void *)0)), (_U_UINT)783, UNITY_DISPLAY_STYLE_INT);
+
+    UnityAssertEqualNumber((_U_SINT)((1)), (_U_SINT)((square[3][5])), (((void *)0)), (_U_UINT)784, UNITY_DISPLAY_STYLE_INT);
+
+    UnityAssertEqualNumber((_U_SINT)((1)), (_U_SINT)((square[3][6])), (((void *)0)), (_U_UINT)785, UNITY_DISPLAY_STYLE_INT);
+
+    UnityAssertEqualNumber((_U_SINT)((1)), (_U_SINT)((square[3][7])), (((void *)0)), (_U_UINT)786, UNITY_DISPLAY_STYLE_INT);
+
+    UnityAssertEqualNumber((_U_SINT)((1)), (_U_SINT)((square[3][8])), (((void *)0)), (_U_UINT)787, UNITY_DISPLAY_STYLE_INT);
+
+}
+
+
+
+void test_nakedTriples_eliminate(void){
+
+    int square[9][9]={{((1>0)? 1<<(1 -1) : 0x1ff), ((1>0)? 1<<(1 -1) : 0x1ff) , ((1>0)? 1<<(1 -1) : 0x1ff) , ((1>0)? 1<<(1 -1) : 0x1ff) , ((1>0)? 1<<(1 -1) : 0x1ff), ((1>0)? 1<<(1 -1) : 0x1ff), ((1>0)? 1<<(1 -1) : 0x1ff), ((1>0)? 1<<(1 -1) : 0x1ff),((1>0)? 1<<(1 -1) : 0x1ff)},
+
+                      {((1>0)? 1<<(1 -1) : 0x1ff), ((1>0)? 1<<(1 -1) : 0x1ff) , ((1>0)? 1<<(1 -1) : 0x1ff) , ((1>0)? 1<<(1 -1) : 0x1ff) , ((1>0)? 1<<(1 -1) : 0x1ff), ((1>0)? 1<<(1 -1) : 0x1ff), ((1>0)? 1<<(1 -1) : 0x1ff), ((1>0)? 1<<(1 -1) : 0x1ff),((1>0)? 1<<(1 -1) : 0x1ff)},
+
+                      {((2>0)? 1<<(2 -1) : 0x1ff)|((9>0)? 1<<(9 -1) : 0x1ff)|((8>0)? 1<<(8 -1) : 0x1ff), ((1>0)? 1<<(1 -1) : 0x1ff) , ((1>0)? 1<<(1 -1) : 0x1ff) , ((1>0)? 1<<(1 -1) : 0x1ff) , ((1>0)? 1<<(1 -1) : 0x1ff), ((1>0)? 1<<(1 -1) : 0x1ff), ((1>0)? 1<<(1 -1) : 0x1ff), ((1>0)? 1<<(1 -1) : 0x1ff),((1>0)? 1<<(1 -1) : 0x1ff)},
+
+
+
+                      {((2>0)? 1<<(2 -1) : 0x1ff)|((9>0)? 1<<(9 -1) : 0x1ff)|((8>0)? 1<<(8 -1) : 0x1ff), ((2>0)? 1<<(2 -1) : 0x1ff)|((9>0)? 1<<(9 -1) : 0x1ff)|((8>0)? 1<<(8 -1) : 0x1ff), ((3>0)? 1<<(3 -1) : 0x1ff)|((8>0)? 1<<(8 -1) : 0x1ff), ((2>0)? 1<<(2 -1) : 0x1ff)|((9>0)? 1<<(9 -1) : 0x1ff)|((8>0)? 1<<(8 -1) : 0x1ff) , ((1>0)? 1<<(1 -1) : 0x1ff), ((1>0)? 1<<(1 -1) : 0x1ff), ((1>0)? 1<<(1 -1) : 0x1ff), ((1>0)? 1<<(1 -1) : 0x1ff),((1>0)? 1<<(1 -1) : 0x1ff)},
+
+                      {((1>0)? 1<<(1 -1) : 0x1ff) , ((1>0)? 1<<(1 -1) : 0x1ff) , ((2>0)? 1<<(2 -1) : 0x1ff)|((3>0)? 1<<(3 -1) : 0x1ff) , ((1>0)? 1<<(1 -1) : 0x1ff) , ((1>0)? 1<<(1 -1) : 0x1ff), ((1>0)? 1<<(1 -1) : 0x1ff), ((1>0)? 1<<(1 -1) : 0x1ff), ((1>0)? 1<<(1 -1) : 0x1ff),((1>0)? 1<<(1 -1) : 0x1ff)},
+
+                      {((1>0)? 1<<(1 -1) : 0x1ff) , ((1>0)? 1<<(1 -1) : 0x1ff) , ((2>0)? 1<<(2 -1) : 0x1ff)|((9>0)? 1<<(9 -1) : 0x1ff)|((8>0)? 1<<(8 -1) : 0x1ff) , ((1>0)? 1<<(1 -1) : 0x1ff) , ((1>0)? 1<<(1 -1) : 0x1ff), ((1>0)? 1<<(1 -1) : 0x1ff), ((1>0)? 1<<(1 -1) : 0x1ff), ((1>0)? 1<<(1 -1) : 0x1ff),((1>0)? 1<<(1 -1) : 0x1ff)},
+
+
+
+                      {((2>0)? 1<<(2 -1) : 0x1ff)|((9>0)? 1<<(9 -1) : 0x1ff)|((8>0)? 1<<(8 -1) : 0x1ff), ((1>0)? 1<<(1 -1) : 0x1ff) , ((1>0)? 1<<(1 -1) : 0x1ff) , ((1>0)? 1<<(1 -1) : 0x1ff) , ((1>0)? 1<<(1 -1) : 0x1ff), ((1>0)? 1<<(1 -1) : 0x1ff), ((1>0)? 1<<(1 -1) : 0x1ff), ((1>0)? 1<<(1 -1) : 0x1ff),((1>0)? 1<<(1 -1) : 0x1ff)},
+
+                      {((1>0)? 1<<(1 -1) : 0x1ff), ((1>0)? 1<<(1 -1) : 0x1ff) , ((1>0)? 1<<(1 -1) : 0x1ff) , ((1>0)? 1<<(1 -1) : 0x1ff) , ((1>0)? 1<<(1 -1) : 0x1ff), ((1>0)? 1<<(1 -1) : 0x1ff), ((1>0)? 1<<(1 -1) : 0x1ff), ((1>0)? 1<<(1 -1) : 0x1ff),((1>0)? 1<<(1 -1) : 0x1ff)},
+
+                      {((2>0)? 1<<(2 -1) : 0x1ff)|((6>0)? 1<<(6 -1) : 0x1ff), ((1>0)? 1<<(1 -1) : 0x1ff) , ((1>0)? 1<<(1 -1) : 0x1ff) , ((1>0)? 1<<(1 -1) : 0x1ff) , ((1>0)? 1<<(1 -1) : 0x1ff), ((1>0)? 1<<(1 -1) : 0x1ff), ((1>0)? 1<<(1 -1) : 0x1ff), ((1>0)? 1<<(1 -1) : 0x1ff),((1>0)? 1<<(1 -1) : 0x1ff)},
+
+                     };
+
+
+
+
+
+    eliminateNakedTriples(square);
+
+
+
+    UnityAssertEqualNumber((_U_SINT)((386)), (_U_SINT)((square[2][0])), (((void *)0)), (_U_UINT)807, UNITY_DISPLAY_STYLE_INT);
+
+    UnityAssertEqualNumber((_U_SINT)((386)), (_U_SINT)((square[3][0])), (((void *)0)), (_U_UINT)808, UNITY_DISPLAY_STYLE_INT);
+
+    UnityAssertEqualNumber((_U_SINT)((386)), (_U_SINT)((square[6][0])), (((void *)0)), (_U_UINT)809, UNITY_DISPLAY_STYLE_INT);
+
+    UnityAssertEqualNumber((_U_SINT)((32)), (_U_SINT)((square[8][0])), (((void *)0)), (_U_UINT)810, UNITY_DISPLAY_STYLE_INT);
+
+    UnityAssertEqualNumber((_U_SINT)((4)), (_U_SINT)((square[3][2])), (((void *)0)), (_U_UINT)811, UNITY_DISPLAY_STYLE_INT);
+
+    UnityAssertEqualNumber((_U_SINT)((4)), (_U_SINT)((square[4][2])), (((void *)0)), (_U_UINT)812, UNITY_DISPLAY_STYLE_INT);
+
+
+
+}
+
+
+
+
+
+void test_nakedQuad_eliminate_row(void){
+
+    int square[9][9]={{((1>0)? 1<<(1 -1) : 0x1ff), ((2>0)? 1<<(2 -1) : 0x1ff)|((9>0)? 1<<(9 -1) : 0x1ff) , ((1>0)? 1<<(1 -1) : 0x1ff), ((1>0)? 1<<(1 -1) : 0x1ff) , ((1>0)? 1<<(1 -1) : 0x1ff), ((1>0)? 1<<(1 -1) : 0x1ff), ((1>0)? 1<<(1 -1) : 0x1ff), ((1>0)? 1<<(1 -1) : 0x1ff),((1>0)? 1<<(1 -1) : 0x1ff)},
+
+                      {((1>0)? 1<<(1 -1) : 0x1ff), ((2>0)? 1<<(2 -1) : 0x1ff)|((4>0)? 1<<(4 -1) : 0x1ff)|((3>0)? 1<<(3 -1) : 0x1ff)|((6>0)? 1<<(6 -1) : 0x1ff), ((1>0)? 1<<(1 -1) : 0x1ff), ((1>0)? 1<<(1 -1) : 0x1ff) , ((1>0)? 1<<(1 -1) : 0x1ff), ((1>0)? 1<<(1 -1) : 0x1ff), ((1>0)? 1<<(1 -1) : 0x1ff), ((1>0)? 1<<(1 -1) : 0x1ff),((1>0)? 1<<(1 -1) : 0x1ff)},
+
+                      {((1>0)? 1<<(1 -1) : 0x1ff), ((2>0)? 1<<(2 -1) : 0x1ff)|((4>0)? 1<<(4 -1) : 0x1ff)|((3>0)? 1<<(3 -1) : 0x1ff)|((6>0)? 1<<(6 -1) : 0x1ff), ((1>0)? 1<<(1 -1) : 0x1ff), ((1>0)? 1<<(1 -1) : 0x1ff) , ((1>0)? 1<<(1 -1) : 0x1ff), ((1>0)? 1<<(1 -1) : 0x1ff), ((1>0)? 1<<(1 -1) : 0x1ff), ((1>0)? 1<<(1 -1) : 0x1ff),((1>0)? 1<<(1 -1) : 0x1ff)},
+
+
+
+                      {((1>0)? 1<<(1 -1) : 0x1ff), ((2>0)? 1<<(2 -1) : 0x1ff)|((8>0)? 1<<(8 -1) : 0x1ff)|((5>0)? 1<<(5 -1) : 0x1ff) , ((1>0)? 1<<(1 -1) : 0x1ff), ((1>0)? 1<<(1 -1) : 0x1ff) , ((1>0)? 1<<(1 -1) : 0x1ff), ((1>0)? 1<<(1 -1) : 0x1ff), ((1>0)? 1<<(1 -1) : 0x1ff), ((1>0)? 1<<(1 -1) : 0x1ff),((1>0)? 1<<(1 -1) : 0x1ff)},
+
+                      {((1>0)? 1<<(1 -1) : 0x1ff), ((1>0)? 1<<(1 -1) : 0x1ff) , ((1>0)? 1<<(1 -1) : 0x1ff), ((1>0)? 1<<(1 -1) : 0x1ff) , ((1>0)? 1<<(1 -1) : 0x1ff), ((1>0)? 1<<(1 -1) : 0x1ff), ((1>0)? 1<<(1 -1) : 0x1ff), ((1>0)? 1<<(1 -1) : 0x1ff),((1>0)? 1<<(1 -1) : 0x1ff)},
+
+                      {((1>0)? 1<<(1 -1) : 0x1ff), ((6>0)? 1<<(6 -1) : 0x1ff) , ((1>0)? 1<<(1 -1) : 0x1ff), ((1>0)? 1<<(1 -1) : 0x1ff) , ((1>0)? 1<<(1 -1) : 0x1ff), ((1>0)? 1<<(1 -1) : 0x1ff), ((1>0)? 1<<(1 -1) : 0x1ff), ((1>0)? 1<<(1 -1) : 0x1ff),((1>0)? 1<<(1 -1) : 0x1ff)},
+
+
+
+                      {((1>0)? 1<<(1 -1) : 0x1ff), ((5>0)? 1<<(5 -1) : 0x1ff)|((6>0)? 1<<(6 -1) : 0x1ff) , ((1>0)? 1<<(1 -1) : 0x1ff), ((1>0)? 1<<(1 -1) : 0x1ff) , ((1>0)? 1<<(1 -1) : 0x1ff), ((1>0)? 1<<(1 -1) : 0x1ff), ((1>0)? 1<<(1 -1) : 0x1ff), ((1>0)? 1<<(1 -1) : 0x1ff),((1>0)? 1<<(1 -1) : 0x1ff)},
+
+                      {((1>0)? 1<<(1 -1) : 0x1ff), ((1>0)? 1<<(1 -1) : 0x1ff) , ((1>0)? 1<<(1 -1) : 0x1ff), ((1>0)? 1<<(1 -1) : 0x1ff) , ((1>0)? 1<<(1 -1) : 0x1ff), ((1>0)? 1<<(1 -1) : 0x1ff), ((1>0)? 1<<(1 -1) : 0x1ff), ((1>0)? 1<<(1 -1) : 0x1ff),((1>0)? 1<<(1 -1) : 0x1ff)},
+
+                      {((1>0)? 1<<(1 -1) : 0x1ff), ((1>0)? 1<<(1 -1) : 0x1ff) , ((1>0)? 1<<(1 -1) : 0x1ff), ((1>0)? 1<<(1 -1) : 0x1ff) , ((1>0)? 1<<(1 -1) : 0x1ff), ((1>0)? 1<<(1 -1) : 0x1ff), ((1>0)? 1<<(1 -1) : 0x1ff), ((1>0)? 1<<(1 -1) : 0x1ff),((1>0)? 1<<(1 -1) : 0x1ff)},
+
+                     };
+
+  Square *row = rowPeers[0][1];
+
+  eliminateNakedQuadInPeers(square,row);
+
+
+
+  UnityAssertEqualNumber((_U_SINT)((256)), (_U_SINT)((square[0][1])), (((void *)0)), (_U_UINT)833, UNITY_DISPLAY_STYLE_INT);
+
+  UnityAssertEqualNumber((_U_SINT)((46)), (_U_SINT)((square[1][1])), (((void *)0)), (_U_UINT)834, UNITY_DISPLAY_STYLE_INT);
+
+  UnityAssertEqualNumber((_U_SINT)((46)), (_U_SINT)((square[2][1])), (((void *)0)), (_U_UINT)835, UNITY_DISPLAY_STYLE_INT);
+
+  UnityAssertEqualNumber((_U_SINT)((144)), (_U_SINT)((square[3][1])), (((void *)0)), (_U_UINT)836, UNITY_DISPLAY_STYLE_INT);
+
+  UnityAssertEqualNumber((_U_SINT)((1)), (_U_SINT)((square[4][1])), (((void *)0)), (_U_UINT)837, UNITY_DISPLAY_STYLE_INT);
+
+  UnityAssertEqualNumber((_U_SINT)((32)), (_U_SINT)((square[5][1])), (((void *)0)), (_U_UINT)838, UNITY_DISPLAY_STYLE_INT);
+
+  UnityAssertEqualNumber((_U_SINT)((16)), (_U_SINT)((square[6][1])), (((void *)0)), (_U_UINT)839, UNITY_DISPLAY_STYLE_INT);
+
+  UnityAssertEqualNumber((_U_SINT)((1)), (_U_SINT)((square[7][1])), (((void *)0)), (_U_UINT)840, UNITY_DISPLAY_STYLE_INT);
+
+  UnityAssertEqualNumber((_U_SINT)((1)), (_U_SINT)((square[8][1])), (((void *)0)), (_U_UINT)841, UNITY_DISPLAY_STYLE_INT);
+
+}
+
+
+
+void test_nakedQuad_eliminate(void){
+
+    int square[9][9]={{((1>0)? 1<<(1 -1) : 0x1ff) , ((1>0)? 1<<(1 -1) : 0x1ff) , ((1>0)? 1<<(1 -1) : 0x1ff) , ((1>0)? 1<<(1 -1) : 0x1ff) , ((1>0)? 1<<(1 -1) : 0x1ff), ((1>0)? 1<<(1 -1) : 0x1ff) , ((1>0)? 1<<(1 -1) : 0x1ff), ((1>0)? 1<<(1 -1) : 0x1ff),((1>0)? 1<<(1 -1) : 0x1ff)},
+
+                      {((1>0)? 1<<(1 -1) : 0x1ff) , ((1>0)? 1<<(1 -1) : 0x1ff) , ((1>0)? 1<<(1 -1) : 0x1ff) , ((1>0)? 1<<(1 -1) : 0x1ff) , ((1>0)? 1<<(1 -1) : 0x1ff), ((1>0)? 1<<(1 -1) : 0x1ff) , ((1>0)? 1<<(1 -1) : 0x1ff), ((1>0)? 1<<(1 -1) : 0x1ff),((1>0)? 1<<(1 -1) : 0x1ff)},
+
+                      {((1>0)? 1<<(1 -1) : 0x1ff) , ((2>0)? 1<<(2 -1) : 0x1ff)|((3>0)? 1<<(3 -1) : 0x1ff)|((4>0)? 1<<(4 -1) : 0x1ff)|((5>0)? 1<<(5 -1) : 0x1ff) , ((1>0)? 1<<(1 -1) : 0x1ff) , ((1>0)? 1<<(1 -1) : 0x1ff) , ((1>0)? 1<<(1 -1) : 0x1ff), ((1>0)? 1<<(1 -1) : 0x1ff) , ((1>0)? 1<<(1 -1) : 0x1ff), ((1>0)? 1<<(1 -1) : 0x1ff),((1>0)? 1<<(1 -1) : 0x1ff)},
+
+
+
+                      {((2>0)? 1<<(2 -1) : 0x1ff)|((3>0)? 1<<(3 -1) : 0x1ff)|((4>0)? 1<<(4 -1) : 0x1ff)|((5>0)? 1<<(5 -1) : 0x1ff), ((2>0)? 1<<(2 -1) : 0x1ff)|((3>0)? 1<<(3 -1) : 0x1ff)|((4>0)? 1<<(4 -1) : 0x1ff)|((5>0)? 1<<(5 -1) : 0x1ff) , ((3>0)? 1<<(3 -1) : 0x1ff)|((8>0)? 1<<(8 -1) : 0x1ff) , ((2>0)? 1<<(2 -1) : 0x1ff)|((9>0)? 1<<(9 -1) : 0x1ff)|((8>0)? 1<<(8 -1) : 0x1ff) , ((1>0)? 1<<(1 -1) : 0x1ff), ((1>0)? 1<<(1 -1) : 0x1ff) , ((1>0)? 1<<(1 -1) : 0x1ff), ((1>0)? 1<<(1 -1) : 0x1ff),((1>0)? 1<<(1 -1) : 0x1ff)},
+
+                      {((2>0)? 1<<(2 -1) : 0x1ff)|((3>0)? 1<<(3 -1) : 0x1ff)|((4>0)? 1<<(4 -1) : 0x1ff)|((5>0)? 1<<(5 -1) : 0x1ff), ((1>0)? 1<<(1 -1) : 0x1ff) , ((2>0)? 1<<(2 -1) : 0x1ff) , ((1>0)? 1<<(1 -1) : 0x1ff) , ((1>0)? 1<<(1 -1) : 0x1ff), ((1>0)? 1<<(1 -1) : 0x1ff) , ((1>0)? 1<<(1 -1) : 0x1ff), ((1>0)? 1<<(1 -1) : 0x1ff),((1>0)? 1<<(1 -1) : 0x1ff)},
+
+                      {((2>0)? 1<<(2 -1) : 0x1ff)|((8>0)? 1<<(8 -1) : 0x1ff)|((9>0)? 1<<(9 -1) : 0x1ff) , ((2>0)? 1<<(2 -1) : 0x1ff)|((3>0)? 1<<(3 -1) : 0x1ff)|((4>0)? 1<<(4 -1) : 0x1ff)|((5>0)? 1<<(5 -1) : 0x1ff) , ((2>0)? 1<<(2 -1) : 0x1ff)|((3>0)? 1<<(3 -1) : 0x1ff)|((4>0)? 1<<(4 -1) : 0x1ff)|((5>0)? 1<<(5 -1) : 0x1ff) , ((2>0)? 1<<(2 -1) : 0x1ff)|((3>0)? 1<<(3 -1) : 0x1ff)|((4>0)? 1<<(4 -1) : 0x1ff)|((5>0)? 1<<(5 -1) : 0x1ff) , ((2>0)? 1<<(2 -1) : 0x1ff)|((3>0)? 1<<(3 -1) : 0x1ff)|((4>0)? 1<<(4 -1) : 0x1ff)|((5>0)? 1<<(5 -1) : 0x1ff), ((1>0)? 1<<(1 -1) : 0x1ff), ((1>0)? 1<<(1 -1) : 0x1ff), ((1>0)? 1<<(1 -1) : 0x1ff),((1>0)? 1<<(1 -1) : 0x1ff)},
+
+
+
+                      {((1>0)? 1<<(1 -1) : 0x1ff) , ((2>0)? 1<<(2 -1) : 0x1ff)|((6>0)? 1<<(6 -1) : 0x1ff) , ((1>0)? 1<<(1 -1) : 0x1ff) , ((1>0)? 1<<(1 -1) : 0x1ff) , ((1>0)? 1<<(1 -1) : 0x1ff), ((1>0)? 1<<(1 -1) : 0x1ff) , ((1>0)? 1<<(1 -1) : 0x1ff), ((1>0)? 1<<(1 -1) : 0x1ff),((1>0)? 1<<(1 -1) : 0x1ff)},
+
+                      {((1>0)? 1<<(1 -1) : 0x1ff) , ((2>0)? 1<<(2 -1) : 0x1ff)|((3>0)? 1<<(3 -1) : 0x1ff)|((4>0)? 1<<(4 -1) : 0x1ff)|((5>0)? 1<<(5 -1) : 0x1ff) , ((1>0)? 1<<(1 -1) : 0x1ff) , ((1>0)? 1<<(1 -1) : 0x1ff) , ((1>0)? 1<<(1 -1) : 0x1ff), ((1>0)? 1<<(1 -1) : 0x1ff) , ((1>0)? 1<<(1 -1) : 0x1ff), ((1>0)? 1<<(1 -1) : 0x1ff),((1>0)? 1<<(1 -1) : 0x1ff)},
+
+                      {((2>0)? 1<<(2 -1) : 0x1ff) , ((1>0)? 1<<(1 -1) : 0x1ff) , ((1>0)? 1<<(1 -1) : 0x1ff) , ((1>0)? 1<<(1 -1) : 0x1ff) , ((1>0)? 1<<(1 -1) : 0x1ff), ((1>0)? 1<<(1 -1) : 0x1ff) , ((1>0)? 1<<(1 -1) : 0x1ff), ((1>0)? 1<<(1 -1) : 0x1ff),((1>0)? 1<<(1 -1) : 0x1ff)},
+
+                     };
+
+
+
+
+
+    eliminateNakedQuad(square);
+
+
+
+    UnityAssertEqualNumber((_U_SINT)((30)), (_U_SINT)((square[3][0])), (((void *)0)), (_U_UINT)861, UNITY_DISPLAY_STYLE_INT);
+
+    UnityAssertEqualNumber((_U_SINT)((30)), (_U_SINT)((square[4][0])), (((void *)0)), (_U_UINT)862, UNITY_DISPLAY_STYLE_INT);
+
+    UnityAssertEqualNumber((_U_SINT)((384)), (_U_SINT)((square[5][0])), (((void *)0)), (_U_UINT)863, UNITY_DISPLAY_STYLE_INT);
+
+    UnityAssertEqualNumber((_U_SINT)((30)), (_U_SINT)((square[3][1])), (((void *)0)), (_U_UINT)864, UNITY_DISPLAY_STYLE_INT);
+
+    UnityAssertEqualNumber((_U_SINT)((128)), (_U_SINT)((square[3][2])), (((void *)0)), (_U_UINT)865, UNITY_DISPLAY_STYLE_INT);
+
+    UnityAssertEqualNumber((_U_SINT)((2)), (_U_SINT)((square[4][2])), (((void *)0)), (_U_UINT)866, UNITY_DISPLAY_STYLE_INT);
 
 
 
