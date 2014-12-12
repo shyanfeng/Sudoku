@@ -588,6 +588,10 @@ void eliminateNakedQuadInPeers(int square[9][9],Square *peers){
     
   }
 
+void eliminiateAllBruteForce(int squares[9][9]){
+  eliminateBruteForce(squares);
+}
+  
 void eliminateBruteForce(int squares[9][9]){
   int dupSquares[9][9];
   int r, c;
@@ -642,6 +646,10 @@ void eliminateBruteForce(int squares[9][9]){
         }
       }
     }
+  }
+  
+  if(isSudokuSolved(squares) == 0){
+    eliminateBruteForce(squares);
   }
 }
 

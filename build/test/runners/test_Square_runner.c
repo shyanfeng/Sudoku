@@ -55,6 +55,9 @@ extern void test_squareHas_does_not_have_same_number_return_0(void);
 extern void test_squareContainOneNumbers_has_more_than_1_number_return_0(void);
 extern void test_squareContainOneNumbers_has_one_value_return_1(void);
 extern void test_checkBinaryValue_return_number(void);
+extern void test_eliminateNumberFromAllPeers_with_2_recursive(void);
+extern void test_eliminateNumberFromAllPeers_with_3_recursive(void);
+extern void test_eliminateNumberFromAllPeers_for_checking_row_0_column_1(void);
 extern void test_duplicateSquares(void);
 extern void test_isSudokuSolve_return_1_all_square_contain_one_number(void);
 extern void test_isSudokuSolve_return_0_one_square_contain_two_number(void);
@@ -69,6 +72,7 @@ extern void test_nakedTriples_eliminate_column(void);
 extern void test_nakedTriples_eliminate(void);
 extern void test_nakedQuad_eliminate_row(void);
 extern void test_nakedQuad_eliminate(void);
+extern void test_bruteForce_112212312311(void);
 
 
 //=======Test Reset Option=====
@@ -105,10 +109,13 @@ int main(void)
   RUN_TEST(test_squareContainOneNumbers_has_more_than_1_number_return_0, 300);
   RUN_TEST(test_squareContainOneNumbers_has_one_value_return_1, 316);
   RUN_TEST(test_checkBinaryValue_return_number, 332);
-  RUN_TEST(test_duplicateSquares, 496);
-  RUN_TEST(test_isSudokuSolve_return_1_all_square_contain_one_number, 544);
-  RUN_TEST(test_isSudokuSolve_return_0_one_square_contain_two_number, 560);
-  RUN_TEST(test_selectSquareWithLeastValues_should_return_row_0, 576);
+  RUN_TEST(test_eliminateNumberFromAllPeers_with_2_recursive, 363);
+  RUN_TEST(test_eliminateNumberFromAllPeers_with_3_recursive, 421);
+  RUN_TEST(test_eliminateNumberFromAllPeers_for_checking_row_0_column_1, 474);
+  RUN_TEST(test_duplicateSquares, 494);
+  RUN_TEST(test_isSudokuSolve_return_1_all_square_contain_one_number, 543);
+  RUN_TEST(test_isSudokuSolve_return_0_one_square_contain_two_number, 559);
+  RUN_TEST(test_selectSquareWithLeastValues_should_return_row_0, 575);
   RUN_TEST(test_nakedPair_eliminate_row, 593);
   RUN_TEST(test_nakedPair_eliminate_column, 620);
   RUN_TEST(test_nakedPair_eliminate_box, 647);
@@ -119,6 +126,7 @@ int main(void)
   RUN_TEST(test_nakedTriples_eliminate, 790);
   RUN_TEST(test_nakedQuad_eliminate_row, 817);
   RUN_TEST(test_nakedQuad_eliminate, 844);
+  RUN_TEST(test_bruteForce_112212312311, 904);
 
   return (UnityEnd());
 }
