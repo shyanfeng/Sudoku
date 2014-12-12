@@ -316,6 +316,298 @@ Square selectSquareWithLeastValues(int square[9][9]){
 	}
   return sq;
 }
+
+void eliminateNakedPair(int square[9][9]){
+  int r,c;
+  for(r=0;r<9;r++){
+    for(c=0;c<9;c++){
+        Square *peersRow = rowPeers[r][c];
+        Square *peersColumn = columnPeers[r][c];        
+        Square *peersBox = boxPeers[r][c];
+        eliminateNakedPairInPeers(square,peersRow);
+        eliminateNakedPairInPeers(square,peersColumn);
+        eliminateNakedPairInPeers(square,peersBox);
+    }
+  }
+}
+
+void eliminateNakedPairInPeers(int square[9][9],Square *peers){
+  int i,j,k,m,n;
+  int *tempPtr,*tempPtr1,*tempPtr4;
+  int temp,temp1,temp2,temp3;
+  int conv = 0x01;
+  int storeVal;
+  int store3;
+  
+  //check 2 number and match
+  for(i=0;i<9;i++){
+     for(j=i+1;j<9;j++){
+    if(squareContainTwoNumbers(square,peers[i].row+1,peers[i].column+1) == 1 && squareContainTwoNumbers(square,peers[j].row+1,peers[j].column+1) == 1 ){   
+        tempPtr = getSquare(square,peers[i].row+1,peers[i].column+1);
+        temp = *tempPtr;
+        tempPtr1 = getSquare(square,peers[j].row+1,peers[j].column+1);
+        temp1 = *tempPtr1;
+        if(temp == temp1){
+          temp2 = temp;
+        }
+    }
+    }
+  }
+
+  for(k=0;k<9;k++){
+    int *tempPtr3;
+    tempPtr3 = getSquare(square,peers[k].row+1,peers[k].column+1);
+    temp3 = *tempPtr3;
+    
+    //check if sameValue equal with whole row col or box
+      if(temp3 == temp2){
+        for(m=0;m<9;m++){
+          int value = temp3 &(conv<<m);
+          if(value != 0){
+            int decimal = checkBinaryValue(value);
+            squareSetNumber(tempPtr3,decimal);
+          }
+        }
+      }
+      
+      else{
+          if(squareContainOneNumbers(square,peers[k].row+1,peers[k].column+1) == 1){
+              int decimal = checkBinaryValue(temp3);
+              squareSetNumber(tempPtr3,decimal);
+          }
+          
+          else if((temp3&temp2) == 0){
+            for(m=0;m<9;m++){
+            int value = temp3 &(conv<<m);
+              if(value != 0){
+                int decimal = checkBinaryValue(value);
+                squareSetNumber(tempPtr3,decimal);
+              }
+            }
+          }
+          
+          else{
+            for(m=0;m<9;m++){
+              int store1 = temp3 & (conv<<m);
+              int store2 = temp2 & (conv<<m);
+                if(store1 == store2){
+                  store3 = store1;
+                }else{
+                  store1 = 0;
+                  store3 = store1;
+                }
+                int value = store3 &(conv<<m);
+                if(value != 0){
+                  int decimal = checkBinaryValue(value);
+                  squareDelNumber(tempPtr3,decimal);
+                }
+              
+            }
+          } 
+          
+      }
+    }
+    
+  }
+  
+void eliminateNakedTriples(int square[9][9]){
+  int r,c;
+  for(r=0;r<9;r++){
+    for(c=0;c<9;c++){
+        Square *peersRow = rowPeers[r][c];
+        Square *peersColumn = columnPeers[r][c];        
+        Square *peersBox = boxPeers[r][c];
+        eliminateNakedTriplesInPeers(square,peersRow);
+        eliminateNakedTriplesInPeers(square,peersColumn);
+        eliminateNakedTriplesInPeers(square,peersBox);
+    }
+  }
+}
+  
+void eliminateNakedTriplesInPeers(int square[9][9],Square *peers){
+  int i,j,k,m,n;
+  int *tempPtr,*tempPtr1,*tempPtr4;
+  int temp,temp1,temp2,temp3;
+  int conv = 0x01;
+  int storeVal;
+  int store3;
+  int c;
+  int a = 0;
+  //check 3 number and match
+  for(i=0;i<9;i++){
+     for(j=i+1;j<9;j++){
+    if(squareContainNumbers(square,peers[i].row+1,peers[i].column+1) == 3 && squareContainNumbers(square,peers[j].row+1,peers[j].column+1) == 3){   
+        tempPtr = getSquare(square,peers[i].row+1,peers[i].column+1);
+        temp = *tempPtr;
+        tempPtr1 = getSquare(square,peers[j].row+1,peers[j].column+1);
+        temp1 = *tempPtr1;
+        if(temp == temp1){
+          temp2 = temp;     
+        }
+    }
+    }
+  }
+  
+
+
+  for(k=0;k<9;k++){
+    int *tempPtr3;
+    tempPtr3 = getSquare(square,peers[k].row+1,peers[k].column+1);
+    temp3 = *tempPtr3;
+    // check if sameValue equal with whole row col or box
+      if(temp3 == temp2){
+        for(m=0;m<9;m++){
+          int value = temp3 &(conv<<m);
+          if(value != 0){
+            int decimal = checkBinaryValue(value);
+            squareSetNumber(tempPtr3,decimal);
+          }
+        }
+      }
+      
+      else{
+          if(squareContainOneNumbers(square,peers[k].row+1,peers[k].column+1) == 1){
+              int decimal = checkBinaryValue(temp3);
+              squareSetNumber(tempPtr3,decimal);
+          }
+          
+          else if((temp3&temp2) == 0){
+            for(m=0;m<9;m++){
+            int value = temp3 &(conv<<m);
+              if(value != 0){
+                int decimal = checkBinaryValue(value);
+                squareSetNumber(tempPtr3,decimal);
+              }
+            }
+          }
+          
+          else{
+            for(m=0;m<9;m++){
+              int store1 = temp3 & (conv<<m);
+              int store2 = temp2 & (conv<<m);
+                if(store1 == store2){
+                  store3 = store1;
+                }else{
+                  store1 = 0;
+                  store3 = store1;
+                }
+                int value = store3 &(conv<<m);
+                if(value != 0){
+                  int decimal = checkBinaryValue(value);
+                  squareDelNumber(tempPtr3,decimal);
+                  int check = *tempPtr3;
+                  if(check == 0){
+                    Throw(ERR_EMPTY_SQU);
+                  }
+                }
+              
+            }
+          } 
+          
+      }
+    }
+    
+  }
+
+void eliminateNakedQuad(int square[9][9]){
+  int r,c;
+  for(r=0;r<9;r++){
+    for(c=0;c<9;c++){
+        Square *peersRow = rowPeers[r][c];
+        Square *peersColumn = columnPeers[r][c];        
+        Square *peersBox = boxPeers[r][c];
+        eliminateNakedQuadInPeers(square,peersRow);
+        eliminateNakedQuadInPeers(square,peersColumn);
+        eliminateNakedQuadInPeers(square,peersBox);
+    }
+  }
+}
+  
+void eliminateNakedQuadInPeers(int square[9][9],Square *peers){
+  int i,j,k,m,n;
+  int *tempPtr,*tempPtr1,*tempPtr4;
+  int temp,temp1,temp2,temp3;
+  int conv = 0x01;
+  int storeVal;
+  int store3;
+  int c;
+  int a = 0;
+
+  for(i=0;i<9;i++){
+     for(j=i+1;j<9;j++){
+    if(squareContainNumbers(square,peers[i].row+1,peers[i].column+1) == 4 && squareContainNumbers(square,peers[j].row+1,peers[j].column+1) == 4){   
+        tempPtr = getSquare(square,peers[i].row+1,peers[i].column+1);
+        temp = *tempPtr;
+        tempPtr1 = getSquare(square,peers[j].row+1,peers[j].column+1);
+        temp1 = *tempPtr1;
+        if(temp == temp1){
+          temp2 = temp; 
+        }
+    }
+    }
+  }
+  
+
+
+  for(k=0;k<9;k++){
+    int *tempPtr3;
+    tempPtr3 = getSquare(square,peers[k].row+1,peers[k].column+1);
+    temp3 = *tempPtr3;
+      if(temp3 == temp2){
+        for(m=0;m<9;m++){
+          int value = temp3 &(conv<<m);
+          if(value != 0){
+            int decimal = checkBinaryValue(value);
+            squareSetNumber(tempPtr3,decimal);
+          }
+        }
+      }
+      
+      else{
+          if(squareContainOneNumbers(square,peers[k].row+1,peers[k].column+1) == 1){
+              int decimal = checkBinaryValue(temp3);
+              squareSetNumber(tempPtr3,decimal);
+          }
+          
+          else if((temp3&temp2) == 0){
+            for(m=0;m<9;m++){
+            int value = temp3 &(conv<<m);
+              if(value != 0){
+                int decimal = checkBinaryValue(value);
+                squareSetNumber(tempPtr3,decimal);
+              }
+            }
+          }
+          
+          else{
+            for(m=0;m<9;m++){
+              int store1 = temp3 & (conv<<m);
+              int store2 = temp2 & (conv<<m);
+                if(store1 == store2){
+                  store3 = store1;
+                }else{
+                  store1 = 0;
+                  store3 = store1;
+                }
+                int value = store3 &(conv<<m);
+                if(value != 0){
+                  int decimal = checkBinaryValue(value);
+                  squareDelNumber(tempPtr3,decimal);
+                  int check = *tempPtr3;
+
+                  if(check == 0){
+                    Throw(ERR_EMPTY_SQU);
+                  }
+                }
+              
+            }
+          } 
+          
+      }
+    }
+    
+  }
+
 /*
 void bruteForce(int squares[9][9]){
   int r, c;

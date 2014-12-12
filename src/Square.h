@@ -47,6 +47,13 @@ int checkBinaryValue(int value);
 void duplicateSquares(int squares[9][9], int dupSquares[9][9]);
 int isSudokuSolved(int squares[9][9]);
 
+void eliminateNakedPair(int square[9][9]);
+void eliminateNakedPairInPeers(int square[9][9],Square *peers);
+void eliminateNakedTriples(int square[9][9]);
+void eliminateNakedTriplesInPeers(int square[9][9],Square *peers);
+void eliminateNakedQuad(int square[9][9]);
+void eliminateNakedQuadInPeers(int square[9][9],Square *peers);
+
 // void bruteForce(int squares[9][9]);
 
 #endif // Square_H
