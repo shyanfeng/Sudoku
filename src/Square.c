@@ -107,8 +107,6 @@ int getBeginningIndex(int index){
     printf("out of range");
 }
 
-
-
 int checkBinaryValue(int value){
   if(value == 1){
     return 1;
@@ -292,6 +290,31 @@ void eliminateNumberFromPeers(int squares[9][9], Square *peers, int row, int col
       }
     }
   }
+}
+
+Square selectSquareWithLeastValues(int square[9][9]){
+	int r, c;
+  int count = 10;
+  int *getValuePtr;
+  int getValue;
+  Square sq;
+  int returnCount;
+	
+	for(r = 0; r < 9; r++){
+		for(c = 0; c < 9; c++){
+      getValuePtr = getSquare(square, r + 1, c + 1);
+      getValue = *getValuePtr;
+      returnCount = squareContainNumbers(square, r + 1 , c + 1);
+      if(returnCount != 1){
+        if(returnCount < count){
+          sq.row = r;
+          sq.column = c;
+          count = returnCount;
+        }
+      }
+		}
+	}
+  return sq;
 }
 /*
 void bruteForce(int squares[9][9]){

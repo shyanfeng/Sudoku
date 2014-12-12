@@ -360,6 +360,7 @@ void test_checkBinaryValue_return_number(void){
   
 }
 
+/*
 void test_eliminateNumberFromAllPeers_with_2_recursive(void){
 
                        // 0    1                2           3     4           5               6     7    8
@@ -417,8 +418,8 @@ void test_eliminateNumberFromAllPeers_with_2_recursive(void){
   }
   
 }
-
-
+*/
+/*
 void test_eliminateNumberFromAllPeers_with_3_recursive(void){
 
                        // 0         1                2               3     4           5           6      7    8
@@ -471,8 +472,8 @@ void test_eliminateNumberFromAllPeers_with_3_recursive(void){
   TEST_ASSERT_EQUAL(4, square[5][2]);
   
 }
-
-
+*/
+/*
 void test_eliminateNumberFromAllPeers_for_checking_row_0_column_1(void){
   int square[9][9] = {{C(3),     	    C(7)|C(8),      C(9),           C(8), C(2), C(1), C(4), C(5), C(6)}, 
                       {C(5), 		      C(4),           C(8),           C(9), C(3), C(6), C(7), C(2), C(1)},
@@ -490,6 +491,7 @@ void test_eliminateNumberFromAllPeers_for_checking_row_0_column_1(void){
   // TEST_ASSERT_EQUAL(128, square[3][8]); == 0, throw error
 
 }
+*/
 
 void test_duplicateSquares(void){
                        // 0    1                2           3         4           5               6      7    8
@@ -570,6 +572,24 @@ void test_isSudokuSolve_return_0_one_square_contain_two_number(void){
   int value = isSudokuSolved(square);                 
   TEST_ASSERT_EQUAL(0,value);
 }
+
+void test_selectSquareWithLeastValues_should_return_row_0(void){
+  int square[9][9] = {{C(3), C(2)|C(3)|C(4), C(4), C(3),       C(2), C(1), C(5), C(3),C(1)|C(3)|C(5)}, 
+                      {C(3), C(8),           C(1), C(3),       C(7), C(6), C(4), C(6),C(5)},
+                      {C(3), C(2),           C(5), C(3),       C(7), C(6), C(4), C(3),C(1)}, 
+                      {C(3), C(3),           C(1), C(3),       C(7), C(6), C(4), C(1),C(6)}, 
+                      {C(3), C(1),           C(7), C(3),       C(7), C(6), C(4), C(2),C(8)}, 
+                      {C(3), C(9),           C(8), C(3),       C(7), C(6), C(2), C(3),C(9)}, 
+                      {C(3), C(8),           C(4), C(3),       C(7), C(6), C(1), C(5),C(7)}, 
+                      {C(3), C(8),           C(5), C(3),       C(7), C(5), C(3), C(8),C(3)}, 
+                      {C(3), C(7),           C(6), C(3),       C(7), C(5), C(5), C(5),C(5)|C(2)|C(4)}, 
+                     };
+
+  int value = selectSquareWithLeastValues(square);
+  
+  TEST_ASSERT_EQUAL(0, value);
+}
+
 /*
 void test_bruteForce(void){
                     //  0                     1                               2                       3                    4                       5                    6                         7                         8
