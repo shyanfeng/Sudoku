@@ -360,7 +360,6 @@ void test_checkBinaryValue_return_number(void){
   
 }
 
-/*
 void test_eliminateNumberFromAllPeers_with_2_recursive(void){
 
                        // 0    1                2           3     4           5               6     7    8
@@ -418,8 +417,7 @@ void test_eliminateNumberFromAllPeers_with_2_recursive(void){
   }
   
 }
-*/
-/*
+
 void test_eliminateNumberFromAllPeers_with_3_recursive(void){
 
                        // 0         1                2               3     4           5           6      7    8
@@ -472,8 +470,7 @@ void test_eliminateNumberFromAllPeers_with_3_recursive(void){
   TEST_ASSERT_EQUAL(4, square[5][2]);
   
 }
-*/
-/*
+
 void test_eliminateNumberFromAllPeers_for_checking_row_0_column_1(void){
   int square[9][9] = {{C(3),     	    C(7)|C(8),      C(9),           C(8), C(2), C(1), C(4), C(5), C(6)}, 
                       {C(5), 		      C(4),           C(8),           C(9), C(3), C(6), C(7), C(2), C(1)},
@@ -485,13 +482,14 @@ void test_eliminateNumberFromAllPeers_for_checking_row_0_column_1(void){
                       {C(8),          C(5),           C(6),           C(7), C(9), C(2), C(1), C(3), C(4)},  
                       {C(7),          C(1),           C(2),           C(6), C(4), C(3), C(5), C(8), C(9)}, 
                      };
-  eliminateNumberFromAllPeers(square,1,2,7);
-  // TEST_ASSERT_EQUAL(64, square[0][1]);
-  // TEST_ASSERT_EQUAL(128, square[3][1]);
-  // TEST_ASSERT_EQUAL(128, square[3][8]); == 0, throw error
+  ErrorCode e;
+  
+  Try{
+    eliminateNumberFromAllPeers(square,1,2,7);
+  }Catch(e)
+    TEST_ASSERT_EQUAL(ERR_EMPTY_SQU, e);
 
 }
-*/
 
 void test_duplicateSquares(void){
                        // 0    1                2           3         4           5               6      7    8
@@ -507,7 +505,8 @@ void test_duplicateSquares(void){
                       {C(9), C(1),            C(1),       C(1),      C(2)|C(7),  C(1),           C(1), C(1),C(1)}, //7
                       {C(1), C(2),            C(1),       C(1),      C(3),       C(1),           C(1), C(1),C(1)}, //8
                      };  
-                     
+  
+  int dupSquares[9][9];
   duplicateSquares(square, dupSquares);
   
   TEST_ASSERT_EQUAL(4, dupSquares[0][0]);
@@ -624,8 +623,8 @@ void test_bruteForce(void){
   // TEST_ASSERT_EQUAL(1, square[8][0]);
 
 }*/
-/*
-void xtest_bruteForce_1111(void){
+
+void test_bruteForce_112212312311(void){
   int square[9][9] = {{C(3),     	    C(7)|C(8),   C(9),   C(8), C(2), C(1), C(4), C(5), C(6)}, 
                       {C(5), 		      C(4),        C(8),   C(9), C(3), C(6), C(7), C(2), C(1)},
                       {C(2),          C(6),        C(1),   C(4), C(5), C(7), C(3), C(9), C(8)}, 
@@ -636,12 +635,15 @@ void xtest_bruteForce_1111(void){
                       {C(8),          C(5),        C(6),   C(7), C(9), C(2), C(1), C(3), C(4)},  
                       {C(7),          C(1),        C(2),   C(6), C(4), C(3), C(5), C(8), C(9)}, 
                      };                 
-  bruteForce(square);
-  // TEST_ASSERT_EQUAL(64, square[0][1]);
-  TEST_ASSERT_EQUAL(64, square[3][8]);
-  // TEST_ASSERT_EQUAL(128, square[3][1]);
+  eliminateBruteForce(square);
 
-}*/
+  
+  TEST_ASSERT_EQUAL(64, square[0][1]);
+  TEST_ASSERT_EQUAL(64, square[3][8]);
+  TEST_ASSERT_EQUAL(128, square[3][1]);
+  TEST_ASSERT_EQUAL(64, square[7][3]);
+
+}
 
 
 /*

@@ -11,7 +11,7 @@
 Square rowPeers[9][9][9];
 Square columnPeers[9][9][9];
 Square boxPeers[9][9][9];
-int dupSquares[9][9];
+
 ErrorCode e;
 
 void clearSquares(int square[9][9]){
@@ -221,35 +221,14 @@ int isSudokuSolved(int squares[9][9]){
 }
 
 void eliminateNumberFromAllPeers(int squares[9][9], int row, int column, int value){
-  int *numberInSquare;
-  int num = 0x1;
-  int i;
-  int getNumberAfterSwitchBit;
-  int getNumber;
-  int getOut = 0;
-  
   Square *peersRow = rowPeers[row - 1][column - 1];
   Square *peersColumn = columnPeers[row - 1][column - 1];
   Square *peersBox = boxPeers[row - 1][column - 1];
-  
-  // Try {
+
     eliminateNumberFromPeers(squares, peersRow, row, column, value);
     eliminateNumberFromPeers(squares, peersColumn, row, column, value);
     eliminateNumberFromPeers(squares, peersBox, row, column, value);
-  // }Catch(e) {
-    // numberInSquare = getSquare(squares, row, column);
-    // getNumber = *numberInSquare;
-    // printf("r = %d c = %d getNumber = %d\n", row-1, column-1, getNumber);
-    
-    // for(i = 0; ((getOut != 1) && (i < 9)); i++){
-      // getNumberAfterSwitchBit = (getNumber & (~value)) & (num << i);
-      
-      // if(getNumberAfterSwitchBit != 0){
-        // eliminateNumberFromAllPeers(squares, row, column, getNumberAfterSwitchBit);
-        // getOut = 1;
-      // }
-  // }
- // }
+
 }
 
 void eliminateNumberFromPeers(int squares[9][9], Square *peers, int row, int column, int findNumberToEliminate){
@@ -258,10 +237,7 @@ void eliminateNumberFromPeers(int squares[9][9], Square *peers, int row, int col
   int value;
   int decimalValue;
   int value1 = squareHas(squares, row, column, findNumberToEliminate);
-  // Square sq;
-  
-  // sq = selectSquareWithLeastValues(squares);
-  // Try{
+
   if((squareContainNumbers(squares, row, column) == 2) && (value1 == 1)){
     int *storeFixValue = getSquare(squares, row, column);
     squareDelNumber(storeFixValue, findNumberToEliminate);
@@ -280,7 +256,7 @@ void eliminateNumberFromPeers(int squares[9][9], Square *peers, int row, int col
         int value = *value2;
       }else{
         int *value2 = getSquare(squares, getActualRowForPeers, getActualColumnForPeers);
-        duplicateSquares(squares, dupSquares);
+        // duplicateSquares(squares, dupSquares);
         squareDelNumber(value2, decimalValue);
         int value1 = *value2;
         if(value1 == 0){
@@ -293,10 +269,7 @@ void eliminateNumberFromPeers(int squares[9][9], Square *peers, int row, int col
       }
     }
   }
-  
-  // }Catch(e){
-  
-  // }
+
 }
 
 Square selectSquareWithLeastValues(int square[9][9]){
@@ -321,80 +294,63 @@ Square selectSquareWithLeastValues(int square[9][9]){
       }
 		}
 	}
-  printf("r=%d c=%d\n", sq.row, sq.column);
   return sq;
 }
-/*
-void bruteForce(int squares[9][9]){
+
+void eliminateBruteForce(int squares[9][9]){
+  int dupSquares[9][9];
   int r, c;
-  int num = 0x01;;
+  int bitToMask = 0x01;
   int checkForContainTwoNumber;
   int *numberInAddress;
   int *backToDupSquares;
   int numberFromDupSquare;
   int i;
-  int getNumberFromSwitchBit;
-  int numberToChoose;
+  int getOneFromSquare;
+  int numberToChooseInSquare;
   int numberToDelete;
   int getOut;
   int setNumber;
   int *testGet;
   int getFromTest;
-
+  Square sq;
+  
+  int *test1;
+  int test2;
+  
+  
+  sq = selectSquareWithLeastValues(squares);
+  
   for(r = 0; r < 9; r++){
     for(c = 0; c < 9; c++){
-    duplicateSquares(squares, dupSquares);
-    checkForContainTwoNumber = squareContainNumbers(squares, actualRow, actualColumn);
-
-      if(checkForContainTwoNumber == 2){
+      duplicateSquares(squares, dupSquares);
+    
+      if((sq.row == r) && (sq.column == c)){
         numberInAddress = getSquare(squares, actualRow, actualColumn);
-        numberToChoose = *numberInAddress;
-        // printf("r = %d c = %d\n", r, c);
-        
-        for(i = 0; ((getOut != 1) && (i < 9)); i++){
-          getNumberFromSwitchBit = numberToChoose & (num << i);
-          printf("i = %d\n", i);
-          if(getNumberFromSwitchBit != 0){
+        numberToChooseInSquare = *numberInAddress;
+        printf("r = %d c = %d numberToChooseInSquare = %d\n", sq.row, sq.column, numberToChooseInSquare);
+
+        for(i = 0; ((getOut != 1) && (i < 9)); i++){  
+          getOneFromSquare = numberToChooseInSquare & (bitToMask << i);
+          if(getOneFromSquare != 0){
             Try{
-              printf("oriNum = %d\n", numberToChoose);
-              printf("getNumberFromSwitchBit = %d\n", getNumberFromSwitchBit);
-              
-              numberToDelete = checkBinaryValue(getNumberFromSwitchBit);
-              
-              printf("r = %d c = %d\n", r, c);
-              
+              numberToDelete = checkBinaryValue(getOneFromSquare);
               eliminateNumberFromAllPeers(squares, actualRow, actualColumn, numberToDelete);
-              
-              printf("Nice!! No error\n");
-              
               testGet = getSquare(squares, actualRow, actualColumn);
               getFromTest = *testGet;
               setNumber = checkBinaryValue(getFromTest);
-              squareSetNumber(testGet,setNumber);
-              // int a = *testGet;
-              // printf("asas:%d \n",a);
-              // printf("r= %d c= %d getFromTest=%d\n", r,c,getFromTest);
               getOut = 1;
             }Catch(e){
               printf("ERROR THROW \n");
-              
               backToDupSquares = getSquare(dupSquares, actualRow, actualColumn);
-              
               numberFromDupSquare = *backToDupSquares;
-              printf("r=%d c=%d numberFromDupSquare = %d\n", r, c, numberFromDupSquare);
-              getNumberFromSwitchBit = numberFromDupSquare;
-              
-              printf("getNumberFromSwitchBit = %d\n", getNumberFromSwitchBit);
-              printf("numberToChoose = %d\n", numberToChoose);
-              
-              squares = dupSquares;
+              getOneFromSquare = numberFromDupSquare;
+              duplicateSquares(dupSquares, squares);
             }
           }
         }
-           
-           
       }
     }
   }
 }
-*/
+

@@ -22,7 +22,6 @@ struct Square {
 extern Square rowPeers[9][9][9];
 extern Square columnPeers[9][9][9];
 extern Square boxPeers[9][9][9];
-extern int dupSquares[9][9];
 
 void clearSquares(int square[9][9]);
 
@@ -48,7 +47,7 @@ void duplicateSquares(int squares[9][9], int dupSquares[9][9]);
 int isSudokuSolved(int squares[9][9]);
 Square selectSquareWithLeastValues(int square[9][9]);
 
-// void bruteForce(int squares[9][9]);
+void eliminateBruteForce(int squares[9][9]);
 
 #endif // Square_H
 
