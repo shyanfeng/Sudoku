@@ -232,24 +232,24 @@ void eliminateNumberFromAllPeers(int squares[9][9], int row, int column, int val
   Square *peersColumn = columnPeers[row - 1][column - 1];
   Square *peersBox = boxPeers[row - 1][column - 1];
   
-  Try {
+  // Try {
     eliminateNumberFromPeers(squares, peersRow, row, column, value);
     eliminateNumberFromPeers(squares, peersColumn, row, column, value);
     eliminateNumberFromPeers(squares, peersBox, row, column, value);
-  }Catch(e) {
-    numberInSquare = getSquare(squares, row, column);
-    getNumber = *numberInSquare;
-    printf("r = %d c = %d getNumber = %d\n", row-1, column-1, getNumber);
+  // }Catch(e) {
+    // numberInSquare = getSquare(squares, row, column);
+    // getNumber = *numberInSquare;
+    // printf("r = %d c = %d getNumber = %d\n", row-1, column-1, getNumber);
     
-    for(i = 0; ((getOut != 1) && (i < 9)); i++){
-      getNumberAfterSwitchBit = (getNumber & (~value)) & (num << i);
+    // for(i = 0; ((getOut != 1) && (i < 9)); i++){
+      // getNumberAfterSwitchBit = (getNumber & (~value)) & (num << i);
       
-      if(getNumberAfterSwitchBit != 0){
-        eliminateNumberFromAllPeers(squares, row, column, getNumberAfterSwitchBit);
-        getOut = 1;
-      }
-  }
- }
+      // if(getNumberAfterSwitchBit != 0){
+        // eliminateNumberFromAllPeers(squares, row, column, getNumberAfterSwitchBit);
+        // getOut = 1;
+      // }
+  // }
+ // }
 }
 
 void eliminateNumberFromPeers(int squares[9][9], Square *peers, int row, int column, int findNumberToEliminate){
@@ -258,7 +258,10 @@ void eliminateNumberFromPeers(int squares[9][9], Square *peers, int row, int col
   int value;
   int decimalValue;
   int value1 = squareHas(squares, row, column, findNumberToEliminate);
-
+  // Square sq;
+  
+  // sq = selectSquareWithLeastValues(squares);
+  // Try{
   if((squareContainNumbers(squares, row, column) == 2) && (value1 == 1)){
     int *storeFixValue = getSquare(squares, row, column);
     squareDelNumber(storeFixValue, findNumberToEliminate);
@@ -290,6 +293,10 @@ void eliminateNumberFromPeers(int squares[9][9], Square *peers, int row, int col
       }
     }
   }
+  
+  // }Catch(e){
+  
+  // }
 }
 
 Square selectSquareWithLeastValues(int square[9][9]){
@@ -314,6 +321,7 @@ Square selectSquareWithLeastValues(int square[9][9]){
       }
 		}
 	}
+  printf("r=%d c=%d\n", sq.row, sq.column);
   return sq;
 }
 /*

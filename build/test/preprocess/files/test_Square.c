@@ -900,10 +900,12 @@ void test_selectSquareWithLeastValues_should_return_row_0(void){
 
 
 
-  int value = selectSquareWithLeastValues(square);
+  Square value = selectSquareWithLeastValues(square);
 
 
 
-  UnityAssertEqualNumber((_U_SINT)((0)), (_U_SINT)((value)), (((void *)0)), (_U_UINT)590, UNITY_DISPLAY_STYLE_INT);
+  UnityAssertEqualNumber((_U_SINT)((0)), (_U_SINT)((value.row)), (((void *)0)), (_U_UINT)590, UNITY_DISPLAY_STYLE_INT);
+
+  UnityAssertEqualNumber((_U_SINT)((1)), (_U_SINT)((value.column)), (((void *)0)), (_U_UINT)591, UNITY_DISPLAY_STYLE_INT);
 
 }

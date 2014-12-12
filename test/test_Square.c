@@ -585,9 +585,10 @@ void test_selectSquareWithLeastValues_should_return_row_0(void){
                       {C(3), C(7),           C(6), C(3),       C(7), C(5), C(5), C(5),C(5)|C(2)|C(4)}, 
                      };
 
-  int value = selectSquareWithLeastValues(square);
+  Square value = selectSquareWithLeastValues(square);
   
-  TEST_ASSERT_EQUAL(0, value);
+  TEST_ASSERT_EQUAL(0, value.row);
+  TEST_ASSERT_EQUAL(1, value.column);
 }
 
 /*
