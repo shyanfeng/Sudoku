@@ -594,13 +594,12 @@ void eliminiateAllBruteForce(int squares[9][9]){
   
 void eliminateBruteForce(int squares[9][9]){
   int dupSquares[9][9];
-  int r, c;
+  int r, c, i;
   int bitToMask = 0x01;
   int checkForContainTwoNumber;
   int *numberInAddress;
   int *backToDupSquares;
   int numberFromDupSquare;
-  int i;
   int getOneFromSquare;
   int numberToChooseInSquare;
   int numberToDelete;
@@ -609,10 +608,6 @@ void eliminateBruteForce(int squares[9][9]){
   int *testGet;
   int getFromTest;
   Square sq;
-  
-  int *test1;
-  int test2;
-  
   
   sq = selectSquareWithLeastValues(squares);
   
@@ -634,6 +629,10 @@ void eliminateBruteForce(int squares[9][9]){
               testGet = getSquare(squares, actualRow, actualColumn);
               getFromTest = *testGet;
               setNumber = checkBinaryValue(getFromTest);
+              if(isSudokuSolved(squares) == 0){
+                printf("aaa\n");
+                eliminateBruteForce(squares);
+              }
               getOut = 1;
             }Catch(e){
               printf("ERROR THROW \n");
@@ -646,10 +645,6 @@ void eliminateBruteForce(int squares[9][9]){
         }
       }
     }
-  }
-  
-  if(isSudokuSolved(squares) == 0){
-    eliminateBruteForce(squares);
   }
 }
 
