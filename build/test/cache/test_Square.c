@@ -1958,9 +1958,7 @@ void test_dumpSquare(void){
 
 }
 
-
-
-void test_bruteForce_112212312311(void){
+void test_bruteForce(void){
 
   int dupSquares[9][9];
 
@@ -1992,17 +1990,17 @@ void test_bruteForce_112212312311(void){
 
 
 
-  UnityAssertEqualNumber((_U_SINT)((64)), (_U_SINT)((square[0][1])), (((void *)0)), (_U_UINT)1000, UNITY_DISPLAY_STYLE_INT);
+  UnityAssertEqualNumber((_U_SINT)((64)), (_U_SINT)((square[0][1])), (((void *)0)), (_U_UINT)1103, UNITY_DISPLAY_STYLE_INT);
 
-  UnityAssertEqualNumber((_U_SINT)((64)), (_U_SINT)((square[3][8])), (((void *)0)), (_U_UINT)1001, UNITY_DISPLAY_STYLE_INT);
+  UnityAssertEqualNumber((_U_SINT)((64)), (_U_SINT)((square[3][8])), (((void *)0)), (_U_UINT)1104, UNITY_DISPLAY_STYLE_INT);
 
-  UnityAssertEqualNumber((_U_SINT)((128)), (_U_SINT)((square[3][1])), (((void *)0)), (_U_UINT)1002, UNITY_DISPLAY_STYLE_INT);
+  UnityAssertEqualNumber((_U_SINT)((128)), (_U_SINT)((square[3][1])), (((void *)0)), (_U_UINT)1105, UNITY_DISPLAY_STYLE_INT);
 
-  UnityAssertEqualNumber((_U_SINT)((64)), (_U_SINT)((square[7][3])), (((void *)0)), (_U_UINT)1003, UNITY_DISPLAY_STYLE_INT);
+  UnityAssertEqualNumber((_U_SINT)((64)), (_U_SINT)((square[7][3])), (((void *)0)), (_U_UINT)1106, UNITY_DISPLAY_STYLE_INT);
 
-  UnityAssertEqualNumber((_U_SINT)((64)), (_U_SINT)((square[8][0])), (((void *)0)), (_U_UINT)1004, UNITY_DISPLAY_STYLE_INT);
+  UnityAssertEqualNumber((_U_SINT)((64)), (_U_SINT)((square[8][0])), (((void *)0)), (_U_UINT)1107, UNITY_DISPLAY_STYLE_INT);
 
-  UnityAssertEqualNumber((_U_SINT)((2)), (_U_SINT)((square[8][2])), (((void *)0)), (_U_UINT)1005, UNITY_DISPLAY_STYLE_INT);
+  UnityAssertEqualNumber((_U_SINT)((2)), (_U_SINT)((square[8][2])), (((void *)0)), (_U_UINT)1108, UNITY_DISPLAY_STYLE_INT);
 
 
 

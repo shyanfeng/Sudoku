@@ -981,31 +981,6 @@ void test_dumpSquare(void){
   dumpSquare(square);
 }
 
-void test_bruteForce_112212312311(void){
-  int dupSquares[9][9];
-  clearSquares(dupSquares);
-  int square[9][9] = {{C(3),     	    C(7)|C(8)|C(3),   C(9),       C(8), C(2), C(1), C(4), C(5), C(6)}, 
-                      {C(5), 		      C(4),             C(8),       C(9), C(3), C(6), C(7), C(2), C(1)},
-                      {C(2),          C(6),             C(1),       C(4), C(5), C(7), C(3), C(9), C(8)}, 
-                      {C(1),          C(8)|C(7),        C(5),       C(3), C(6), C(9), C(2), C(4), C(7)},  
-                      {C(9),          C(2),             C(4),       C(1), C(7), C(5), C(8), C(6), C(3)},  
-                      {C(6),          C(3),             C(7),       C(2), C(8), C(4), C(9), C(1), C(5)},  
-                      {C(4),          C(9),             C(3),       C(5), C(1), C(8), C(6), C(7), C(2)},  
-                      {C(8),          C(5),             C(6),       C(7), C(9), C(2), C(1), C(3), C(4)},  
-                      {C(7)|C(2),     C(1),             C(2)|C(7),  C(6), C(4), C(3), C(5), C(8), C(9)}, 
-                     };                 
-  eliminateBruteForce(square);
-
-  
-  TEST_ASSERT_EQUAL(64, square[0][1]);
-  TEST_ASSERT_EQUAL(64, square[3][8]);
-  TEST_ASSERT_EQUAL(128, square[3][1]);
-  TEST_ASSERT_EQUAL(64, square[7][3]);
-  TEST_ASSERT_EQUAL(64, square[8][0]);
-  TEST_ASSERT_EQUAL(2, square[8][2]);
-
-}
-
 // void test_inputValueIntoSquare(void){
   // int square[9][9];    
  // int write[81] = { 1,2,3,4,5,6,7,8,9,
@@ -1088,7 +1063,7 @@ void test_bruteForce(void){
                       {C(1)|C(4)|C(7)|C(9), C(2)|C(3)|C(4)|C(5)|C(7)|C(8), C(5)|C(7)|C(8),        C(2)|C(4)|C(7)|C(8), C(2)|C(4)|C(6)|C(7)|C(8), C(1),                C(5)|C(7)|C(8),           C(4)|C(5)|C(7)|C(8),      C(3)          }, 
                      };
                      
-  bruteForce(square);
+  eliminateBruteForce(square);
   //col 1
   TEST_ASSERT_EQUAL(4, square[0][0]);
   TEST_ASSERT_EQUAL(16, square[1][0]);
@@ -1108,21 +1083,48 @@ void test_bruteForce(void){
 
 }*/
 
-/*
-void test_try_for_bruteForce(void){
-  int square[9][9] = {{C(3), C(2)|C(4)|C(3),  C(6),       C(1), C(1),       C(8),           C(9), C(2),C(1)}, //0 
-                      {C(2), C(1)|C(4),       C(2)|C(3),  C(1), C(8)|C(4),  C(5)|C(3)|C(1), C(6), C(7),C(3)}, //1
-                      {C(1), C(9)|C(4),       C(3),       C(3), C(2),       C(1),           C(1), C(1),C(1)}, //2
-                      
-                      {C(1), C(3),            C(1),       C(1), C(2),       C(1),           C(1), C(1),C(1)}, //3
-                      {C(1), C(6),            C(1),       C(1), C(2),       C(1),           C(1), C(1),C(1)}, //4
-                      {C(1), C(1),            C(1),       C(1), C(2),       C(1),           C(1), C(1),C(1)}, //5
-                      
-                      {C(1), C(1),            C(1),       C(1), C(2),       C(1),           C(1), C(1),C(1)}, //6
-                      {C(1), C(1),            C(1),       C(1), C(2),       C(1),           C(1), C(1),C(1)}, //7
-                      {C(1), C(1),            C(1),       C(1), C(2),       C(1),           C(1), C(1),C(1)}, //8
-                     }; 
-                     
-  bruteForce(square);
+
+void test_bruteForce(void){
+  int dupSquares[9][9];
+  clearSquares(dupSquares);
+  int square[9][9] = {{C(3),     	    C(7)|C(8)|C(3),   C(9),       C(8), C(2), C(1), C(4), C(5), C(6)}, 
+                      {C(5), 		      C(4),             C(8),       C(9), C(3), C(6), C(7), C(2), C(1)},
+                      {C(2),          C(6),             C(1),       C(4), C(5), C(7), C(3), C(9), C(8)}, 
+                      {C(1),          C(8)|C(7),        C(5),       C(3), C(6), C(9), C(2), C(4), C(7)},  
+                      {C(9),          C(2),             C(4),       C(1), C(7), C(5), C(8), C(6), C(3)},  
+                      {C(6),          C(3),             C(7),       C(2), C(8), C(4), C(9), C(1), C(5)},  
+                      {C(4),          C(9),             C(3),       C(5), C(1), C(8), C(6), C(7), C(2)},  
+                      {C(8),          C(5),             C(6),       C(7), C(9), C(2), C(1), C(3), C(4)},  
+                      {C(7)|C(2),     C(1),             C(2)|C(7),  C(6), C(4), C(3), C(5), C(8), C(9)}, 
+                     };                 
+  eliminateBruteForce(square);
+
   
-}*/
+  TEST_ASSERT_EQUAL(64, square[0][1]);
+  TEST_ASSERT_EQUAL(64, square[3][8]);
+  TEST_ASSERT_EQUAL(128, square[3][1]);
+  TEST_ASSERT_EQUAL(64, square[7][3]);
+  TEST_ASSERT_EQUAL(64, square[8][0]);
+  TEST_ASSERT_EQUAL(2, square[8][2]);
+
+}
+
+
+
+// void test_try_for_bruteForce(void){
+  // int square[9][9] = {{C(3), C(2)|C(4)|C(3),  C(6),       C(1), C(1),       C(8),           C(9), C(2),C(1)}, //0 
+                      // {C(2), C(1)|C(4),       C(2)|C(3),  C(1), C(8)|C(4),  C(5)|C(3)|C(1), C(6), C(7),C(3)}, //1
+                      // {C(1), C(9)|C(4),       C(3),       C(3), C(2),       C(1),           C(1), C(1),C(1)}, //2
+                      
+                      // {C(1), C(3),            C(1),       C(1), C(2),       C(1),           C(1), C(1),C(1)}, //3
+                      // {C(1), C(6),            C(1),       C(1), C(2),       C(1),           C(1), C(1),C(1)}, //4
+                      // {C(1), C(1),            C(1),       C(1), C(2),       C(1),           C(1), C(1),C(1)}, //5
+                      
+                      // {C(1), C(1),            C(1),       C(1), C(2),       C(1),           C(1), C(1),C(1)}, //6
+                      // {C(1), C(1),            C(1),       C(1), C(2),       C(1),           C(1), C(1),C(1)}, //7
+                      // {C(1), C(1),            C(1),       C(1), C(2),       C(1),           C(1), C(1),C(1)}, //8
+                     // }; 
+                     
+  // eliminateBruteForce(square);
+  
+// }
