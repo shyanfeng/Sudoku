@@ -3,7 +3,6 @@
 #include "ErrorCode.h"
 #include "CException.h"
 
-
 #define getActualRowForPeers ((peers[i].row) + 1)
 #define getActualColumnForPeers ((peers[i].column) + 1)
 #define actualRow (r + 1)
@@ -14,7 +13,6 @@ Square columnPeers[9][9][9];
 Square boxPeers[9][9][9];
 
 ErrorCode e;
-
 
 void clearSquares(int square[9][9]){
   int i,j;
@@ -297,7 +295,6 @@ Square selectSquareWithLeastValues(int square[9][9]){
   return sq;
 }
 
-
 void forCheckRowNakedSolver(int square[9][9],Square *peers,int j,int temp1){
   int k,m;
   int temp3;
@@ -485,7 +482,6 @@ void forCheckBoxNakedSolver(int square[9][9],Square *peers,int temp1){
     }
 } 
  
-
 void eliminateNakedPair(int square[9][9]){
   int r,c;
   int temp;
@@ -537,8 +533,6 @@ void eliminateNakedPairInPeers(int square[9][9],Square *peers){
   }
 }
   
-
-
 void eliminateNakedTriples(int square[9][9]){
   int r,c;
   for(r=0;r<9;r++){
@@ -589,7 +583,6 @@ void eliminateNakedTriplesInPeers(int square[9][9],Square *peers){
     }
   }  
 }
-
 
 void eliminateNakedQuad(int square[9][9]){
   int r,c;
@@ -643,9 +636,8 @@ void eliminateNakedQuadInPeers(int square[9][9],Square *peers){
   }
 }
   
-  
 void eliminateBruteForce(int squares[9][9]){
-  int dupSquares[9][9] = {0};
+  int dupSquares[9][9];
   int r, c, i;
   int bitToMask = 0x01;
   int checkForContainTwoNumber;
@@ -659,8 +651,8 @@ void eliminateBruteForce(int squares[9][9]){
   int setNumber;
   int *testGet;
   int getFromTest;
-  
   Square sq;
+  
   sq = selectSquareWithLeastValues(squares);
   
   for(r = 0; r < 9; r++){
@@ -698,7 +690,6 @@ void eliminateBruteForce(int squares[9][9]){
       }
     }
   }
-
 }
 
 void dumpSquare(int square[9][9]){

@@ -8,11 +8,7 @@
 //  001010
 #define C(x)  ((x>0)? 1<<(x-1) : 0x1ff)
 
-
-
 typedef struct Square Square;
-
-
 
 struct Square {
   int row;
