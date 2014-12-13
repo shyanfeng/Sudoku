@@ -15,6 +15,7 @@ Square boxPeers[9][9][9];
 
 ErrorCode e;
 
+
 void clearSquares(int square[9][9]){
   int i,j;
   
@@ -310,11 +311,11 @@ void eliminateNakedPair(int square[9][9]){
     }
   }
   
-  // if(isSudokuSolved(square) == 0){
-    // eliminateBruteForce(square);
-  // }else{
-    // printf("b");
-  // }
+  if(isSudokuSolved(square) == 0){
+    eliminateBruteForce(square);
+  }else{
+    dumpSquare(square);
+  }
 }
 
 void eliminateNakedPairInPeers(int square[9][9],Square *peers){
@@ -404,11 +405,11 @@ void eliminateNakedTriples(int square[9][9]){
     }
   }
   
-  // if(isSudokuSolved(square) == 0){
-    // eliminateBruteForce(square);
-  // }else{
-    // printf("b");
-  // }
+  if(isSudokuSolved(square) == 0){
+    eliminateBruteForce(square);
+  }else{
+    dumpSquare(square);
+  }
   
 }
   
@@ -509,6 +510,13 @@ void eliminateNakedQuad(int square[9][9]){
         eliminateNakedQuadInPeers(square,peersBox);
     }
   }
+  
+  if(isSudokuSolved(square) == 0){
+    eliminateBruteForce(square);
+  }else{
+    dumpSquare(square);
+  }
+  
 }
   
 void eliminateNakedQuadInPeers(int square[9][9],Square *peers){
@@ -591,10 +599,6 @@ void eliminateNakedQuadInPeers(int square[9][9],Square *peers){
       }     
   } 
 }
-
-// void eliminiateAllBruteForce(int squares[9][9]){
-  // eliminateBruteForce(squares);
-// }
   
 void eliminateBruteForce(int squares[9][9]){
   int dupSquares[9][9] = {0};
@@ -634,9 +638,9 @@ void eliminateBruteForce(int squares[9][9]){
               getFromTest = *testGet;
               setNumber = checkBinaryValue(getFromTest);
               if(isSudokuSolved(squares) == 0){
-                duplicateSquares(squares, dupSquares);
                 eliminateBruteForce(squares);
               }else{
+                dumpSquare(squares);
                 getOut = 1;
               }
             }Catch(e){
@@ -651,6 +655,48 @@ void eliminateBruteForce(int squares[9][9]){
       }
     }
   }
+
 }
+
+void dumpSquare(int square[9][9]){
+  int r,c,i,j;
+  int *printPtr;
+  int printDecimal;
+   
+  printf("\n");
+  printf("------+-----+------ \n");
+  for(r=0;r<9;r++){
+    for(c=0;c<10;c++){
+      printPtr = getSquare(square, actualRow, actualColumn);
+      printDecimal = *printPtr;
+      int printHex = checkBinaryValue(printDecimal);
+      for(i = 0 ; i < 1 ; i++){
+        printf("|");
+      }
+      if(c == 9){
+        printf("\n");
+        printf("------+-----+------");
+        printf("\n");
+      }else{
+        printf("%d",printHex);
+      }
+    }
+  }
+}
+
+// void inputValueIntoSquare(int write[81]){
+  // int r,c;
+  // int square[9][9];
+  // int i = 0;
+  // for(r=0;r<9;r++){
+    // for(c=0;c<9;c++){      
+      // square[r][c] = write[i++];
+
+    // }
+  // }
+// }
+
+
+
 
 

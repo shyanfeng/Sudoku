@@ -73,6 +73,7 @@ extern void test_nakedTriples_eliminate(void);
 extern void test_nakedQuad_eliminate_row(void);
 extern void test_nakedQuad_eliminate(void);
 extern void test_bruteForce_with_successful_eliminate(void);
+extern void test_dumpSquare(void);
 
 
 //=======Test Reset Option=====
@@ -127,6 +128,7 @@ int main(void)
   RUN_TEST(test_nakedQuad_eliminate_row, 816);
   RUN_TEST(test_nakedQuad_eliminate, 843);
   RUN_TEST(test_bruteForce_with_successful_eliminate, 869);
+  RUN_TEST(test_dumpSquare, 921);
 
   return (UnityEnd());
 }

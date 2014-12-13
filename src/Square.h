@@ -55,7 +55,7 @@ void eliminateNakedQuad(int square[9][9]);
 void eliminateNakedQuadInPeers(int square[9][9],Square *peers);
 
 void eliminateBruteForce(int squares[9][9]);
-
-
+void dumpSquare(int square[9][9]);
+void inputValueIntoSquare(int write[81]);
 #endif // Square_H
 
