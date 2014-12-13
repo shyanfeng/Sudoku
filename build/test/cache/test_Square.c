@@ -1178,7 +1178,7 @@ void test_selectSquareWithLeastValues_should_return_row_0(void){
 
 
 
-void test_nakedPair_eliminate_row(void){
+void xtest_nakedPair_eliminate_row(void){
 
     int square[9][9]={{((1>0)? 1<<(1 -1) : 0x1ff), ((2>0)? 1<<(2 -1) : 0x1ff)|((3>0)? 1<<(3 -1) : 0x1ff), ((1>0)? 1<<(1 -1) : 0x1ff), ((1>0)? 1<<(1 -1) : 0x1ff) , ((1>0)? 1<<(1 -1) : 0x1ff), ((1>0)? 1<<(1 -1) : 0x1ff), ((1>0)? 1<<(1 -1) : 0x1ff), ((1>0)? 1<<(1 -1) : 0x1ff),((1>0)? 1<<(1 -1) : 0x1ff)},
 
@@ -1374,7 +1374,7 @@ void test_nakedPair_eliminate_row_column_and_box(void){
 
 
 
-  UnityAssertEqualNumber((_U_SINT)((4)), (_U_SINT)((square[0][2])), (((void *)0)), (_U_UINT)691, UNITY_DISPLAY_STYLE_INT);
+  UnityAssertEqualNumber((_U_SINT)((6)), (_U_SINT)((square[0][2])), (((void *)0)), (_U_UINT)691, UNITY_DISPLAY_STYLE_INT);
 
   UnityAssertEqualNumber((_U_SINT)((4)), (_U_SINT)((square[1][2])), (((void *)0)), (_U_UINT)692, UNITY_DISPLAY_STYLE_INT);
 
@@ -1388,7 +1388,7 @@ void test_nakedPair_eliminate_row_column_and_box(void){
 
   UnityAssertEqualNumber((_U_SINT)((48)), (_U_SINT)((square[6][1])), (((void *)0)), (_U_UINT)697, UNITY_DISPLAY_STYLE_INT);
 
-  UnityAssertEqualNumber((_U_SINT)((256)), (_U_SINT)((square[3][3])), (((void *)0)), (_U_UINT)698, UNITY_DISPLAY_STYLE_INT);
+  UnityAssertEqualNumber((_U_SINT)((258)), (_U_SINT)((square[3][3])), (((void *)0)), (_U_UINT)698, UNITY_DISPLAY_STYLE_INT);
 
 }
 
@@ -1730,7 +1730,7 @@ void test_nakedQuad_eliminate(void){
 
 
 
-void test_bruteForce_with_successful_eliminate(void){
+void test_combineALLEliminate_with_successful_eliminate(void){
 
 
 
@@ -1756,77 +1756,75 @@ void test_bruteForce_with_successful_eliminate(void){
 
                       {((8>0)? 1<<(8 -1) : 0x1ff), ((2>0)? 1<<(2 -1) : 0x1ff)|((3>0)? 1<<(3 -1) : 0x1ff)|((6>0)? 1<<(6 -1) : 0x1ff), ((2>0)? 1<<(2 -1) : 0x1ff)|((3>0)? 1<<(3 -1) : 0x1ff), ((5>0)? 1<<(5 -1) : 0x1ff)|((6>0)? 1<<(6 -1) : 0x1ff), ((9>0)? 1<<(9 -1) : 0x1ff), ((7>0)? 1<<(7 -1) : 0x1ff), ((1>0)? 1<<(1 -1) : 0x1ff), ((4>0)? 1<<(4 -1) : 0x1ff)|((5>0)? 1<<(5 -1) : 0x1ff),((3>0)? 1<<(3 -1) : 0x1ff)|((4>0)? 1<<(4 -1) : 0x1ff)|((5>0)? 1<<(5 -1) : 0x1ff)},
 
-                     };
+                    };
 
 
 
 
 
-  eliminateBruteForce(square);
+  combineAllEliminate(square);
 
 
 
+  UnityAssertEqualNumber((_U_SINT)((256)), (_U_SINT)((square[0][0])), (((void *)0)), (_U_UINT)887, UNITY_DISPLAY_STYLE_INT);
 
+  UnityAssertEqualNumber((_U_SINT)((8)), (_U_SINT)((square[1][0])), (((void *)0)), (_U_UINT)888, UNITY_DISPLAY_STYLE_INT);
 
-  UnityAssertEqualNumber((_U_SINT)((256)), (_U_SINT)((square[0][0])), (((void *)0)), (_U_UINT)888, UNITY_DISPLAY_STYLE_INT);
+  UnityAssertEqualNumber((_U_SINT)((4)), (_U_SINT)((square[2][1])), (((void *)0)), (_U_UINT)889, UNITY_DISPLAY_STYLE_INT);
 
-  UnityAssertEqualNumber((_U_SINT)((8)), (_U_SINT)((square[1][0])), (((void *)0)), (_U_UINT)889, UNITY_DISPLAY_STYLE_INT);
+  UnityAssertEqualNumber((_U_SINT)((8)), (_U_SINT)((square[3][1])), (((void *)0)), (_U_UINT)890, UNITY_DISPLAY_STYLE_INT);
 
-  UnityAssertEqualNumber((_U_SINT)((4)), (_U_SINT)((square[2][1])), (((void *)0)), (_U_UINT)890, UNITY_DISPLAY_STYLE_INT);
+  UnityAssertEqualNumber((_U_SINT)((16)), (_U_SINT)((square[4][1])), (((void *)0)), (_U_UINT)891, UNITY_DISPLAY_STYLE_INT);
 
-  UnityAssertEqualNumber((_U_SINT)((8)), (_U_SINT)((square[3][1])), (((void *)0)), (_U_UINT)891, UNITY_DISPLAY_STYLE_INT);
-
-  UnityAssertEqualNumber((_U_SINT)((16)), (_U_SINT)((square[4][1])), (((void *)0)), (_U_UINT)892, UNITY_DISPLAY_STYLE_INT);
-
-  UnityAssertEqualNumber((_U_SINT)((32)), (_U_SINT)((square[7][1])), (((void *)0)), (_U_UINT)893, UNITY_DISPLAY_STYLE_INT);
-
-
-
-  UnityAssertEqualNumber((_U_SINT)((2)), (_U_SINT)((square[8][1])), (((void *)0)), (_U_UINT)895, UNITY_DISPLAY_STYLE_INT);
-
-  UnityAssertEqualNumber((_U_SINT)((16)), (_U_SINT)((square[2][2])), (((void *)0)), (_U_UINT)896, UNITY_DISPLAY_STYLE_INT);
-
-  UnityAssertEqualNumber((_U_SINT)((2)), (_U_SINT)((square[3][2])), (((void *)0)), (_U_UINT)897, UNITY_DISPLAY_STYLE_INT);
-
-  UnityAssertEqualNumber((_U_SINT)((4)), (_U_SINT)((square[8][2])), (((void *)0)), (_U_UINT)898, UNITY_DISPLAY_STYLE_INT);
-
-  UnityAssertEqualNumber((_U_SINT)((128)), (_U_SINT)((square[1][3])), (((void *)0)), (_U_UINT)899, UNITY_DISPLAY_STYLE_INT);
-
-  UnityAssertEqualNumber((_U_SINT)((8)), (_U_SINT)((square[4][3])), (((void *)0)), (_U_UINT)900, UNITY_DISPLAY_STYLE_INT);
+  UnityAssertEqualNumber((_U_SINT)((32)), (_U_SINT)((square[7][1])), (((void *)0)), (_U_UINT)892, UNITY_DISPLAY_STYLE_INT);
 
 
 
-  UnityAssertEqualNumber((_U_SINT)((16)), (_U_SINT)((square[7][3])), (((void *)0)), (_U_UINT)902, UNITY_DISPLAY_STYLE_INT);
+  UnityAssertEqualNumber((_U_SINT)((2)), (_U_SINT)((square[8][1])), (((void *)0)), (_U_UINT)894, UNITY_DISPLAY_STYLE_INT);
 
-  UnityAssertEqualNumber((_U_SINT)((32)), (_U_SINT)((square[8][3])), (((void *)0)), (_U_UINT)903, UNITY_DISPLAY_STYLE_INT);
+  UnityAssertEqualNumber((_U_SINT)((16)), (_U_SINT)((square[2][2])), (((void *)0)), (_U_UINT)895, UNITY_DISPLAY_STYLE_INT);
 
-  UnityAssertEqualNumber((_U_SINT)((8)), (_U_SINT)((square[0][4])), (((void *)0)), (_U_UINT)904, UNITY_DISPLAY_STYLE_INT);
+  UnityAssertEqualNumber((_U_SINT)((2)), (_U_SINT)((square[3][2])), (((void *)0)), (_U_UINT)896, UNITY_DISPLAY_STYLE_INT);
 
-  UnityAssertEqualNumber((_U_SINT)((16)), (_U_SINT)((square[5][4])), (((void *)0)), (_U_UINT)905, UNITY_DISPLAY_STYLE_INT);
+  UnityAssertEqualNumber((_U_SINT)((4)), (_U_SINT)((square[8][2])), (((void *)0)), (_U_UINT)897, UNITY_DISPLAY_STYLE_INT);
 
-  UnityAssertEqualNumber((_U_SINT)((16)), (_U_SINT)((square[1][5])), (((void *)0)), (_U_UINT)906, UNITY_DISPLAY_STYLE_INT);
+  UnityAssertEqualNumber((_U_SINT)((128)), (_U_SINT)((square[1][3])), (((void *)0)), (_U_UINT)898, UNITY_DISPLAY_STYLE_INT);
 
-  UnityAssertEqualNumber((_U_SINT)((128)), (_U_SINT)((square[4][5])), (((void *)0)), (_U_UINT)907, UNITY_DISPLAY_STYLE_INT);
-
-
-
-  UnityAssertEqualNumber((_U_SINT)((8)), (_U_SINT)((square[2][6])), (((void *)0)), (_U_UINT)909, UNITY_DISPLAY_STYLE_INT);
-
-  UnityAssertEqualNumber((_U_SINT)((16)), (_U_SINT)((square[3][6])), (((void *)0)), (_U_UINT)910, UNITY_DISPLAY_STYLE_INT);
-
-  UnityAssertEqualNumber((_U_SINT)((8)), (_U_SINT)((square[5][7])), (((void *)0)), (_U_UINT)911, UNITY_DISPLAY_STYLE_INT);
-
-  UnityAssertEqualNumber((_U_SINT)((16)), (_U_SINT)((square[8][7])), (((void *)0)), (_U_UINT)912, UNITY_DISPLAY_STYLE_INT);
-
-  UnityAssertEqualNumber((_U_SINT)((16)), (_U_SINT)((square[0][8])), (((void *)0)), (_U_UINT)913, UNITY_DISPLAY_STYLE_INT);
-
-  UnityAssertEqualNumber((_U_SINT)((256)), (_U_SINT)((square[1][8])), (((void *)0)), (_U_UINT)914, UNITY_DISPLAY_STYLE_INT);
+  UnityAssertEqualNumber((_U_SINT)((8)), (_U_SINT)((square[4][3])), (((void *)0)), (_U_UINT)899, UNITY_DISPLAY_STYLE_INT);
 
 
 
-  UnityAssertEqualNumber((_U_SINT)((4)), (_U_SINT)((square[7][8])), (((void *)0)), (_U_UINT)916, UNITY_DISPLAY_STYLE_INT);
+  UnityAssertEqualNumber((_U_SINT)((16)), (_U_SINT)((square[7][3])), (((void *)0)), (_U_UINT)901, UNITY_DISPLAY_STYLE_INT);
 
-  UnityAssertEqualNumber((_U_SINT)((8)), (_U_SINT)((square[8][8])), (((void *)0)), (_U_UINT)917, UNITY_DISPLAY_STYLE_INT);
+  UnityAssertEqualNumber((_U_SINT)((32)), (_U_SINT)((square[8][3])), (((void *)0)), (_U_UINT)902, UNITY_DISPLAY_STYLE_INT);
+
+  UnityAssertEqualNumber((_U_SINT)((8)), (_U_SINT)((square[0][4])), (((void *)0)), (_U_UINT)903, UNITY_DISPLAY_STYLE_INT);
+
+  UnityAssertEqualNumber((_U_SINT)((16)), (_U_SINT)((square[5][4])), (((void *)0)), (_U_UINT)904, UNITY_DISPLAY_STYLE_INT);
+
+  UnityAssertEqualNumber((_U_SINT)((16)), (_U_SINT)((square[1][5])), (((void *)0)), (_U_UINT)905, UNITY_DISPLAY_STYLE_INT);
+
+  UnityAssertEqualNumber((_U_SINT)((128)), (_U_SINT)((square[4][5])), (((void *)0)), (_U_UINT)906, UNITY_DISPLAY_STYLE_INT);
+
+
+
+  UnityAssertEqualNumber((_U_SINT)((8)), (_U_SINT)((square[2][6])), (((void *)0)), (_U_UINT)908, UNITY_DISPLAY_STYLE_INT);
+
+  UnityAssertEqualNumber((_U_SINT)((16)), (_U_SINT)((square[3][6])), (((void *)0)), (_U_UINT)909, UNITY_DISPLAY_STYLE_INT);
+
+  UnityAssertEqualNumber((_U_SINT)((8)), (_U_SINT)((square[5][7])), (((void *)0)), (_U_UINT)910, UNITY_DISPLAY_STYLE_INT);
+
+  UnityAssertEqualNumber((_U_SINT)((16)), (_U_SINT)((square[8][7])), (((void *)0)), (_U_UINT)911, UNITY_DISPLAY_STYLE_INT);
+
+  UnityAssertEqualNumber((_U_SINT)((16)), (_U_SINT)((square[0][8])), (((void *)0)), (_U_UINT)912, UNITY_DISPLAY_STYLE_INT);
+
+  UnityAssertEqualNumber((_U_SINT)((256)), (_U_SINT)((square[1][8])), (((void *)0)), (_U_UINT)913, UNITY_DISPLAY_STYLE_INT);
+
+
+
+  UnityAssertEqualNumber((_U_SINT)((4)), (_U_SINT)((square[7][8])), (((void *)0)), (_U_UINT)915, UNITY_DISPLAY_STYLE_INT);
+
+  UnityAssertEqualNumber((_U_SINT)((8)), (_U_SINT)((square[8][8])), (((void *)0)), (_U_UINT)916, UNITY_DISPLAY_STYLE_INT);
 
 }
 
