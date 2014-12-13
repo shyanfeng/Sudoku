@@ -1083,7 +1083,7 @@ void test_bruteForce(void){
 
 }*/
 
-
+/*
 void test_bruteForce(void){
   int dupSquares[9][9];
   clearSquares(dupSquares);
@@ -1107,7 +1107,7 @@ void test_bruteForce(void){
   TEST_ASSERT_EQUAL(64, square[8][0]);
   TEST_ASSERT_EQUAL(2, square[8][2]);
 
-}
+}*/
 
 
 
