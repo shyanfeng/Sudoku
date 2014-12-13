@@ -590,7 +590,7 @@ void test_selectSquareWithLeastValues_should_return_row_0(void){
   TEST_ASSERT_EQUAL(1, value.column);
 }
 
-void xtest_nakedPair_eliminate_row(void){
+void test_nakedPair_eliminate_row(void){
     int square[9][9]={{C(1), C(2)|C(3),       C(1),       C(1)     , C(1),       C(1),           C(1), C(1),C(1)}, //0 
                       {C(1), C(2)|C(4),       C(1),       C(1)     , C(1),       C(1),           C(1), C(1),C(1)}, //1
                       {C(1), C(2)|C(4),       C(1),       C(1)     , C(1),       C(1),           C(1), C(1),C(1)}, //2

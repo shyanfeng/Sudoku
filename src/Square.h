@@ -47,12 +47,21 @@ void duplicateSquares(int squares[9][9], int dupSquares[9][9]);
 int isSudokuSolved(int squares[9][9]);
 Square selectSquareWithLeastValues(int square[9][9]);
 
+void forCheckRowNakedSolver(int square[9][9],Square *peers,int j,int temp1);
+void forCheckColumnNakedSolver(int square[9][9],Square *peers,int j,int temp1);
+void forCheckBoxNakedSolver(int square[9][9],Square *peers,int temp1);
+
 void eliminateNakedPair(int square[9][9]);
 void eliminateNakedPairInPeers(int square[9][9],Square *peers);
+
+
 void eliminateNakedTriples(int square[9][9]);
 void eliminateNakedTriplesInPeers(int square[9][9],Square *peers);
+
+
 void eliminateNakedQuad(int square[9][9]);
 void eliminateNakedQuadInPeers(int square[9][9],Square *peers);
+
 
 void eliminateBruteForce(int squares[9][9]);
 void combineAllEliminate(int square[9][9]);
