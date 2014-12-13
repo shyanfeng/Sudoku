@@ -3,6 +3,7 @@
 #include "ErrorCode.h"
 #include "CException.h"
 
+
 #define getActualRowForPeers ((peers[i].row) + 1)
 #define getActualColumnForPeers ((peers[i].column) + 1)
 #define actualRow (r + 1)
@@ -256,7 +257,6 @@ void eliminateNumberFromPeers(int squares[9][9], Square *peers, int row, int col
         int value = *value2;
       }else{
         int *value2 = getSquare(squares, getActualRowForPeers, getActualColumnForPeers);
-        // duplicateSquares(squares, dupSquares);
         squareDelNumber(value2, decimalValue);
         int value1 = *value2;
         if(value1 == 0){
@@ -264,8 +264,7 @@ void eliminateNumberFromPeers(int squares[9][9], Square *peers, int row, int col
         }else if(squareContainOneNumbers(squares, getActualRowForPeers, getActualColumnForPeers) == 1){
           int value2 = checkBinaryValue(value1);
           eliminateNumberFromAllPeers(squares, getActualRowForPeers, getActualColumnForPeers, value2);
-        } else {
-       }
+        }
       }
     }
   }
@@ -299,6 +298,7 @@ Square selectSquareWithLeastValues(int square[9][9]){
 
 void eliminateNakedPair(int square[9][9]){
   int r,c;
+  int temp;
   for(r=0;r<9;r++){
     for(c=0;c<9;c++){
         Square *peersRow = rowPeers[r][c];
@@ -309,6 +309,12 @@ void eliminateNakedPair(int square[9][9]){
         eliminateNakedPairInPeers(square,peersBox);
     }
   }
+  
+  // if(isSudokuSolved(square) == 0){
+    // eliminateBruteForce(square);
+  // }else{
+    // printf("b");
+  // }
 }
 
 void eliminateNakedPairInPeers(int square[9][9],Square *peers){
@@ -318,8 +324,7 @@ void eliminateNakedPairInPeers(int square[9][9],Square *peers){
   int conv = 0x01;
   int storeVal;
   int store3;
-  
-  //check 2 number and match
+
   for(i=0;i<9;i++){
      for(j=i+1;j<9;j++){
     if(squareContainTwoNumbers(square,peers[i].row+1,peers[i].column+1) == 1 && squareContainTwoNumbers(square,peers[j].row+1,peers[j].column+1) == 1 ){   
@@ -339,7 +344,6 @@ void eliminateNakedPairInPeers(int square[9][9],Square *peers){
     tempPtr3 = getSquare(square,peers[k].row+1,peers[k].column+1);
     temp3 = *tempPtr3;
     
-    //check if sameValue equal with whole row col or box
       if(temp3 == temp2){
         for(m=0;m<9;m++){
           int value = temp3 &(conv<<m);
@@ -381,14 +385,11 @@ void eliminateNakedPairInPeers(int square[9][9],Square *peers){
                   int decimal = checkBinaryValue(value);
                   squareDelNumber(tempPtr3,decimal);
                 }
-              
             }
-          } 
-          
+          }          
       }
     }
-    
-  }
+}
   
 void eliminateNakedTriples(int square[9][9]){
   int r,c;
@@ -402,6 +403,13 @@ void eliminateNakedTriples(int square[9][9]){
         eliminateNakedTriplesInPeers(square,peersBox);
     }
   }
+  
+  // if(isSudokuSolved(square) == 0){
+    // eliminateBruteForce(square);
+  // }else{
+    // printf("b");
+  // }
+  
 }
   
 void eliminateNakedTriplesInPeers(int square[9][9],Square *peers){
@@ -504,7 +512,8 @@ void eliminateNakedQuad(int square[9][9]){
 }
   
 void eliminateNakedQuadInPeers(int square[9][9],Square *peers){
-  int i,j,k,m,n;
+
+ int i,j,k,m,n;
   int *tempPtr,*tempPtr1,*tempPtr4;
   int temp,temp1,temp2,temp3;
   int conv = 0x01;
@@ -527,8 +536,6 @@ void eliminateNakedQuadInPeers(int square[9][9],Square *peers){
     }
   }
   
-
-
   for(k=0;k<9;k++){
     int *tempPtr3;
     tempPtr3 = getSquare(square,peers[k].row+1,peers[k].column+1);
@@ -579,28 +586,24 @@ void eliminateNakedQuadInPeers(int square[9][9],Square *peers){
                     Throw(ERR_EMPTY_SQU);
                   }
                 }
-              
             }
-          } 
-          
-      }
-    }
-    
-  }
-
-void eliminiateAllBruteForce(int squares[9][9]){
-  eliminateBruteForce(squares);
+          }          
+      }     
+  } 
 }
+
+// void eliminiateAllBruteForce(int squares[9][9]){
+  // eliminateBruteForce(squares);
+// }
   
 void eliminateBruteForce(int squares[9][9]){
-  int dupSquares[9][9];
-  int r, c;
+  int dupSquares[9][9] = {0};
+  int r, c, i;
   int bitToMask = 0x01;
   int checkForContainTwoNumber;
   int *numberInAddress;
   int *backToDupSquares;
   int numberFromDupSquare;
-  int i;
   int getOneFromSquare;
   int numberToChooseInSquare;
   int numberToDelete;
@@ -608,12 +611,8 @@ void eliminateBruteForce(int squares[9][9]){
   int setNumber;
   int *testGet;
   int getFromTest;
+  
   Square sq;
-  
-  int *test1;
-  int test2;
-  
-  
   sq = selectSquareWithLeastValues(squares);
   
   for(r = 0; r < 9; r++){
@@ -624,7 +623,7 @@ void eliminateBruteForce(int squares[9][9]){
         numberInAddress = getSquare(squares, actualRow, actualColumn);
         numberToChooseInSquare = *numberInAddress;
         printf("r = %d c = %d numberToChooseInSquare = %d\n", sq.row, sq.column, numberToChooseInSquare);
-
+      
         for(i = 0; ((getOut != 1) && (i < 9)); i++){  
           getOneFromSquare = numberToChooseInSquare & (bitToMask << i);
           if(getOneFromSquare != 0){
@@ -634,7 +633,12 @@ void eliminateBruteForce(int squares[9][9]){
               testGet = getSquare(squares, actualRow, actualColumn);
               getFromTest = *testGet;
               setNumber = checkBinaryValue(getFromTest);
-              getOut = 1;
+              if(isSudokuSolved(squares) == 0){
+                duplicateSquares(squares, dupSquares);
+                eliminateBruteForce(squares);
+              }else{
+                getOut = 1;
+              }
             }Catch(e){
               printf("ERROR THROW \n");
               backToDupSquares = getSquare(dupSquares, actualRow, actualColumn);
@@ -646,10 +650,6 @@ void eliminateBruteForce(int squares[9][9]){
         }
       }
     }
-  }
-  
-  if(isSudokuSolved(squares) == 0){
-    eliminateBruteForce(squares);
   }
 }
 

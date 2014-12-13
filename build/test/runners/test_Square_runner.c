@@ -72,7 +72,7 @@ extern void test_nakedTriples_eliminate_column(void);
 extern void test_nakedTriples_eliminate(void);
 extern void test_nakedQuad_eliminate_row(void);
 extern void test_nakedQuad_eliminate(void);
-extern void test_bruteForce_112212312311(void);
+extern void test_bruteForce_with_successful_eliminate(void);
 
 
 //=======Test Reset Option=====
@@ -124,9 +124,9 @@ int main(void)
   RUN_TEST(test_nakedTriples_eliminate_row_4_time_same_value_and_throw, 731);
   RUN_TEST(test_nakedTriples_eliminate_column, 762);
   RUN_TEST(test_nakedTriples_eliminate, 790);
-  RUN_TEST(test_nakedQuad_eliminate_row, 817);
-  RUN_TEST(test_nakedQuad_eliminate, 844);
-  RUN_TEST(test_bruteForce_112212312311, 904);
+  RUN_TEST(test_nakedQuad_eliminate_row, 816);
+  RUN_TEST(test_nakedQuad_eliminate, 843);
+  RUN_TEST(test_bruteForce_with_successful_eliminate, 869);
 
   return (UnityEnd());
 }
