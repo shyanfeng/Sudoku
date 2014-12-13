@@ -3,9 +3,6 @@
 
 #include "ErrorCode.h"
 
-//  543210  (actual)
-//  654321  (user)
-//  001010
 #define C(x)  ((x>0)? 1<<(x-1) : 0x1ff)
 
 
@@ -65,7 +62,10 @@ void eliminateNakedQuadInPeers(int square[9][9],Square *peers);
 
 void eliminateBruteForce(int squares[9][9]);
 void combineAllEliminate(int square[9][9]);
+
 void dumpSquare(int square[9][9]);
+
+
 
 #endif // Square_H
 

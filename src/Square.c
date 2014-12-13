@@ -645,7 +645,9 @@ void eliminateNakedQuadInPeers(int square[9][9],Square *peers){
   
   
 void eliminateBruteForce(int squares[9][9]){
-  int dupSquares[9][9] = {0};
+
+  int dupSquares[9][9];
+
   int r, c, i;
   int bitToMask = 0x01;
   int checkForContainTwoNumber;
@@ -659,8 +661,10 @@ void eliminateBruteForce(int squares[9][9]){
   int setNumber;
   int *testGet;
   int getFromTest;
-  
+
   Square sq;
+  
+
   sq = selectSquareWithLeastValues(squares);
   
   for(r = 0; r < 9; r++){
@@ -681,11 +685,11 @@ void eliminateBruteForce(int squares[9][9]){
               getFromTest = *testGet;
               setNumber = checkBinaryValue(getFromTest);
               if(isSudokuSolved(squares) == 0){
+                printf("aaa\n");
                 eliminateBruteForce(squares);
-              }else{
-                dumpSquare(squares);
-                getOut = 1;
               }
+              getOut = 1;
+
             }Catch(e){
               printf("ERROR THROW \n");
               backToDupSquares = getSquare(dupSquares, actualRow, actualColumn);
@@ -698,6 +702,7 @@ void eliminateBruteForce(int squares[9][9]){
       }
     }
   }
+
 
 }
 
@@ -725,6 +730,7 @@ void dumpSquare(int square[9][9]){
       }
     }
   }
+
 }
 
 void combineAllEliminate(int square[9][9]){
