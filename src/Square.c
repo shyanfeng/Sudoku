@@ -934,7 +934,7 @@ void eliminateBruteForce(int squares[9][9]){
               if(isSudokuSolved(squares) == 0){
                 eliminateNakedPair(squares);
               }else if(isSudokuSolved(squares) == 1){
-                // dumpSquare(squares);
+                dumpSquare(squares);
                 getOut = 1;
               }
 
