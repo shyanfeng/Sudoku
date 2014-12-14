@@ -482,7 +482,7 @@ Square selectSquareWithLeastValues(int square[9][9]){
 * Input: Square,peers,row,val;
 * Del: val if repeated
 */
-void forCheckRowNakedSolver(int square[9][9],Square *peers,int j,int temp1){
+void forCheckRowNakedPair(int square[9][9],Square *peers,int j,int temp1){
   int k,m;
   int temp3;
   int conv = 0x01;
@@ -535,7 +535,7 @@ void forCheckRowNakedSolver(int square[9][9],Square *peers,int j,int temp1){
                   squareDelNumber(tempPtr3,decimal);
                   int check = *tempPtr3;
                   if(check == 0){
-                    Throw(ERR_EMPTY_SQU);
+                    squareSetNumber(tempPtr3,decimal);
                   }
                 }
               
@@ -551,7 +551,7 @@ void forCheckRowNakedSolver(int square[9][9],Square *peers,int j,int temp1){
 * Input: Square,peers,col,val;
 * Del: val if repeated
 */
-void forCheckColumnNakedSolver(int square[9][9],Square *peers,int j,int temp1){
+void forCheckColumnNakedPair(int square[9][9],Square *peers,int j,int temp1){
   int k,m;
   int temp3;
   int conv = 0x01;
@@ -604,7 +604,7 @@ void forCheckColumnNakedSolver(int square[9][9],Square *peers,int j,int temp1){
                   squareDelNumber(tempPtr3,decimal);
                   int check = *tempPtr3;
                   if(check == 0){
-                    Throw(ERR_EMPTY_SQU);
+                    squareSetNumber(tempPtr3,decimal);
                   }
                 }           
             }
@@ -619,7 +619,7 @@ void forCheckColumnNakedSolver(int square[9][9],Square *peers,int j,int temp1){
 * Input: Square,peers,val;
 * Del: val if repeated
 */ 
-void forCheckBoxNakedSolver(int square[9][9],Square *peers,int temp1){
+void forCheckBoxNakedPair(int square[9][9],Square *peers,int temp1){
   int k,m;
   int temp3;
   int conv = 0x01;
@@ -672,7 +672,7 @@ void forCheckBoxNakedSolver(int square[9][9],Square *peers,int temp1){
                   squareDelNumber(tempPtr3,decimal);
                   int check = *tempPtr3;
                   if(check == 0){
-                    Throw(ERR_EMPTY_SQU);
+                    squareSetNumber(tempPtr3,decimal);
                   }
                 }           
             }
@@ -704,7 +704,7 @@ void eliminateNakedPair(int square[9][9]){
   if(isSudokuSolved(square) == 0){
     eliminateBruteForce(square);
   }else{
-    // dumpSquare(square);
+    dumpSquare(square);
   } 
 }
 
@@ -734,18 +734,244 @@ void eliminateNakedPairInPeers(int square[9][9],Square *peers){
         temp1 = *tempPtr1;
         if(temp == temp1){
           if(peers[i].row == peers[j].row){
-            forCheckRowNakedSolver(square,peers,j,temp1);
+            forCheckRowNakedPair(square,peers,j,temp1);
           }else if(peers[i].column == peers[j].column){
-            forCheckColumnNakedSolver(square,peers,j,temp1);
+            forCheckColumnNakedPair(square,peers,j,temp1);
           }else{
-            forCheckBoxNakedSolver(square,peers,temp1);
+            forCheckBoxNakedPair(square,peers,temp1);
           }
         }
     }
     }
   }
 }
- 
+
+void forCheckRowNakedTriples(int square[9][9],Square *peers,int j,int temp1){
+  int k,m;
+  int temp3;
+  int conv = 0x01;
+  int store3;
+  
+   for(k=0;k<9;k++){
+    int *tempPtr3;
+    tempPtr3 = getSquare(square,peers[j].row+1,peers[k].column+1);
+    temp3 = *tempPtr3;
+
+      if(temp3 == temp1){
+        for(m=0;m<9;m++){
+          int value = temp3 &(conv<<m);
+          if(value != 0){
+            int decimal = checkBinaryValue(value);
+            squareSetNumber(tempPtr3,decimal);
+          }
+        }
+      }
+      
+      else{
+          if(squareContainOneNumbers(square,peers[j].row+1,peers[k].column+1) == 1){
+              int decimal = checkBinaryValue(temp3);
+              squareSetNumber(tempPtr3,decimal);
+          }else if(squareContainNumbers(square,peers[j].row+1,peers[k].column+1) == 2){
+                  for(m=0;m<9;m++){
+                    int store1 = temp3 & (conv<<m);
+                    int store2 = temp1 & (conv<<m);
+                      if(store1 != 0 && store2 != 0){
+                        if(store1 == store2){
+                         int decimal = checkBinaryValue(store1);
+                          squareSetNumber(tempPtr3,decimal);
+                        }else{
+                    
+                          int decimal = checkBinaryValue(store1);
+                          squareDelNumber(tempPtr3,decimal);
+                          int a = *tempPtr3;
+                          printf("%d",a);
+                        }
+                     }
+                  }          
+          }else if((temp3&temp1) == 0){
+            for(m=0;m<9;m++){
+            int value = temp3 &(conv<<m);
+              if(value != 0){
+                int decimal = checkBinaryValue(value);
+                squareSetNumber(tempPtr3,decimal);
+              }
+            }
+          }
+          
+          else{
+            for(m=0;m<9;m++){
+              int store1 = temp3 & (conv<<m);
+              int store2 = temp1 & (conv<<m);
+                if(store1 == store2){
+                  store3 = store1;
+                }else{
+                  store1 = 0;
+                  store3 = store1;
+                }
+                int value = store3 &(conv<<m);
+                if(value != 0){
+                  int decimal = checkBinaryValue(value);
+                  squareDelNumber(tempPtr3,decimal);
+                  int check = *tempPtr3;
+                  if(check == 0){
+                    squareSetNumber(tempPtr3,decimal);
+                  }
+                }
+              
+            }
+          }  
+      }
+    }
+}
+
+void forCheckColumnNakedTriples(int square[9][9],Square *peers,int j,int temp1){
+  int k,m;
+  int temp3;
+  int conv = 0x01;
+  int store3;
+  
+   for(k=0;k<9;k++){
+    int *tempPtr3;
+    tempPtr3 = getSquare(square,peers[k].row+1,peers[j].column+1);
+    temp3 = *tempPtr3;
+
+      if(temp3 == temp1){
+        for(m=0;m<9;m++){
+          int value = temp3 &(conv<<m);
+          if(value != 0){
+            int decimal = checkBinaryValue(value);
+            squareSetNumber(tempPtr3,decimal);
+          }
+        }
+      }
+      
+      else{
+          if(squareContainOneNumbers(square,peers[k].row+1,peers[j].column+1) == 1){
+              int decimal = checkBinaryValue(temp3);
+              squareSetNumber(tempPtr3,decimal);
+          }else if(squareContainNumbers(square,peers[k].row+1,peers[j].column+1) == 2){
+                  for(m=0;m<9;m++){
+                    int store1 = temp3 & (conv<<m);
+                    int store2 = temp1 & (conv<<m);
+                      if(store1 != 0 && store2 != 0){
+                        if(store1 == store2){
+                         int decimal = checkBinaryValue(store1);
+                          squareSetNumber(tempPtr3,decimal);
+                        }else{
+                          int decimal = checkBinaryValue(store1);
+                          squareDelNumber(tempPtr3,decimal);
+                        }
+                     }
+                  }          
+          }else if((temp3&temp1) == 0){
+            for(m=0;m<9;m++){
+            int value = temp3 &(conv<<m);
+              if(value != 0){
+                int decimal = checkBinaryValue(value);
+                squareSetNumber(tempPtr3,decimal);
+              }
+            }
+          }
+          
+          else{
+            for(m=0;m<9;m++){
+              int store1 = temp3 & (conv<<m);
+              int store2 = temp1 & (conv<<m);
+                if(store1 == store2){
+                  store3 = store1;
+                }else{
+                  store1 = 0;
+                  store3 = store1;
+                }
+                int value = store3 &(conv<<m);
+                if(value != 0){
+                  int decimal = checkBinaryValue(value);
+                  squareDelNumber(tempPtr3,decimal);
+                  int check = *tempPtr3;
+                  if(check == 0){
+                    squareSetNumber(tempPtr3,decimal);
+                  }
+                }           
+            }
+          }  
+      }
+    }
+}
+
+void forCheckBoxNakedTriples(int square[9][9],Square *peers,int temp1){
+  int k,m;
+  int temp3;
+  int conv = 0x01;
+  int store3;
+  
+   for(k=0;k<9;k++){
+    int *tempPtr3;
+    tempPtr3 = getSquare(square,peers[k].row+1,peers[k].column+1);
+    temp3 = *tempPtr3;
+
+      if(temp3 == temp1){
+        for(m=0;m<9;m++){
+          int value = temp3 &(conv<<m);
+          if(value != 0){
+            int decimal = checkBinaryValue(value);
+            squareSetNumber(tempPtr3,decimal);
+          }
+        }
+      }else if(squareContainNumbers(square,peers[k].row+1,peers[k].column+1) == 2){
+                  for(m=0;m<9;m++){
+                    int store1 = temp3 & (conv<<m);
+                    int store2 = temp1 & (conv<<m);
+                      if(store1 != 0 && store2 != 0){
+                        if(store1 == store2){
+                          int decimal = checkBinaryValue(store1);
+                          squareSetNumber(tempPtr3,decimal);
+                        }else{
+                          int decimal = checkBinaryValue(store1);
+                          squareDelNumber(tempPtr3,decimal);
+                        }
+                     }
+                  }          
+      }else{
+          if(squareContainOneNumbers(square,peers[k].row+1,peers[k].column+1) == 1){
+              int decimal = checkBinaryValue(temp3);
+              squareSetNumber(tempPtr3,decimal);
+          }
+          
+          else if((temp3&temp1) == 0){
+            for(m=0;m<9;m++){
+            int value = temp3 &(conv<<m);
+              if(value != 0){
+                int decimal = checkBinaryValue(value);
+                squareSetNumber(tempPtr3,decimal);
+              }
+            }
+          }
+          
+          else{
+            for(m=0;m<9;m++){
+              int store1 = temp3 & (conv<<m);
+              int store2 = temp1 & (conv<<m);
+                if(store1 == store2){
+                  store3 = store1;
+                }else{
+                  store1 = 0;
+                  store3 = store1;
+                }
+                int value = store3 &(conv<<m);
+                if(value != 0){
+                  int decimal = checkBinaryValue(value);
+                  squareDelNumber(tempPtr3,decimal);
+                  int check = *tempPtr3;
+                  if(check == 0){
+                    squareSetNumber(tempPtr3,decimal);
+                  }
+                }           
+            }
+          }  
+      }
+    }
+} 
+
 /*
 * Aim: To call eliminateNakedPairInPeers for row column and box  
 *
@@ -764,12 +990,6 @@ void eliminateNakedTriples(int square[9][9]){
         eliminateNakedTriplesInPeers(square,peersBox);
     }
   }
-  
-  if(isSudokuSolved(square) == 0){
-    eliminateBruteForce(square);
-  }else{
-    // dumpSquare(square);
-  }  
 }
  
 /*
@@ -792,18 +1012,18 @@ void eliminateNakedTriplesInPeers(int square[9][9],Square *peers){
 
   for(i=0;i<9;i++){
      for(j=i+1;j<9;j++){
-    if(squareContainNumbers(square,peers[i].row+1,peers[i].column+1) == 3 && squareContainNumbers(square,peers[j].row+1,peers[j].column+1) == 3){   
+    if(squareContainNumbers(square,peers[i].row+1,peers[i].column+1) == 3 && (squareContainNumbers(square,peers[j].row+1,peers[j].column+1) == 3 || squareContainNumbers(square,peers[j].row+1,peers[j].column+1) == 2)){   
         tempPtr = getSquare(square,peers[i].row+1,peers[i].column+1);
         temp = *tempPtr;
         tempPtr1 = getSquare(square,peers[j].row+1,peers[j].column+1);
         temp1 = *tempPtr1;
         if(temp == temp1){
           if(peers[i].row == peers[j].row){
-            forCheckRowNakedSolver(square,peers,j,temp1);
+            forCheckRowNakedTriples(square,peers,j,temp1);
           }else if(peers[i].column == peers[j].column){
-            forCheckColumnNakedSolver(square,peers,j,temp1);
+            forCheckColumnNakedTriples(square,peers,j,temp1);
           }else{
-            forCheckBoxNakedSolver(square,peers,temp1);
+            forCheckBoxNakedTriples(square,peers,temp1);
           }    
         }
     }
@@ -828,12 +1048,6 @@ void eliminateNakedQuad(int square[9][9]){
         eliminateNakedQuadInPeers(square,peersColumn);
         eliminateNakedQuadInPeers(square,peersBox);
     }
-  }
-  
-  if(isSudokuSolved(square) == 0){
-    eliminateBruteForce(square);
-  }else{
-    // dumpSquare(square);
   }
 }
 
@@ -865,11 +1079,11 @@ void eliminateNakedQuadInPeers(int square[9][9],Square *peers){
         temp1 = *tempPtr1;
         if(temp == temp1){
           if(peers[i].row == peers[j].row){
-            forCheckRowNakedSolver(square,peers,j,temp1);
+            forCheckRowNakedPair(square,peers,j,temp1);
           }else if(peers[i].column == peers[j].column){
-            forCheckColumnNakedSolver(square,peers,j,temp1);
+            forCheckColumnNakedPair(square,peers,j,temp1);
           }else{
-            forCheckBoxNakedSolver(square,peers,temp1);
+            forCheckBoxNakedPair(square,peers,temp1);
           } 
         }
     }
@@ -919,14 +1133,11 @@ void eliminateBruteForce(int squares[9][9]){
       if((sq.row == r) && (sq.column == c)){
         numberInAddress = getSquare(squares, actualRow, actualColumn);
         numberToChooseInSquare = *numberInAddress;
-        printf("r = %d c = %d numberToChooseInSquare = %d\n", sq.row, sq.column, numberToChooseInSquare);
-        printf("getOut = %d\n", getOut);
         for(i = 0; ((getOut != 1) && (i < 9)); i++){  
           getOneFromSquare = numberToChooseInSquare & (bitToMask << i);
           if(getOneFromSquare != 0){
             Try{
               numberToDelete = checkBinaryValue(getOneFromSquare);
-              printf("numDelete = %d\n", numberToDelete);
               eliminateNumberFromAllPeers(squares, actualRow, actualColumn, numberToDelete);
               testGet = getSquare(squares, actualRow, actualColumn);
               getFromTest = *testGet;
@@ -939,7 +1150,7 @@ void eliminateBruteForce(int squares[9][9]){
               }
 
             }Catch(e){
-              printf("ERROR THROW \n");
+              // printf("ERROR THROW \n");
               backToDupSquares = getSquare(dupSquares, actualRow, actualColumn);
               numberFromDupSquare = *backToDupSquares;
               getOneFromSquare = numberFromDupSquare;
@@ -984,16 +1195,6 @@ void dumpSquare(int square[9][9]){
 
 }
 
-/*
-* Aim: To combine and call All Eliminate techniques  
-*
-* Input: Square
-*/
-void combineAllEliminate(int square[9][9]){
-  eliminateNakedPair(square);
-  eliminateNakedTriples(square);
-  eliminateNakedQuad(square);
-}
 
 void searchPosibilityValueOfEmptySquare(int square[9][9]){
   int r,c;

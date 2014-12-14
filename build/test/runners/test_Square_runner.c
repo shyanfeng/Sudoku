@@ -62,8 +62,19 @@ extern void test_duplicateSquares(void);
 extern void test_isSudokuSolve_return_1_all_square_contain_one_number(void);
 extern void test_isSudokuSolve_return_0_one_square_contain_two_number(void);
 extern void test_selectSquareWithLeastValues_should_return_row_0(void);
+extern void test_nakedPair_eliminate_row(void);
+extern void test_nakedPair_eliminate_column(void);
+extern void test_nakedPair_eliminate_box(void);
+extern void test_nakedPair_eliminate_row_column_and_box(void);
+extern void test_nakedTriples_eliminate_row(void);
+extern void test_nakedTriples_eliminate_column(void);
+extern void test_nakedTriples_eliminate(void);
+extern void test_nakedQuad_eliminate_row(void);
+extern void test_nakedQuad_eliminate(void);
+extern void test_combineALLEliminate_with_successful_eliminate(void);
 extern void test_bruteForce_with_successful_eliminate(void);
 extern void test_bruteForce_with_successful_eliminate_1(void);
+extern void test_bruteForce_with_successful_eliminate_2(void);
 extern void test_dumpSquare(void);
 
 
@@ -108,9 +119,20 @@ int main(void)
   RUN_TEST(test_isSudokuSolve_return_1_all_square_contain_one_number, 543);
   RUN_TEST(test_isSudokuSolve_return_0_one_square_contain_two_number, 559);
   RUN_TEST(test_selectSquareWithLeastValues_should_return_row_0, 575);
-  RUN_TEST(test_bruteForce_with_successful_eliminate, 919);
-  RUN_TEST(test_bruteForce_with_successful_eliminate_1, 970);
-  RUN_TEST(test_dumpSquare, 1055);
+  RUN_TEST(test_nakedPair_eliminate_row, 593);
+  RUN_TEST(test_nakedPair_eliminate_column, 620);
+  RUN_TEST(test_nakedPair_eliminate_box, 647);
+  RUN_TEST(test_nakedPair_eliminate_row_column_and_box, 674);
+  RUN_TEST(test_nakedTriples_eliminate_row, 703);
+  RUN_TEST(test_nakedTriples_eliminate_column, 732);
+  RUN_TEST(test_nakedTriples_eliminate, 760);
+  RUN_TEST(test_nakedQuad_eliminate_row, 786);
+  RUN_TEST(test_nakedQuad_eliminate, 813);
+  RUN_TEST(test_combineALLEliminate_with_successful_eliminate, 839);
+  RUN_TEST(test_bruteForce_with_successful_eliminate, 889);
+  RUN_TEST(test_bruteForce_with_successful_eliminate_1, 940);
+  RUN_TEST(test_bruteForce_with_successful_eliminate_2, 1000);
+  RUN_TEST(test_dumpSquare, 1079);
 
   return (UnityEnd());
 }
