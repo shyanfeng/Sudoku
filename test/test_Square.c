@@ -865,7 +865,7 @@ void test_nakedQuad_eliminate(void){
     TEST_ASSERT_EQUAL(2,square[4][2]);
   
 }*/
-/*
+
 void test_combineALLEliminate_with_successful_eliminate(void){
                   
   int square[9][9] = {{C(4)|C(9), C(8),           C(1),      C(3),           C(4)|C(5), C(6),      C(7),      C(2)     ,C(4)|C(5)|C(9)}, //0 
@@ -914,7 +914,7 @@ void test_combineALLEliminate_with_successful_eliminate(void){
   
   TEST_ASSERT_EQUAL(4, square[7][8]);
   TEST_ASSERT_EQUAL(8, square[8][8]);
-}*/
+}
 
 void test_bruteForce_with_successful_eliminate(void){
                     //  0           1               2          3                4         5          6          7         8
@@ -1119,23 +1119,6 @@ void test_dumpSquare(void){
                      };                 
   dumpSquare(square);
 }
-
-// void test_inputValueIntoSquare(void){
-  // int square[9][9];    
- // int write[81] = { 1,2,3,4,5,6,7,8,9,
-                     // 1,2,3,4,5,6,7,8,9,
-                     // 1,2,3,4,5,6,7,8,9,
-                     // 1,2,3,4,5,6,7,8,9,
-                     // 1,2,3,4,5,6,7,8,9,
-                     // 1,2,3,4,5,6,7,8,9,
-                     // 1,2,3,4,5,6,7,8,9,
-                     // 1,2,3,4,5,6,7,8,9,
-                     // 1,2,3,4,5,6,7,8,9,
-                    // };
-         // inputValueIntoSquare(write[81]);           
-              
-   // TEST_ASSERT_EQUAL(1, square[0][0]);                 
-// }
 
 void xtest_searchPosibilityValueOfEmptySquare_in_peers(void){
   int square[9][9] = {{C(3),     	    C(0),        C(9),   C(8), C(2), C(1), C(4), C(5), C(6)}, 

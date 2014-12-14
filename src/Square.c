@@ -346,7 +346,6 @@ void duplicateSquares(int squares[9][9], int dupSquares[9][9]){
       dupSquares[r][c] = squares[r][c];
     }
   }
-
 }
 
 /*
@@ -366,12 +365,11 @@ int isSudokuSolved(int squares[9][9]){
       temp  = value & temp;
     }
   }
-      if(temp == 1){
-        return 1;
-      }else{
-        return 0;
-      }
-
+  if(temp == 1){
+    return 1;
+  }else{
+     return 0;
+  }
 }
 
 /*
@@ -388,7 +386,6 @@ void eliminateNumberFromAllPeers(int squares[9][9], int row, int column, int val
     eliminateNumberFromPeers(squares, peersRow, row, column, value);
     eliminateNumberFromPeers(squares, peersColumn, row, column, value);
     eliminateNumberFromPeers(squares, peersBox, row, column, value);
-
 }
 
 /*
@@ -448,7 +445,7 @@ void eliminateNumberFromPeers(int squares[9][9], Square *peers, int row, int col
  *        squares[9][9] is the 9x9 squares
  *
  * Return: 
- *        sq is Square that strcut with row and column
+ *        sq is Square that struct with row and column
  *
  */
 Square selectSquareWithLeastValues(int square[9][9]){
@@ -461,9 +458,9 @@ Square selectSquareWithLeastValues(int square[9][9]){
 	
 	for(r = 0; r < 9; r++){
 		for(c = 0; c < 9; c++){
-      getValuePtr = getSquare(square, r + 1, c + 1);
+      getValuePtr = getSquare(square, actualRow, actualColumn);
       getValue = *getValuePtr;
-      returnCount = squareContainNumbers(square, r + 1 , c + 1);
+      returnCount = squareContainNumbers(square, actualRow , actualColumn);
       if(returnCount != 1){
         if(returnCount < count){
           sq.row = r;
@@ -892,9 +889,7 @@ void eliminateNakedQuadInPeers(int square[9][9],Square *peers){
  *
  */ 
 void eliminateBruteForce(int squares[9][9]){
-
   int dupSquares[9][9];
-
   int r, c, i;
   int bitToMask = 0x01;
   int checkForContainTwoNumber;
@@ -919,8 +914,6 @@ void eliminateBruteForce(int squares[9][9]){
       if((sq.row == r) && (sq.column == c)){
         numberInAddress = getSquare(squares, actualRow, actualColumn);
         numberToChooseInSquare = *numberInAddress;
-        printf("r = %d c = %d numberToChooseInSquare = %d\n", sq.row, sq.column, numberToChooseInSquare);
-        printf("getOut = %d\n", getOut);
         for(i = 0; ((getOut != 1) && (i < 9)); i++){  
           getOneFromSquare = numberToChooseInSquare & (bitToMask << i);
           if(getOneFromSquare != 0){
@@ -937,7 +930,6 @@ void eliminateBruteForce(int squares[9][9]){
                 dumpSquare(squares);
                 getOut = 1;
               }
-
             }Catch(e){
               printf("ERROR THROW \n");
               backToDupSquares = getSquare(dupSquares, actualRow, actualColumn);
@@ -994,6 +986,11 @@ void combineAllEliminate(int square[9][9]){
   eliminateNakedTriples(square);
   eliminateNakedQuad(square);
 }
+
+
+//////////////////////////////////////////////////////////////////////////
+/**                       searching not done yet                        */
+//////////////////////////////////////////////////////////////////////////
 
 void searchPosibilityValueOfEmptySquare(int square[9][9]){
   int r,c;
