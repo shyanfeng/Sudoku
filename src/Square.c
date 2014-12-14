@@ -365,11 +365,19 @@ int isSudokuSolved(int squares[9][9]){
       temp  = value & temp;
     }
   }
+<<<<<<< HEAD
       if(temp == 1){
         return 1;
       }else{
         return 0;
       }
+=======
+  if(temp == 1){
+    return 1;
+  }else{
+     return 0;
+  }
+>>>>>>> d4f08478a058a5e99d08165b3a4af6e95c763148
 }
 
 /*
@@ -444,7 +452,7 @@ void eliminateNumberFromPeers(int squares[9][9], Square *peers, int row, int col
  *        squares[9][9] is the 9x9 squares
  *
  * Return: 
- *        sq is Square that strcut with row and column
+ *        sq is Square that struct with row and column
  *
  */
 Square selectSquareWithLeastValues(int square[9][9]){
@@ -457,9 +465,9 @@ Square selectSquareWithLeastValues(int square[9][9]){
 	
 	for(r = 0; r < 9; r++){
 		for(c = 0; c < 9; c++){
-      getValuePtr = getSquare(square, r + 1, c + 1);
+      getValuePtr = getSquare(square, actualRow, actualColumn);
       getValue = *getValuePtr;
-      returnCount = squareContainNumbers(square, r + 1 , c + 1);
+      returnCount = squareContainNumbers(square, actualRow , actualColumn);
       if(returnCount != 1){
         if(returnCount < count){
           sq.row = r;
@@ -1139,10 +1147,9 @@ void eliminateBruteForce(int squares[9][9]){
               if(isSudokuSolved(squares) == 0){
                 eliminateNakedPair(squares);
               }else if(isSudokuSolved(squares) == 1){
-                // dumpSquare(squares);
+                dumpSquare(squares);
                 getOut = 1;
               }
-
             }Catch(e){
               // printf("ERROR THROW \n");
               backToDupSquares = getSquare(dupSquares, actualRow, actualColumn);
