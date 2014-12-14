@@ -976,18 +976,6 @@ void dumpSquare(int square[9][9]){
 
 }
 
-/*
-* Aim: To combine and call All Eliminate techniques  
-*
-* Input: Square
-*/
-void combineAllEliminate(int square[9][9]){
-  eliminateNakedPair(square);
-  eliminateNakedTriples(square);
-  eliminateNakedQuad(square);
-}
-
-
 //////////////////////////////////////////////////////////////////////////
 /**                       searching not done yet                        */
 //////////////////////////////////////////////////////////////////////////
