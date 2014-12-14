@@ -1957,6 +1957,7 @@ void test_dumpSquare(void){
   dumpSquare(square);
 
 }
+<<<<<<< HEAD
 
 
 
@@ -2021,3 +2022,5 @@ void test_searchPosibilityValueOfEmptySquare(void){
   UnityAssertEqualNumber((_U_SINT)((192)), (_U_SINT)((square[0][0])), (((void *)0)), (_U_UINT)1013, UNITY_DISPLAY_STYLE_INT);
 
 }
+=======
+>>>>>>> 51f756fe067af86d98057ac4ce35006d3ab3e0f8

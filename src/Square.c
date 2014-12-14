@@ -857,7 +857,7 @@ void dumpSquare(int square[9][9]){
   int printDecimal;
    
   printf("\n");
-  printf("------+-----+------ \n");
+  printf("+-+-+-+-+-+-+-+-+-+ \n");
   for(r=0;r<9;r++){
     for(c=0;c<10;c++){
       printPtr = getSquare(square, actualRow, actualColumn);
@@ -868,7 +868,7 @@ void dumpSquare(int square[9][9]){
       }
       if(c == 9){
         printf("\n");
-        printf("------+-----+------");
+        printf("+-+-+-+-+-+-+-+-+-+");
         printf("\n");
       }else{
         printf("%d",printHex);
