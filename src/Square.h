@@ -5,11 +5,7 @@
 
 #define C(x)  ((x>0)? 1<<(x-1) : 0x1ff)
 
-
-
 typedef struct Square Square;
-
-
 
 struct Square {
   int row;
@@ -24,6 +20,7 @@ void clearSquares(int square[9][9]);
 
 int *getSquare(int (square)[9][9], int row, int column);
 void squareSetNumber(int *square, int number);
+void squareSetNumberForZero(int *square);
 void squareDelNumber(int *square, int number);
 void removeOthersExcept(int *square, int number);
 int isSquareContain(int *square, int number);
@@ -65,6 +62,8 @@ void combineAllEliminate(int square[9][9]);
 
 void dumpSquare(int square[9][9]);
 
+void searchPosibilityValueOfEmptySquare(int square[9][9]);
+void searchPosibilityValueOfEmptySquareInPeers(int square[9][9],Square *peers);
 
 
 #endif // Square_H

@@ -3,7 +3,6 @@
 #include "ErrorCode.h"
 #include "CException.h"
 
-
 #define getActualRowForPeers ((peers[i].row) + 1)
 #define getActualColumnForPeers ((peers[i].column) + 1)
 #define actualRow (r + 1)
@@ -14,7 +13,6 @@ Square columnPeers[9][9][9];
 Square boxPeers[9][9][9];
 
 ErrorCode e;
-
 
 void clearSquares(int square[9][9]){
   int i,j;
@@ -34,6 +32,15 @@ void squareSetNumber(int *square, int number){
   (*square) = (*square) | (C(number));
 }
 
+/*
+* Aim: To make 0x1ff to become 0 value in square; 
+*
+* Input: Square;
+*/
+void squareSetNumberForZero(int *square){
+  (*square) = (*square) & (0x00);
+}
+
 void squareDelNumber(int *square, int number){
   (*square) = (*square) & (~(1 <<(number - 1)));
 }
@@ -50,6 +57,11 @@ int isSquareContain(int *square, int number){
   }
 }
 
+/*
+* Aim: To initialize the neighbour/peers of Row 
+*
+* Input: rowPeers[9][9][9]
+*/
 void initRowPeers(Square rowPeers[9][9][9]){
   int r, c, p;
 
@@ -63,6 +75,11 @@ void initRowPeers(Square rowPeers[9][9][9]){
   }
 }
 
+/*
+* Aim: To initialize the neighbour/peers of Column 
+*
+* Input: columnPeers[9][9][9]
+*/
 void initColPeers(Square columnPeers[9][9][9]){
   int r, c, p;
 
@@ -76,6 +93,11 @@ void initColPeers(Square columnPeers[9][9][9]){
   }
 }
 
+/*
+* Aim: To initialize the neighbour/peers of Box 
+*
+* Input: boxPeers[9][9][9]
+*/
 void initBoxPeers(Square boxPeers[9][9][9]){
   int r, c, rowStart, colStart, row, col;
   int i, j;
@@ -98,6 +120,14 @@ void initBoxPeers(Square boxPeers[9][9][9]){
 
 }
 
+/*
+* Aim: To check The range of Box 
+*      Example(If box stop at 1 then return 0);
+*
+* Input: index;
+* 
+* Return: 0,3,6
+*/
 int getBeginningIndex(int index){
   if(index >= 0 && index <= 2){
     return 0;
@@ -109,6 +139,13 @@ int getBeginningIndex(int index){
     printf("out of range");
 }
 
+/*
+* Aim: To convert Decimal value to Hex Value
+*
+* Input: value;
+* 
+* Return: 1,2,3,4,5,6,7,8,9
+*/
 int checkBinaryValue(int value){
   if(value == 1){
     return 1;
@@ -132,6 +169,13 @@ int checkBinaryValue(int value){
 
 }
 
+/*
+* Aim: To check square contain Two Value 
+*
+* Input: Square,peers,row,col;
+* 
+* Return: 1/0
+*/
 int squareContainTwoNumbers(int square[9][9], int row, int column){
   int getValueFromTemp1;
   getValueFromTemp1 = squareContainNumbers(square, row, column);  
@@ -143,6 +187,13 @@ int squareContainTwoNumbers(int square[9][9], int row, int column){
   }  
 }
 
+/*
+* Aim: To check square contain one Value 
+*
+* Input: Square,peers,row,col;
+* 
+* Return: 1/0
+*/
 int squareContainOneNumbers(int square[9][9], int row, int column){
   int getValueFromTemp1;
   getValueFromTemp1 = squareContainNumbers(square, row, column);
@@ -154,6 +205,13 @@ int squareContainOneNumbers(int square[9][9], int row, int column){
   }  
 }
 
+/*
+* Aim: To check square contain how many Value 
+*
+* Input: Square,peers,row,col;
+* 
+* Return: getValueFromTemp1
+*/
 int squareContainNumbers(int square[9][9], int row, int column){
   int i;   
   int *value; 
@@ -172,6 +230,13 @@ int squareContainNumbers(int square[9][9], int row, int column){
   return getValueFromTemp1;
 }
 
+/*
+* Aim: fix Value1 and check Other square have the same value with Value1 
+*
+* Input: Square,row,col,val;
+*
+* Return: 1/0 
+*/
 int squareHas(int squares[9][9], int row, int column, int setValue){
   int getValueFromSquare;
   int *squarePtr;
@@ -204,6 +269,13 @@ void duplicateSquares(int squares[9][9], int dupSquares[9][9]){
 
 }
 
+/*
+* Aim: To check all Square is it one Value
+*
+* Input: Square;
+*
+* Return: 1/0
+*/
 int isSudokuSolved(int squares[9][9]){
   int r,c;
   int value = 0;
@@ -222,6 +294,12 @@ int isSudokuSolved(int squares[9][9]){
 
 }
 
+/*
+* Aim: To Call eliminate Child from all peers
+*      (Recursive Call to child  
+*
+* Input: Square,row,col,val;
+*/
 void eliminateNumberFromAllPeers(int squares[9][9], int row, int column, int value){
   Square *peersRow = rowPeers[row - 1][column - 1];
   Square *peersColumn = columnPeers[row - 1][column - 1];
@@ -233,6 +311,14 @@ void eliminateNumberFromAllPeers(int squares[9][9], int row, int column, int val
 
 }
 
+/*
+* Aim: To eliminate number from peers  
+*      (Recursive to Parent);
+* Input: Square,peers,row,col,val;
+* Del: val
+* Throw:ERR_EMPTY_SQU
+*
+*/
 void eliminateNumberFromPeers(int squares[9][9], Square *peers, int row, int column, int findNumberToEliminate){
   int i,c;  
   int storeSquareValue;
@@ -297,7 +383,12 @@ Square selectSquareWithLeastValues(int square[9][9]){
   return sq;
 }
 
-
+/*
+* Aim: To fix the column and checkRow have repeat number  
+*
+* Input: Square,peers,row,val;
+* Del: val if repeated
+*/
 void forCheckRowNakedSolver(int square[9][9],Square *peers,int j,int temp1){
   int k,m;
   int temp3;
@@ -361,6 +452,12 @@ void forCheckRowNakedSolver(int square[9][9],Square *peers,int j,int temp1){
     }
 }
 
+/*
+* Aim: To fix the row and checkColumn have repeat number  
+*
+* Input: Square,peers,col,val;
+* Del: val if repeated
+*/
 void forCheckColumnNakedSolver(int square[9][9],Square *peers,int j,int temp1){
   int k,m;
   int temp3;
@@ -422,7 +519,13 @@ void forCheckColumnNakedSolver(int square[9][9],Square *peers,int j,int temp1){
       }
     }
 }
- 
+
+/*
+* Aim: checkBox have repeat number  
+*
+* Input: Square,peers,val;
+* Del: val if repeated
+*/ 
 void forCheckBoxNakedSolver(int square[9][9],Square *peers,int temp1){
   int k,m;
   int temp3;
@@ -484,8 +587,13 @@ void forCheckBoxNakedSolver(int square[9][9],Square *peers,int temp1){
       }
     }
 } 
- 
 
+/*
+* Aim: To call eliminateNakedPairInPeers for row column and box  
+*
+* Input: Square
+* Output: eliminateBruteForce / dumpSquare
+*/ 
 void eliminateNakedPair(int square[9][9]){
   int r,c;
   int temp;
@@ -500,13 +608,21 @@ void eliminateNakedPair(int square[9][9]){
     }
   }
   
-    if(isSudokuSolved(square) == 0){
+  if(isSudokuSolved(square) == 0){
     eliminateBruteForce(square);
   }else{
-    dumpSquare(square);
+    // dumpSquare(square);
   } 
 }
 
+/*
+* Aim: To match and check which is same value with initial
+*      Del other same value
+*
+* Input: Square and peers
+*
+* Del: peers Value if repeat
+*/
 void eliminateNakedPairInPeers(int square[9][9],Square *peers){
   int i,j,m,n;
   int k = 0;
@@ -536,9 +652,13 @@ void eliminateNakedPairInPeers(int square[9][9],Square *peers){
     }
   }
 }
-  
-
-
+ 
+/*
+* Aim: To call eliminateNakedPairInPeers for row column and box  
+*
+* Input: Square
+* Output: eliminateBruteForce / dumpSquare
+*/ 
 void eliminateNakedTriples(int square[9][9]){
   int r,c;
   for(r=0;r<9;r++){
@@ -555,10 +675,18 @@ void eliminateNakedTriples(int square[9][9]){
   if(isSudokuSolved(square) == 0){
     eliminateBruteForce(square);
   }else{
-    dumpSquare(square);
+    // dumpSquare(square);
   }  
 }
-  
+ 
+/*
+* Aim: To match and check which is same value with initial
+*      Del other same value
+*
+* Input: Square and peers
+*
+* Del: peers Value if repeat
+*/ 
 void eliminateNakedTriplesInPeers(int square[9][9],Square *peers){
   int i,j,k,m,n;
   int *tempPtr,*tempPtr1,*tempPtr4;
@@ -590,7 +718,12 @@ void eliminateNakedTriplesInPeers(int square[9][9],Square *peers){
   }  
 }
 
-
+/*
+* Aim: To call eliminateNakedPairInPeers for row column and box  
+*
+* Input: Square
+* Output: eliminateBruteForce / dumpSquare
+*/
 void eliminateNakedQuad(int square[9][9]){
   int r,c;
   for(r=0;r<9;r++){
@@ -607,10 +740,18 @@ void eliminateNakedQuad(int square[9][9]){
   if(isSudokuSolved(square) == 0){
     eliminateBruteForce(square);
   }else{
-    dumpSquare(square);
+    // dumpSquare(square);
   }
 }
-  
+
+/*
+* Aim: To match and check which is same value with initial
+*      Del other same value
+*
+* Input: Square and peers
+*
+* Del: peers Value if repeat
+*/
 void eliminateNakedQuadInPeers(int square[9][9],Square *peers){
 
  int i,j,k,m,n;
@@ -642,7 +783,6 @@ void eliminateNakedQuadInPeers(int square[9][9],Square *peers){
     }
   }
 }
-  
   
 void eliminateBruteForce(int squares[9][9]){
 
@@ -685,10 +825,11 @@ void eliminateBruteForce(int squares[9][9]){
               getFromTest = *testGet;
               setNumber = checkBinaryValue(getFromTest);
               if(isSudokuSolved(squares) == 0){
-                printf("aaa\n");
-                eliminateBruteForce(squares);
+                eliminateNakedPair(squares);
+              }else{
+                // dumpSquare(squares);
+                getOut = 1;
               }
-              getOut = 1;
 
             }Catch(e){
               printf("ERROR THROW \n");
@@ -703,9 +844,13 @@ void eliminateBruteForce(int squares[9][9]){
     }
   }
 
-
 }
 
+/*
+* Aim: To print Out final Value (when all square contain one value) 
+*
+* Input: Square
+*/
 void dumpSquare(int square[9][9]){
   int r,c,i,j;
   int *printPtr;
@@ -733,10 +878,62 @@ void dumpSquare(int square[9][9]){
 
 }
 
+/*
+* Aim: To combine and call All Eliminate techniques  
+*
+* Input: Square
+*/
 void combineAllEliminate(int square[9][9]){
   eliminateNakedPair(square);
   eliminateNakedTriples(square);
   eliminateNakedQuad(square);
+}
+
+void searchPosibilityValueOfEmptySquare(int square[9][9]){
+  int r,c;
+  for(r=0;r<9;r++){
+    for(c=0;c<9;c++){
+        Square *peersRow = rowPeers[r][c];
+        // Square *peersColumn = columnPeers[r][c];        
+        // Square *peersBox = boxPeers[r][c];
+        searchPosibilityValueOfEmptySquareInPeers(square,peersRow);
+        // searchPosibilityValueOfEmptySquareInPeers(square,peersColumn);
+        // searchPosibilityValueOfEmptySquareInPeers(square,peersBox);
+    }
+  }
+}
+
+void searchPosibilityValueOfEmptySquareInPeers(int square[9][9],Square *peers){
+  int r,c,i,j,m;
+  int *checkZeroPtr,*checkValuePtr;
+  int checkZero,checkValue;
+  int conv = 0x01;
+ for(r=0;r<9;r++){
+       checkZeroPtr = getSquare(square,peers[r].row+1,peers[r].column+1);
+       checkZero = *checkZeroPtr;
+      if(checkZero == 511){
+        for(c=0;c<9;c++){
+          checkValuePtr = getSquare(square,peers[c].row+1,peers[c].column+1);
+          checkValue = *checkValuePtr;
+          if( checkValue != 0 && checkValue != 511){
+            checkZero = checkZero & checkValue;
+            if(checkZero != 0){
+              squareSetNumberForZero(checkZeroPtr);
+              for(m=0;m<9;m++){
+                int value = checkZero & (conv << m);
+                if(value != 0){
+                    int hexValue = checkBinaryValue(value);
+                    squareSetNumber(checkZeroPtr,hexValue);
+                }
+              }       
+            }
+          }
+        }
+   
+
+      }
+  }
+  
 }
 
 
