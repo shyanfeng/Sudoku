@@ -904,7 +904,7 @@ void eliminateBruteForce(int squares[9][9]){
   int getOneFromSquare;
   int numberToChooseInSquare;
   int numberToDelete;
-  int getOut;
+  int getOut = 0;
   int setNumber;
   int *testGet;
   int getFromTest;
@@ -920,19 +920,20 @@ void eliminateBruteForce(int squares[9][9]){
         numberInAddress = getSquare(squares, actualRow, actualColumn);
         numberToChooseInSquare = *numberInAddress;
         printf("r = %d c = %d numberToChooseInSquare = %d\n", sq.row, sq.column, numberToChooseInSquare);
-      
+        printf("getOut = %d\n", getOut);
         for(i = 0; ((getOut != 1) && (i < 9)); i++){  
           getOneFromSquare = numberToChooseInSquare & (bitToMask << i);
           if(getOneFromSquare != 0){
             Try{
               numberToDelete = checkBinaryValue(getOneFromSquare);
+              printf("numDelete = %d\n", numberToDelete);
               eliminateNumberFromAllPeers(squares, actualRow, actualColumn, numberToDelete);
               testGet = getSquare(squares, actualRow, actualColumn);
               getFromTest = *testGet;
               setNumber = checkBinaryValue(getFromTest);
               if(isSudokuSolved(squares) == 0){
                 eliminateNakedPair(squares);
-              }else{
+              }else if(isSudokuSolved(squares) == 1){
                 // dumpSquare(squares);
                 getOut = 1;
               }
