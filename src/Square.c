@@ -346,7 +346,6 @@ void duplicateSquares(int squares[9][9], int dupSquares[9][9]){
       dupSquares[r][c] = squares[r][c];
     }
   }
-
 }
 
 /*
@@ -371,7 +370,6 @@ int isSudokuSolved(int squares[9][9]){
       }else{
         return 0;
       }
-
 }
 
 /*
@@ -388,7 +386,6 @@ void eliminateNumberFromAllPeers(int squares[9][9], int row, int column, int val
     eliminateNumberFromPeers(squares, peersRow, row, column, value);
     eliminateNumberFromPeers(squares, peersColumn, row, column, value);
     eliminateNumberFromPeers(squares, peersBox, row, column, value);
-
 }
 
 /*
@@ -435,7 +432,6 @@ void eliminateNumberFromPeers(int squares[9][9], Square *peers, int row, int col
       }
     }
   }
-
 }
 
 /*
@@ -1106,9 +1102,7 @@ void eliminateNakedQuadInPeers(int square[9][9],Square *peers){
  *
  */ 
 void eliminateBruteForce(int squares[9][9]){
-
   int dupSquares[9][9];
-
   int r, c, i;
   int bitToMask = 0x01;
   int checkForContainTwoNumber;
@@ -1192,9 +1186,11 @@ void dumpSquare(int square[9][9]){
       }
     }
   }
-
 }
 
+//////////////////////////////////////////////////////////////////////////
+/**                       searching not done yet                        */
+//////////////////////////////////////////////////////////////////////////
 
 void searchPosibilityValueOfEmptySquare(int square[9][9]){
   int r,c;
@@ -1236,11 +1232,8 @@ void searchPosibilityValueOfEmptySquareInPeers(int square[9][9],Square *peers){
             }
           }
         }
-   
-
       }
   }
-  
 }
 
 

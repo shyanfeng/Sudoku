@@ -71,7 +71,7 @@ extern void test_nakedTriples_eliminate_column(void);
 extern void test_nakedTriples_eliminate(void);
 extern void test_nakedQuad_eliminate_row(void);
 extern void test_nakedQuad_eliminate(void);
-extern void test_combineALLEliminate_with_successful_eliminate(void);
+extern void test_eliminateNakedPair_with_successful_eliminate(void);
 extern void test_bruteForce_with_successful_eliminate(void);
 extern void test_bruteForce_with_successful_eliminate_1(void);
 extern void test_bruteForce_with_successful_eliminate_2(void);
@@ -123,16 +123,16 @@ int main(void)
   RUN_TEST(test_nakedPair_eliminate_column, 620);
   RUN_TEST(test_nakedPair_eliminate_box, 647);
   RUN_TEST(test_nakedPair_eliminate_row_column_and_box, 674);
-  RUN_TEST(test_nakedTriples_eliminate_row, 703);
-  RUN_TEST(test_nakedTriples_eliminate_column, 732);
-  RUN_TEST(test_nakedTriples_eliminate, 760);
-  RUN_TEST(test_nakedQuad_eliminate_row, 786);
-  RUN_TEST(test_nakedQuad_eliminate, 813);
-  RUN_TEST(test_combineALLEliminate_with_successful_eliminate, 839);
-  RUN_TEST(test_bruteForce_with_successful_eliminate, 889);
-  RUN_TEST(test_bruteForce_with_successful_eliminate_1, 940);
-  RUN_TEST(test_bruteForce_with_successful_eliminate_2, 1000);
-  RUN_TEST(test_dumpSquare, 1079);
+  RUN_TEST(test_nakedTriples_eliminate_row, 701);
+  RUN_TEST(test_nakedTriples_eliminate_column, 730);
+  RUN_TEST(test_nakedTriples_eliminate, 758);
+  RUN_TEST(test_nakedQuad_eliminate_row, 784);
+  RUN_TEST(test_nakedQuad_eliminate, 811);
+  RUN_TEST(test_eliminateNakedPair_with_successful_eliminate, 837);
+  RUN_TEST(test_bruteForce_with_successful_eliminate, 887);
+  RUN_TEST(test_bruteForce_with_successful_eliminate_1, 937);
+  RUN_TEST(test_bruteForce_with_successful_eliminate_2, 996);
+  RUN_TEST(test_dumpSquare, 1075);
 
   return (UnityEnd());
 }
