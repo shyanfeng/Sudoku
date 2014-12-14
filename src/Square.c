@@ -14,6 +14,11 @@ Square boxPeers[9][9][9];
 
 ErrorCode e;
 
+/*
+ *
+ * Clear all the values in squares
+ *
+ */
 void clearSquares(int square[9][9]){
   int i,j;
   
@@ -24,10 +29,36 @@ void clearSquares(int square[9][9]){
   }
 }
 
+/*
+ *
+ * Get the numbers in square. The row and column need to -1 because user input 
+ * is from 1 to 9 but program is start from 0 to 8. 
+ *
+ * Input: 
+ *        square[9][9] is the 9x9 square
+ *        row is row of square
+ *        column is the column of square
+ *
+ * Return: 
+ *        numbers in the square 
+ *
+ */
 int *getSquare(int (square)[9][9], int row, int column){
-  return &(square[row-1][column-1]);
+  return &(square[row - 1][column - 1]);
 } 
 
+/*
+ *
+ * Set the number into the square
+ *
+ * Input: 
+ *        square is the pointer to square
+ *        number is the number to set
+ *
+ * Return: 
+ *        None
+ *
+ */
 void squareSetNumber(int *square, int number){
   (*square) = (*square) | (C(number));
 }
@@ -41,14 +72,51 @@ void squareSetNumberForZero(int *square){
   (*square) = (*square) & (0x00);
 }
 
+/*
+ *
+ * Delete the number into the square
+ *
+ * Input: 
+ *        square is the pointer to square
+ *        number is the number to delete
+ *
+ * Return: 
+ *        None
+ *
+ */
 void squareDelNumber(int *square, int number){
   (*square) = (*square) & (~(1 <<(number - 1)));
 }
 
+/*
+ *
+ * Remove all the numbers except the number needed
+ *
+ * Input: 
+ *        square is the pointer to square
+ *        number is the number to stay
+ *
+ * Return: 
+ *        None
+ *
+ */
 void removeOthersExcept(int *square, int number){
   (*square) = (*square) & (1 <<(number - 1));
 }
 
+/*
+ *
+ * To check whether the number in square same with expect to contain
+ *
+ * Input: 
+ *        square is the pointer to square
+ *        number is the number to set
+ *
+ * Return: 
+ *        1 is contain
+ *        0 is not contain
+ *
+ */
 int isSquareContain(int *square, int number){
   if((*square) == (1 <<(number - 1))){
     return 1;
@@ -258,6 +326,18 @@ int squareHas(int squares[9][9], int row, int column, int setValue){
   }
 }
 
+/*
+ *
+ * Duplicate a 9x9 squares from a 9x9 squares
+ *
+ * Input: 
+ *        squares[9][9] is the 9x9 squares
+ *        dupSquares[9][9] is to copy from squares[9][9]
+ *
+ * Return: 
+ *        None
+ *
+ */
 void duplicateSquares(int squares[9][9], int dupSquares[9][9]){
   int r, c;
   
@@ -358,6 +438,19 @@ void eliminateNumberFromPeers(int squares[9][9], Square *peers, int row, int col
 
 }
 
+/*
+ *
+ * To select the square that with least values inside that more than 1. The sq
+ * will select the least values each row and each column. When the next row and column
+ * is smaller than the previous then it will update it with new least values.
+ *
+ * Input: 
+ *        squares[9][9] is the 9x9 squares
+ *
+ * Return: 
+ *        sq is Square that strcut with row and column
+ *
+ */
 Square selectSquareWithLeastValues(int square[9][9]){
 	int r, c;
   int count = 10;
@@ -783,7 +876,21 @@ void eliminateNakedQuadInPeers(int square[9][9],Square *peers){
     }
   }
 }
-  
+ 
+/*
+ *
+ * Brute force is to try all the possibility to find a solution. If the square
+ * contain 2 numbers inside then it will pick 1 of it to find solution. When it found
+ * error then it will throw and return back previous square to choose another number
+ * to find a solution.
+ *
+ * Input: 
+ *        squares[9][9] is the 9x9 squares
+ *
+ * Return: 
+ *        None
+ *
+ */ 
 void eliminateBruteForce(int squares[9][9]){
 
   int dupSquares[9][9];
@@ -803,7 +910,6 @@ void eliminateBruteForce(int squares[9][9]){
   int getFromTest;
 
   Square sq;
-  
 
   sq = selectSquareWithLeastValues(squares);
   
@@ -843,7 +949,6 @@ void eliminateBruteForce(int squares[9][9]){
       }
     }
   }
-
 }
 
 /*
