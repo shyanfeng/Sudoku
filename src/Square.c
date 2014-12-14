@@ -365,19 +365,12 @@ int isSudokuSolved(int squares[9][9]){
       temp  = value & temp;
     }
   }
-<<<<<<< HEAD
-      if(temp == 1){
-        return 1;
-      }else{
-        return 0;
-      }
-=======
+
   if(temp == 1){
     return 1;
   }else{
      return 0;
   }
->>>>>>> d4f08478a058a5e99d08165b3a4af6e95c763148
 }
 
 /*
