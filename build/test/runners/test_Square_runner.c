@@ -75,6 +75,10 @@ extern void test_nakedQuad_eliminate(void);
 extern void test_combineALLEliminate_with_successful_eliminate(void);
 extern void test_bruteForce_with_successful_eliminate(void);
 extern void test_dumpSquare(void);
+<<<<<<< HEAD
+extern void test_searchPosibilityValueOfEmptySquare(void);
+=======
+>>>>>>> 51f756fe067af86d98057ac4ce35006d3ab3e0f8
 
 
 //=======Test Reset Option=====
@@ -131,6 +135,10 @@ int main(void)
   RUN_TEST(test_combineALLEliminate_with_successful_eliminate, 869);
   RUN_TEST(test_bruteForce_with_successful_eliminate, 919);
   RUN_TEST(test_dumpSquare, 970);
+<<<<<<< HEAD
+  RUN_TEST(test_searchPosibilityValueOfEmptySquare, 1000);
+=======
+>>>>>>> 51f756fe067af86d98057ac4ce35006d3ab3e0f8
 
   return (UnityEnd());
 }

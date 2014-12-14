@@ -981,6 +981,7 @@ void test_dumpSquare(void){
   dumpSquare(square);
 }
 
+
 // void test_inputValueIntoSquare(void){
   // int square[9][9];    
  // int write[81] = { 1,2,3,4,5,6,7,8,9,
@@ -1083,6 +1084,7 @@ void test_bruteForce(void){
 
 }*/
 
+
 /*
 void test_bruteForce(void){
   int dupSquares[9][9];
@@ -1099,15 +1101,18 @@ void test_bruteForce(void){
                      };                 
   eliminateBruteForce(square);
 
+
   
-  TEST_ASSERT_EQUAL(64, square[0][1]);
-  TEST_ASSERT_EQUAL(64, square[3][8]);
-  TEST_ASSERT_EQUAL(128, square[3][1]);
-  TEST_ASSERT_EQUAL(64, square[7][3]);
-  TEST_ASSERT_EQUAL(64, square[8][0]);
-  TEST_ASSERT_EQUAL(2, square[8][2]);
+  // TEST_ASSERT_EQUAL(64, square[0][1]);
+  // TEST_ASSERT_EQUAL(64, square[3][8]);
+  // TEST_ASSERT_EQUAL(128, square[3][1]);
+  // TEST_ASSERT_EQUAL(64, square[7][3]);
+  // TEST_ASSERT_EQUAL(64, square[8][0]);
+  // TEST_ASSERT_EQUAL(2, square[8][2]);
+
 
 }*/
+
 
 
 
@@ -1115,6 +1120,7 @@ void test_bruteForce(void){
   // int square[9][9] = {{C(3), C(2)|C(4)|C(3),  C(6),       C(1), C(1),       C(8),           C(9), C(2),C(1)}, //0 
                       // {C(2), C(1)|C(4),       C(2)|C(3),  C(1), C(8)|C(4),  C(5)|C(3)|C(1), C(6), C(7),C(3)}, //1
                       // {C(1), C(9)|C(4),       C(3),       C(3), C(2),       C(1),           C(1), C(1),C(1)}, //2
+  
                       
                       // {C(1), C(3),            C(1),       C(1), C(2),       C(1),           C(1), C(1),C(1)}, //3
                       // {C(1), C(6),            C(1),       C(1), C(2),       C(1),           C(1), C(1),C(1)}, //4
@@ -1128,3 +1134,35 @@ void test_bruteForce(void){
   // eliminateBruteForce(square);
   
 // }
+
+void xtest_searchPosibilityValueOfEmptySquare_in_peers(void){
+  int square[9][9] = {{C(3),     	    C(0),        C(9),   C(8), C(2), C(1), C(4), C(5), C(6)}, 
+                      {C(5), 		      C(4),        C(8),   C(9), C(3), C(6), C(7), C(2), C(1)},
+                      {C(2),          C(6),        C(1),   C(4), C(5), C(7), C(3), C(9), C(8)}, 
+                      {C(1),          C(0),        C(5),   C(3), C(6), C(9), C(2), C(4), C(7)},  
+                      {C(9),          C(2),        C(4),   C(1), C(7), C(5), C(8), C(6), C(3)},  
+                      {C(6),          C(3),        C(7),   C(2), C(8), C(4), C(9), C(1), C(5)},  
+                      {C(4),          C(9),        C(3),   C(5), C(1), C(8), C(6), C(7), C(2)},  
+                      {C(8),          C(5),        C(6),   C(7), C(9), C(2), C(1), C(3), C(4)},  
+                      {C(7),          C(1),        C(2),   C(6), C(4), C(3), C(5), C(8), C(9)}, 
+                     };                 
+  Square *row = rowPeers[0][1];
+  searchPosibilityValueOfEmptySquareInPeers(square,row);
+  TEST_ASSERT_EQUAL(192, square[0][1]);
+}
+
+void test_searchPosibilityValueOfEmptySquare(void){
+  int square[9][9] = {{C(0),     	    C(3),        C(7),   C(4), C(8), C(1), C(6), C(0), C(9)}, 
+                      {C(0), 		      C(9),        C(0),   C(0), C(2), C(7), C(0), C(3), C(8)},
+                      {C(8),          C(0),        C(0),   C(3), C(0), C(9), C(0), C(0), C(0)}, 
+                      {C(0),          C(1),        C(9),   C(8), C(7), C(3), C(0), C(6), C(0)},  
+                      {C(7),          C(8),        C(0),   C(0), C(0), C(2), C(0), C(9), C(3)},  
+                      {C(0),          C(0),        C(0),   C(9), C(0), C(4), C(8), C(7), C(0)},  
+                      {C(0),          C(0),        C(0),   C(2), C(9), C(5), C(0), C(8), C(6)},  
+                      {C(0),          C(0),        C(8),   C(1), C(3), C(6), C(9), C(0), C(0)},  
+                      {C(9),          C(6),        C(2),   C(7), C(4), C(8), C(3), C(1), C(5)}, 
+                     };                 
+
+  searchPosibilityValueOfEmptySquare(square);
+  TEST_ASSERT_EQUAL(192, square[0][0]);
+}
