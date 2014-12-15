@@ -698,142 +698,6 @@ void test_nakedPair_eliminate_row_column_and_box(void){
   TEST_ASSERT_EQUAL(258,square[3][3]);
 }
 
-void test_nakedTriples_eliminate_row(void){
-    int square[9][9]={{C(1), C(2)|C(3)|C(4),       C(1),       C(1), C(1), C(1),  C(1), C(1),C(1)}, //0 
-                      {C(1), C(2)|C(3)|C(4),       C(1),       C(1), C(1), C(1),  C(1), C(1),C(1)}, //1
-                      {C(1), C(2)|C(4)|C(8)|C(1),  C(1),       C(1), C(1), C(1),  C(1), C(1),C(1)}, //2
-                      
-                      {C(1), C(2)|C(8)|C(5),       C(1),       C(1), C(1), C(1),  C(1), C(1),C(1)}, //3
-                      {C(1), C(1),                 C(1),       C(1), C(1), C(1),  C(1), C(1),C(1)}, //4
-                      {C(1), C(6),                 C(1),       C(1), C(1), C(1),  C(1), C(1),C(1)}, //5
-                      
-                      {C(1), C(5)|C(6),            C(1),       C(1), C(1), C(1),  C(1), C(1),C(1)}, //6
-                      {C(1), C(2)|C(3),            C(1),       C(1), C(1), C(1),  C(1), C(1),C(1)}, //7
-                      {C(1), C(1),                 C(1),       C(1), C(1), C(1),  C(1), C(1),C(1)}, //8
-                     }; 
-
-    Square *row = rowPeers[0][1];
-    eliminateNakedTriplesInPeers(square,row);
-
-    TEST_ASSERT_EQUAL(14,square[0][1]);
-    TEST_ASSERT_EQUAL(14,square[1][1]);
-    TEST_ASSERT_EQUAL(129,square[2][1]);
-    TEST_ASSERT_EQUAL(144,square[3][1]);
-    TEST_ASSERT_EQUAL(1,square[4][1]);
-    TEST_ASSERT_EQUAL(32,square[5][1]);
-    TEST_ASSERT_EQUAL(48,square[6][1]);  
-    TEST_ASSERT_EQUAL(6,square[7][1]);
-    TEST_ASSERT_EQUAL(1,square[8][1]);  
-
-}
-
-void test_nakedTriples_eliminate_column(void){
-    int square[9][9]={{C(1), C(1)          ,       C(1)     ,       C(1)     , C(1),       C(1),           C(1), C(1),C(1)}, //0 
-                      {C(1), C(1)          ,       C(1)     ,       C(1)     , C(1),       C(1),           C(1), C(1),C(1)}, //1
-                      {C(1), C(1)          ,       C(1)     ,       C(1)     , C(1),       C(1),           C(1), C(1),C(1)}, //2
-                      
-                      {C(7)|C(9)|C(8)      ,       C(7)|C(9)|C(8)     ,       C(7)|C(8), C(3)|C(9)|C(5), C(4),       C(5)|C(6)|C(8)|C(9),           C(7)|C(9), C(2),C(3)|C(5)|C(6)|C(7)|C(8)|C(9)}, //3
-                      {C(1), C(1)          ,       C(1)     ,       C(1)     , C(1),       C(1),           C(1), C(1),C(1)}, //4
-                      {C(1), C(1)          ,       C(1)     ,       C(1)     , C(1),       C(1),           C(1), C(1),C(1)}, //5
-                      
-                      {C(1), C(1)          ,       C(1)     ,       C(1)     , C(1),       C(1),           C(1), C(1),C(1)}, //6
-                      {C(1), C(1)          ,       C(1)     ,       C(1)     , C(1),       C(1),           C(1), C(1),C(1)}, //7
-                      {C(1), C(1)          ,       C(1)     ,       C(1)     , C(1),       C(1),           C(1), C(1),C(1)}, //8
-                     }; 
-  
-    Square *col = columnPeers[3][0];
-    eliminateNakedTriplesInPeers(square,col);
-    
-    TEST_ASSERT_EQUAL(448,square[3][0]);
-    TEST_ASSERT_EQUAL(448,square[3][1]);
-    TEST_ASSERT_EQUAL(192,square[3][2]);
-    TEST_ASSERT_EQUAL(20,square[3][3]);
-    TEST_ASSERT_EQUAL(8,square[3][4]);
-    TEST_ASSERT_EQUAL(48,square[3][5]);
-    TEST_ASSERT_EQUAL(320,square[3][6]);  
-    TEST_ASSERT_EQUAL(2,square[3][7]);
-    TEST_ASSERT_EQUAL(52,square[3][8]);  
-}
-
-void test_nakedTriples_eliminate(void){
-    int square[9][9]={{C(1), C(1)          ,       C(1)     ,       C(1)     , C(1),       C(1),           C(1), C(1),C(1)}, //0 
-                      {C(1), C(1)          ,       C(1)     ,       C(1)     , C(1),       C(1),           C(1), C(1),C(1)}, //1
-                      {C(2)|C(9)|C(8), C(1)          ,       C(1)     ,       C(1)     , C(1),       C(1),           C(1), C(1),C(1)}, //2
-                      
-                      {C(2)|C(9)|C(8), C(2)|C(9)|C(8),       C(3)|C(8),       C(2)|C(9)|C(8)     , C(1),       C(1),           C(1), C(1),C(1)}, //3
-                      {C(1)          , C(1)          ,       C(2)|C(3)     ,       C(1)     , C(1),       C(1),           C(1), C(1),C(1)}, //4
-                      {C(1)          , C(1)          ,       C(2)|C(9)|C(8)     ,       C(1)     , C(1),       C(1),           C(1), C(1),C(1)}, //5
-                      
-                      {C(2)|C(9)|C(8), C(1)          ,       C(1)     ,       C(1)     , C(1),       C(1),           C(1), C(1),C(1)}, //6
-                      {C(1), C(1)          ,       C(1)     ,       C(1)     , C(1),       C(1),           C(1), C(1),C(1)}, //7
-                      {C(2)|C(6), C(1)          ,       C(1)     ,       C(1)     , C(1),       C(1),           C(1), C(1),C(1)}, //8
-                     }; 
-  
-
-    eliminateNakedTriples(square);
-    
-    TEST_ASSERT_EQUAL(386,square[2][0]);
-    TEST_ASSERT_EQUAL(386,square[3][0]);
-    TEST_ASSERT_EQUAL(386,square[6][0]);
-    TEST_ASSERT_EQUAL(34,square[8][0]);
-    TEST_ASSERT_EQUAL(132,square[3][2]);
-    TEST_ASSERT_EQUAL(6,square[4][2]);
-  
-}
-
-void test_nakedQuad_eliminate_row(void){
-    int square[9][9]={{C(1), C(2)|C(9),           C(1), C(1), C(1), C(1), C(1), C(1),C(1)}, //0 
-                      {C(1), C(2)|C(4)|C(3)|C(6), C(1), C(1), C(1), C(1), C(1), C(1),C(1)}, //1
-                      {C(1), C(2)|C(4)|C(3)|C(6), C(1), C(1), C(1), C(1), C(1), C(1),C(1)}, //2
-                      
-                      {C(1), C(2)|C(8)|C(5),      C(1), C(1), C(1), C(1), C(1), C(1),C(1)}, //3
-                      {C(1), C(1),                C(1), C(1), C(1), C(1), C(1), C(1),C(1)}, //4
-                      {C(1), C(6),                C(1), C(1), C(1), C(1), C(1), C(1),C(1)}, //5
-                      
-                      {C(1), C(5)|C(6),           C(1), C(1), C(1), C(1),  C(1), C(1),C(1)}, //6
-                      {C(1), C(1),                C(1), C(1), C(1), C(1),  C(1), C(1),C(1)}, //7
-                      {C(1), C(1),                C(1), C(1), C(1), C(1),  C(1), C(1),C(1)}, //8
-                     }; 
-  Square *row = rowPeers[0][1];
-  eliminateNakedQuadInPeers(square,row);
-  
-  TEST_ASSERT_EQUAL(256,square[0][1]);
-  TEST_ASSERT_EQUAL(46,square[1][1]);
-  TEST_ASSERT_EQUAL(46,square[2][1]);
-  TEST_ASSERT_EQUAL(144,square[3][1]);
-  TEST_ASSERT_EQUAL(1,square[4][1]);
-  TEST_ASSERT_EQUAL(32,square[5][1]);
-  TEST_ASSERT_EQUAL(16,square[6][1]);  
-  TEST_ASSERT_EQUAL(1,square[7][1]);
-  TEST_ASSERT_EQUAL(1,square[8][1]);  
-}
-
-void test_nakedQuad_eliminate(void){
-    int square[9][9]={{C(1),                C(1),                 C(1),                 C(1),                 C(1),                 C(1), C(1), C(1),C(1)}, //0 
-                      {C(1),                C(1),                 C(1),                 C(1),                 C(1),                 C(1), C(1), C(1),C(1)}, //1
-                      {C(1),                C(2)|C(3)|C(4)|C(5),  C(1),                 C(1),                 C(1),                 C(1), C(1), C(1),C(1)}, //2
-                      
-                      {C(2)|C(3)|C(4)|C(5), C(2)|C(3)|C(4)|C(5),  C(3)|C(8),            C(2)|C(9)|C(8),       C(1),                 C(1), C(1), C(1),C(1)}, //3
-                      {C(2)|C(3)|C(4)|C(5), C(1),                 C(2),                 C(1),                 C(1),                 C(1), C(1), C(1),C(1)}, //4
-                      {C(2)|C(8)|C(9),      C(2)|C(3)|C(4)|C(5),  C(2)|C(3)|C(4)|C(5),  C(2)|C(3)|C(4)|C(5),  C(2)|C(3)|C(4)|C(5),  C(1), C(1), C(1),C(1)}, //5
-                      
-                      {C(1),                C(2)|C(6),            C(1),                 C(1),                 C(1),                 C(1), C(1), C(1),C(1)}, //6
-                      {C(1),                C(2)|C(3)|C(4)|C(5),  C(1),                 C(1),                 C(1),                 C(1), C(1), C(1),C(1)}, //7
-                      {C(2),                C(1),                 C(1),                 C(1),                 C(1),                 C(1), C(1), C(1),C(1)}, //8
-                     }; 
-  
-
-    eliminateNakedQuad(square);
-    
-    TEST_ASSERT_EQUAL(30,square[3][0]);
-    TEST_ASSERT_EQUAL(30,square[4][0]);
-    TEST_ASSERT_EQUAL(384,square[5][0]);
-    TEST_ASSERT_EQUAL(30,square[3][1]);
-    TEST_ASSERT_EQUAL(128,square[3][2]);
-    TEST_ASSERT_EQUAL(2,square[4][2]);
-  
-}
-
 void test_eliminateNakedPair_with_successful_eliminate(void){
                   
   int square[9][9] = {{C(4)|C(9), C(8),           C(1),      C(3),           C(4)|C(5), C(6),      C(7),      C(2)     ,C(4)|C(5)|C(9)}, //0 
@@ -1086,6 +950,148 @@ void test_dumpSquare(void){
   dumpSquare(square);
 }
 
+//////////////////////////////////////////////////////////////////
+// Test code for nakedTriple and nakedQuad works for individual //
+//////////////////////////////////////////////////////////////////
+void test_nakedTriples_eliminate_row(void){
+    int square[9][9]={{C(1), C(2)|C(3)|C(4),       C(1),       C(1), C(1), C(1),  C(1), C(1),C(1)}, //0 
+                      {C(1), C(2)|C(3)|C(4),       C(1),       C(1), C(1), C(1),  C(1), C(1),C(1)}, //1
+                      {C(1), C(2)|C(4)|C(8)|C(1),  C(1),       C(1), C(1), C(1),  C(1), C(1),C(1)}, //2
+                      
+                      {C(1), C(2)|C(8)|C(5),       C(1),       C(1), C(1), C(1),  C(1), C(1),C(1)}, //3
+                      {C(1), C(1),                 C(1),       C(1), C(1), C(1),  C(1), C(1),C(1)}, //4
+                      {C(1), C(6),                 C(1),       C(1), C(1), C(1),  C(1), C(1),C(1)}, //5
+                      
+                      {C(1), C(5)|C(6),            C(1),       C(1), C(1), C(1),  C(1), C(1),C(1)}, //6
+                      {C(1), C(2)|C(3),            C(1),       C(1), C(1), C(1),  C(1), C(1),C(1)}, //7
+                      {C(1), C(1),                 C(1),       C(1), C(1), C(1),  C(1), C(1),C(1)}, //8
+                     }; 
+
+    Square *row = rowPeers[0][1];
+    eliminateNakedTriplesInPeers(square,row);
+
+    TEST_ASSERT_EQUAL(14,square[0][1]);
+    TEST_ASSERT_EQUAL(14,square[1][1]);
+    TEST_ASSERT_EQUAL(129,square[2][1]);
+    TEST_ASSERT_EQUAL(144,square[3][1]);
+    TEST_ASSERT_EQUAL(1,square[4][1]);
+    TEST_ASSERT_EQUAL(32,square[5][1]);
+    TEST_ASSERT_EQUAL(48,square[6][1]);  
+    TEST_ASSERT_EQUAL(6,square[7][1]);
+    TEST_ASSERT_EQUAL(1,square[8][1]);  
+
+}
+
+void test_nakedTriples_eliminate_column(void){
+    int square[9][9]={{C(1), C(1)          ,       C(1)     ,       C(1)     , C(1),       C(1),           C(1), C(1),C(1)}, //0 
+                      {C(1), C(1)          ,       C(1)     ,       C(1)     , C(1),       C(1),           C(1), C(1),C(1)}, //1
+                      {C(1), C(1)          ,       C(1)     ,       C(1)     , C(1),       C(1),           C(1), C(1),C(1)}, //2
+                      
+                      {C(7)|C(9)|C(8)      ,       C(7)|C(9)|C(8)     ,       C(7)|C(8), C(3)|C(9)|C(5), C(4),       C(5)|C(6)|C(8)|C(9),           C(7)|C(9), C(2),C(3)|C(5)|C(6)|C(7)|C(8)|C(9)}, //3
+                      {C(1), C(1)          ,       C(1)     ,       C(1)     , C(1),       C(1),           C(1), C(1),C(1)}, //4
+                      {C(1), C(1)          ,       C(1)     ,       C(1)     , C(1),       C(1),           C(1), C(1),C(1)}, //5
+                      
+                      {C(1), C(1)          ,       C(1)     ,       C(1)     , C(1),       C(1),           C(1), C(1),C(1)}, //6
+                      {C(1), C(1)          ,       C(1)     ,       C(1)     , C(1),       C(1),           C(1), C(1),C(1)}, //7
+                      {C(1), C(1)          ,       C(1)     ,       C(1)     , C(1),       C(1),           C(1), C(1),C(1)}, //8
+                     }; 
+  
+    Square *col = columnPeers[3][0];
+    eliminateNakedTriplesInPeers(square,col);
+    
+    TEST_ASSERT_EQUAL(448,square[3][0]);
+    TEST_ASSERT_EQUAL(448,square[3][1]);
+    TEST_ASSERT_EQUAL(192,square[3][2]);
+    TEST_ASSERT_EQUAL(20,square[3][3]);
+    TEST_ASSERT_EQUAL(8,square[3][4]);
+    TEST_ASSERT_EQUAL(48,square[3][5]);
+    TEST_ASSERT_EQUAL(320,square[3][6]);  
+    TEST_ASSERT_EQUAL(2,square[3][7]);
+    TEST_ASSERT_EQUAL(52,square[3][8]);  
+}
+
+void test_nakedTriples_eliminate(void){
+    int square[9][9]={{C(1), C(1)          ,       C(1)     ,       C(1)     , C(1),       C(1),           C(1), C(1),C(1)}, //0 
+                      {C(1), C(1)          ,       C(1)     ,       C(1)     , C(1),       C(1),           C(1), C(1),C(1)}, //1
+                      {C(2)|C(9)|C(8), C(1)          ,       C(1)     ,       C(1)     , C(1),       C(1),           C(1), C(1),C(1)}, //2
+                      
+                      {C(2)|C(9)|C(8), C(2)|C(9)|C(8),       C(3)|C(8),       C(2)|C(9)|C(8)     , C(1),       C(1),           C(1), C(1),C(1)}, //3
+                      {C(1)          , C(1)          ,       C(2)|C(3)     ,       C(1)     , C(1),       C(1),           C(1), C(1),C(1)}, //4
+                      {C(1)          , C(1)          ,       C(2)|C(9)|C(8)     ,       C(1)     , C(1),       C(1),           C(1), C(1),C(1)}, //5
+                      
+                      {C(2)|C(9)|C(8), C(1)          ,       C(1)     ,       C(1)     , C(1),       C(1),           C(1), C(1),C(1)}, //6
+                      {C(1), C(1)          ,       C(1)     ,       C(1)     , C(1),       C(1),           C(1), C(1),C(1)}, //7
+                      {C(2)|C(6), C(1)          ,       C(1)     ,       C(1)     , C(1),       C(1),           C(1), C(1),C(1)}, //8
+                     }; 
+  
+
+    eliminateNakedTriples(square);
+    
+    TEST_ASSERT_EQUAL(386,square[2][0]);
+    TEST_ASSERT_EQUAL(386,square[3][0]);
+    TEST_ASSERT_EQUAL(386,square[6][0]);
+    TEST_ASSERT_EQUAL(34,square[8][0]);
+    TEST_ASSERT_EQUAL(132,square[3][2]);
+    TEST_ASSERT_EQUAL(6,square[4][2]);
+  
+}
+
+void test_nakedQuad_eliminate_row(void){
+    int square[9][9]={{C(1), C(2)|C(9),           C(1), C(1), C(1), C(1), C(1), C(1),C(1)}, //0 
+                      {C(1), C(2)|C(4)|C(3)|C(6), C(1), C(1), C(1), C(1), C(1), C(1),C(1)}, //1
+                      {C(1), C(2)|C(4)|C(3)|C(6), C(1), C(1), C(1), C(1), C(1), C(1),C(1)}, //2
+                      
+                      {C(1), C(2)|C(8)|C(5),      C(1), C(1), C(1), C(1), C(1), C(1),C(1)}, //3
+                      {C(1), C(1),                C(1), C(1), C(1), C(1), C(1), C(1),C(1)}, //4
+                      {C(1), C(6),                C(1), C(1), C(1), C(1), C(1), C(1),C(1)}, //5
+                      
+                      {C(1), C(5)|C(6),           C(1), C(1), C(1), C(1),  C(1), C(1),C(1)}, //6
+                      {C(1), C(1),                C(1), C(1), C(1), C(1),  C(1), C(1),C(1)}, //7
+                      {C(1), C(1),                C(1), C(1), C(1), C(1),  C(1), C(1),C(1)}, //8
+                     }; 
+  Square *row = rowPeers[0][1];
+  eliminateNakedQuadInPeers(square,row);
+  
+  TEST_ASSERT_EQUAL(256,square[0][1]);
+  TEST_ASSERT_EQUAL(46,square[1][1]);
+  TEST_ASSERT_EQUAL(46,square[2][1]);
+  TEST_ASSERT_EQUAL(144,square[3][1]);
+  TEST_ASSERT_EQUAL(1,square[4][1]);
+  TEST_ASSERT_EQUAL(32,square[5][1]);
+  TEST_ASSERT_EQUAL(16,square[6][1]);  
+  TEST_ASSERT_EQUAL(1,square[7][1]);
+  TEST_ASSERT_EQUAL(1,square[8][1]);  
+}
+
+void test_nakedQuad_eliminate(void){
+    int square[9][9]={{C(1),                C(1),                 C(1),                 C(1),                 C(1),                 C(1), C(1), C(1),C(1)}, //0 
+                      {C(1),                C(1),                 C(1),                 C(1),                 C(1),                 C(1), C(1), C(1),C(1)}, //1
+                      {C(1),                C(2)|C(3)|C(4)|C(5),  C(1),                 C(1),                 C(1),                 C(1), C(1), C(1),C(1)}, //2
+                      
+                      {C(2)|C(3)|C(4)|C(5), C(2)|C(3)|C(4)|C(5),  C(3)|C(8),            C(2)|C(9)|C(8),       C(1),                 C(1), C(1), C(1),C(1)}, //3
+                      {C(2)|C(3)|C(4)|C(5), C(1),                 C(2),                 C(1),                 C(1),                 C(1), C(1), C(1),C(1)}, //4
+                      {C(2)|C(8)|C(9),      C(2)|C(3)|C(4)|C(5),  C(2)|C(3)|C(4)|C(5),  C(2)|C(3)|C(4)|C(5),  C(2)|C(3)|C(4)|C(5),  C(1), C(1), C(1),C(1)}, //5
+                      
+                      {C(1),                C(2)|C(6),            C(1),                 C(1),                 C(1),                 C(1), C(1), C(1),C(1)}, //6
+                      {C(1),                C(2)|C(3)|C(4)|C(5),  C(1),                 C(1),                 C(1),                 C(1), C(1), C(1),C(1)}, //7
+                      {C(2),                C(1),                 C(1),                 C(1),                 C(1),                 C(1), C(1), C(1),C(1)}, //8
+                     }; 
+  
+
+    eliminateNakedQuad(square);
+    
+    TEST_ASSERT_EQUAL(30,square[3][0]);
+    TEST_ASSERT_EQUAL(30,square[4][0]);
+    TEST_ASSERT_EQUAL(384,square[5][0]);
+    TEST_ASSERT_EQUAL(30,square[3][1]);
+    TEST_ASSERT_EQUAL(128,square[3][2]);
+    TEST_ASSERT_EQUAL(2,square[4][2]);
+  
+}
+
+////////////////////////////////////////////////////////
+// Test code for search but function not complete yet //
+////////////////////////////////////////////////////////
 void xtest_searchPosibilityValueOfEmptySquare_in_peers(void){
   int square[9][9] = {{C(3),     	    C(0),        C(9),   C(8), C(2), C(1), C(4), C(5), C(6)}, 
                       {C(5), 		      C(4),        C(8),   C(9), C(3), C(6), C(7), C(2), C(1)},

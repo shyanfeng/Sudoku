@@ -177,10 +177,8 @@ void initBoxPeers(Square boxPeers[9][9][9]){
         colStart = getBeginningIndex(c);   
         for(row = rowStart; row < (rowStart + 3) ;row++){
           for(col = colStart; col< (colStart + 3) ;col++){
-           
             boxPeers[r][c][p].row = row;
             boxPeers[r][c][p++].column = col;
-          
         }
       }
     }
@@ -234,7 +232,6 @@ int checkBinaryValue(int value){
   }else if(value == 256){
     return 9;
   } 
-
 }
 
 /*
@@ -293,7 +290,6 @@ int squareContainNumbers(int square[9][9], int row, int column){
     }
     value1 = value1>>1;
   } 
-    
   int getValueFromTemp1 = temp1;  
   return getValueFromTemp1;
 }
@@ -384,9 +380,9 @@ void eliminateNumberFromAllPeers(int squares[9][9], int row, int column, int val
   Square *peersColumn = columnPeers[row - 1][column - 1];
   Square *peersBox = boxPeers[row - 1][column - 1];
 
-    eliminateNumberFromPeers(squares, peersRow, row, column, value);
-    eliminateNumberFromPeers(squares, peersColumn, row, column, value);
-    eliminateNumberFromPeers(squares, peersBox, row, column, value);
+  eliminateNumberFromPeers(squares, peersRow, row, column, value);
+  eliminateNumberFromPeers(squares, peersColumn, row, column, value);
+  eliminateNumberFromPeers(squares, peersBox, row, column, value);
 }
 
 /*
@@ -743,6 +739,103 @@ void eliminateNakedPairInPeers(int square[9][9],Square *peers){
   }
 }
 
+/*
+ *
+ * Brute force is to try all the possibility to find a solution. If the square
+ * contain 2 numbers inside then it will pick 1 of it to find solution. When it found
+ * error then it will throw and return back previous square to choose another number
+ * to find a solution.
+ *
+ * Input: 
+ *        squares[9][9] is the 9x9 squares
+ *
+ * Return: 
+ *        None
+ *
+ */ 
+void eliminateBruteForce(int squares[9][9]){
+  int dupSquares[9][9];
+  int r, c, i;
+  int bitToMask = 0x01;
+  int checkForContainTwoNumber;
+  int *numberInAddress;
+  int *backToDupSquares;
+  int numberFromDupSquare;
+  int getOneFromSquare;
+  int numberToChooseInSquare;
+  int numberToDelete;
+  int getOut = 0;
+
+  Square sq;
+  sq = selectSquareWithLeastValues(squares);
+  
+  for(r = 0; r < 9; r++){
+    for(c = 0; c < 9; c++){
+      duplicateSquares(squares, dupSquares);
+      if((sq.row == r) && (sq.column == c)){
+        numberInAddress = getSquare(squares, actualRow, actualColumn);
+        numberToChooseInSquare = *numberInAddress;
+        for(i = 0; ((getOut != 1) && (i < 9)); i++){  
+          getOneFromSquare = numberToChooseInSquare & (bitToMask << i);
+          if(getOneFromSquare != 0){
+            Try{
+              numberToDelete = checkBinaryValue(getOneFromSquare);
+              eliminateNumberFromAllPeers(squares, actualRow, actualColumn, numberToDelete);
+              if(isSudokuSolved(squares) == 0){
+                eliminateNakedPair(squares);
+              }else if(isSudokuSolved(squares) == 1){
+                dumpSquare(squares);
+                getOut = 1;
+              }
+            }Catch(e){
+              backToDupSquares = getSquare(dupSquares, actualRow, actualColumn);
+              numberFromDupSquare = *backToDupSquares;
+              getOneFromSquare = numberFromDupSquare;
+              duplicateSquares(dupSquares, squares);
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+/*
+* Aim: To print Out final Value (when all square contain one value) 
+*
+* Input: Square
+*/
+void dumpSquare(int square[9][9]){
+  int r,c,i,j;
+  int *printPtr;
+  int printDecimal;
+   
+  printf("\n");
+  printf("+-+-+-+-+-+-+-+-+-+ \n");
+  for(r=0;r<9;r++){
+    for(c=0;c<10;c++){
+      printPtr = getSquare(square, actualRow, actualColumn);
+      printDecimal = *printPtr;
+      int printHex = checkBinaryValue(printDecimal);
+      for(i = 0 ; i < 1 ; i++){
+        printf("|");
+      }
+      if(c == 9){
+        printf("\n");
+        printf("+-+-+-+-+-+-+-+-+-+");
+        printf("\n");
+      }else{
+        printf("%d",printHex);
+      }
+    }
+  }
+}
+
+
+////////////////////////////////////////////////////////////////////////
+/** nakedTriple and nakedQuad cant combined but work for individual  **/
+/**             and with some error not fix yet                      **/
+////////////////////////////////////////////////////////////////////////
 void forCheckRowNakedTriples(int square[9][9],Square *peers,int j,int temp1){
   int k,m;
   int temp3;
@@ -1008,8 +1101,8 @@ void eliminateNakedTriplesInPeers(int square[9][9],Square *peers){
   int a = 0;
 
   for(i=0;i<9;i++){
-     for(j=i+1;j<9;j++){
-    if(squareContainNumbers(square,peers[i].row+1,peers[i].column+1) == 3 && (squareContainNumbers(square,peers[j].row+1,peers[j].column+1) == 3 || squareContainNumbers(square,peers[j].row+1,peers[j].column+1) == 2)){   
+    for(j=i+1;j<9;j++){
+      if(squareContainNumbers(square,peers[i].row+1,peers[i].column+1) == 3 && (squareContainNumbers(square,peers[j].row+1,peers[j].column+1) == 3 || squareContainNumbers(square,peers[j].row+1,peers[j].column+1) == 2)){   
         tempPtr = getSquare(square,peers[i].row+1,peers[i].column+1);
         temp = *tempPtr;
         tempPtr1 = getSquare(square,peers[j].row+1,peers[j].column+1);
@@ -1023,7 +1116,7 @@ void eliminateNakedTriplesInPeers(int square[9][9],Square *peers){
             forCheckBoxNakedTriples(square,peers,temp1);
           }    
         }
-    }
+      }
     }
   }  
 }
@@ -1038,12 +1131,12 @@ void eliminateNakedQuad(int square[9][9]){
   int r,c;
   for(r=0;r<9;r++){
     for(c=0;c<9;c++){
-        Square *peersRow = rowPeers[r][c];
-        Square *peersColumn = columnPeers[r][c];        
-        Square *peersBox = boxPeers[r][c];
-        eliminateNakedQuadInPeers(square,peersRow);
-        eliminateNakedQuadInPeers(square,peersColumn);
-        eliminateNakedQuadInPeers(square,peersBox);
+      Square *peersRow = rowPeers[r][c];
+      Square *peersColumn = columnPeers[r][c];        
+      Square *peersBox = boxPeers[r][c];
+      eliminateNakedQuadInPeers(square,peersRow);
+      eliminateNakedQuadInPeers(square,peersColumn);
+      eliminateNakedQuadInPeers(square,peersBox);
     }
   }
 }
@@ -1068,8 +1161,8 @@ void eliminateNakedQuadInPeers(int square[9][9],Square *peers){
   int a = 0;
 
   for(i=0;i<9;i++){
-     for(j=i+1;j<9;j++){
-    if(squareContainNumbers(square,peers[i].row+1,peers[i].column+1) == 4 && squareContainNumbers(square,peers[j].row+1,peers[j].column+1) == 4){   
+    for(j=i+1;j<9;j++){
+      if(squareContainNumbers(square,peers[i].row+1,peers[i].column+1) == 4 && squareContainNumbers(square,peers[j].row+1,peers[j].column+1) == 4){   
         tempPtr = getSquare(square,peers[i].row+1,peers[i].column+1);
         temp = *tempPtr;
         tempPtr1 = getSquare(square,peers[j].row+1,peers[j].column+1);
@@ -1083,113 +1176,13 @@ void eliminateNakedQuadInPeers(int square[9][9],Square *peers){
             forCheckBoxNakedPair(square,peers,temp1);
           } 
         }
-    }
-    }
-  }
-}
- 
-/*
- *
- * Brute force is to try all the possibility to find a solution. If the square
- * contain 2 numbers inside then it will pick 1 of it to find solution. When it found
- * error then it will throw and return back previous square to choose another number
- * to find a solution.
- *
- * Input: 
- *        squares[9][9] is the 9x9 squares
- *
- * Return: 
- *        None
- *
- */ 
-void eliminateBruteForce(int squares[9][9]){
-  int dupSquares[9][9];
-  int r, c, i;
-  int bitToMask = 0x01;
-  int checkForContainTwoNumber;
-  int *numberInAddress;
-  int *backToDupSquares;
-  int numberFromDupSquare;
-  int getOneFromSquare;
-  int numberToChooseInSquare;
-  int numberToDelete;
-  int getOut = 0;
-  int setNumber;
-  int *testGet;
-  int getFromTest;
-
-  Square sq;
-
-  sq = selectSquareWithLeastValues(squares);
-  
-  for(r = 0; r < 9; r++){
-    for(c = 0; c < 9; c++){
-      duplicateSquares(squares, dupSquares);
-      if((sq.row == r) && (sq.column == c)){
-        numberInAddress = getSquare(squares, actualRow, actualColumn);
-        numberToChooseInSquare = *numberInAddress;
-        for(i = 0; ((getOut != 1) && (i < 9)); i++){  
-          getOneFromSquare = numberToChooseInSquare & (bitToMask << i);
-          if(getOneFromSquare != 0){
-            Try{
-              numberToDelete = checkBinaryValue(getOneFromSquare);
-              eliminateNumberFromAllPeers(squares, actualRow, actualColumn, numberToDelete);
-              testGet = getSquare(squares, actualRow, actualColumn);
-              getFromTest = *testGet;
-              setNumber = checkBinaryValue(getFromTest);
-              if(isSudokuSolved(squares) == 0){
-                eliminateNakedPair(squares);
-              }else if(isSudokuSolved(squares) == 1){
-                dumpSquare(squares);
-                getOut = 1;
-              }
-            }Catch(e){
-              // printf("ERROR THROW \n");
-              backToDupSquares = getSquare(dupSquares, actualRow, actualColumn);
-              numberFromDupSquare = *backToDupSquares;
-              getOneFromSquare = numberFromDupSquare;
-              duplicateSquares(dupSquares, squares);
-            }
-          }
-        }
-      }
-    }
-  }
-}
-
-/*
-* Aim: To print Out final Value (when all square contain one value) 
-*
-* Input: Square
-*/
-void dumpSquare(int square[9][9]){
-  int r,c,i,j;
-  int *printPtr;
-  int printDecimal;
-   
-  printf("\n");
-  printf("+-+-+-+-+-+-+-+-+-+ \n");
-  for(r=0;r<9;r++){
-    for(c=0;c<10;c++){
-      printPtr = getSquare(square, actualRow, actualColumn);
-      printDecimal = *printPtr;
-      int printHex = checkBinaryValue(printDecimal);
-      for(i = 0 ; i < 1 ; i++){
-        printf("|");
-      }
-      if(c == 9){
-        printf("\n");
-        printf("+-+-+-+-+-+-+-+-+-+");
-        printf("\n");
-      }else{
-        printf("%d",printHex);
       }
     }
   }
 }
 
 //////////////////////////////////////////////////////////////////////////
-/**                       searching not done yet                        */
+/**                       searching not done yet                       **/
 //////////////////////////////////////////////////////////////////////////
 
 void searchPosibilityValueOfEmptySquare(int square[9][9]){
@@ -1212,27 +1205,27 @@ void searchPosibilityValueOfEmptySquareInPeers(int square[9][9],Square *peers){
   int checkZero,checkValue;
   int conv = 0x01;
  for(r=0;r<9;r++){
-       checkZeroPtr = getSquare(square,peers[r].row+1,peers[r].column+1);
-       checkZero = *checkZeroPtr;
-      if(checkZero == 511){
-        for(c=0;c<9;c++){
-          checkValuePtr = getSquare(square,peers[c].row+1,peers[c].column+1);
-          checkValue = *checkValuePtr;
-          if( checkValue != 0 && checkValue != 511){
-            checkZero = checkZero & checkValue;
-            if(checkZero != 0){
-              squareSetNumberForZero(checkZeroPtr);
-              for(m=0;m<9;m++){
-                int value = checkZero & (conv << m);
-                if(value != 0){
-                    int hexValue = checkBinaryValue(value);
-                    squareSetNumber(checkZeroPtr,hexValue);
-                }
-              }       
-            }
+    checkZeroPtr = getSquare(square,peers[r].row+1,peers[r].column+1);
+    checkZero = *checkZeroPtr;
+    if(checkZero == 511){
+      for(c=0;c<9;c++){
+        checkValuePtr = getSquare(square,peers[c].row+1,peers[c].column+1);
+        checkValue = *checkValuePtr;
+        if( checkValue != 0 && checkValue != 511){
+          checkZero = checkZero & checkValue;
+          if(checkZero != 0){
+            squareSetNumberForZero(checkZeroPtr);
+            for(m=0;m<9;m++){
+              int value = checkZero & (conv << m);
+              if(value != 0){
+                int hexValue = checkBinaryValue(value);
+                squareSetNumber(checkZeroPtr,hexValue);
+              }
+            }       
           }
         }
       }
+    }
   }
 }
 
