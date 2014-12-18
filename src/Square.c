@@ -456,12 +456,16 @@ Square selectSquareWithLeastValues(int square[9][9]){
 		for(c = 0; c < 9; c++){
       getValuePtr = getSquare(square, actualRow, actualColumn);
       getValue = *getValuePtr;
+               
       returnCount = squareContainNumbers(square, actualRow , actualColumn);
-      if(returnCount != 1){
+      if(returnCount > 1){
         if(returnCount < count){
           sq.row = r;
           sq.column = c;
+          // printf("r=%d, c=%d %d\n", r, c,getValue);
+          // printf("getValue = %d\n", );
           count = returnCount;
+          // printf("count= %d\n", count);
         }
       }
 		}
@@ -697,7 +701,7 @@ void eliminateNakedPair(int square[9][9]){
   if(isSudokuSolved(square) == 0){
     eliminateBruteForce(square);
   }else{
-    dumpSquare(square);
+    // dumpSquare(square);
   } 
 }
 
@@ -784,7 +788,7 @@ void eliminateBruteForce(int squares[9][9]){
               if(isSudokuSolved(squares) == 0){
                 eliminateNakedPair(squares);
               }else if(isSudokuSolved(squares) == 1){
-                dumpSquare(squares);
+                // dumpSquare(squares);
                 getOut = 1;
               }
             }Catch(e){
@@ -795,6 +799,33 @@ void eliminateBruteForce(int squares[9][9]){
             }
           }
         }
+      }
+    }
+  }
+}
+
+void grids(char read[81], int square[9][9]){
+  int i,r;
+  int temp = 0;
+  int value;
+
+  for(r=0;r<9;r++){
+    for(i=0;i<9;i++){
+      if(read[i] >= '1' && read[i] <= '9'){  
+        temp = read[i] - '1';
+        temp = 1<<temp;
+        value = checkBinaryValue(temp);
+        squareSetNumber(getSquare(square,r+1,i+1),value);
+      }else if(read[i] == '.'){
+        squareSetNumber(getSquare(square,r+1,i+1), 0);
+      }else if(read[i] == ' '){
+        if(read[i+1] != ' '){
+          Throw(ERR_INVALID_NUM);
+        }else{
+          squareSetNumber(getSquare(square,r+1,i+1), 0);
+        }
+      }else{
+        Throw(ERR_INVALID_NUM);
       }
     }
   }
@@ -1185,21 +1216,21 @@ void eliminateNakedQuadInPeers(int square[9][9],Square *peers){
 /**                       searching not done yet                       **/
 //////////////////////////////////////////////////////////////////////////
 
-void searchPosibilityValueOfEmptySquare(int square[9][9]){
+void searchPossibilityValueOfEmptySquare(int square[9][9]){
   int r,c;
   for(r=0;r<9;r++){
     for(c=0;c<9;c++){
         Square *peersRow = rowPeers[r][c];
         // Square *peersColumn = columnPeers[r][c];        
         // Square *peersBox = boxPeers[r][c];
-        searchPosibilityValueOfEmptySquareInPeers(square,peersRow);
+        searchPossibilityValueOfEmptySquareInPeers(square,peersRow);
         // searchPosibilityValueOfEmptySquareInPeers(square,peersColumn);
         // searchPosibilityValueOfEmptySquareInPeers(square,peersBox);
     }
   }
 }
 
-void searchPosibilityValueOfEmptySquareInPeers(int square[9][9],Square *peers){
+void searchPossibilityValueOfEmptySquareInPeers(int square[9][9],Square *peers){
   int r,c,i,j,m;
   int *checkZeroPtr,*checkValuePtr;
   int checkZero,checkValue;

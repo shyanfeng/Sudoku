@@ -579,6 +579,20 @@ void test_selectSquareWithLeastValues_should_return_row_0(void){
   TEST_ASSERT_EQUAL(0, value.row);
   TEST_ASSERT_EQUAL(1, value.column);
 }
+/*
+void xtest_dumpSquare(void){
+  int square[9][9] = {{C(3),     	    C(7),        C(9),   C(8), C(2), C(1), C(4), C(5), C(6)}, 
+                      {C(5), 		      C(4),        C(8),   C(9), C(3), C(6), C(7), C(2), C(1)},
+                      {C(2),          C(6),        C(1),   C(4), C(5), C(7), C(3), C(9), C(8)}, 
+                      {C(1),          C(8),        C(5),   C(3), C(6), C(9), C(2), C(4), C(7)},  
+                      {C(9),          C(2),        C(4),   C(1), C(7), C(5), C(8), C(6), C(3)},  
+                      {C(6),          C(3),        C(7),   C(2), C(8), C(4), C(9), C(1), C(5)},  
+                      {C(4),          C(9),        C(3),   C(5), C(1), C(8), C(6), C(7), C(2)},  
+                      {C(8),          C(5),        C(6),   C(7), C(9), C(2), C(1), C(3), C(4)},  
+                      {C(7),          C(1),        C(2),   C(6), C(4), C(3), C(5), C(8), C(9)}, 
+                     };                 
+  dumpSquare(square);
+}*/
 
 void test_nakedPair_eliminate_row(void){
     int square[9][9]={{C(1), C(2)|C(3),       C(1),  C(1), C(1), C(1), C(1), C(1),C(1)}, //0 
@@ -753,7 +767,7 @@ void test_bruteForce_with_successful_eliminate(void){
                       {C(8),      C(2)|C(3)|C(6), C(2)|C(3), C(5)|C(6),      C(9),      C(7),      C(1),      C(4)|C(5),C(3)|C(4)|C(5)}, //8
                      }; 
 
-  eliminateBruteForce(square);  
+  eliminateNakedPair(square);  
 
   TEST_ASSERT_EQUAL(256, square[0][0]);
   TEST_ASSERT_EQUAL(8, square[1][0]);
@@ -803,7 +817,7 @@ void test_bruteForce_with_successful_eliminate_1(void){
                      }; 
               
             
-  eliminateBruteForce(square);  
+  eliminateNakedPair(square);  
 
   TEST_ASSERT_EQUAL(2, square[0][0]);
   TEST_ASSERT_EQUAL(32, square[1][0]);
@@ -861,7 +875,7 @@ void test_bruteForce_with_successful_eliminate_2(void){
                      }; 
               
             
-  eliminateBruteForce(square);  
+  eliminateNakedPair(square);  
 
   TEST_ASSERT_EQUAL(1, square[0][0]);
   TEST_ASSERT_EQUAL(256, square[0][1]);
@@ -923,9 +937,47 @@ void test_bruteForce_with_successful_eliminate_2(void){
   TEST_ASSERT_EQUAL(1, square[7][8]);
 
 }
+
+void test_grids(void){
+  char read[81] = "1..2..3..1..2..3..1..2..3..1..2..3..1..2..3..1..2..3..1..2..3..1..2..3..1..2..3..";
+  int square[9][9];
+  clearSquares(square);  
+
+  grids(read, square);
+  TEST_ASSERT_EQUAL(1,square[0][0]);
+}
+
+void test_grids_should_fail(void){
+  char read[81] = "1 .2..3..1..2..3..1..2..3..1..2..3..1..2..3..1..2..3..1..2..3..1..2..3..1..2..3..";
+  int square[9][9];
+  clearSquares(square);  
+  ErrorCode e;
+  
+  
+  Try{
+    grids(read, square);
+    TEST_ASSERT_EQUAL(1,square[0][1]);
+  }Catch(e){
+    TEST_ASSERT_EQUAL(ERR_INVALID_NUM, e);
+  }
+}
+
+void test_grids_Alphabet(void){
+  char read[81] = "A..2..3..1..2..3..1..2..3..1..2..3..1..2..3..1..2..3..1..2..3..1..2..3..1..2..3..";
+  int square[9][9];
+  clearSquares(square);  
+  ErrorCode e;
+  Try{
+    grids(read, square);
+    TEST_ASSERT_EQUAL(1,square[0][1]);
+  }Catch(e){
+    TEST_ASSERT_EQUAL(ERR_INVALID_NUM, e);
+  }
+}
+
 /*
 void test_bruteForce_with_successful_eliminate_3(void){
-                    //  0                                              1                                              2                                             3                                               4                                              5                                              6                                             7                             8
+                     0                                              1                                              2                                             3                                               4                                              5                                              6                                             7                             8
   int square[9][9] = {{C(4),                                         C(1)|C(2)|C(3)|C(4)|C(5)|C(6)|C(7)|C(8)|C(9),  C(1)|C(2)|C(3)|C(4)|C(5)|C(6)|C(7)|C(8)|C(9), C(1)|C(2)|C(3)|C(4)|C(5)|C(6)|C(7)|C(8)|C(9),   C(1)|C(2)|C(3)|C(4)|C(5)|C(6)|C(7)|C(8)|C(9),  C(1)|C(2)|C(3)|C(4)|C(5)|C(6)|C(7)|C(8)|C(9),  C(8),                                         C(1)|C(2)|C(3)|C(4)|C(5)|C(6)|C(7)|C(8)|C(9),  C(5)}, //0 
                       {C(1)|C(2)|C(3)|C(4)|C(5)|C(6)|C(7)|C(8)|C(9), C(3),                                          C(1)|C(2)|C(3)|C(4)|C(5)|C(6)|C(7)|C(8)|C(9), C(1)|C(2)|C(3)|C(4)|C(5)|C(6)|C(7)|C(8)|C(9),   C(1)|C(2)|C(3)|C(4)|C(5)|C(6)|C(7)|C(8)|C(9),  C(1)|C(2)|C(3)|C(4)|C(5)|C(6)|C(7)|C(8)|C(9),  C(1)|C(2)|C(3)|C(4)|C(5)|C(6)|C(7)|C(8)|C(9), C(1)|C(2)|C(3)|C(4)|C(5)|C(6)|C(7)|C(8)|C(9),  C(1)|C(2)|C(3)|C(4)|C(5)|C(6)|C(7)|C(8)|C(9)}, //1
                       {C(1)|C(2)|C(3)|C(4)|C(5)|C(6)|C(7)|C(8)|C(9), C(1)|C(2)|C(3)|C(4)|C(5)|C(6)|C(7)|C(8)|C(9),  C(1)|C(2)|C(3)|C(4)|C(5)|C(6)|C(7)|C(8)|C(9), C(7),                                           C(1)|C(2)|C(3)|C(4)|C(5)|C(6)|C(7)|C(8)|C(9),  C(1)|C(2)|C(3)|C(4)|C(5)|C(6)|C(7)|C(8)|C(9),  C(1)|C(2)|C(3)|C(4)|C(5)|C(6)|C(7)|C(8)|C(9), C(1)|C(2)|C(3)|C(4)|C(5)|C(6)|C(7)|C(8)|C(9),  C(1)|C(2)|C(3)|C(4)|C(5)|C(6)|C(7)|C(8)|C(9)}, //2
@@ -942,20 +994,58 @@ void test_bruteForce_with_successful_eliminate_3(void){
             
   eliminateBruteForce(square);
 }*/
-
-void test_dumpSquare(void){
-  int square[9][9] = {{C(3),     	    C(7),        C(9),   C(8), C(2), C(1), C(4), C(5), C(6)}, 
-                      {C(5), 		      C(4),        C(8),   C(9), C(3), C(6), C(7), C(2), C(1)},
-                      {C(2),          C(6),        C(1),   C(4), C(5), C(7), C(3), C(9), C(8)}, 
-                      {C(1),          C(8),        C(5),   C(3), C(6), C(9), C(2), C(4), C(7)},  
-                      {C(9),          C(2),        C(4),   C(1), C(7), C(5), C(8), C(6), C(3)},  
-                      {C(6),          C(3),        C(7),   C(2), C(8), C(4), C(9), C(1), C(5)},  
-                      {C(4),          C(9),        C(3),   C(5), C(1), C(8), C(6), C(7), C(2)},  
-                      {C(8),          C(5),        C(6),   C(7), C(9), C(2), C(1), C(3), C(4)},  
-                      {C(7),          C(1),        C(2),   C(6), C(4), C(3), C(5), C(8), C(9)}, 
-                     };                 
+void xtest_bruteForce_5(void){
+                    //  0                                      1                                     2                     3                                               4                         5                                              6                               7                                           8
+  int square[9][9] = {{C(2)|C(3)|C(4)|C(7)|C(9),            C(3)|C(6)|C(7)|C(9),         C(4)|C(6)|C(7)|C(9),           C(8),                                     C(2)|C(4)|C(9),                   C(1),                                         C(5),                          C(2)|C(6)|C(9),                               C(2)|C(6)|C(9)}, //0 
+                      {C(1)|C(2)|C(8)|C(9),                 C(1)|C(6)|C(8)|C(9),         C(1)|C(6)|C(8)|C(9),           C(7),                                     C(2)|C(9),                        C(5),                                         C(2)|C(9),                     C(4),                                         C(3)}, //1
+                      {C(5),                                C(1)|C(8)|C(9),              C(1)|C(4)|C(8)|C(9),           C(3),                                     C(2)|C(4)|C(9),                   C(6),                                         C(7),                          C(1)|C(2)|C(8)|C(9),                          C(1)|C(2)|C(8)|C(9)}, //2
+                      
+                      {C(1)|C(3)|C(4)|C(9),                 C(1)|C(3)|C(6)|C(9),         C(1)|C(4)|C(5)|C(6)|C(9),      C(1)|C(5)|C(6),                           C(7),                             C(2)|C(4),                                    C(8),                          C(2)|C(3)|C(5)|C(6)|C(9),                     C(2)|C(6)|C(9)}, //3
+                      {C(3)|C(4)|C(7)|C(9),                 C(3)|C(6)|C(7)|C(9),         C(4)|C(5)|C(6)|C(7)|C(9),      C(5)|C(6),                                C(8),                             C(2)|C(4),                                    C(1),                          C(2)|C(3)|C(5)|C(6)|C(9),                     C(2)|C(6)|C(7)|C(9)}, //4
+                      {C(1)|C(7)|C(8),                      C(2),                        C(1)|C(5)|C(6)|C(7)|C(8),      C(1)|C(5)|C(6),                           C(3),                             C(9),                                         C(4),                          C(5)|C(6),                                    C(6)|C(7)}, //5
+                      
+                      {C(6),                                C(4),                        C(2),                          C(9),                                     C(1),                             C(8),                                         C(3),                          C(7),                                         C(5)}, //6
+                      {C(1)|C(8)|C(9),                      C(5),                        C(3),                          C(4),                                     C(6),                             C(7),                                         C(2)|C(9),                     C(1)|C(2)|C(8)|C(9),                          C(1)|C(2)|C(8)|C(9)}, //7
+                      {C(1)|C(7)|C(8)|C(9),                 C(1)|C(7)|C(8)|C(9),         C(1)|C(7)|C(8)|C(9),           C(2),                                     C(5),                             C(3),                                         C(6),                          C(1)|C(8)|C(9),                               C(4)}, //8
+                     }; 
+              
+            
+  eliminateBruteForce(square);
   dumpSquare(square);
+  // TEST_ASSERT_EQUAL(2, square[1][0]);
+  // TEST_ASSERT_EQUAL(32, square[2][0]);
+  // TEST_ASSERT_EQUAL(256, square[3][0]);
+  // TEST_ASSERT_EQUAL(256, square[4][0]);
+  
 }
+/*
+void test_bruteForce_6(void){
+                    //  0                       1                 2                     3                           4                          5                       6                               7                                           8
+  int square[9][9] = {{C(1)|C(4)|C(8),       C(2),              C(6),                   C(5),                    C(3)|C(4)|C(8),            C(3)|C(4),               C(3)|C(7),                    C(9),                               C(1)|C(3)|C(8)}, //0 
+                      {C(5),                 C(8),              C(1)|C(8),              C(6)|C(8),               C(7),                      C(9),                    C(2)|C(3)|C(6),               C(2)|C(3)|C(6)|C(8),                C(4)}, //1
+                      {C(3),                 C(4)|C(8)|C(9),    C(4)|C(7)|C(8)|C(9),    C(4)|C(6)|C(8),          C(1),                      C(2)|C(4)|C(6),          C(2)|C(5)|C(6)|C(7),          C(2)|C(5)|C(6)|C(7)|C(8),           C(5)|C(6)|C(8)}, //2
+                      
+                      {C(6),                 C(4)|C(9),         C(2)|C(3)|C(4)|C(9),    C(1)|C(4)|C(9),          C(3)|C(4)|C(5)|C(9),       C(1)|C(3)|C(4)|C(5),     C(8),                         C(2)|C(3)|C(5),                     C(7)}, //3
+                      {C(4)|C(8)|C(9),       C(7),              C(5),                   C(4)|C(6)|C(8)|C(9),     C(2),                      C(3)|C(4)|C(6),          C(3)|C(6),                    C(1),                               C(3)|C(6)|C(9)}, //4
+                      {C(2)|C(8)|C(9),       C(1),              C(2)|C(3)|C(8)|C(9),    C(6)|C(7)|C(8)|C(9),     C(3)|C(5)|C(8)|C(9),       C(3)|C(5)|C(6)|C(7),     C(4),                         C(2)|C(3)|C(5)|C(6),                C(3)|C(5)|C(6)|C(9)}, //5
+                      
+                      {C(1)|C(4),            C(4)|C(5)|C(6),    C(1)|C(4),              C(3),                    C(4)|C(5),                 C(8),                    C(9),                         C(5)|C(6)|C(7),                      C(2)}, //6
+                      {C(7),                 C(5)|C(8)|C(9),    C(1)|C(2)|C(8)|C(9),    C(1)|C(9),               C(6),                      C(1)|C(5),               C(3)|C(5),                    C(4),                                C(3)|C(5)|C(8)}, //7
+                      {C(4)|C(8)|C(9),       C(3),              C(4)|C(8)|C(9),         C(2),                    C(4)|C(5)|C(9),            C(4)|C(5)|C(7),          C(1),                         C(5)|C(6)|C(7)|C(8),                 C(5)|C(6)|C(8)}, //8
+                     }; 
+              
+            
+  eliminateNakedPair(square);
+  dumpSquare(square);
+  // TEST_ASSERT_EQUAL(2, square[1][0]);
+  // TEST_ASSERT_EQUAL(32, square[2][0]);
+  // TEST_ASSERT_EQUAL(256, square[3][0]);
+  // TEST_ASSERT_EQUAL(256, square[4][0]);
+  
+  
+}*/
+
+
 
 //////////////////////////////////////////////////////////////////
 // Test code for nakedTriple and nakedQuad works for individual //
@@ -1099,22 +1189,17 @@ void test_nakedQuad_eliminate(void){
 ////////////////////////////////////////////////////////
 // Test code for search but function not complete yet //
 ////////////////////////////////////////////////////////
-void xtest_searchPosibilityValueOfEmptySquare_in_peers(void){
-  int square[9][9] = {{C(3),     	    C(0),        C(9),   C(8), C(2), C(1), C(4), C(5), C(6)}, 
-                      {C(5), 		      C(4),        C(8),   C(9), C(3), C(6), C(7), C(2), C(1)},
-                      {C(2),          C(6),        C(1),   C(4), C(5), C(7), C(3), C(9), C(8)}, 
-                      {C(1),          C(0),        C(5),   C(3), C(6), C(9), C(2), C(4), C(7)},  
-                      {C(9),          C(2),        C(4),   C(1), C(7), C(5), C(8), C(6), C(3)},  
-                      {C(6),          C(3),        C(7),   C(2), C(8), C(4), C(9), C(1), C(5)},  
-                      {C(4),          C(9),        C(3),   C(5), C(1), C(8), C(6), C(7), C(2)},  
-                      {C(8),          C(5),        C(6),   C(7), C(9), C(2), C(1), C(3), C(4)},  
-                      {C(7),          C(1),        C(2),   C(6), C(4), C(3), C(5), C(8), C(9)}, 
-                     };                 
-  Square *row = rowPeers[0][1];
-  searchPosibilityValueOfEmptySquareInPeers(square,row);
-  TEST_ASSERT_EQUAL(192, square[0][1]);
+void test_searchPosibilityValueOfEmptySquare_in_peers(void){
+  char read[81] = "1..2..3..1..2..3..1..2..3..1..2..3..1..2..3..1..2..3..1..2..3..1..2..3..1..2..3..";
+  int square[9][9];
+  clearSquares(square);
+  grids(read, square);
+  Square *peersRow = rowPeers[0][0];
+  searchPossibilityValueOfEmptySquareInPeers(square,peersRow);
+  dumpSquare(square);
+  // TEST_ASSERT_EQUAL(192, square[0][1]);
 }
-
+/*
 void xtest_searchPosibilityValueOfEmptySquare(void){
   int square[9][9] = {{C(0),     	    C(3),        C(7),   C(4), C(8), C(1), C(6), C(0), C(9)}, 
                       {C(0), 		      C(9),        C(0),   C(0), C(2), C(7), C(0), C(3), C(8)},
@@ -1127,6 +1212,7 @@ void xtest_searchPosibilityValueOfEmptySquare(void){
                       {C(9),          C(6),        C(2),   C(7), C(4), C(8), C(3), C(1), C(5)}, 
                      };                 
 
-  searchPosibilityValueOfEmptySquare(square);
+  searchPossibilityValueOfEmptySquare(square);
   TEST_ASSERT_EQUAL(192, square[0][0]);
 }
+*/

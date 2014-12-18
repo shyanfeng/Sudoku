@@ -70,12 +70,15 @@ extern void test_eliminateNakedPair_with_successful_eliminate(void);
 extern void test_bruteForce_with_successful_eliminate(void);
 extern void test_bruteForce_with_successful_eliminate_1(void);
 extern void test_bruteForce_with_successful_eliminate_2(void);
-extern void test_dumpSquare(void);
+extern void test_grids(void);
+extern void test_grids_should_fail(void);
+extern void test_grids_Alphabet(void);
 extern void test_nakedTriples_eliminate_row(void);
 extern void test_nakedTriples_eliminate_column(void);
 extern void test_nakedTriples_eliminate(void);
 extern void test_nakedQuad_eliminate_row(void);
 extern void test_nakedQuad_eliminate(void);
+extern void test_searchPosibilityValueOfEmptySquare_in_peers(void);
 
 
 //=======Test Reset Option=====
@@ -119,20 +122,23 @@ int main(void)
   RUN_TEST(test_isSudokuSolve_return_1_all_square_contain_one_number, 534);
   RUN_TEST(test_isSudokuSolve_return_0_one_square_contain_two_number, 550);
   RUN_TEST(test_selectSquareWithLeastValues_should_return_row_0, 566);
-  RUN_TEST(test_nakedPair_eliminate_row, 583);
-  RUN_TEST(test_nakedPair_eliminate_column, 610);
-  RUN_TEST(test_nakedPair_eliminate_box, 637);
-  RUN_TEST(test_nakedPair_eliminate_row_column_and_box, 664);
-  RUN_TEST(test_eliminateNakedPair_with_successful_eliminate, 691);
-  RUN_TEST(test_bruteForce_with_successful_eliminate, 741);
-  RUN_TEST(test_bruteForce_with_successful_eliminate_1, 790);
-  RUN_TEST(test_bruteForce_with_successful_eliminate_2, 848);
-  RUN_TEST(test_dumpSquare, 946);
-  RUN_TEST(test_nakedTriples_eliminate_row, 963);
-  RUN_TEST(test_nakedTriples_eliminate_column, 992);
-  RUN_TEST(test_nakedTriples_eliminate, 1020);
-  RUN_TEST(test_nakedQuad_eliminate_row, 1046);
-  RUN_TEST(test_nakedQuad_eliminate, 1073);
+  RUN_TEST(test_nakedPair_eliminate_row, 597);
+  RUN_TEST(test_nakedPair_eliminate_column, 624);
+  RUN_TEST(test_nakedPair_eliminate_box, 651);
+  RUN_TEST(test_nakedPair_eliminate_row_column_and_box, 678);
+  RUN_TEST(test_eliminateNakedPair_with_successful_eliminate, 705);
+  RUN_TEST(test_bruteForce_with_successful_eliminate, 755);
+  RUN_TEST(test_bruteForce_with_successful_eliminate_1, 804);
+  RUN_TEST(test_bruteForce_with_successful_eliminate_2, 862);
+  RUN_TEST(test_grids, 941);
+  RUN_TEST(test_grids_should_fail, 950);
+  RUN_TEST(test_grids_Alphabet, 965);
+  RUN_TEST(test_nakedTriples_eliminate_row, 1053);
+  RUN_TEST(test_nakedTriples_eliminate_column, 1082);
+  RUN_TEST(test_nakedTriples_eliminate, 1110);
+  RUN_TEST(test_nakedQuad_eliminate_row, 1136);
+  RUN_TEST(test_nakedQuad_eliminate, 1163);
+  RUN_TEST(test_searchPosibilityValueOfEmptySquare_in_peers, 1192);
 
   return (UnityEnd());
 }

@@ -62,8 +62,10 @@ void eliminateNakedQuadInPeers(int square[9][9],Square *peers);
 void eliminateBruteForce(int squares[9][9]);
 void dumpSquare(int square[9][9]);
 
-void searchPosibilityValueOfEmptySquare(int square[9][9]);
-void searchPosibilityValueOfEmptySquareInPeers(int square[9][9],Square *peers);
+void searchPossibilityValueOfEmptySquare(int square[9][9]);
+void searchPossibilityValueOfEmptySquareInPeers(int square[9][9],Square *peers);
+
+void grids(char read[81], int square[9][9]);
 
 #endif // Square_H
 
