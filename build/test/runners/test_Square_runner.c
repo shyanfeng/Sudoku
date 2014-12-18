@@ -73,12 +73,13 @@ extern void test_bruteForce_with_successful_eliminate_2(void);
 extern void test_grids(void);
 extern void test_grids_should_fail(void);
 extern void test_grids_Alphabet(void);
+extern void test_searchPosibilityValueOfEmptySquare_all_peers(void);
+extern void test_searchPosibilityValueOfEmptySquare_all_peers_1(void);
 extern void test_nakedTriples_eliminate_row(void);
 extern void test_nakedTriples_eliminate_column(void);
 extern void test_nakedTriples_eliminate(void);
 extern void test_nakedQuad_eliminate_row(void);
 extern void test_nakedQuad_eliminate(void);
-extern void test_searchPosibilityValueOfEmptySquare_in_peers(void);
 
 
 //=======Test Reset Option=====
@@ -133,12 +134,13 @@ int main(void)
   RUN_TEST(test_grids, 941);
   RUN_TEST(test_grids_should_fail, 950);
   RUN_TEST(test_grids_Alphabet, 965);
-  RUN_TEST(test_nakedTriples_eliminate_row, 1053);
-  RUN_TEST(test_nakedTriples_eliminate_column, 1082);
-  RUN_TEST(test_nakedTriples_eliminate, 1110);
-  RUN_TEST(test_nakedQuad_eliminate_row, 1136);
-  RUN_TEST(test_nakedQuad_eliminate, 1163);
-  RUN_TEST(test_searchPosibilityValueOfEmptySquare_in_peers, 1192);
+  RUN_TEST(test_searchPosibilityValueOfEmptySquare_all_peers, 977);
+  RUN_TEST(test_searchPosibilityValueOfEmptySquare_all_peers_1, 987);
+  RUN_TEST(test_nakedTriples_eliminate_row, 1072);
+  RUN_TEST(test_nakedTriples_eliminate_column, 1101);
+  RUN_TEST(test_nakedTriples_eliminate, 1129);
+  RUN_TEST(test_nakedQuad_eliminate_row, 1155);
+  RUN_TEST(test_nakedQuad_eliminate, 1182);
 
   return (UnityEnd());
 }

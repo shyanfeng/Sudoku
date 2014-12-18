@@ -805,30 +805,90 @@ void eliminateBruteForce(int squares[9][9]){
 }
 
 void grids(char read[81], int square[9][9]){
-  int i,r;
+  int i,r,c;
+  int k = 0;
   int temp = 0;
-  int value;
+  int value = 0;
+  int store[81];
+  int tempA = 0;
 
-  for(r=0;r<9;r++){
-    for(i=0;i<9;i++){
+    for(i=0;i<81;i++){
       if(read[i] >= '1' && read[i] <= '9'){  
         temp = read[i] - '1';
         temp = 1<<temp;
         value = checkBinaryValue(temp);
-        squareSetNumber(getSquare(square,r+1,i+1),value);
+         store[i] = value; 
       }else if(read[i] == '.'){
-        squareSetNumber(getSquare(square,r+1,i+1), 0);
+         store[i] = 0;
       }else if(read[i] == ' '){
         if(read[i+1] != ' '){
           Throw(ERR_INVALID_NUM);
         }else{
-          squareSetNumber(getSquare(square,r+1,i+1), 0);
+          store[i] = 0;
         }
-      }else{
-        Throw(ERR_INVALID_NUM);
       }
     }
+   
+    for(r=0;r<9;r++){
+      for(c=0;c<9;c++){
+        temp = store[k];
+        squareSetNumber(getSquare(square, r+1, c+1), temp);
+        if(k == 82){
+          break;
+        }else{
+          k++;
+        }
+      }
+    }
+
+}
+
+void searchPossibilityValueOfEmptySquare(int square[9][9]){
+  int r,c;
+  for(r=0;r<9;r++){
+    for(c=0;c<9;c++){
+        Square *peersRow = rowPeers[r][c];
+        Square *peersColumn = columnPeers[r][c];        
+        Square *peersBox = boxPeers[r][c];
+        searchPossibilityValueOfEmptySquareInPeers(square,peersRow);
+        searchPossibilityValueOfEmptySquareInPeers(square,peersColumn);
+        searchPossibilityValueOfEmptySquareInPeers(square,peersBox);
+    }
   }
+}
+
+void searchPossibilityValueOfEmptySquareInPeers(int square[9][9],Square *peers){
+  int r,c,i,j,m;
+  int *checkZeroPtr,*checkValuePtr,*checkContainOneValPtr;
+  int checkZero,checkValue,checkOneValue;
+  int conv = 0x01;
+  int mask = 0;
+  int storeMask = 0;
+
+
+    for(i=0;i<9;i++){
+      checkZeroPtr = getSquare(square,peers[i].row+1,peers[i].column+1);
+      checkZero = *checkZeroPtr;
+      if(squareContainNumbers(square,peers[i].row+1,peers[i].column+1)>1){  
+         for(j=0;j<9;j++){
+          checkContainOneValPtr = getSquare(square,peers[j].row+1,peers[j].column+1);
+          checkOneValue = *checkContainOneValPtr;
+          if(squareContainOneNumbers(square,peers[j].row+1,peers[j].column+1)==1){
+            mask = mask | checkOneValue;
+          }
+            storeMask = ~mask;
+            checkZero = storeMask & checkZero;
+            squareSetNumberForZero(checkZeroPtr);
+            for(m=0;m<9;m++){
+              int value = checkZero &(conv<<m);
+              if(value != 0){
+                int decimal = checkBinaryValue(value);
+                squareSetNumber(checkZeroPtr,decimal);
+              }
+            }
+        }
+      }
+    }  
 }
 
 /*
@@ -1212,53 +1272,8 @@ void eliminateNakedQuadInPeers(int square[9][9],Square *peers){
   }
 }
 
-//////////////////////////////////////////////////////////////////////////
-/**                       searching not done yet                       **/
-//////////////////////////////////////////////////////////////////////////
 
-void searchPossibilityValueOfEmptySquare(int square[9][9]){
-  int r,c;
-  for(r=0;r<9;r++){
-    for(c=0;c<9;c++){
-        Square *peersRow = rowPeers[r][c];
-        // Square *peersColumn = columnPeers[r][c];        
-        // Square *peersBox = boxPeers[r][c];
-        searchPossibilityValueOfEmptySquareInPeers(square,peersRow);
-        // searchPosibilityValueOfEmptySquareInPeers(square,peersColumn);
-        // searchPosibilityValueOfEmptySquareInPeers(square,peersBox);
-    }
-  }
-}
 
-void searchPossibilityValueOfEmptySquareInPeers(int square[9][9],Square *peers){
-  int r,c,i,j,m;
-  int *checkZeroPtr,*checkValuePtr;
-  int checkZero,checkValue;
-  int conv = 0x01;
- for(r=0;r<9;r++){
-    checkZeroPtr = getSquare(square,peers[r].row+1,peers[r].column+1);
-    checkZero = *checkZeroPtr;
-    if(checkZero == 511){
-      for(c=0;c<9;c++){
-        checkValuePtr = getSquare(square,peers[c].row+1,peers[c].column+1);
-        checkValue = *checkValuePtr;
-        if( checkValue != 0 && checkValue != 511){
-          checkZero = checkZero & checkValue;
-          if(checkZero != 0){
-            squareSetNumberForZero(checkZeroPtr);
-            for(m=0;m<9;m++){
-              int value = checkZero & (conv << m);
-              if(value != 0){
-                int hexValue = checkBinaryValue(value);
-                squareSetNumber(checkZeroPtr,hexValue);
-              }
-            }       
-          }
-        }
-      }
-    }
-  }
-}
 
 
 

@@ -969,10 +969,29 @@ void test_grids_Alphabet(void){
   ErrorCode e;
   Try{
     grids(read, square);
-    TEST_ASSERT_EQUAL(1,square[0][1]);
   }Catch(e){
     TEST_ASSERT_EQUAL(ERR_INVALID_NUM, e);
   }
+}
+
+void test_searchPosibilityValueOfEmptySquare_all_peers(void){
+  char read[81] = "4..27.6..798156234.2.84...7237468951849531726561792843.82.15479.7..243....4.87..2";
+  int square[9][9];
+  clearSquares(square);
+  grids(read, square);  
+  searchPossibilityValueOfEmptySquare(square);
+  eliminateNakedPair(square);
+  dumpSquare(square);
+}
+
+void test_searchPosibilityValueOfEmptySquare_all_peers_1(void){
+  char read[81] = "6.....8.3.4.7.................5.4.7.3..2.....1.6.......2.....5.....8.6......1....";
+  int square[9][9];
+  clearSquares(square);
+  grids(read, square);  
+  searchPossibilityValueOfEmptySquare(square);
+  eliminateBruteForce(square);
+  dumpSquare(square);
 }
 
 /*
@@ -1186,33 +1205,5 @@ void test_nakedQuad_eliminate(void){
   
 }
 
-////////////////////////////////////////////////////////
-// Test code for search but function not complete yet //
-////////////////////////////////////////////////////////
-void test_searchPosibilityValueOfEmptySquare_in_peers(void){
-  char read[81] = "1..2..3..1..2..3..1..2..3..1..2..3..1..2..3..1..2..3..1..2..3..1..2..3..1..2..3..";
-  int square[9][9];
-  clearSquares(square);
-  grids(read, square);
-  Square *peersRow = rowPeers[0][0];
-  searchPossibilityValueOfEmptySquareInPeers(square,peersRow);
-  dumpSquare(square);
-  // TEST_ASSERT_EQUAL(192, square[0][1]);
-}
-/*
-void xtest_searchPosibilityValueOfEmptySquare(void){
-  int square[9][9] = {{C(0),     	    C(3),        C(7),   C(4), C(8), C(1), C(6), C(0), C(9)}, 
-                      {C(0), 		      C(9),        C(0),   C(0), C(2), C(7), C(0), C(3), C(8)},
-                      {C(8),          C(0),        C(0),   C(3), C(0), C(9), C(0), C(0), C(0)}, 
-                      {C(0),          C(1),        C(9),   C(8), C(7), C(3), C(0), C(6), C(0)},  
-                      {C(7),          C(8),        C(0),   C(0), C(0), C(2), C(0), C(9), C(3)},  
-                      {C(0),          C(0),        C(0),   C(9), C(0), C(4), C(8), C(7), C(0)},  
-                      {C(0),          C(0),        C(0),   C(2), C(9), C(5), C(0), C(8), C(6)},  
-                      {C(0),          C(0),        C(8),   C(1), C(3), C(6), C(9), C(0), C(0)},  
-                      {C(9),          C(6),        C(2),   C(7), C(4), C(8), C(3), C(1), C(5)}, 
-                     };                 
 
-  searchPossibilityValueOfEmptySquare(square);
-  TEST_ASSERT_EQUAL(192, square[0][0]);
-}
-*/
+
