@@ -973,7 +973,7 @@ void test_grids_Alphabet(void){
     TEST_ASSERT_EQUAL(ERR_INVALID_NUM, e);
   }
 }
-
+/*
 void test_searchPosibilityValueOfEmptySquare_all_peers(void){
   char read[81] = "4..27.6..798156234.2.84...7237468951849531726561792843.82.15479.7..243....4.87..2";
   int square[9][9];
@@ -982,10 +982,40 @@ void test_searchPosibilityValueOfEmptySquare_all_peers(void){
   searchPossibilityValueOfEmptySquare(square);
   eliminateNakedPair(square);
   dumpSquare(square);
-}
+}*/
 
-void test_searchPosibilityValueOfEmptySquare_all_peers_1(void){
-  char read[81] = "6.....8.3.4.7.................5.4.7.3..2.....1.6.......2.....5.....8.6......1....";
+// void test_searchPosibilityValueOfEmptySquare_all_peers_1(void){
+  // char read[81] = "6.....8.3.4.7.................5.4.7.3..2.....1.6.......2.....5.....8.6......1....";
+  // int square[9][9];
+  // clearSquares(square);
+  // grids(read, square);  
+  // searchPossibilityValueOfEmptySquare(square);
+  // eliminateBruteForce(square);
+  // dumpSquare(square);
+// }
+
+// void test_searchPosibilityValueOfEmptySquare_all_peers_2(void){
+  // char read[81] = "2...8.3...6..7..84.3.5..2.9...1.54.8.........4.27.6...3.1..7.4.72..4..6...4.1...3";
+  // int square[9][9];
+  // clearSquares(square);
+  // grids(read, square);  
+  // searchPossibilityValueOfEmptySquare(square);
+  // eliminateBruteForce(square);
+  // dumpSquare(square);
+// }
+
+// void test_searchPosibilityValueOfEmptySquare_all_peers_3(void){
+  // char read[81] = "......9.7...42.18....7.5.261..9.4....5.....4....5.7..992.1.8....34.59...507......";
+  // int square[9][9];
+  // clearSquares(square);
+  // grids(read, square);  
+  // searchPossibilityValueOfEmptySquare(square);
+  // eliminateBruteForce(square);
+  // dumpSquare(square);
+// }
+
+void test_searchPosibilityValueOfEmptySquare_all_peers_4(void){
+  char read[81] = ".3..5..4...8.1.5..46.....12.7.5.2.8....6.3....4.1.9.3.25.....98..1.2.6...8..6..2.";
   int square[9][9];
   clearSquares(square);
   grids(read, square);  

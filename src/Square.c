@@ -863,13 +863,13 @@ void searchPossibilityValueOfEmptySquareInPeers(int square[9][9],Square *peers){
   int checkZero,checkValue,checkOneValue;
   int conv = 0x01;
   int mask = 0;
-  int storeMask = 0;
+  int storeMask;
 
 
     for(i=0;i<9;i++){
       checkZeroPtr = getSquare(square,peers[i].row+1,peers[i].column+1);
       checkZero = *checkZeroPtr;
-      if(squareContainNumbers(square,peers[i].row+1,peers[i].column+1)>1){  
+      if(squareContainNumbers(square,peers[i].row+1,peers[i].column+1) > 1){  
          for(j=0;j<9;j++){
           checkContainOneValPtr = getSquare(square,peers[j].row+1,peers[j].column+1);
           checkOneValue = *checkContainOneValPtr;
