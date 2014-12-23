@@ -773,35 +773,36 @@ void eliminateBruteForce(int squares[9][9]){
   Square sq;
   sq = selectSquareWithLeastValues(squares);
   
-  for(r = 0; r < 9; r++){
-    for(c = 0; c < 9; c++){
-      duplicateSquares(squares, dupSquares);
-      if((sq.row == r) && (sq.column == c)){
-        numberInAddress = getSquare(squares, actualRow, actualColumn);
-        numberToChooseInSquare = *numberInAddress;
-        for(i = 0; ((getOut != 1) && (i < 9)); i++){  
-          getOneFromSquare = numberToChooseInSquare & (bitToMask << i);
-          if(getOneFromSquare != 0){
-            Try{
-              numberToDelete = checkBinaryValue(getOneFromSquare);
-              eliminateNumberFromAllPeers(squares, actualRow, actualColumn, numberToDelete);
-              if(isSudokuSolved(squares) == 0){
-                eliminateNakedPair(squares);
-              }else if(isSudokuSolved(squares) == 1){
-                // dumpSquare(squares);
-                getOut = 1;
-              }
-            }Catch(e){
-              backToDupSquares = getSquare(dupSquares, actualRow, actualColumn);
-              numberFromDupSquare = *backToDupSquares;
-              getOneFromSquare = numberFromDupSquare;
-              duplicateSquares(dupSquares, squares);
-            }
-          }
+  duplicateSquares(squares, dupSquares);
+  numberInAddress = getSquare(squares, (sq.row + 1), (sq.column + 1));
+  numberToChooseInSquare = *numberInAddress;
+  for(i = 0; ((getOut != 1) && (i < 9)); i++){  
+    getOneFromSquare = numberToChooseInSquare & (bitToMask << i);
+    if(getOneFromSquare != 0){
+      Try{
+        numberToDelete = checkBinaryValue(getOneFromSquare);
+        eliminateNumberFromAllPeers(squares, (sq.row + 1), (sq.column + 1), numberToDelete);
+        if(isSudokuSolved(squares) == 0){
+          eliminateNakedPair(squares);
+        }else if(isSudokuSolved(squares) == 1){
+           // dumpSquare(squares);
+          getOut = 1;
         }
+      }Catch(e){
+        backToDupSquares = getSquare(dupSquares, (sq.row + 1), (sq.column + 1));
+        numberFromDupSquare = *backToDupSquares;
+        getOneFromSquare = numberFromDupSquare;
+        duplicateSquares(dupSquares, squares);
       }
     }
   }
+  
+  /*if(isSudokuSolved(squares) == 1){
+    dumpSquare(squares);
+  }else if(isSudokuSolved(squares) == 0){
+    eliminateNakedPair(squares);
+  }*/
+
 }
 
 void grids(char read[81], int square[9][9]){
