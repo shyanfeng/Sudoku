@@ -73,11 +73,9 @@ extern void test_combine_NakedPair_and_Brute_Force_with_successful_eliminate_2(v
 extern void test_grids(void);
 extern void test_grids_should_fail(void);
 extern void test_grids_Alphabet(void);
-extern void test_searchPosibilityValueOfEmptySquare_all_peers(void);
-extern void test_searchPosibilityValueOfEmptySquare_all_peers_1(void);
-extern void test_searchPosibilityValueOfEmptySquare_all_peers_2(void);
-extern void test_searchPosibilityValueOfEmptySquare_all_peers_3(void);
-extern void test_searchPosibilityValueOfEmptySquare_all_peers_4(void);
+extern void test_searchPosibilityValueOfEmptySquare_all_peers_to_complete_sudoku_1(void);
+extern void test_searchPosibilityValueOfEmptySquare_all_peers_to_complete_sudoku_2(void);
+extern void test_searchPosibilityValueOfEmptySquare_all_peers_to_complete_sudoku_3(void);
 extern void test_nakedTriples_eliminate_row(void);
 extern void test_nakedTriples_eliminate_column(void);
 extern void test_nakedTriples_eliminate(void);
@@ -137,16 +135,14 @@ int main(void)
   RUN_TEST(test_grids, 941);
   RUN_TEST(test_grids_should_fail, 950);
   RUN_TEST(test_grids_Alphabet, 965);
-  RUN_TEST(test_searchPosibilityValueOfEmptySquare_all_peers, 977);
-  RUN_TEST(test_searchPosibilityValueOfEmptySquare_all_peers_1, 987);
-  RUN_TEST(test_searchPosibilityValueOfEmptySquare_all_peers_2, 997);
-  RUN_TEST(test_searchPosibilityValueOfEmptySquare_all_peers_3, 1007);
-  RUN_TEST(test_searchPosibilityValueOfEmptySquare_all_peers_4, 1017);
-  RUN_TEST(test_nakedTriples_eliminate_row, 1102);
-  RUN_TEST(test_nakedTriples_eliminate_column, 1131);
-  RUN_TEST(test_nakedTriples_eliminate, 1159);
-  RUN_TEST(test_nakedQuad_eliminate_row, 1185);
-  RUN_TEST(test_nakedQuad_eliminate, 1212);
+  RUN_TEST(test_searchPosibilityValueOfEmptySquare_all_peers_to_complete_sudoku_1, 977);
+  RUN_TEST(test_searchPosibilityValueOfEmptySquare_all_peers_to_complete_sudoku_2, 987);
+  RUN_TEST(test_searchPosibilityValueOfEmptySquare_all_peers_to_complete_sudoku_3, 996);
+  RUN_TEST(test_nakedTriples_eliminate_row, 1121);
+  RUN_TEST(test_nakedTriples_eliminate_column, 1150);
+  RUN_TEST(test_nakedTriples_eliminate, 1178);
+  RUN_TEST(test_nakedQuad_eliminate_row, 1204);
+  RUN_TEST(test_nakedQuad_eliminate, 1231);
 
   return (UnityEnd());
 }

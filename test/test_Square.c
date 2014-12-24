@@ -974,7 +974,7 @@ void test_grids_Alphabet(void){
   }
 }
 
-void test_searchPosibilityValueOfEmptySquare_all_peers(void){
+void test_searchPosibilityValueOfEmptySquare_all_peers_to_complete_sudoku_1(void){
   char read[81] = "4..27.6..798156234.2.84...7237468951849531726561792843.82.15479.7..243....4.87..2";
   int square[9][9];
   clearSquares(square);
@@ -984,6 +984,25 @@ void test_searchPosibilityValueOfEmptySquare_all_peers(void){
   dumpSquare(square);
 }
 
+void test_searchPosibilityValueOfEmptySquare_all_peers_to_complete_sudoku_2(void){
+  char read[81] = "..3.2.6..9..3.5..1..18.64....81.29..7.......8..67.82....26.95..8..2.3..9..5.1.3..";
+  int square[9][9];
+  clearSquares(square);
+  grids(read, square);  
+  searchPossibilityValueOfEmptySquare(square);
+  eliminateBruteForce(square);
+  dumpSquare(square);
+}
+void test_searchPosibilityValueOfEmptySquare_all_peers_to_complete_sudoku_3(void){
+  char read[81] = "85...24..72......9..4.........1.7..23.5...9...4...........8..7..17..........36.4.";
+  int square[9][9];
+  clearSquares(square);
+  grids(read, square);  
+  searchPossibilityValueOfEmptySquare(square);
+  eliminateBruteForce(square);
+  dumpSquare(square);
+}
+/*
 void test_searchPosibilityValueOfEmptySquare_all_peers_1(void){
   char read[81] = "6.....8.3.4.7.................5.4.7.3..2.....1.6.......2.....5.....8.6......1....";
   int square[9][9];
@@ -992,8 +1011,8 @@ void test_searchPosibilityValueOfEmptySquare_all_peers_1(void){
   searchPossibilityValueOfEmptySquare(square);
   eliminateBruteForce(square);
   dumpSquare(square);
-}
-
+}*/
+/*
 void test_searchPosibilityValueOfEmptySquare_all_peers_2(void){
   char read[81] = "2...8.3...6..7..84.3.5..2.9...1.54.8.........4.27.6...3.1..7.4.72..4..6...4.1...3";
   int square[9][9];
@@ -1022,7 +1041,7 @@ void test_searchPosibilityValueOfEmptySquare_all_peers_4(void){
   searchPossibilityValueOfEmptySquare(square);
   eliminateBruteForce(square);
   dumpSquare(square);
-}
+}*/
 
 /*
 void test_bruteForce_with_successful_eliminate_3(void){

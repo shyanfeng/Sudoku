@@ -769,6 +769,7 @@ void eliminateBruteForce(int squares[9][9]){
   int numberToChooseInSquare;
   int numberToDelete;
   int getOut = 0;
+  int count = 0;
 
   Square sq;
   sq = selectSquareWithLeastValues(squares);
@@ -784,24 +785,24 @@ void eliminateBruteForce(int squares[9][9]){
         eliminateNumberFromAllPeers(squares, (sq.row + 1), (sq.column + 1), numberToDelete);
         if(isSudokuSolved(squares) == 0){
           eliminateNakedPair(squares);
-        }else if(isSudokuSolved(squares) == 1){
-           // dumpSquare(squares);
-          getOut = 1;
         }
+        getOut = 1;
       }Catch(e){
         backToDupSquares = getSquare(dupSquares, (sq.row + 1), (sq.column + 1));
         numberFromDupSquare = *backToDupSquares;
         getOneFromSquare = numberFromDupSquare;
         duplicateSquares(dupSquares, squares);
+        count++;
+        if(count == 100){
+          Throw(ERR_INVALID_SUDOKU);
+        }
       }
     }
   }
-  
-  /*if(isSudokuSolved(squares) == 1){
+
+  if(isSudokuSolved(squares) == 1){
     dumpSquare(squares);
-  }else if(isSudokuSolved(squares) == 0){
-    eliminateNakedPair(squares);
-  }*/
+  }
 
 }
 
