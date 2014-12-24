@@ -866,8 +866,7 @@ void searchPossibilityValueOfEmptySquareInPeers(int square[9][9],Square *peers){
   int mask = 0;
   int storeMask;
 
-
-    for(i=0;i<9;i++){
+   for(i=0;i<9;i++){
       checkZeroPtr = getSquare(square,peers[i].row+1,peers[i].column+1);
       checkZero = *checkZeroPtr;
       if(squareContainNumbers(square,peers[i].row+1,peers[i].column+1) > 1){  
@@ -877,6 +876,7 @@ void searchPossibilityValueOfEmptySquareInPeers(int square[9][9],Square *peers){
           if(squareContainOneNumbers(square,peers[j].row+1,peers[j].column+1)==1){
             mask = mask | checkOneValue;
           }
+        }
             storeMask = ~mask;
             checkZero = storeMask & checkZero;
             squareSetNumberForZero(checkZeroPtr);
@@ -887,7 +887,6 @@ void searchPossibilityValueOfEmptySquareInPeers(int square[9][9],Square *peers){
                 squareSetNumber(checkZeroPtr,decimal);
               }
             }
-        }
       }
     }  
 }

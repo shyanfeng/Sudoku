@@ -1,0 +1,260 @@
+---
+:source:
+  :path: test
+  :file: test_Square.c
+:successes:
+- :test: test_getSquare_should_enter_column_2_row_1_and_return_2
+  :line: 10
+  :message: ''
+- :test: test_getSquare_should_enter_column_6_row_4_and_return_7
+  :line: 22
+  :message: ''
+- :test: test_squareSetNumber_should_enter_column_2_row_1_and_set_bit_3_2_1_4
+  :line: 34
+  :message: ''
+- :test: test_squareSetNumber_should_enter_column_3_row_8_and_set_bit_4_2_6
+  :line: 46
+  :message: ''
+- :test: test_squareSetNumber_should_enter_column_8_row_8_and_set_bit_2_7_8
+  :line: 57
+  :message: ''
+- :test: test_squareDelNumber_should_enter_column_4_row_2_and_del_bit_5
+  :line: 68
+  :message: ''
+- :test: test_squareDelNumber_should_enter_column_9_row_9_and_del_bit_6
+  :line: 83
+  :message: ''
+- :test: test_squareDelNumber_should_enter_column_5_row_1_and_del_bit_2_4
+  :line: 98
+  :message: ''
+- :test: test_removeOthersExcept_should_enter_column_4_row_2_and_remove_all_except_4
+  :line: 114
+  :message: ''
+- :test: test_removeOthersExcept_should_enter_column_7_row_3_and_remove_all_except_4
+  :line: 129
+  :message: ''
+- :test: test_isSquareContain_should_return_1_for_number_match_square
+  :line: 144
+  :message: ''
+- :test: test_initRowPeers
+  :line: 158
+  :message: ''
+- :test: test_initColPeers
+  :line: 182
+  :message: ''
+- :test: test_getBeginningIndex
+  :line: 206
+  :message: ''
+- :test: test_initBoxPeers
+  :line: 219
+  :message: ''
+- :test: test_initBoxPeers_1
+  :line: 242
+  :message: ''
+- :test: test_squareHas_has_same_number_return_1
+  :line: 265
+  :message: ''
+- :test: test_squareHas_does_not_have_same_number_return_0
+  :line: 281
+  :message: ''
+- :test: test_squareContainOneNumbers_has_more_than_1_number_return_0
+  :line: 297
+  :message: ''
+- :test: test_squareContainOneNumbers_has_one_value_return_1
+  :line: 313
+  :message: ''
+- :test: test_checkBinaryValue_return_number
+  :line: 329
+  :message: ''
+- :test: test_eliminateNumberFromAllPeers_with_2_recursive
+  :line: 359
+  :message: ''
+- :test: test_eliminateNumberFromAllPeers_with_3_recursive
+  :line: 415
+  :message: ''
+- :test: test_eliminateNumberFromAllPeers_for_checking_row_0_column_1
+  :line: 466
+  :message: ''
+- :test: test_duplicateSquares
+  :line: 485
+  :message: ''
+- :test: test_isSudokuSolve_return_1_all_square_contain_one_number
+  :line: 534
+  :message: ''
+- :test: test_isSudokuSolve_return_0_one_square_contain_two_number
+  :line: 550
+  :message: ''
+- :test: test_selectSquareWithLeastValues_should_return_row_0
+  :line: 566
+  :message: ''
+- :test: test_nakedPair_eliminate_row
+  :line: 597
+  :message: ''
+- :test: test_nakedPair_eliminate_column
+  :line: 624
+  :message: ''
+- :test: test_nakedPair_eliminate_box
+  :line: 651
+  :message: ''
+- :test: test_nakedPair_eliminate_row_column_and_box
+  :line: 678
+  :message: ''
+- :test: test_eliminateNakedPair_with_successful_eliminate
+  :line: 705
+  :message: ''
+- :test: test_bruteForce_with_successful_eliminate
+  :line: 755
+  :message: ''
+- :test: test_bruteForce_with_successful_eliminate_1
+  :line: 804
+  :message: ''
+- :test: test_combine_NakedPair_and_Brute_Force_with_successful_eliminate_2
+  :line: 862
+  :message: ''
+- :test: test_grids
+  :line: 941
+  :message: ''
+- :test: test_grids_should_fail
+  :line: 950
+  :message: ''
+- :test: test_grids_Alphabet
+  :line: 965
+  :message: ''
+- :test: test_searchPosibilityValueOfEmptySquare_all_peers
+  :line: 977
+  :message: ''
+- :test: test_searchPosibilityValueOfEmptySquare_all_peers_1
+  :line: 987
+  :message: ''
+- :test: test_searchPosibilityValueOfEmptySquare_all_peers_2
+  :line: 997
+  :message: ''
+- :test: test_searchPosibilityValueOfEmptySquare_all_peers_3
+  :line: 1007
+  :message: ''
+- :test: test_searchPosibilityValueOfEmptySquare_all_peers_4
+  :line: 1017
+  :message: ''
+- :test: test_nakedTriples_eliminate_row
+  :line: 1102
+  :message: ''
+- :test: test_nakedTriples_eliminate_column
+  :line: 1131
+  :message: ''
+- :test: test_nakedTriples_eliminate
+  :line: 1159
+  :message: ''
+- :test: test_nakedQuad_eliminate_row
+  :line: 1185
+  :message: ''
+- :test: test_nakedQuad_eliminate
+  :line: 1212
+  :message: ''
+:failures: []
+:ignores: []
+:counts:
+  :total: 49
+  :passed: 49
+  :failed: 0
+  :ignored: 0
+:stdout:
+- ''
+- '+-+-+-+-+-+-+-+-+-+ '
+- '|4|1|5|2|7|3|6|9|8|'
+- +-+-+-+-+-+-+-+-+-+
+- '|7|9|8|1|5|6|2|3|4|'
+- +-+-+-+-+-+-+-+-+-+
+- '|6|2|3|8|4|9|5|1|7|'
+- +-+-+-+-+-+-+-+-+-+
+- '|2|3|7|4|6|8|9|5|1|'
+- +-+-+-+-+-+-+-+-+-+
+- '|8|4|9|5|3|1|7|2|6|'
+- +-+-+-+-+-+-+-+-+-+
+- '|5|6|1|7|9|2|8|4|3|'
+- +-+-+-+-+-+-+-+-+-+
+- '|3|8|2|6|1|5|4|7|9|'
+- +-+-+-+-+-+-+-+-+-+
+- '|1|7|6|9|2|4|3|8|5|'
+- +-+-+-+-+-+-+-+-+-+
+- '|9|5|4|3|8|7|1|6|2|'
+- +-+-+-+-+-+-+-+-+-+
+- ''
+- '+-+-+-+-+-+-+-+-+-+ '
+- '|6|1|7|4|5|9|8|2|3|'
+- +-+-+-+-+-+-+-+-+-+
+- '|2|4|8|7|3|33|9|33|5|'
+- +-+-+-+-+-+-+-+-+-+
+- '|272|5|277|33|2|8|73|41|72|'
+- +-+-+-+-+-+-+-+-+-+
+- '|8|9|2|5|6|4|3|7|1|'
+- +-+-+-+-+-+-+-+-+-+
+- '|3|7|4|2|9|1|5|8|6|'
+- +-+-+-+-+-+-+-+-+-+
+- '|1|5|6|8|7|3|10|264|266|'
+- +-+-+-+-+-+-+-+-+-+
+- '|320|2|261|292|4|96|65|5|448|'
+- +-+-+-+-+-+-+-+-+-+
+- '|344|5|277|260|8|82|6|269|330|'
+- +-+-+-+-+-+-+-+-+-+
+- '|344|160|276|292|1|114|74|268|458|'
+- +-+-+-+-+-+-+-+-+-+
+- ''
+- '+-+-+-+-+-+-+-+-+-+ '
+- '|2|4|7|9|8|1|3|5|6|'
+- +-+-+-+-+-+-+-+-+-+
+- '|272|6|272|6|7|6|1|8|4|'
+- +-+-+-+-+-+-+-+-+-+
+- '|1|3|8|5|6|4|2|7|9|'
+- +-+-+-+-+-+-+-+-+-+
+- '|288|320|36|1|262|5|4|262|8|'
+- +-+-+-+-+-+-+-+-+-+
+- '|432|465|36|142|262|390|368|263|66|'
+- +-+-+-+-+-+-+-+-+-+
+- '|4|401|2|7|260|6|272|261|17|'
+- +-+-+-+-+-+-+-+-+-+
+- '|3|400|1|162|274|7|400|4|2|'
+- +-+-+-+-+-+-+-+-+-+
+- '|7|2|272|132|4|388|400|6|17|'
+- +-+-+-+-+-+-+-+-+-+
+- '|432|400|4|162|1|386|464|258|3|'
+- +-+-+-+-+-+-+-+-+-+
+- ''
+- '+-+-+-+-+-+-+-+-+-+ '
+- '|6|4|2|8|1|3|9|5|7|'
+- +-+-+-+-+-+-+-+-+-+
+- '|7|9|5|4|2|6|1|8|3|'
+- +-+-+-+-+-+-+-+-+-+
+- '|3|8|1|7|9|5|4|2|6|'
+- +-+-+-+-+-+-+-+-+-+
+- '|1|7|8|9|36|4|118|100|18|'
+- +-+-+-+-+-+-+-+-+-+
+- '|2|5|9|36|36|1|7|4|8|'
+- +-+-+-+-+-+-+-+-+-+
+- '|4|6|3|5|8|7|2|1|9|'
+- +-+-+-+-+-+-+-+-+-+
+- '|9|2|6|1|72|8|84|68|24|'
+- +-+-+-+-+-+-+-+-+-+
+- '|8|3|4|34|5|9|98|97|3|'
+- +-+-+-+-+-+-+-+-+-+
+- '|5|1|7|38|4|2|166|292|10|'
+- +-+-+-+-+-+-+-+-+-+
+- ''
+- '+-+-+-+-+-+-+-+-+-+ '
+- '|1|3|7|2|5|6|8|4|9|'
+- +-+-+-+-+-+-+-+-+-+
+- '|9|2|8|4|1|7|5|6|3|'
+- +-+-+-+-+-+-+-+-+-+
+- '|4|6|5|3|9|8|7|1|2|'
+- +-+-+-+-+-+-+-+-+-+
+- '|33|7|260|5|4|2|9|8|33|'
+- +-+-+-+-+-+-+-+-+-+
+- '|145|1|258|6|192|3|331|80|89|'
+- +-+-+-+-+-+-+-+-+-+
+- '|176|4|34|1|192|9|66|3|112|'
+- +-+-+-+-+-+-+-+-+-+
+- '|2|5|44|7|3|9|13|9|8|'
+- +-+-+-+-+-+-+-+-+-+
+- '|68|9|1|8|2|24|6|80|88|'
+- +-+-+-+-+-+-+-+-+-+
+- '|68|8|12|9|6|25|77|2|89|'
+- +-+-+-+-+-+-+-+-+-+
