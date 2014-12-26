@@ -993,15 +993,18 @@ void test_searchPosibilityValueOfEmptySquare_all_peers_to_complete_sudoku_2(void
   eliminateBruteForce(square);
   dumpSquare(square);
 }
+
 void test_searchPosibilityValueOfEmptySquare_all_peers_to_complete_sudoku_3(void){
   char read[81] = "85...24..72......9..4.........1.7..23.5...9...4...........8..7..17..........36.4.";
   int square[9][9];
   clearSquares(square);
   grids(read, square);  
   searchPossibilityValueOfEmptySquare(square);
+  dumpSquare(square);
   eliminateBruteForce(square);
   dumpSquare(square);
 }
+
 /*
 void test_searchPosibilityValueOfEmptySquare_all_peers_1(void){
   char read[81] = "6.....8.3.4.7.................5.4.7.3..2.....1.6.......2.....5.....8.6......1....";

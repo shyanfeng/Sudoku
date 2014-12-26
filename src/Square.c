@@ -769,33 +769,29 @@ void eliminateBruteForce(int squares[9][9]){
   int numberToChooseInSquare;
   int numberToDelete;
   int getOut = 0;
-  int count = 0;
-
+  
   Square sq;
   sq = selectSquareWithLeastValues(squares);
   
   duplicateSquares(squares, dupSquares);
   numberInAddress = getSquare(squares, (sq.row + 1), (sq.column + 1));
   numberToChooseInSquare = *numberInAddress;
+  
   for(i = 0; ((getOut != 1) && (i < 9)); i++){  
     getOneFromSquare = numberToChooseInSquare & (bitToMask << i);
-    if(getOneFromSquare != 0){
-      Try{
+    Try{
+      if(getOneFromSquare != 0){
         numberToDelete = checkBinaryValue(getOneFromSquare);
         eliminateNumberFromAllPeers(squares, (sq.row + 1), (sq.column + 1), numberToDelete);
         if(isSudokuSolved(squares) == 0){
           eliminateNakedPair(squares);
         }
         getOut = 1;
-      }Catch(e){
-        backToDupSquares = getSquare(dupSquares, (sq.row + 1), (sq.column + 1));
-        numberFromDupSquare = *backToDupSquares;
-        getOneFromSquare = numberFromDupSquare;
-        duplicateSquares(dupSquares, squares);
-        count++;
-        if(count == 100){
-          Throw(ERR_INVALID_SUDOKU);
-        }
+      }
+    }Catch(e){
+      duplicateSquares(dupSquares, squares);
+      if(i == 8){
+        Throw(ERR_INVALID_NUM);
       }
     }
   }

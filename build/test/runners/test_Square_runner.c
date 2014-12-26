@@ -137,12 +137,12 @@ int main(void)
   RUN_TEST(test_grids_Alphabet, 965);
   RUN_TEST(test_searchPosibilityValueOfEmptySquare_all_peers_to_complete_sudoku_1, 977);
   RUN_TEST(test_searchPosibilityValueOfEmptySquare_all_peers_to_complete_sudoku_2, 987);
-  RUN_TEST(test_searchPosibilityValueOfEmptySquare_all_peers_to_complete_sudoku_3, 996);
-  RUN_TEST(test_nakedTriples_eliminate_row, 1121);
-  RUN_TEST(test_nakedTriples_eliminate_column, 1150);
-  RUN_TEST(test_nakedTriples_eliminate, 1178);
-  RUN_TEST(test_nakedQuad_eliminate_row, 1204);
-  RUN_TEST(test_nakedQuad_eliminate, 1231);
+  RUN_TEST(test_searchPosibilityValueOfEmptySquare_all_peers_to_complete_sudoku_3, 997);
+  RUN_TEST(test_nakedTriples_eliminate_row, 1124);
+  RUN_TEST(test_nakedTriples_eliminate_column, 1153);
+  RUN_TEST(test_nakedTriples_eliminate, 1181);
+  RUN_TEST(test_nakedQuad_eliminate_row, 1207);
+  RUN_TEST(test_nakedQuad_eliminate, 1234);
 
   return (UnityEnd());
 }
