@@ -2,6 +2,7 @@
 #include "Square.h"
 #include "ErrorCode.h"
 #include "CException.h"
+#include "EliminateNumberFromAllPeers.h"
 
 #define getActualRowForPeers ((peers[i].row) + 1)
 #define getActualColumnForPeers ((peers[i].column) + 1)
@@ -424,7 +425,7 @@ void eliminateNumberFromPeers(int squares[9][9], Square *peers, int row, int col
           Throw(ERR_EMPTY_SQU);
         }else if(squareContainOneNumbers(squares, getActualRowForPeers, getActualColumnForPeers) == 1){
           int value2 = checkBinaryValue(value1);
-          eliminateNumberFromAllPeers(squares, getActualRowForPeers, getActualColumnForPeers, value2);
+          _eliminateNumberFromAllPeers((int **)squares, getActualRowForPeers, getActualColumnForPeers, value2);
         }
       }
     }
@@ -775,6 +776,7 @@ void eliminateBruteForce(int squares[9][9]){
   
   duplicateSquares(squares, dupSquares);
   numberInAddress = getSquare(squares, (sq.row + 1), (sq.column + 1));
+  // printf("r = %d c = %d\n", (sq.row + 1), (sq.column + 1));
   numberToChooseInSquare = *numberInAddress;
   
   for(i = 0; ((getOut != 1) && (i < 9)); i++){  
@@ -782,9 +784,9 @@ void eliminateBruteForce(int squares[9][9]){
     Try{
       if(getOneFromSquare != 0){
         numberToDelete = checkBinaryValue(getOneFromSquare);
-        eliminateNumberFromAllPeers(squares, (sq.row + 1), (sq.column + 1), numberToDelete);
+        _eliminateNumberFromAllPeers((int **)squares, (sq.row + 1), (sq.column + 1), numberToDelete);
         if(isSudokuSolved(squares) == 0){
-          eliminateNakedPair(squares);
+          eliminateBruteForce(squares);
         }
         getOut = 1;
       }
