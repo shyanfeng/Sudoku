@@ -406,6 +406,10 @@ void eliminateNumberFromPeers(int squares[9][9], Square *peers, int row, int col
     squareDelNumber(storeFixValue, findNumberToEliminate);
     value = *storeFixValue;
     decimalValue  = checkBinaryValue(value);
+  }else if(squareContainNumbers(squares, row, column) > 2){
+    int *valuePtr = getSquare(squares,row,column);
+    squareDelNumber(valuePtr, findNumberToEliminate);
+    eliminateBruteForce(squares);
   }else{
     decimalValue = checkBinaryValue(*getSquare(squares, row, column));
   }
