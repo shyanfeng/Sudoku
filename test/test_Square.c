@@ -7,7 +7,7 @@
 void setUp(void){}
 
 void tearDown(void){}
-/*
+
 void test_getSquare_should_enter_column_2_row_1_and_return_2(void){
 	int column = 2;
 	int row = 1;
@@ -155,7 +155,7 @@ void test_isSquareContain_should_return_1_for_number_match_square(void){
   value = isSquareContain(getSquare(square, 4, 6), 4);
   TEST_ASSERT_EQUAL(1, value);
 }
-*/
+
 void test_initRowPeers(void){
   
   initRowPeers(rowPeers);
@@ -986,26 +986,26 @@ void test_searchPosibilityValueOfEmptySquare_all_peers_to_complete_sudoku_1(void
   dumpSquare(square);
 }
 
-// void test_searchPosibilityValueOfEmptySquare_all_peers_to_complete_sudoku_2(void){
-  // char read[81] = "..3.2.6..9..3.5..1..18.64....81.29..7.......8..67.82....26.95..8..2.3..9..5.1.3..";
-  // int square[9][9];
-  // clearSquares(square);
-  // grids(read, square);  
-  // searchPossibilityValueOfEmptySquare(square);
-  // eliminateBruteForce(square);
-  // dumpSquare(square);
-// }
+void test_searchPosibilityValueOfEmptySquare_all_peers_to_complete_sudoku_2(void){
+  char read[81] = "..3.2.6..9..3.5..1..18.64....81.29..7.......8..67.82....26.95..8..2.3..9..5.1.3..";
+  int square[9][9];
+  clearSquares(square);
+  grids(read, square);  
+  searchPossibilityValueOfEmptySquare(square);
+  eliminateBruteForce(square);
+  dumpSquare(square);
+}
 
-// void test_searchPosibilityValueOfEmptySquare_all_peers_to_complete_sudoku_3(void){
-  // char read[81] = "85...24..72......9..4.........1.7..23.5...9...4...........8..7..17..........36.4.";
-  // int square[9][9];
-  // clearSquares(square);
-  // grids(read, square);  
-  // searchPossibilityValueOfEmptySquare(square);
-  // dumpSquare(square);
-  // eliminateBruteForce(square);
-  // dumpSquare(square);
-// }
+void test_searchPosibilityValueOfEmptySquare_all_peers_to_complete_sudoku_3(void){
+  char read[81] = "85...24..72......9..4.........1.7..23.5...9...4...........8..7..17..........36.4.";
+  int square[9][9];
+  clearSquares(square);
+  grids(read, square);  
+  searchPossibilityValueOfEmptySquare(square);
+  dumpSquare(square);
+  eliminateBruteForce(square);
+  dumpSquare(square);
+}
 
 /*
 void test_searchPosibilityValueOfEmptySquare_all_peers_1(void){
