@@ -406,10 +406,6 @@ void eliminateNumberFromPeers(int squares[9][9], Square *peers, int row, int col
     squareDelNumber(storeFixValue, findNumberToEliminate);
     value = *storeFixValue;
     decimalValue  = checkBinaryValue(value);
-  }else if(squareContainNumbers(squares, row, column) > 2){
-    int *valuePtr = getSquare(squares,row,column);
-    squareDelNumber(valuePtr, findNumberToEliminate);
-    eliminateBruteForce(squares);
   }else{
     decimalValue = checkBinaryValue(*getSquare(squares, row, column));
   }
@@ -429,7 +425,7 @@ void eliminateNumberFromPeers(int squares[9][9], Square *peers, int row, int col
           Throw(ERR_EMPTY_SQU);
         }else if(squareContainOneNumbers(squares, getActualRowForPeers, getActualColumnForPeers) == 1){
           int value2 = checkBinaryValue(value1);
-          _eliminateNumberFromAllPeers((int **)squares, getActualRowForPeers, getActualColumnForPeers, value2);
+          _eliminateNumberFromAllPeers((int *)squares, getActualRowForPeers, getActualColumnForPeers, value2);
         }
       }
     }
@@ -467,8 +463,8 @@ Square selectSquareWithLeastValues(int square[9][9]){
         if(returnCount < count){
           sq.row = r;
           sq.column = c;
-          // printf("r=%d, c=%d %d\n", r, c,getValue);
-          // printf("getValue = %d\n", );
+          // printf("r=%d, c=%d %d\n", r, c, getValue);
+          // printf("getValue = %d\n", getValue);
           count = returnCount;
           // printf("count= %d\n", count);
         }
@@ -780,15 +776,18 @@ void eliminateBruteForce(int squares[9][9]){
   
   duplicateSquares(squares, dupSquares);
   numberInAddress = getSquare(squares, (sq.row + 1), (sq.column + 1));
-  // printf("r = %d c = %d\n", (sq.row + 1), (sq.column + 1));
+
   numberToChooseInSquare = *numberInAddress;
-  
-  for(i = 0; ((getOut != 1) && (i < 9)); i++){  
+
+  for(i = 0; ((getOut != 1)); i++){  
     getOneFromSquare = numberToChooseInSquare & (bitToMask << i);
+    if(i == 9 && isSudokuSolved(squares) == 0){
+        Throw(ERR_INVALID_NUM);
+      }
     Try{
       if(getOneFromSquare != 0){
         numberToDelete = checkBinaryValue(getOneFromSquare);
-        _eliminateNumberFromAllPeers((int **)squares, (sq.row + 1), (sq.column + 1), numberToDelete);
+        _eliminateNumberFromAllPeers((int *)squares, (sq.row + 1), (sq.column + 1), numberToDelete);
         if(isSudokuSolved(squares) == 0){
           eliminateBruteForce(squares);
         }
@@ -796,15 +795,13 @@ void eliminateBruteForce(int squares[9][9]){
       }
     }Catch(e){
       duplicateSquares(dupSquares, squares);
-      if(i == 8){
-        Throw(ERR_INVALID_NUM);
-      }
     }
   }
 
-  if(isSudokuSolved(squares) == 1){
+  //  Comment out to reduce the times of Sudoku print
+  /*if(isSudokuSolved(squares) == 1){
     dumpSquare(squares);
-  }
+  }*/
 
 }
 
