@@ -948,7 +948,7 @@ void test_grids_Alphabet(void){
   }
 }
 
-void test_searchPosibilityValueOfEmptySquare_all_peers_to_complete_sudoku_1(void){
+void test_Sudoku_1(void){
   char read[81] = "4..27.6..798156234.2.84...7237468951849531726561792843.82.15479.7..243....4.87..2";
   int square[9][9];
   clearSquares(square);
@@ -958,7 +958,7 @@ void test_searchPosibilityValueOfEmptySquare_all_peers_to_complete_sudoku_1(void
   dumpSquare(square);
 }
 
-void test_searchPosibilityValueOfEmptySquare_all_peers_to_complete_sudoku_2(void){
+void test_Sudoku_2(void){
   char read[81] = "..3.2.6..9..3.5..1..18.64....81.29..7.......8..67.82....26.95..8..2.3..9..5.1.3..";
   int square[9][9];
   clearSquares(square);
@@ -968,7 +968,7 @@ void test_searchPosibilityValueOfEmptySquare_all_peers_to_complete_sudoku_2(void
   dumpSquare(square);
 }
 
-void test_searchPosibilityValueOfEmptySquare_all_peers_to_complete_sudoku_3(void){
+void test_Sudoku_3(void){
   char read[81] = "85...24..72......9..4.........1.7..23.5...9...4...........8..7..17..........36.4.";
   int square[9][9];
   clearSquares(square);
@@ -979,7 +979,7 @@ void test_searchPosibilityValueOfEmptySquare_all_peers_to_complete_sudoku_3(void
 }
 
 
-void test_searchPosibilityValueOfEmptySquare_all_peers_1(void){
+void test_Sudoku_4(void){
   char read[81] = "6.....8.3.4.7.................5.4.7.3..2.....1.6.......2.....5.....8.6......1....";
   int square[9][9];
   clearSquares(square);
@@ -989,7 +989,7 @@ void test_searchPosibilityValueOfEmptySquare_all_peers_1(void){
   dumpSquare(square);
 }
 
-void test_searchPosibilityValueOfEmptySquare_all_peers_2(void){
+void test_Sudoku_5(void){
   char read[81] = "2...8.3...6..7..84.3.5..2.9...1.54.8.........4.27.6...3.1..7.4.72..4..6...4.1...3";
   int square[9][9];
   clearSquares(square);
@@ -999,7 +999,7 @@ void test_searchPosibilityValueOfEmptySquare_all_peers_2(void){
   dumpSquare(square);
 }
 
-void test_searchPosibilityValueOfEmptySquare_all_peers_3(void){
+void test_Sudoku_6(void){
   char read[81] = "......9.7...42.18....7.5.261..9.4....5.....4....5.7..992.1.8....34.59...517......";
   int square[9][9];
   clearSquares(square);
@@ -1009,7 +1009,7 @@ void test_searchPosibilityValueOfEmptySquare_all_peers_3(void){
   dumpSquare(square);
 }
 
-void test_searchPosibilityValueOfEmptySquare_all_peers_4(void){
+void test_Sudoku_7(void){
   char read[81] = ".3..5..4...8.1.5..46.....12.7.5.2.8....6.3....4.1.9.3.25.....98..1.2.6...8..6..2.";
   int square[9][9];
   clearSquares(square);
@@ -1019,7 +1019,7 @@ void test_searchPosibilityValueOfEmptySquare_all_peers_4(void){
   dumpSquare(square);
 }
 
-void test_searchPosibilityValueOfEmptySquare_all_peers_5(void){
+void test_Sudoku_8(void){
   char read[81] = ".2.3......63.....58.......15....9.3....7........1....8.879..26......6.7...6..7..4";
   int square[9][9];
   clearSquares(square);
@@ -1029,7 +1029,7 @@ void test_searchPosibilityValueOfEmptySquare_all_peers_5(void){
   dumpSquare(square);
 }
 
-void test_searchPosibilityValueOfEmptySquare_all_peers_6(void){
+void test_Sudoku_9(void){
   char read[81] = ".476...5.8.3.....2.....9......8.5..6...1.....6.24......78...51...6....4..9...4..7";
   int square[9][9];
   clearSquares(square);
@@ -1039,7 +1039,7 @@ void test_searchPosibilityValueOfEmptySquare_all_peers_6(void){
   dumpSquare(square);
 }
 
-void test_searchPosibilityValueOfEmptySquare_all_peers_7(void){
+void test_Sudoku_10(void){
   char read[81] = "....6...4..6.3....1..4..5.77.....8.5...8.....6.8....9...2.9....4....32....97..1..";
   int square[9][9];
   clearSquares(square);
@@ -1049,7 +1049,7 @@ void test_searchPosibilityValueOfEmptySquare_all_peers_7(void){
   dumpSquare(square);
 }
 
-void test_searchPosibilityValueOfEmptySquare_all_peers_8(void){
+void test_Sudoku_11_with_peter_norvig_hardest_puzzle_will_error(void){
   ErrorCode e;
   char read[81] = ".....6....59.....82....8....45........3........6..3.54...325..6..................";
   int square[9][9];
@@ -1066,7 +1066,7 @@ void test_searchPosibilityValueOfEmptySquare_all_peers_8(void){
   }
 }
 
-void test_searchPosibilityValueOfEmptySquare_all_peers_9(void){
+void test_Sudoku_12(void){
   char read[81] = "8..7....4.5....6............3.97...8....43..5....2.9....6......2...6...7.71..83.2";
   int square[9][9];
   clearSquares(square);
@@ -1076,7 +1076,7 @@ void test_searchPosibilityValueOfEmptySquare_all_peers_9(void){
   dumpSquare(square);
 }
 
-void test_searchPosibilityValueOfEmptySquare_all_peers_10(void){
+void test_Sudoku_13(void){
   char read[81] = "1....786...7..8.1.8..2....9........24...1......9..5...6.8..........5.9.......93.4";
   int square[9][9];
   clearSquares(square);
@@ -1085,6 +1085,58 @@ void test_searchPosibilityValueOfEmptySquare_all_peers_10(void){
   eliminateBruteForce(square);
   dumpSquare(square);
 }
+
+void test_Sudoku_14(void){
+  char read[81] = "..........5724...98....947...9..3...5..9..12...3.1.9...6....25....56.....7......6";
+  int square[9][9];
+  clearSquares(square);
+  grids(read, square);  
+  searchPossibilityValueOfEmptySquare(square);
+  eliminateBruteForce(square);
+  dumpSquare(square);
+}
+
+void test_Sudoku_15(void){
+  char read[81] = "....75....1..2.....4...3...5.....3.2...8...1.......6.....1..48.2........7........";
+  int square[9][9];
+  clearSquares(square);
+  grids(read, square);  
+  searchPossibilityValueOfEmptySquare(square);
+  eliminateBruteForce(square);
+  dumpSquare(square);
+}
+
+void test_Sudoku_16(void){
+  char read[81] = ".5.3.7.4.1.........3.......5.8.3.61....8..5.9.6..1........4...6...6927....2...9..";
+  int square[9][9];
+  clearSquares(square);
+  grids(read, square);  
+  searchPossibilityValueOfEmptySquare(square);
+  eliminateBruteForce(square);
+  dumpSquare(square);
+}
+
+void test_Sudoku_17(void){
+  char read[81] = "...658.....4......12............96.7...3..5....2.8...3..19..8..3.6.....4....473..";
+  int square[9][9];
+  clearSquares(square);
+  grids(read, square);  
+  searchPossibilityValueOfEmptySquare(square);
+  eliminateBruteForce(square);
+  dumpSquare(square);
+}
+
+void test_Sudoku_18(void){
+  char read[81] = "1.....3.8.7.4..............2.3.1...........958.........5.6...7.....8.2...4.......";
+  int square[9][9];
+  clearSquares(square);
+  grids(read, square);  
+  searchPossibilityValueOfEmptySquare(square);
+  eliminateBruteForce(square);
+  dumpSquare(square);
+}
+
+
 
 
 
